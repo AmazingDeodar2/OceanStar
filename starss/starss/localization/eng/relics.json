@@ -1,8 +1,5 @@
 {
   "STARSS-STARSS_STARTER_RELIC.title": "命运之骰",
   "STARSS-STARSS_STARTER_RELIC.description": "战斗开始时投掷一个六面骰，获得其点数的幸运。",
-  "STARSS-STARSS_STARTER_RELIC.flavor": "命运流于她手。",
-  "relics.STARSS-STARSS_STARTER_RELIC.title": "星之核心",
-  "relics.STARSS-STARSS_STARTER_RELIC.description": "战斗胜利后，回复 6 点生命。",
-  "relics.STARSS-STARSS_STARTER_RELIC.flavor": "微弱星光在其中流转。"
+  "STARSS-STARSS_STARTER_RELIC.flavor": "命运流于她手。"
 }

@@ -1,3 +1,8 @@
 {
-  
+  "STARSS-STAR_STRIKE.title": "打击",
+  "STARSS-STAR_STRIKE.description": "造成 {Damage} 点伤害。",
+  "STARSS-STAR_STRIKE.upgradeDescription": "造成 {Damage} 点伤害。",
+  "STARSS-STAR_CURSE.title": "厄运",
+  "STARSS-STAR_CURSE.description": "给予 1 层易伤、1 层虚弱、1 层中毒和 1 层灾厄。",
+  "STARSS-STAR_CURSE.upgradeDescription": "给予 1 层易伤、1 层虚弱、1 层中毒和 1 层灾厄。"
 }

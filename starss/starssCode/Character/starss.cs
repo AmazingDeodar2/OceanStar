@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Relics;
 using starss.starssCode.Relics;
-
+using starss.starssCode.Cards;
 namespace starss.starssCode.Character;
 
 public class Starss : PlaceholderCharacterModel
@@ -22,11 +22,11 @@ public class Starss : PlaceholderCharacterModel
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
+        ModelDb.Card<StarStrike>(),
+        ModelDb.Card<StarStrike>(),
+        ModelDb.Card<StarStrike>(),
+        ModelDb.Card<StarStrike>(),
+        ModelDb.Card<StarCurse>(),
         ModelDb.Card<DefendIronclad>(),
         ModelDb.Card<DefendIronclad>(),
         ModelDb.Card<DefendIronclad>(),

@@ -10,6 +10,7 @@ using starss.starssCode.Relics;
 using starss.starssCode.Cards;
 namespace starss.starssCode.Character;
 
+
 public class Starss : PlaceholderCharacterModel
 {
     public const string CharacterId = "starss";
@@ -22,15 +23,13 @@ public class Starss : PlaceholderCharacterModel
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
+        ModelDb.Card<ChaosStrike>(),
+        ModelDb.Card<RollDice>(),
         ModelDb.Card<StarStrike>(),
-        ModelDb.Card<StarStrike>(),
-        ModelDb.Card<StarStrike>(),
-        ModelDb.Card<StarStrike>(),
+        ModelDb.Card<StrikeIronclad>(),
         ModelDb.Card<StarCurse>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
+        ModelDb.Card<AllIn>(),
+        ModelDb.Card<BonusDie>(),
         ModelDb.Card<DefendIronclad>()
     ];
 

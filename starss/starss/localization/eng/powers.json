@@ -1,3 +1,26 @@
 {
-  
-}
+  "LUCKY_POWER.title": "幸运",
+  "LUCKY_POWER.description": "每层幸运使命运判定值增加1。",
+  "LUCKY_POWER.smartDescription": "每层幸运使命运判定值增加1。",
+  "REWARD_DICE_POWER.title": "奖励骰",
+  "REWARD_DICE_POWER.description": "你的骰点改为投掷额外次数，并取最低值。",
+  "REWARD_DICE_POWER.smartDescription": "你的骰点改为投掷额外次数，并取最低值。",
+  "FEARLESS_FATE_POWER.title": "无惧命运",
+  "FEARLESS_FATE_POWER.description": "每次命运触发时，获得格挡。",
+  "FEARLESS_FATE_POWER.smartDescription": "每次命运触发时，获得格挡。",
+  "NEXT_CHECK_LUCK_POWER.title": "下次检定幸运",
+  "NEXT_CHECK_LUCK_POWER.description": "下次检定时，临时提高幸运。检定后移除。",
+  "NEXT_CHECK_LUCK_POWER.smartDescription": "下次检定时，临时提高幸运。检定后移除。",
+  "SHARED_MISFORTUNE_POWER.title": "一损俱损",
+  "SHARED_MISFORTUNE_POWER.description": "每次厄运触发时，对所有敌人造成伤害。",
+  "SHARED_MISFORTUNE_POWER.smartDescription": "每次厄运触发时，对所有敌人造成伤害。",
+  "GODHOOD_POWER.title": "神性",
+  "GODHOOD_POWER.description": "每回合打出的第一张耗能为0的技能牌，会放回你的手牌",
+  "GODHOOD_POWER.smartDescription": "每回合打出的第一张耗能为0的技能牌，会放回你的手牌",
+  "PRAY_POWER.title": "祈福",
+  "PRAY_POWER.description": "每回合开始时获得幸运。",
+  "PRAY_POWER.smartDescription": "每回合开始时获得幸运。",
+  "BARRIER_POWER.title": "结界",
+  "BARRIER_POWER.description": "每回合多抽1张牌，并在回合开始时进行一次命运/厄运检定。",
+  "BARRIER_POWER.smartDescription": "每回合多抽1张牌，并在回合开始时进行一次命运/厄运检定。"
+  }

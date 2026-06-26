@@ -22,5 +22,30 @@
   "PRAY_POWER.smartDescription": "每回合开始时获得幸运。",
   "BARRIER_POWER.title": "结界",
   "BARRIER_POWER.description": "每回合多抽1张牌，并在回合开始时进行一次命运/厄运检定。",
-  "BARRIER_POWER.smartDescription": "每回合多抽1张牌，并在回合开始时进行一次命运/厄运检定。"
-  }
+  "BARRIER_POWER.smartDescription": "每回合多抽1张牌，并在回合开始时进行一次命运/厄运检定。",
+  "PROFESSIONAL_ACTOR_POWER.title": "专职演员",
+  "PROFESSIONAL_ACTOR_POWER.description": "每进入一个状态，抽两张牌，获得1费",
+  "PROFESSIONAL_ACTOR_POWER.smartDescription": "每进入一个状态，抽两张牌，获得1费",
+  "RECRUITMENT_PROCESS_POWER.title": "招募流程",
+  "RECRUITMENT_PROCESS_POWER.description": "每进入一个状态，获得幸运。",
+  "RECRUITMENT_PROCESS_POWER.smartDescription": "每进入一个状态，获得幸运。",
+  "HAT_TRICK_POWER.title": "帽子戏法",
+  "HAT_TRICK_POWER.description": "每使用一张pc牌，将随机pc牌加入你的手牌。",
+  "HAT_TRICK_POWER.smartDescription": "每使用一张pc牌，将随机pc牌加入你的手牌。",
+  "ABYSS_POWER.title": "深渊",
+  "ABYSS_POWER.description": "每当你抽到虚空或呼唤牌时，回复生命值。",
+  "ABYSS_POWER.smartDescription": "每当你抽到虚空或呼唤牌时，回复生命值。",
+  "VOID_CALL_POWER.title": "虚空呼唤",
+  "VOID_CALL_POWER.description": "每当你抽到虚空或呼唤牌时，获得能量，抽牌。",
+  "VOID_CALL_POWER.smartDescription": "每当你抽到虚空或呼唤牌时，获得能量，抽牌。",
+  "MAKKA_PAKKA_POWER.title": "玛卡巴卡",
+  "MAKKA_PAKKA_POWER.description": "每当一张虚空牌消耗时，对所有敌人造成伤害。",
+  "MAKKA_PAKKA_POWER.smartDescription": "每当一张虚空牌消耗时，对所有敌人造成伤害。",
+  "RECOVERY_POWER.title": "再生",
+  "RECOVERY_POWER.description": "在自己回合中，每次受到伤害，回复生命值并获得敏捷。",
+  "RECOVERY_POWER.smartDescription": "在自己回合中，每次受到伤害，回复生命值并获得敏捷。",
+  "BLACK_FORM_POWER.title": "黑色形态",
+  "BLACK_FORM_POWER.description": "你的骰点不会小于50。每张生成的虚空给你提供力量与敏捷。",
+  "BLACK_FORM_POWER.smartDescription": "你的骰点不会小于50。每张生成的虚空给你提供力量与敏捷。"
+
+}

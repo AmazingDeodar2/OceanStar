@@ -34,7 +34,7 @@ public static class DiceHelper
         bool showUi = true,
         bool consumeTemporaryLuck = true)
     {
-        var rollResult = RollD100(creature);
+        var rollResult = RollD100(creature, sourceCard);
 
         if (showUi)
             await DiceUi.ShowRoll(rollResult);
@@ -53,9 +53,6 @@ public static class DiceHelper
         if (result.FateSuccess)
             await OnFateTriggered(creature);
         
-        if (result.FateSuccess)
-            await OnFateTriggered(creature);
-        
         if (result.DoomSuccess && choiceContext != null && sourceCard != null)
             await OnDoomTriggered(choiceContext, sourceCard);
         
@@ -64,17 +61,17 @@ public static class DiceHelper
 
         return result;
     }
-    public static DiceRollResult RollD100(Creature creature)
+    public static DiceRollResult RollD100(Creature creature, CardModel? sourceCard = null)
     {
-        return RollDice(creature, 100);
+        return RollDice(creature, 100, sourceCard);
     }
 
-    public static DiceRollResult RollD6(Creature creature)
+    public static DiceRollResult RollD6(Creature creature, CardModel? sourceCard = null)
     {
-        return RollDice(creature, 6);
+        return RollDice(creature, 6, sourceCard);
     }
 
-    private static DiceRollResult RollDice(Creature creature, int sides)
+    private static DiceRollResult RollDice(Creature creature, int sides, CardModel? sourceCard)
     {
         var rewardDice = GetRewardDice(creature);
 
@@ -85,11 +82,23 @@ public static class DiceHelper
 
         for (var i = 0; i < rollCount; i++)
             rolls.Add(Random.Shared.Next(1, sides + 1));
-
+        
+        var modifiedRolls = rolls
+            .Select(roll => StateCmd.ModifyDiceRoll(creature, sourceCard, roll))
+            .ToList();
         // 奖励骰：取最低值。
-        return new DiceRollResult(rolls.Min(), rolls);
-    }
+        var value = modifiedRolls.Min();
 
+        var blackForm = creature.GetPower<BlackFormPower>();
+        if (blackForm != null)
+            value = RemapRoll(value, 51);
+
+        return new DiceRollResult(value, modifiedRolls);
+    }
+    private static int RemapRoll(int roll, int minRoll)
+    {
+        return minRoll + (roll - 1) * (101 - minRoll) / 100;
+    }
     public static int GetLuck(Creature creature)
     {
         var permanentLuck = creature.GetPower<LuckyPower>()?.Amount ?? 0M;

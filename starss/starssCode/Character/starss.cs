@@ -1,4 +1,5 @@
-﻿using BaseLib.Abstracts;
+﻿using System.Collections.Generic;
+using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
 using starss.starssCode.Extensions;
 using Godot;
@@ -23,14 +24,11 @@ public class Starss : PlaceholderCharacterModel
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
-        ModelDb.Card<ChaosStrike>(),
-        ModelDb.Card<RollDice>(),
-        ModelDb.Card<StarStrike>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StarCurse>(),
-        ModelDb.Card<AllIn>(),
-        ModelDb.Card<BonusDie>(),
-        ModelDb.Card<DefendIronclad>()
+        ModelDb.Card<Lalang>(),
+        ModelDb.Card<OneeSanTime>(),
+        ModelDb.Card<SnowCedar>(),
+        ModelDb.Card<TrojanHorse>(),
+        ModelDb.Card<DesertEagle>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

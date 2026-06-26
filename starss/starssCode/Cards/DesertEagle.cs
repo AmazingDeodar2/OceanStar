@@ -8,6 +8,7 @@ using starss.starssCode.Mechanics;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Models;
 
 namespace starss.starssCode.Cards;
@@ -18,7 +19,7 @@ public sealed class DesertEagle : starssCard
         : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
     }
-    private bool exhaustThisPlay;
+    // private bool exhaustThisPlay;
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(6M, ValueProp.Move),
@@ -59,22 +60,24 @@ public sealed class DesertEagle : starssCard
                 ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
                 this
             );
-            exhaustThisPlay = true;
+
+            await CardCmd.Exhaust(choiceContext, this);
         }
     }
-    public override (PileType, CardPilePosition) ModifyCardPlayResultPileTypeAndPosition(
-        CardModel card,
-        bool isAutoPlay,
-        ResourceInfo resources,
-        PileType pileType,
-        CardPilePosition position)
-    {
-        if (!exhaustThisPlay)
-            return (pileType, position);
-
-        exhaustThisPlay = false;
-        return (PileType.Exhaust, CardPilePosition.Top);
-    }
+    // public override (PileType, CardPilePosition) ModifyCardPlayResultPileTypeAndPosition(
+    //     CardModel card,
+    //     bool isAutoPlay,
+    //     ResourceInfo resources,
+    //     PileType pileType,
+    //     CardPilePosition position)
+    // {
+    //     if (!exhaustThisPlay)
+    //         return (pileType, position);
+    //
+    //     exhaustThisPlay = false;
+    //     return (PileType.Exhaust, CardPilePosition.Top);
+    // }
+    
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(2M);

@@ -25,7 +25,7 @@ public sealed class WildIdea : starssCard
     [
         new DamageVar(14M, ValueProp.Move),
         new FateVar(50M),
-        new DoomVar(50M)
+        new DoomVar(51M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

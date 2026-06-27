@@ -9,4 +9,5 @@ Properties/
 packages/
 .editorconfig
 *.user
+*.uid
 Directory.Build.props

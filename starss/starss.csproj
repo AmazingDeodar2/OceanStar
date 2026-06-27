@@ -23,7 +23,7 @@
             <Private>false</Private>
         </Reference>
         <Reference Include="sts2">
-            <HintPath>sts2.dll</HintPath>
+            <HintPath>$(Sts2DataDir)/sts2.dll</HintPath>
             <Private>true</Private>
         </Reference>
     </ItemGroup>

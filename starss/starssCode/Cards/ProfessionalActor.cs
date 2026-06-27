@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Cards;
 using starss.starssCode.Powers;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace starss.starssCode.Cards;
 
@@ -30,7 +31,10 @@ public sealed class ProfessionalActor : starssCard
             this
         );
     }
-
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new EnergyVar(1)
+    ];
     protected override void OnUpgrade()
     {
         EnergyCost.UpgradeBy(-1);

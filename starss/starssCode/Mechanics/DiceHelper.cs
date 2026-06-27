@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using starss.starssCode.Relics;
 
 namespace starss.starssCode.Mechanics;
 
@@ -23,6 +24,7 @@ public readonly record struct DiceCheckResult(
     bool DoomSuccess,
     DiceRollResult RollResult
 );
+
 public static class DiceHelper
 {
     public static async Task<DiceCheckResult> Check(
@@ -50,17 +52,18 @@ public static class DiceHelper
             rollResult.Value >= finalDoom,
             rollResult
         );
-        if (result.FateSuccess)
-            await OnFateTriggered(creature);
-        
+        if (result.FateSuccess && choiceContext != null && sourceCard != null)
+            await OnFateTriggered(choiceContext, sourceCard);
+
         if (result.DoomSuccess && choiceContext != null && sourceCard != null)
             await OnDoomTriggered(choiceContext, sourceCard);
-        
+
         if (consumeTemporaryLuck)
             await ConsumeNextCheckLuck(creature);
 
         return result;
     }
+
     public static DiceRollResult RollD100(Creature creature, CardModel? sourceCard = null)
     {
         return RollDice(creature, 100, sourceCard);
@@ -69,6 +72,11 @@ public static class DiceHelper
     public static DiceRollResult RollD6(Creature creature, CardModel? sourceCard = null)
     {
         return RollDice(creature, 6, sourceCard);
+    }
+    
+    public static DiceRollResult RollD20(Creature creature, CardModel? sourceCard = null)
+    {
+        return RollDice(creature, 20, sourceCard);
     }
 
     private static DiceRollResult RollDice(Creature creature, int sides, CardModel? sourceCard)
@@ -82,7 +90,7 @@ public static class DiceHelper
 
         for (var i = 0; i < rollCount; i++)
             rolls.Add(Random.Shared.Next(1, sides + 1));
-        
+
         var modifiedRolls = rolls
             .Select(roll => StateCmd.ModifyDiceRoll(creature, sourceCard, roll))
             .ToList();
@@ -95,10 +103,12 @@ public static class DiceHelper
 
         return new DiceRollResult(value, modifiedRolls);
     }
+
     private static int RemapRoll(int roll, int minRoll)
     {
         return minRoll + (roll - 1) * (101 - minRoll) / 100;
     }
+
     public static int GetLuck(Creature creature)
     {
         var permanentLuck = creature.GetPower<LuckyPower>()?.Amount ?? 0M;
@@ -122,7 +132,7 @@ public static class DiceHelper
     {
         return baseDoom;
     }
-    
+
     public static async Task ConsumeNextCheckLuck(Creature creature)
     {
         var tempLuck = creature.GetPower<NextCheckLuckPower>();
@@ -131,21 +141,31 @@ public static class DiceHelper
 
         await PowerCmd.Remove(tempLuck);
     }
-    
-    public static async Task OnFateTriggered(Creature creature)
-    {
-        var power = creature.GetPower<FearlessFatePower>();
-        if (power == null)
-            return;
 
-        await CreatureCmd.GainBlock(
-            creature,
-            power.Amount,
-            ValueProp.Unpowered,
-            null
+    public static async Task OnFateTriggered(
+        PlayerChoiceContext choiceContext,
+        CardModel sourceCard)
+    {
+        var creature = sourceCard.Owner.Creature;
+
+        var power = creature.GetPower<FearlessFatePower>();
+
+        if (power != null)
+        {
+            await CreatureCmd.GainBlock(
+                creature,
+                power.Amount,
+                ValueProp.Unpowered,
+                null
+            );
+        }
+
+        await FateRelicHelper.OnFateTriggered(
+            choiceContext,
+            sourceCard.Owner
         );
     }
-    
+
     public static async Task OnDoomTriggered(
         PlayerChoiceContext choiceContext,
         CardModel sourceCard)
@@ -153,13 +173,59 @@ public static class DiceHelper
         var creature = sourceCard.Owner.Creature;
         var power = creature.GetPower<SharedMisfortunePower>();
 
-        if (power == null)
-            return;
+        if (power != null)
+        {
+            var combatState = sourceCard.CombatState;
+            if (combatState != null)
+            {
+                var target = sourceCard.Owner.RunState.Rng.CombatTargets
+                    .NextItem(combatState.HittableEnemies);
 
-        await DamageCmd.Attack(power.Amount)
-            .FromCard(sourceCard)
-            .TargetingAllOpponents(sourceCard.CombatState!)
-            .WithHitFx("vfx/vfx_attack_blunt")
-            .Execute(choiceContext);
+                if (target != null)
+                {
+                    VfxCmd.PlayOnCreatureCenter(
+                        target,
+                        "vfx/vfx_attack_blunt"
+                    );
+
+                    await CreatureCmd.Damage(
+                        choiceContext,
+                        target,
+                        power.Amount,
+                        ValueProp.Unpowered,
+                        creature
+                    );
+                }
+            }
+        }
+
+        var blessing = creature.GetPower<MisfortuneBlessingPower>();
+
+        if (blessing != null)
+        {
+            await PlayerCmd.GainEnergy(1M, sourceCard.Owner);
+
+            await CardPileCmd.Draw(
+                choiceContext,
+                1M,
+                sourceCard.Owner
+            );
+
+            await PowerCmd.Remove(blessing);
+        }
+        
+        var relic = sourceCard.Owner.GetRelic<EyebrowPencil>();
+
+        if (relic != null)
+        {
+            relic.Flash();
+
+            await CreatureCmd.GainBlock(
+                creature,
+                3M,
+                ValueProp.Unpowered,
+                null
+            );
+        }
     }
 }

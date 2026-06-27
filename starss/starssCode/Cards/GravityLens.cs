@@ -14,7 +14,7 @@ namespace starss.starssCode.Cards;
 public sealed class GravityLens : starssCard
 {
     public GravityLens()
-        : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+        : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
     }
 
@@ -22,7 +22,8 @@ public sealed class GravityLens : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(3M, ValueProp.Unpowered)
+        new BlockVar(3M, ValueProp.Unpowered),
+        new EnergyVar(3)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -59,7 +60,7 @@ public sealed class GravityLens : starssCard
             Owner.PlayerCombatState.GainEnergy(3M);
         }
     }
-
+    
     protected override void OnUpgrade()
     {
         DynamicVars.Block.UpgradeValueBy(1M);

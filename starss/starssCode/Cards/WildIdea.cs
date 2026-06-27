@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Models;
+using starss.starssCode.Powers;
 
 namespace starss.starssCode.Cards;
 
@@ -41,14 +42,14 @@ public sealed class WildIdea : starssCard
         var check = await DiceHelper.Check(
             Owner.Creature,
             fate: 50,
-            doom: 50,
+            doom: 51,
             choiceContext: choiceContext,
             sourceCard: this
         );
 
         if (check.FateSuccess)
         {
-            await PowerCmd.Apply<FreePowerPower>(
+            await PowerCmd.Apply<FreeNextCardPower>(
                 choiceContext,
                 Owner.Creature,
                 1M,

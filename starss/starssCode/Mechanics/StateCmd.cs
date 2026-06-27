@@ -19,6 +19,7 @@ public static class StateCmd
 
         StateSpace space = StateRegistry.Get(player);
         await space.Enter(choiceContext, state);
+        await PineappleModelHelper.OnEnterState(choiceContext, player);
     }
 
     public static async Task AfterCardGeneratedForCombat(
@@ -31,6 +32,11 @@ public static class StateCmd
         await StateRegistry
             .Get(creator)
             .AfterCardGeneratedForCombat(card, creator);
+
+        await SevenSevenSevenHelper.AfterCardGeneratedForCombat(
+            card,
+            creator
+        );
     }
 
     public static async Task ExitFirst(

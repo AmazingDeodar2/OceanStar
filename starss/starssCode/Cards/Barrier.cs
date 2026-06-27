@@ -29,7 +29,8 @@ public sealed class Barrier : starssCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new FateVar(40M),
-        new DoomVar(61M)
+        new DoomVar(61M),
+        new EnergyVar(1)
     ];
     protected override void OnUpgrade() => this.AddKeyword(CardKeyword.Innate);
 }

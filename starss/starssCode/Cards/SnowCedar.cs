@@ -36,6 +36,10 @@ public sealed class SnowCedar : starssCard, IPcCard
             new FlatDomainState()
         );
     }
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new EnergyVar(1)
+    ];
 
     protected override void OnUpgrade()
     {

@@ -93,7 +93,7 @@ public sealed class FamilyBucket : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars["LuckyPower"].UpgradeValueBy(1M);
+        DynamicVars["LuckyPower"].UpgradeValueBy(3M);
         DynamicVars.Energy.UpgradeValueBy(1M);
     }
 }

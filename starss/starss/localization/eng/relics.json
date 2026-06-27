@@ -1,5 +1,30 @@
 {
   "STARSS-STARSS_STARTER_RELIC.title": "命运之骰",
   "STARSS-STARSS_STARTER_RELIC.description": "战斗开始时投掷一个六面骰，获得其点数的幸运。",
-  "STARSS-STARSS_STARTER_RELIC.flavor": "命运流于她手。"
+  "STARSS-STARSS_STARTER_RELIC.flavor": "命运流于她手。",
+  "STARSS-FATE_DICE_RELIC.title": "注命之骰",
+  "STARSS-FATE_DICE_RELIC.description": "战斗开始时投掷一个二十面骰，获得其点数的幸运。",
+  "STARSS-FATE_DICE_RELIC.flavor": "命运终于她手。",
+  "STARSS-PINEAPPLE_MODEL.title": "菠萝模型",
+  "STARSS-PINEAPPLE_MODEL.description": "每场战斗第一次进入状态时，全体敌方获得2层易伤。",
+  "STARSS-PINEAPPLE_MODEL.flavor": "只是一个模型，不能吃。",
+  "STARSS-PINEAPPLE.title": "菠萝",
+  "STARSS-PINEAPPLE.description": "拾起时，最大生命值＋5，每次战斗开始时候获得2点幸运。",
+  "STARSS-PINEAPPLE.flavor": "一个可以吃的菠萝，也许会带来好运。",
+  "STARSS-EYEBROW_PENCIL.title": "眉笔",
+  "STARSS-EYEBROW_PENCIL.description": "每次厄运触发，获得3点格挡。",
+  "STARSS-EYEBROW_PENCIL.flavor": "眉笔不仅用于化妆，也可以是一种象征。",
+  "STARSS-RABBIT_FOOT.title": "兔子脚",
+  "STARSS-RABBIT_FOOT.description": "命运每触发3次，对对方全体造成7点伤害",
+  "STARSS-RABBIT_FOOT.flavor": "兔子脚也是好运的象征。",
+  "STARSS-FOUR_LEAF_CLOVER.title": "四叶草",
+  "STARSS-FOUR_LEAF_CLOVER.description": "你每次获得幸运时候，额外获得2点。",
+  "STARSS-FOUR_LEAF_CLOVER.flavor": "？！幸运增加了！？",
+  "STARSS-FOX_MASK.title": "狐狸面具",
+  "STARSS-FOX_MASK.description": "每场战斗开始时候，选择一张pc牌加入你的手牌，且这张牌可以在本回合免费打出。",
+  "STARSS-FOX_MASK.flavor": "她到底是谁？",
+  "STARSS-SEVEN_SEVEN_SEVEN.title": "777",
+  "STARSS-SEVEN_SEVEN_SEVEN.description": "每当在一场战斗中生成7张虚空或呼唤时，对随机敌人造成70点伤害。",
+  "STARSS-SEVEN_SEVEN_SEVEN.flavor": "7是幸运数字！"
+
 }

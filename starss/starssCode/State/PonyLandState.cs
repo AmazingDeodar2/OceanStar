@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
@@ -11,36 +12,35 @@ namespace starss.starssCode.States;
 
 public class PonyLandState : StateModel
 {
-    private readonly decimal strengthAmount;
+    
 
     public override string Id => "starss:pony_land";
 
-    public PonyLandState(decimal strengthAmount)
+    private static readonly Dictionary<Player, int> NextGoldByPlayer = new();
+
+    
+
+    public PonyLandState()
     {
-        this.strengthAmount = strengthAmount;
         Duration = int.MaxValue;
     }
 
     public override async Task OnEnter(PlayerChoiceContext choiceContext)
     {
-        await PowerCmd.Apply<StrengthPower>(
-            choiceContext,
-            Owner.Creature,
-            strengthAmount,
-            Owner.Creature,
-            null
-        );
+        var gold = GetNextGoldAmount(Owner);
+
+        if (gold > 0)
+        {
+            await PlayerCmd.GainGold(
+                gold,
+                Owner
+            );
+        }
     }
 
-    public override async Task OnExit(PlayerChoiceContext choiceContext)
+    public override Task OnExit(PlayerChoiceContext choiceContext)
     {
-        await PowerCmd.Apply<StrengthPower>(
-            choiceContext,
-            Owner.Creature,
-            -strengthAmount,
-            Owner.Creature,
-            null
-        );
+        return Task.CompletedTask;
     }
     public override int ModifyDiceRoll(Creature creature, CardModel? sourceCard, int roll)
     {
@@ -48,6 +48,20 @@ public class PonyLandState : StateModel
             return 96 + (roll - 1) * 4 / 99;
 
         return roll;
+    }
+    
+    private static int GetNextGoldAmount(Player player)
+    {
+        if (!NextGoldByPlayer.TryGetValue(player, out var gold))
+            gold = 7;
+
+        NextGoldByPlayer[player] = Math.Max(0, gold - 1);
+        return gold;
+    }
+
+    public static void ClearGoldCounters()
+    {
+        NextGoldByPlayer.Clear();
     }
     public override string DisplayName => "小马国度";
 }

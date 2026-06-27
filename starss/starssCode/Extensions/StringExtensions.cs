@@ -14,6 +14,7 @@ public static class StringExtensions
     public static string CardImagePath(this string path)
     {
         path = Path.Join(MainFile.ResPath, "images", "card_portraits", path);
+        
         if (ResourceLoader.Exists(path)) return path;
 
         MainFile.Logger.Info("Could not find card image path: " + path);
@@ -23,6 +24,7 @@ public static class StringExtensions
     public static string BigCardImagePath(this string path)
     {
         path = Path.Join(MainFile.ResPath, "images", "card_portraits", "big", path);
+        
         if (ResourceLoader.Exists(path)) return path;
 
         MainFile.Logger.Info("Could not find big card image path: " + path);

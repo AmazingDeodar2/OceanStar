@@ -48,7 +48,8 @@ public sealed class AllIn : starssCard
 
         if (check.FateSuccess)
         {
-            await DiceHelper.OnFateTriggered(Owner.Creature);
+            await DiceHelper.OnFateTriggered(choiceContext,
+                this);
 
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this)

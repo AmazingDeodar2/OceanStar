@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MegaCrit.Sts2.Core.Entities.Players;
 using starss.starssCode.Mechanics;
+using starss.starssCode.States;
 
 public static class StateRegistry
 {
@@ -26,5 +27,8 @@ public static class StateRegistry
     public static void ClearAll()
     {
         Spaces.Clear();
+        PonyLandState.ClearGoldCounters();
+        PineappleModelHelper.Clear();
+        SevenSevenSevenHelper.Clear();
     }
 }

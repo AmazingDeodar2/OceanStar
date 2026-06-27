@@ -23,28 +23,6 @@ public sealed class TrojanHorse : starssCard, IPcCard
     {
     }
 
-    protected override IEnumerable<DynamicVar> CanonicalVars
-    {
-        get
-        {
-            return new DynamicVar[]
-            {
-                new PowerVar<StrengthPower>(2M)
-            };
-        }
-    }
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips
-    {
-        get
-        {
-            return new IHoverTip[]
-            {
-                HoverTipFactory.FromPower<StrengthPower>()
-            };
-        }
-    }
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(
@@ -56,12 +34,12 @@ public sealed class TrojanHorse : starssCard, IPcCard
         await StateCmd.Enter(
             choiceContext,
             Owner,
-            new PonyLandState(DynamicVars["StrengthPower"].BaseValue)
+            new PonyLandState()
         );
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["StrengthPower"].UpgradeValueBy(1M);
+        AddKeyword(CardKeyword.Retain);
     }
 }

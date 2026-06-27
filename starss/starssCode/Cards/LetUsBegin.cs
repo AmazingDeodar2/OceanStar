@@ -38,32 +38,28 @@ public sealed class LetUsBegin : starssCard
     {
         for (var i = 0; i < DynamicVars["Repeat"].IntValue; i++)
         {
-            await AttackRandomEnemy(choiceContext);
+            await AttackEnemy(choiceContext, cardPlay.Target);
         }
 
         var check = await DiceHelper.Check(
             Owner.Creature,
             fate: 50,
-            doom: 101
+            doom: 101,
+            choiceContext: choiceContext,
+            sourceCard: this
         );
 
         if (check.FateSuccess)
         {
             for (var i = 0; i < DynamicVars["Bonus"].IntValue; i++)
             {
-                await AttackRandomEnemy(choiceContext);
+                await AttackEnemy(choiceContext, cardPlay.Target);
             }
         }
     }
 
-    private async Task AttackRandomEnemy(PlayerChoiceContext choiceContext)
+    private async Task AttackEnemy(PlayerChoiceContext choiceContext, Creature target)
     {
-        var enemies = CombatState!.HittableEnemies.ToList();
-        if (enemies.Count == 0)
-            return;
-
-        var target = enemies[Random.Shared.Next(enemies.Count)];
-
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .Targeting(target)

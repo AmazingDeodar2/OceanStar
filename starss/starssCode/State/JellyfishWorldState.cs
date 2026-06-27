@@ -1,0 +1,35 @@
+using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models.Powers;
+using starss.starssCode.Mechanics;
+
+namespace starss.starssCode.States;
+
+public sealed class JellyfishWorldState : StateModel
+{
+    public override string Id => "starss:jellyfish_world";
+
+    public override string DisplayName => "水母世界";
+
+    public JellyfishWorldState()
+    {
+        Duration = int.MaxValue;
+    }
+
+    public override async Task OnEnter(PlayerChoiceContext choiceContext)
+    {
+        await PowerCmd.Apply<RetainHandPower>(
+            choiceContext,
+            Owner.Creature,
+            1M,
+            Owner.Creature,
+            null
+        );
+    }
+
+    public override async Task OnExit(PlayerChoiceContext choiceContext)
+    {
+        await PowerCmd.Remove<RetainHandPower>(Owner.Creature);
+    }
+}

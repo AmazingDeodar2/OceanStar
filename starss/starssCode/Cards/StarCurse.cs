@@ -12,7 +12,7 @@ namespace starss.starssCode.Cards;
 public sealed class StarCurse : starssCard
 {
     public StarCurse()
-        : base(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
+        : base(0, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
     {
     }
 
@@ -28,11 +28,40 @@ public sealed class StarCurse : starssCard
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
-        await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, DynamicVars.Vulnerable.BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<PoisonPower>(choiceContext, cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<DoomPower>(choiceContext, cardPlay.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<VulnerablePower>(
+            choiceContext,
+            cardPlay.Target,
+            DynamicVars.Vulnerable.BaseValue,
+            Owner.Creature,
+            this);
+
+        await PowerCmd.Apply<WeakPower>(
+            choiceContext,
+            cardPlay.Target,
+            DynamicVars.Weak.BaseValue,
+            Owner.Creature,
+            this);
+
+        await PowerCmd.Apply<PoisonPower>(
+            choiceContext,
+            cardPlay.Target,
+            DynamicVars.Poison.BaseValue,
+            Owner.Creature,
+            this);
+
+        await PowerCmd.Apply<DoomPower>(
+            choiceContext,
+            cardPlay.Target,
+            DynamicVars.Doom.BaseValue,
+            Owner.Creature,
+            this);
     }
-    
-    protected override void OnUpgrade() => this.EnergyCost.UpgradeBy(-1);
+
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Vulnerable.UpgradeValueBy(1M);
+        DynamicVars.Weak.UpgradeValueBy(1M);
+        DynamicVars.Poison.UpgradeValueBy(1M);
+        DynamicVars.Doom.UpgradeValueBy(1M);
+    }
 }

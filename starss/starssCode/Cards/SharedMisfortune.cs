@@ -17,7 +17,7 @@ public sealed class SharedMisfortune : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("Power", 10M)
+        new DynamicVar("Power", 8M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -33,6 +33,6 @@ public sealed class SharedMisfortune : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Power"].UpgradeValueBy(2M);
+        DynamicVars["Power"].UpgradeValueBy(4M);
     }
 }

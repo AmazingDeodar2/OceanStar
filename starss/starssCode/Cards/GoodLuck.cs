@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
+using starss.starssCode.Powers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -18,7 +19,7 @@ public sealed class GoodLuck : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("Power", 1M)
+        new PowerVar<StrengthPower>("Power", 1M)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -31,27 +32,49 @@ public sealed class GoodLuck : starssCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await CreatureCmd.TriggerAnim(
+            Owner.Creature,
+            "Cast",
+            Owner.Character.CastAnimDelay
+        );
 
-        await PowerCmd.Apply<TemporaryStrengthPower>(
+        var amount = DynamicVars["Power"].BaseValue;
+
+        await PowerCmd.Apply<GoodLuckTemporaryStrengthPower>(
             choiceContext,
             Owner.Creature,
-            DynamicVars["Power"].BaseValue,
+            amount,
             Owner.Creature,
             this
         );
 
-        await PowerCmd.Apply<TemporaryDexterityPower>(
+        await PowerCmd.Apply<GoodLuckTemporaryDexterityPower>(
             choiceContext,
             Owner.Creature,
-            DynamicVars["Power"].BaseValue,
+            amount,
             Owner.Creature,
             this
         );
-        await PowerCmd.Apply<VigorPower>(choiceContext, Owner.Creature, DynamicVars["Power"].BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<PlatingPower>(choiceContext, Owner.Creature, DynamicVars["Power"].BaseValue, Owner.Creature, this);
-        
+
+        await PowerCmd.Apply<VigorPower>(
+            choiceContext,
+            Owner.Creature,
+            amount,
+            Owner.Creature,
+            this
+        );
+
+        await PowerCmd.Apply<PlatingPower>(
+            choiceContext,
+            Owner.Creature,
+            amount,
+            Owner.Creature,
+            this
+        );
     }
 
-    protected override void OnUpgrade() => this.EnergyCost.UpgradeBy(-1);
+    protected override void OnUpgrade()
+    {
+        EnergyCost.UpgradeBy(-1);
+    }
 }

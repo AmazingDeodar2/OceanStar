@@ -11,7 +11,7 @@ public static class StateRandomHelper
     {
         var states = new List<Func<StateModel>>
         {
-            () => new PonyLandState(2M),
+            () => new PonyLandState(),
             () => new FlatDomainState()
         };
 

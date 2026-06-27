@@ -117,4 +117,15 @@ public class StateSpace
 
         return roll;
     }
+    
+    public bool ShouldClearBlock(Creature creature)
+    {
+        foreach (var state in states)
+        {
+            if (!state.ShouldClearBlock(creature))
+                return false;
+        }
+
+        return true;
+    }
 }

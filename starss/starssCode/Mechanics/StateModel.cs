@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -35,7 +36,15 @@ public abstract class StateModel
     {
         return Task.CompletedTask;
     }
+    public virtual bool ShouldClearBlock(Creature creature)
+    {
+        return true;
+    }
     
+    public virtual bool TryModifyKeywordsInCombat(CardModel card, ISet<CardKeyword> keywords)
+    {
+        return false;
+    }
     public abstract string DisplayName { get; }
     public bool IsExpired => Duration <= 0;
 }

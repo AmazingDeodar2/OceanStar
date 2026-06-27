@@ -46,6 +46,13 @@
   "RECOVERY_POWER.smartDescription": "在自己回合中，每次受到伤害，回复生命值并获得敏捷。",
   "BLACK_FORM_POWER.title": "黑色形态",
   "BLACK_FORM_POWER.description": "你的骰点不会小于50。每张生成的虚空给你提供力量与敏捷。",
-  "BLACK_FORM_POWER.smartDescription": "你的骰点不会小于50。每张生成的虚空给你提供力量与敏捷。"
-
+  "BLACK_FORM_POWER.smartDescription": "你的骰点不会小于50。每张生成的虚空给你提供力量与敏捷。",
+  "FREE_NEXT_CARD_POWER.title": "下张牌免费打出",
+  "FREE_NEXT_CARD_POWER.description": "下张牌免费打出",
+  "FREE_NEXT_CARD_POWER.smartDescription": "下张牌免费打出",
+  "MISFORTUNE_BLESSING_POWER.title": "祸福相依",
+  "MISFORTUNE_BLESSING_POWER.description": "下一次厄运触发时候获得能量和抽牌",
+  "MISFORTUNE_BLESSING_POWER.smartDescription": "下一次厄运触发时候获得能量和抽牌"
+ 
+  
 }

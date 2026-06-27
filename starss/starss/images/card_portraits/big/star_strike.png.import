@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3xa40io2mqm4"
-path="res://.godot/imported/面具-正面.png-a2857c25ecd85d66c734e827fd76f1e3.ctex"
+uid="uid://b5fwdh8p4l5oq"
+path="res://.godot/imported/star_strike.png-f15b0c9e09c9afe2e8da8f1ff8f839c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starss/justForTest/面具-正面.png"
-dest_files=["res://.godot/imported/面具-正面.png-a2857c25ecd85d66c734e827fd76f1e3.ctex"]
+source_file="res://starss/images/card_portraits/big/star_strike.png"
+dest_files=["res://.godot/imported/star_strike.png-f15b0c9e09c9afe2e8da8f1ff8f839c8.ctex"]
 
 [params]
 

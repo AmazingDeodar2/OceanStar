@@ -76,7 +76,7 @@
   "STARSS-BLACK_FORM.title": "黑色形态",
   "STARSS-BLACK_FORM.description": "你的骰点不会小于50。每当你生成一张虚空时，获得1点力量与1点敏捷。",
   "STARSS-GRAVITY_LENS.title": "引力透镜",
-  "STARSS-GRAVITY_LENS.description": "消耗所有手牌中的状态牌。获得{Block:diff()}倍被消耗数量的护盾。如果其中存在虚空，获得{Energy:energyIcons()}。",
+  "STARSS-GRAVITY_LENS.description": "消耗所有手牌中的状态牌。获得{Block:diff()}倍被消耗数量的格挡。如果其中存在虚空，获得{Energy:energyIcons()}。",
   "STARSS-SIGNAL_FAILURE.title": "信号故障",
   "STARSS-SIGNAL_FAILURE.description": "获得{Block:diff()}点格挡。抽{Cards:diff()}张牌。将一张虚空加入你的抽牌堆。",
   "STARSS-PULL_YOUR_CABLE.title": "拔你网线",
@@ -89,7 +89,7 @@
   "STARSS-FOX_FIRE.title": "狐火",
   "STARSS-FOX_FIRE.description": "对全体敌人造成{Damage:diff()}点伤害7次，每次抽到这张牌时候费用减少2。命运{Fate:diff()}，对对方额外上2层易伤。厄运{Damage:diff()}，自己获得2层虚弱。",
   "STARSS-AGILE_EARS.title": "灵动耳朵",
-  "STARSS-AGILE_EARS.description": "获得{Block:diff()}点护甲。下次检定时获得{Power:diff()}点幸运。",
+  "STARSS-AGILE_EARS.description": "获得{Block:diff()}点格挡。下次检定时获得{Power:diff()}点幸运。",
   "STARSS-VOID_STRIKE.title": "虚空打击",
   "STARSS-VOID_STRIKE.description": "造成{Damage:diff()}点伤害。将一张虚空加入你的弃牌堆。",
   "STARSS-PENGUIN_ACTIVATED.title": "企鹅卡我启动了",
@@ -103,11 +103,11 @@
   "STARSS-MISFORTUNE_BLESSING.title": "祸福相依",
   "STARSS-MISFORTUNE_BLESSING.description": "获得{Block:diff()}点格挡，下一次厄运触发时候获得{Energy:energyIcons()}，抽1张牌。",
   "STARSS-THREE_W.title": "3w",
-  "STARSS-THREE_W.description": "进入【橘狗空间】，存在时护甲不会消失。",
+  "STARSS-THREE_W.description": "进入【橘狗空间】，存在时格挡不会消失。",
   "STARSS-NANA.title": "娜娜",
   "STARSS-NANA.description": "进入【水母世界】，存在时手牌获得保留。消耗。",
   "STARSS-NANA.upgradeDescription": "进入【水母世界】，存在时手牌获得保留。",
   "STARSS-QIQI.title": "淇淇",
-  "STARSS-QIQI.description": "进入【淇喵位面】，进入时获得7点护甲，离开状态时对随机敌人造成7点伤害"
+  "STARSS-QIQI.description": "进入【淇喵位面】，进入时获得7点格挡，离开状态时对随机敌人造成7点伤害"
  
 }

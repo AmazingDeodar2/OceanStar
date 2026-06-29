@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Cards;
+using starss.starssCode.Cards;
 using starss.starssCode.Powers;
 
 namespace starss.starssCode.Mechanics;
@@ -105,9 +108,23 @@ public class StateSpace
             await state.AfterCardGeneratedForCombat(card, creator);
         }
 
+        if (creator == Owner && IsAbyssGeneratedCard(card))
+        {
+            var abyssPower = Owner.Creature.GetPower<AbyssPower>();
+
+            if (abyssPower != null)
+            {
+                abyssPower.AddAbyssCount(1M);
+            }
+        }
+
         StateUi.Refresh(this);
     }
     
+    private static bool IsAbyssGeneratedCard(CardModel card)
+    {
+        return card is MegaCrit.Sts2.Core.Models.Cards.Void || card is Beckon;
+    }
     public int ModifyDiceRoll(Creature creature, CardModel? sourceCard, int roll)
     {
         foreach (var state in states)

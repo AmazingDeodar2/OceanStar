@@ -31,7 +31,7 @@ public static class StateCmd
 
         await StateRegistry
             .Get(creator)
-            .AfterCardGeneratedForCombat(card, creator);
+            .AfterCardGeneratedForCombat( card, creator);
 
         await SevenSevenSevenHelper.AfterCardGeneratedForCombat(
             card,

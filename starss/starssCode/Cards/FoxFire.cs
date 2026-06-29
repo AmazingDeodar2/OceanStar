@@ -43,29 +43,31 @@ public sealed class FoxFire : starssCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
-            .WithHitCount(DynamicVars["Hits"].IntValue)
-            .TargetingAllOpponents(CombatState!)
-            .WithHitFx("vfx/vfx_attack_fire")
-            .Execute(choiceContext);
-
         var check = await DiceHelper.Check(
             Owner.Creature,
-            fate: 40,
-            doom: 81,
+            fate: DynamicVars["Fate"].IntValue,
+            doom: DynamicVars["Doom"].IntValue,
             choiceContext: choiceContext,
             sourceCard: this
         );
 
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(this)
+            .WithHitCount(DynamicVars["Hits"].IntValue)
+            .TargetingAllOpponents(CombatState!)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
+
         if (check.FateSuccess)
         {
+            await DiceHelper.OnFateTriggered(choiceContext, this);
+
             foreach (var enemy in CombatState!.HittableEnemies)
             {
                 await PowerCmd.Apply<VulnerablePower>(
                     choiceContext,
                     enemy,
-                    DynamicVars["Vulnerable"].BaseValue,
+                    DynamicVars.Vulnerable.BaseValue,
                     Owner.Creature,
                     this
                 );
@@ -77,7 +79,7 @@ public sealed class FoxFire : starssCard
             await PowerCmd.Apply<WeakPower>(
                 choiceContext,
                 Owner.Creature,
-                DynamicVars["Weak"].BaseValue,
+                DynamicVars.Weak.BaseValue,
                 Owner.Creature,
                 this
             );

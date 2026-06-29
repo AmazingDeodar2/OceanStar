@@ -24,11 +24,17 @@ public class Starss : PlaceholderCharacterModel
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
-        ModelDb.Card<RollDice>(),
-        ModelDb.Card<WheelOfFate>(),
+        ModelDb.Card<StarStrike>(),
+        ModelDb.Card<StarStrike>(),
+        ModelDb.Card<StarStrike>(),
+        ModelDb.Card<StarStrike>(),
         ModelDb.Card<DefendStarss>(),
-        ModelDb.Card<SignalFailure>(),
-        ModelDb.Card<DesertEagle>()
+        ModelDb.Card<DefendStarss>(),
+        ModelDb.Card<DefendStarss>(),
+        ModelDb.Card<DefendStarss>(),
+        ModelDb.Card<RollDice>(),
+        ModelDb.Card<AreYouSure>()
+        
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

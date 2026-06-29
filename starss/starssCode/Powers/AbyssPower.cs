@@ -33,7 +33,13 @@ public sealed class AbyssPower : PowerModel
             );
         }
     }
+    public decimal AbyssCount { get; private set; }
 
+    public void AddAbyssCount(decimal amount)
+    {
+        AbyssCount += amount;
+        Flash();
+    }
     private static bool IsCallCard(CardModel card)
     {
         return card.GetType().Name.Contains("Call");

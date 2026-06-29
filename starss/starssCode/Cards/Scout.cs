@@ -3,47 +3,33 @@ using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using starss.starssCode.Mechanics;
-using starss.starssCode.Powers;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using MegaCrit.Sts2.Core.Models;
 
 namespace starss.starssCode.Cards;
 
-public sealed class LuckyFinish : starssCard
-{
-    private const string CalculatedDamageKey = "CalculatedDamage";
 
-    public LuckyFinish()
-        : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public sealed class Scout : starssCard
+{
+    public Scout()
+        : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
     }
 
-    public override bool GainsBlock => true;
-
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new FateVar(50M),
-        new CalculationBaseVar(0M),
-        new CalculationExtraVar(1M),
-        new CalculatedVar(CalculatedDamageKey)
-            .WithMultiplier((card, _) => GetLuckDamage(card))
+        new DamageVar(10M, ValueProp.Move),
+        new FateVar(60M),
+        new PowerVar<VulnerablePower>(2M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-
-        var damage = GetLuckDamage(this);
-
-        await DamageCmd.Attack(damage)
-            .FromCard(this)
-            .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
 
         var check = await DiceHelper.Check(
             Owner.Creature,
@@ -53,27 +39,29 @@ public sealed class LuckyFinish : starssCard
             sourceCard: this
         );
 
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(this)
+            .Targeting(cardPlay.Target)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
+
         if (check.FateSuccess)
         {
             await DiceHelper.OnFateTriggered(choiceContext, this);
 
-            await CreatureCmd.GainBlock(
+            await PowerCmd.Apply<VulnerablePower>(
+                choiceContext,
+                cardPlay.Target,
+                DynamicVars.Vulnerable.BaseValue,
                 Owner.Creature,
-                damage,
-                ValueProp.Unpowered,
-                cardPlay
+                this
             );
         }
     }
 
-    private static decimal GetLuckDamage(CardModel card)
-    {
-        var luck = card.Owner.Creature.GetPower<LuckyPower>()?.Amount ?? 0M;
-        return Math.Floor(luck / 2M);
-    }
-
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars.Damage.UpgradeValueBy(2M);
+        DynamicVars.Vulnerable.UpgradeValueBy(1M);
     }
 }

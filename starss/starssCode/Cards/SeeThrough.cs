@@ -16,7 +16,7 @@ namespace starss.starssCode.Cards;
 public sealed class SeeThrough : starssCard
 {
     public SeeThrough()
-        : base(0, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
+        : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
     }
 

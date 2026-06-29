@@ -1,20 +1,1179 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccsopr4wqvhan"]
+[gd_scene load_steps=282 format=3 uid="uid://shajl3pofvuf"]
 
-[ext_resource type="Texture2D" uid="uid://bfl5uwlvr50wj" path="res://starss/images/charui/select_bg.png" id="1_u1ofc"]
+[ext_resource type="Texture2D" uid="uid://bajpcyqspuyr0" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_00.png" id="1_b8e6u"]
+[ext_resource type="Texture2D" uid="uid://ylv6lyj1rpub" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_01.png" id="2_qcpjq"]
+[ext_resource type="Texture2D" uid="uid://dpr8itrh8bnpe" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_02.png" id="3_1gyjr"]
+[ext_resource type="Texture2D" uid="uid://nocjhkd7u55n" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_03.png" id="4_x65dd"]
+[ext_resource type="Texture2D" uid="uid://casln7siylsbe" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_04.png" id="5_i8uwu"]
+[ext_resource type="Texture2D" uid="uid://cqt5laampgugd" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_05.png" id="6_tl0vt"]
+[ext_resource type="Texture2D" uid="uid://beh1pobuedrgt" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_06.png" id="7_3cq7x"]
+[ext_resource type="Texture2D" uid="uid://cc71uf6btvx6a" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_07.png" id="8_yyrv6"]
+[ext_resource type="Texture2D" uid="uid://clriuljsimcgc" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_08.png" id="9_6dowy"]
+[ext_resource type="Texture2D" uid="uid://buay66o0kfpoy" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_09.png" id="10_ncjq6"]
+[ext_resource type="Texture2D" uid="uid://bb4k5jrvhby1e" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_10.png" id="11_u0yv7"]
+[ext_resource type="Texture2D" uid="uid://d3mimgyinb7o7" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_11.png" id="12_3fshf"]
+[ext_resource type="Texture2D" uid="uid://c8ew7gutod7kr" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_12.png" id="13_mhxfs"]
+[ext_resource type="Texture2D" uid="uid://cgcfvoch0y25c" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_13.png" id="14_mc1np"]
+[ext_resource type="Texture2D" uid="uid://dtgsk1w6d2llf" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_14.png" id="15_gewj2"]
+[ext_resource type="Texture2D" uid="uid://d22mp3xiay4uu" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_15.png" id="16_ob1w4"]
+[ext_resource type="Texture2D" uid="uid://gp2oifdlfrcv" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_16.png" id="17_hlrx4"]
+[ext_resource type="Texture2D" uid="uid://bbk0locpy2nco" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_17.png" id="18_6adsb"]
+[ext_resource type="Texture2D" uid="uid://djespmouvld7q" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_18.png" id="19_mosli"]
+[ext_resource type="Texture2D" uid="uid://cdwtrlb7fdtp0" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_19.png" id="20_7fjeu"]
+[ext_resource type="Texture2D" uid="uid://mn4sfqetyj73" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_20.png" id="21_vkwkd"]
+[ext_resource type="Texture2D" uid="uid://065qijm330a7" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_21.png" id="22_leaqx"]
+[ext_resource type="Texture2D" uid="uid://i4hkqey35lq" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_22.png" id="23_884yt"]
+[ext_resource type="Texture2D" uid="uid://1el0x8kfxim3" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_23.png" id="24_g6ds4"]
+[ext_resource type="Texture2D" uid="uid://sqru8n62330p" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_24.png" id="25_jfsev"]
+[ext_resource type="Texture2D" uid="uid://5jkgpepgq20a" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_25.png" id="26_c72h5"]
+[ext_resource type="Texture2D" uid="uid://q6cdaxgvy5vm" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_26.png" id="27_3qwv0"]
+[ext_resource type="Texture2D" uid="uid://cplrpahkefpj1" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_27.png" id="28_moj1b"]
+[ext_resource type="Texture2D" uid="uid://cvtgo461plydm" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_28.png" id="29_7l1f4"]
+[ext_resource type="Texture2D" uid="uid://cra3soicixlit" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_29.png" id="30_nrksm"]
+[ext_resource type="Texture2D" uid="uid://c3lgh2pvk01k6" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_30.png" id="31_pbhio"]
+[ext_resource type="Texture2D" uid="uid://beo720dhvmwir" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_31.png" id="32_qyvk0"]
+[ext_resource type="Texture2D" uid="uid://cy203osi3rdc3" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_32.png" id="33_3rf5h"]
+[ext_resource type="Texture2D" uid="uid://bndqlc2q5hyev" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_33.png" id="34_idsnb"]
+[ext_resource type="Texture2D" uid="uid://mfvkcwm547vy" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_34.png" id="35_umllj"]
+[ext_resource type="Texture2D" uid="uid://eqn2oowaxptk" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_35.png" id="36_buhw1"]
+[ext_resource type="Texture2D" uid="uid://0mtkja2gt4rv" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_36.png" id="37_58j5j"]
+[ext_resource type="Texture2D" uid="uid://cijrydrsu13g2" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_37.png" id="38_20fdc"]
+[ext_resource type="Texture2D" uid="uid://1b8nrhigufbd" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_38.png" id="39_sxggw"]
+[ext_resource type="Texture2D" uid="uid://crp4qryeq3gb5" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_39.png" id="40_0hbm0"]
+[ext_resource type="Texture2D" uid="uid://swhdrlp2icp6" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_40.png" id="41_mslg3"]
+[ext_resource type="Texture2D" uid="uid://cuvvjmnk3d5nr" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_41.png" id="42_hjygo"]
+[ext_resource type="Texture2D" uid="uid://cjywiafccjqgx" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_42.png" id="43_poc1i"]
+[ext_resource type="Texture2D" uid="uid://bkr6suhdkqlap" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_43.png" id="44_7dodx"]
+[ext_resource type="Texture2D" uid="uid://byxaieqotj6hk" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_44.png" id="45_deg4d"]
+[ext_resource type="Texture2D" uid="uid://cmrqplga62j67" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_45.png" id="46_73a87"]
+[ext_resource type="Texture2D" uid="uid://luay75wmv6fw" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_46.png" id="47_ps6du"]
+[ext_resource type="Texture2D" uid="uid://bne1d6xt6cvph" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_47.png" id="48_cind0"]
+[ext_resource type="Texture2D" uid="uid://bm8t08rd2wc7n" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_48.png" id="49_42tfl"]
+[ext_resource type="Texture2D" uid="uid://bntggjk6tc6j6" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_49.png" id="50_gfvcd"]
+[ext_resource type="Texture2D" uid="uid://ce2vqqg4gsf8s" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_00.png" id="51_661k2"]
+[ext_resource type="Texture2D" uid="uid://tlxwnlu4wc7a" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_01.png" id="52_wm1g1"]
+[ext_resource type="Texture2D" uid="uid://b2fs1vj1rsw21" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_02.png" id="53_u5ixp"]
+[ext_resource type="Texture2D" uid="uid://b3xtgk1gt4pw2" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_03.png" id="54_g868f"]
+[ext_resource type="Texture2D" uid="uid://jtecym875r76" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_04.png" id="55_vrd8m"]
+[ext_resource type="Texture2D" uid="uid://bycsdt6unia7m" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_05.png" id="56_w5i1p"]
+[ext_resource type="Texture2D" uid="uid://crf5w8eumffcq" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_06.png" id="57_ek2i4"]
+[ext_resource type="Texture2D" uid="uid://cn05lky3c4p1o" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_07.png" id="58_oymkq"]
+[ext_resource type="Texture2D" uid="uid://dgwu2u7e4bdew" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_08.png" id="59_gosq0"]
+[ext_resource type="Texture2D" uid="uid://bt7mrogt4j472" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_09.png" id="60_oardl"]
+[ext_resource type="Texture2D" uid="uid://bamrs737ej3qm" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_10.png" id="61_m00qh"]
+[ext_resource type="Texture2D" uid="uid://dmfgh7wygfo8s" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_11.png" id="62_28cqk"]
+[ext_resource type="Texture2D" uid="uid://cv11wrebyen1i" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_12.png" id="63_knfs4"]
+[ext_resource type="Texture2D" uid="uid://b3j78rbfle5x8" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_13.png" id="64_2604o"]
+[ext_resource type="Texture2D" uid="uid://bmkk4a3ellung" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_14.png" id="65_vvaxq"]
+[ext_resource type="Texture2D" uid="uid://cyd728bvve3ut" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_15.png" id="66_4810i"]
+[ext_resource type="Texture2D" uid="uid://cwccnl8f4uj5u" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_16.png" id="67_tl43a"]
+[ext_resource type="Texture2D" uid="uid://cle4wo8lxxj0" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_17.png" id="68_xcute"]
+[ext_resource type="Texture2D" uid="uid://cs1dp4d2leury" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_18.png" id="69_yvv5r"]
+[ext_resource type="Texture2D" uid="uid://bpc0if737a47u" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_19.png" id="70_wpjxq"]
+[ext_resource type="Texture2D" uid="uid://c8p1ms7v7h815" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_20.png" id="71_owhrd"]
+[ext_resource type="Texture2D" uid="uid://bmsrs80rwa0p8" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_21.png" id="72_wdqpo"]
+[ext_resource type="Texture2D" uid="uid://c8sj7w05r05f6" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_22.png" id="73_igme6"]
+[ext_resource type="Texture2D" uid="uid://bec6paifgi5p6" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_23.png" id="74_qjo1g"]
+[ext_resource type="Texture2D" uid="uid://b11e3gkjbelcs" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_24.png" id="75_prjqs"]
+[ext_resource type="Texture2D" uid="uid://o2eot6moewu2" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_25.png" id="76_3rm53"]
+[ext_resource type="Texture2D" uid="uid://duef0w4w8ta8p" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_26.png" id="77_irqxx"]
+[ext_resource type="Texture2D" uid="uid://cewftlj4b0vmu" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_27.png" id="78_1v4qt"]
+[ext_resource type="Texture2D" uid="uid://dn6ux7pqne2h8" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_28.png" id="79_p21im"]
+[ext_resource type="Texture2D" uid="uid://6btggqv0v4ef" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_29.png" id="80_y8vll"]
+[ext_resource type="Texture2D" uid="uid://bkf3pmwqs4ief" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_30.png" id="81_cby52"]
+[ext_resource type="Texture2D" uid="uid://bhhswn27qj2k3" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_31.png" id="82_2kfbw"]
+[ext_resource type="Texture2D" uid="uid://bjc52683ywjqv" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_32.png" id="83_rc250"]
+[ext_resource type="Texture2D" uid="uid://rpb8g6d75n7m" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_33.png" id="84_58l01"]
+[ext_resource type="Texture2D" uid="uid://bilgxskal0a2n" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_34.png" id="85_g0qfu"]
+[ext_resource type="Texture2D" uid="uid://igvnvy4r4s8a" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_35.png" id="86_r83hy"]
+[ext_resource type="Texture2D" uid="uid://v1ua7v8gyfbr" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_36.png" id="87_7eqnk"]
+[ext_resource type="Texture2D" uid="uid://dc27t40bmeuu4" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_37.png" id="88_eiok5"]
+[ext_resource type="Texture2D" uid="uid://duy40y75ulc5t" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_38.png" id="89_0kk5r"]
+[ext_resource type="Texture2D" uid="uid://0gvbr64k37ba" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_39.png" id="90_unu71"]
+[ext_resource type="Texture2D" uid="uid://clcg2a8pwai5h" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_40.png" id="91_bixih"]
+[ext_resource type="Texture2D" uid="uid://cw5soptuak2wa" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_41.png" id="92_40kea"]
+[ext_resource type="Texture2D" uid="uid://bt2ik6jp1km7r" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_42.png" id="93_xuuo2"]
+[ext_resource type="Texture2D" uid="uid://dxdomsaihumcd" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_43.png" id="94_6a4kd"]
+[ext_resource type="Texture2D" uid="uid://dba7y7f84523q" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_44.png" id="95_jo1xh"]
+[ext_resource type="Texture2D" uid="uid://bib8s31biryry" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_45.png" id="96_5movd"]
+[ext_resource type="Texture2D" uid="uid://dnyera7y34c1k" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_46.png" id="97_85vkg"]
+[ext_resource type="Texture2D" uid="uid://b6nbgf1udnkq5" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_47.png" id="98_lixwr"]
+[ext_resource type="Texture2D" uid="uid://bgvb86m2l3boa" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_48.png" id="99_0l3av"]
+[ext_resource type="Texture2D" uid="uid://cjtj1x4k5wemp" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_49.png" id="100_cj6vr"]
+[ext_resource type="Texture2D" uid="uid://dkfyabl6wh07d" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_50.png" id="101_1a8i6"]
+[ext_resource type="Texture2D" uid="uid://xr8n4jkp5sgi" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_51.png" id="102_evioe"]
+[ext_resource type="Texture2D" uid="uid://dsf4760tkadmf" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_52.png" id="103_6qq7c"]
+[ext_resource type="Texture2D" uid="uid://de10plssj3ft4" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_53.png" id="104_sfiu1"]
+[ext_resource type="Texture2D" uid="uid://dqmx5ws4t87ff" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_54.png" id="105_2o4bt"]
+[ext_resource type="Texture2D" uid="uid://lte2nvob42v6" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_55.png" id="106_njx4w"]
+[ext_resource type="Texture2D" uid="uid://vj1rm06w6obb" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_56.png" id="107_k2s74"]
+[ext_resource type="Texture2D" uid="uid://cjxfgwra0gt4b" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_57.png" id="108_uobin"]
+[ext_resource type="Texture2D" uid="uid://dlsaqor8gcfgk" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_58.png" id="109_7tvct"]
+[ext_resource type="Texture2D" uid="uid://pr2baeru5ger" path="res://starss/images/animation_sprite/cast/海星桌宠-cast_59.png" id="110_autfi"]
+[ext_resource type="Texture2D" uid="uid://cqa1n43au8tg0" path="res://starss/images/animation_sprite/die/海星桌宠-die_00.png" id="111_1xode"]
+[ext_resource type="Texture2D" uid="uid://b5r74f2sl7ieh" path="res://starss/images/animation_sprite/die/海星桌宠-die_01.png" id="112_qtrhb"]
+[ext_resource type="Texture2D" uid="uid://djjmp7c4tgcm1" path="res://starss/images/animation_sprite/die/海星桌宠-die_02.png" id="113_w1vk7"]
+[ext_resource type="Texture2D" uid="uid://1psinko5ejdm" path="res://starss/images/animation_sprite/die/海星桌宠-die_03.png" id="114_awv2u"]
+[ext_resource type="Texture2D" uid="uid://n71djd1yyqnv" path="res://starss/images/animation_sprite/die/海星桌宠-die_04.png" id="115_bm282"]
+[ext_resource type="Texture2D" uid="uid://dv63eqnleksx" path="res://starss/images/animation_sprite/die/海星桌宠-die_05.png" id="116_8bkst"]
+[ext_resource type="Texture2D" uid="uid://riyqwkuq7yxk" path="res://starss/images/animation_sprite/die/海星桌宠-die_06.png" id="117_3hdlm"]
+[ext_resource type="Texture2D" uid="uid://bfv2eikj1aq31" path="res://starss/images/animation_sprite/die/海星桌宠-die_07.png" id="118_as6ut"]
+[ext_resource type="Texture2D" uid="uid://de4bccj2515u3" path="res://starss/images/animation_sprite/die/海星桌宠-die_08.png" id="119_neafh"]
+[ext_resource type="Texture2D" uid="uid://btdfc4hlsewit" path="res://starss/images/animation_sprite/die/海星桌宠-die_09.png" id="120_14j8u"]
+[ext_resource type="Texture2D" uid="uid://b7ikct2dp4igk" path="res://starss/images/animation_sprite/die/海星桌宠-die_10.png" id="121_54djv"]
+[ext_resource type="Texture2D" uid="uid://dkp6fxr1e8xlf" path="res://starss/images/animation_sprite/die/海星桌宠-die_11.png" id="122_lqprx"]
+[ext_resource type="Texture2D" uid="uid://01yxw1xtqy8r" path="res://starss/images/animation_sprite/die/海星桌宠-die_12.png" id="123_f20rq"]
+[ext_resource type="Texture2D" uid="uid://b7q80kyx55u18" path="res://starss/images/animation_sprite/die/海星桌宠-die_13.png" id="124_46kcd"]
+[ext_resource type="Texture2D" uid="uid://dom1opq3qtrqo" path="res://starss/images/animation_sprite/die/海星桌宠-die_14.png" id="125_0dif1"]
+[ext_resource type="Texture2D" uid="uid://bldhssgqdaq27" path="res://starss/images/animation_sprite/die/海星桌宠-die_15.png" id="126_iqwjf"]
+[ext_resource type="Texture2D" uid="uid://cgda3mu8r4duv" path="res://starss/images/animation_sprite/die/海星桌宠-die_16.png" id="127_qm4hl"]
+[ext_resource type="Texture2D" uid="uid://b1kunm5j5iohd" path="res://starss/images/animation_sprite/die/海星桌宠-die_17.png" id="128_bfhmi"]
+[ext_resource type="Texture2D" uid="uid://bvuyufed8lmoy" path="res://starss/images/animation_sprite/die/海星桌宠-die_18.png" id="129_563jg"]
+[ext_resource type="Texture2D" uid="uid://bndovegdiqbb1" path="res://starss/images/animation_sprite/die/海星桌宠-die_19.png" id="130_trmdl"]
+[ext_resource type="Texture2D" uid="uid://c67yktjqoxo2" path="res://starss/images/animation_sprite/die/海星桌宠-die_20.png" id="131_dbb4v"]
+[ext_resource type="Texture2D" uid="uid://cvxdrspkkunru" path="res://starss/images/animation_sprite/die/海星桌宠-die_21.png" id="132_lx14d"]
+[ext_resource type="Texture2D" uid="uid://bg2320dni6t57" path="res://starss/images/animation_sprite/die/海星桌宠-die_22.png" id="133_gywsb"]
+[ext_resource type="Texture2D" uid="uid://dlas5b82lyv6i" path="res://starss/images/animation_sprite/die/海星桌宠-die_23.png" id="134_2jj67"]
+[ext_resource type="Texture2D" uid="uid://by4x12kwm8o88" path="res://starss/images/animation_sprite/die/海星桌宠-die_24.png" id="135_fqky4"]
+[ext_resource type="Texture2D" uid="uid://ddtalym5b2n80" path="res://starss/images/animation_sprite/die/海星桌宠-die_25.png" id="136_hpy8n"]
+[ext_resource type="Texture2D" uid="uid://b7xc6y8i8q1op" path="res://starss/images/animation_sprite/die/海星桌宠-die_26.png" id="137_djfab"]
+[ext_resource type="Texture2D" uid="uid://c41erdgn3gc3t" path="res://starss/images/animation_sprite/die/海星桌宠-die_27.png" id="138_abjwt"]
+[ext_resource type="Texture2D" uid="uid://bxa5xcpw2ungt" path="res://starss/images/animation_sprite/die/海星桌宠-die_28.png" id="139_isk3y"]
+[ext_resource type="Texture2D" uid="uid://cbqvi1xraohni" path="res://starss/images/animation_sprite/die/海星桌宠-die_29.png" id="140_vkumt"]
+[ext_resource type="Texture2D" uid="uid://fdaj5gftvhvq" path="res://starss/images/animation_sprite/die/海星桌宠-die_30.png" id="141_e8p2y"]
+[ext_resource type="Texture2D" uid="uid://b3s716o3l4bf2" path="res://starss/images/animation_sprite/die/海星桌宠-die_31.png" id="142_7cmtb"]
+[ext_resource type="Texture2D" uid="uid://cm1ttq1bl3b5d" path="res://starss/images/animation_sprite/die/海星桌宠-die_32.png" id="143_kffhg"]
+[ext_resource type="Texture2D" uid="uid://ds8gvjtu08ewe" path="res://starss/images/animation_sprite/die/海星桌宠-die_33.png" id="144_hqdej"]
+[ext_resource type="Texture2D" uid="uid://c77goa5ga16g2" path="res://starss/images/animation_sprite/die/海星桌宠-die_34.png" id="145_te0q0"]
+[ext_resource type="Texture2D" uid="uid://bp4tyy0yil20f" path="res://starss/images/animation_sprite/die/海星桌宠-die_35.png" id="146_fkldi"]
+[ext_resource type="Texture2D" uid="uid://ricyvt3tc77b" path="res://starss/images/animation_sprite/die/海星桌宠-die_36.png" id="147_e1n0i"]
+[ext_resource type="Texture2D" uid="uid://cnf26kvqvh366" path="res://starss/images/animation_sprite/die/海星桌宠-die_37.png" id="148_hbr67"]
+[ext_resource type="Texture2D" uid="uid://dvoro46a0yyr5" path="res://starss/images/animation_sprite/die/海星桌宠-die_38.png" id="149_gpqb6"]
+[ext_resource type="Texture2D" uid="uid://rcgrew57nyns" path="res://starss/images/animation_sprite/die/海星桌宠-die_39.png" id="150_jr3xx"]
+[ext_resource type="Texture2D" uid="uid://852f22lxfn5b" path="res://starss/images/animation_sprite/die/海星桌宠-die_40.png" id="151_bxvhy"]
+[ext_resource type="Texture2D" uid="uid://cfcri5pfoiese" path="res://starss/images/animation_sprite/die/海星桌宠-die_41.png" id="152_l4hwa"]
+[ext_resource type="Texture2D" uid="uid://dg0f1e2dvvtbd" path="res://starss/images/animation_sprite/die/海星桌宠-die_42.png" id="153_qd4i5"]
+[ext_resource type="Texture2D" uid="uid://6eofnrwv60y2" path="res://starss/images/animation_sprite/die/海星桌宠-die_43.png" id="154_ncymp"]
+[ext_resource type="Texture2D" uid="uid://uomhj440qqj" path="res://starss/images/animation_sprite/die/海星桌宠-die_44.png" id="155_5mby5"]
+[ext_resource type="Texture2D" uid="uid://bnjbslcx4xvcb" path="res://starss/images/animation_sprite/die/海星桌宠-die_45.png" id="156_fft7f"]
+[ext_resource type="Texture2D" uid="uid://cwr244db2r600" path="res://starss/images/animation_sprite/die/海星桌宠-die_46.png" id="157_lficd"]
+[ext_resource type="Texture2D" uid="uid://bo303stwm3xvr" path="res://starss/images/animation_sprite/die/海星桌宠-die_47.png" id="158_c0622"]
+[ext_resource type="Texture2D" uid="uid://g3psxlr5flu2" path="res://starss/images/animation_sprite/die/海星桌宠-die_48.png" id="159_hhtmm"]
+[ext_resource type="Texture2D" uid="uid://bm36rpknenphw" path="res://starss/images/animation_sprite/die/海星桌宠-die_49.png" id="160_srukt"]
+[ext_resource type="Texture2D" uid="uid://wvq8y20swjvc" path="res://starss/images/animation_sprite/die/海星桌宠-die_50.png" id="161_mrovq"]
+[ext_resource type="Texture2D" uid="uid://b1k7ne6dbxvr4" path="res://starss/images/animation_sprite/die/海星桌宠-die_51.png" id="162_r8tvm"]
+[ext_resource type="Texture2D" uid="uid://ddgutes2vqbng" path="res://starss/images/animation_sprite/die/海星桌宠-die_52.png" id="163_um6tw"]
+[ext_resource type="Texture2D" uid="uid://ce0w3538542ti" path="res://starss/images/animation_sprite/die/海星桌宠-die_53.png" id="164_ie45m"]
+[ext_resource type="Texture2D" uid="uid://cm2pic3wsfm74" path="res://starss/images/animation_sprite/die/海星桌宠-die_54.png" id="165_g6mkk"]
+[ext_resource type="Texture2D" uid="uid://dy17wgbof8vfp" path="res://starss/images/animation_sprite/die/海星桌宠-die_55.png" id="166_2wl2g"]
+[ext_resource type="Texture2D" uid="uid://cce0yo6fdccoj" path="res://starss/images/animation_sprite/die/海星桌宠-die_56.png" id="167_salws"]
+[ext_resource type="Texture2D" uid="uid://gjgg0x2m3jwo" path="res://starss/images/animation_sprite/die/海星桌宠-die_57.png" id="168_oufbm"]
+[ext_resource type="Texture2D" uid="uid://c1715jmwuentw" path="res://starss/images/animation_sprite/die/海星桌宠-die_58.png" id="169_tnqv5"]
+[ext_resource type="Texture2D" uid="uid://jvlga6fpdt22" path="res://starss/images/animation_sprite/die/海星桌宠-die_59.png" id="170_f8gxj"]
+[ext_resource type="Texture2D" uid="uid://cwo4od5vwss7s" path="res://starss/images/animation_sprite/die/海星桌宠-die_60.png" id="171_2lc41"]
+[ext_resource type="Texture2D" uid="uid://di58yal06iyjh" path="res://starss/images/animation_sprite/die/海星桌宠-die_61.png" id="172_pf4iu"]
+[ext_resource type="Texture2D" uid="uid://c2m4tjs4fa0ns" path="res://starss/images/animation_sprite/die/海星桌宠-die_62.png" id="173_no0pa"]
+[ext_resource type="Texture2D" uid="uid://dko157d2lj6p3" path="res://starss/images/animation_sprite/die/海星桌宠-die_63.png" id="174_7igl4"]
+[ext_resource type="Texture2D" uid="uid://bnrkqpt6nmoqn" path="res://starss/images/animation_sprite/die/海星桌宠-die_64.png" id="175_3yvfl"]
+[ext_resource type="Texture2D" uid="uid://cvqekfbf2fw3l" path="res://starss/images/animation_sprite/die/海星桌宠-die_65.png" id="176_d1nbg"]
+[ext_resource type="Texture2D" uid="uid://bjntnlmwlj0qu" path="res://starss/images/animation_sprite/die/海星桌宠-die_66.png" id="177_oxbly"]
+[ext_resource type="Texture2D" uid="uid://dte0pr1ei3t1j" path="res://starss/images/animation_sprite/die/海星桌宠-die_67.png" id="178_y122w"]
+[ext_resource type="Texture2D" uid="uid://cojclee2wlk2h" path="res://starss/images/animation_sprite/die/海星桌宠-die_68.png" id="179_txrus"]
+[ext_resource type="Texture2D" uid="uid://dtitx4vi3h75h" path="res://starss/images/animation_sprite/die/海星桌宠-die_69.png" id="180_k3yac"]
+[ext_resource type="Texture2D" uid="uid://bnl166hhcuf4" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_00.png" id="181_3fmpe"]
+[ext_resource type="Texture2D" uid="uid://d1tmd8gjsqdu5" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_01.png" id="182_kkfbl"]
+[ext_resource type="Texture2D" uid="uid://xkmnh4s82fs4" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_02.png" id="183_0sdtk"]
+[ext_resource type="Texture2D" uid="uid://blap18quldm5h" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_03.png" id="184_qcw3m"]
+[ext_resource type="Texture2D" uid="uid://bimqbiatm2yvx" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_04.png" id="185_3j8a1"]
+[ext_resource type="Texture2D" uid="uid://b824uugu5im7u" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_05.png" id="186_2lela"]
+[ext_resource type="Texture2D" uid="uid://d2m88yot1tsa" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_06.png" id="187_6sal5"]
+[ext_resource type="Texture2D" uid="uid://burbe56safpo" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_07.png" id="188_pawo6"]
+[ext_resource type="Texture2D" uid="uid://k0pgohykehd5" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_08.png" id="189_m2hqp"]
+[ext_resource type="Texture2D" uid="uid://dxb3gpvhblaws" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_09.png" id="190_76bfx"]
+[ext_resource type="Texture2D" uid="uid://ck2fxy6c3xilq" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_10.png" id="191_1n57c"]
+[ext_resource type="Texture2D" uid="uid://bh63kluvv4an8" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_11.png" id="192_ml0rp"]
+[ext_resource type="Texture2D" uid="uid://ctjc0bknwhrev" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_12.png" id="193_ehdh0"]
+[ext_resource type="Texture2D" uid="uid://cett3t0352xy6" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_13.png" id="194_qh6dh"]
+[ext_resource type="Texture2D" uid="uid://by008hxkemn7d" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_14.png" id="195_fy1ip"]
+[ext_resource type="Texture2D" uid="uid://fvq7or8ape11" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_15.png" id="196_grknf"]
+[ext_resource type="Texture2D" uid="uid://c4y7ntd0sxj6u" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_16.png" id="197_qlf32"]
+[ext_resource type="Texture2D" uid="uid://ydmdlnwfwxcb" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_17.png" id="198_dwlyj"]
+[ext_resource type="Texture2D" uid="uid://dt66gj40ukx22" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_18.png" id="199_d2v80"]
+[ext_resource type="Texture2D" uid="uid://cmjlio2fn0ekn" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_19.png" id="200_vruky"]
+[ext_resource type="Texture2D" uid="uid://vwjowx4ke5ns" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_20.png" id="201_q408h"]
+[ext_resource type="Texture2D" uid="uid://cxqq2d4tnv3a0" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_21.png" id="202_6s6jk"]
+[ext_resource type="Texture2D" uid="uid://rjfhems16w38" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_22.png" id="203_pjncm"]
+[ext_resource type="Texture2D" uid="uid://bdk1yc45pw3hg" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_23.png" id="204_a1db8"]
+[ext_resource type="Texture2D" uid="uid://b85lk6wrv2ujp" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_24.png" id="205_40sw2"]
+[ext_resource type="Texture2D" uid="uid://uaj5qbytosvh" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_25.png" id="206_kmacf"]
+[ext_resource type="Texture2D" uid="uid://fe100o7g5rec" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_26.png" id="207_42cg1"]
+[ext_resource type="Texture2D" uid="uid://o0kx0b2s6wk2" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_27.png" id="208_0mf7t"]
+[ext_resource type="Texture2D" uid="uid://bgr5m0emua3pd" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_28.png" id="209_asppp"]
+[ext_resource type="Texture2D" uid="uid://clj3lghcwwetu" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_29.png" id="210_ageua"]
+[ext_resource type="Texture2D" uid="uid://j6mfa5amcava" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_30.png" id="211_7hisj"]
+[ext_resource type="Texture2D" uid="uid://baddnl4amtq8r" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_31.png" id="212_fpotj"]
+[ext_resource type="Texture2D" uid="uid://5mc10mjv03c4" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_32.png" id="213_i0g2a"]
+[ext_resource type="Texture2D" uid="uid://b7evavut5gyn0" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_33.png" id="214_oskk2"]
+[ext_resource type="Texture2D" uid="uid://ienvxepgl2sj" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_34.png" id="215_xiqn2"]
+[ext_resource type="Texture2D" uid="uid://c271nr56yr30" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_35.png" id="216_bog1k"]
+[ext_resource type="Texture2D" uid="uid://hji1pmhhsqbt" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_36.png" id="217_nrjrk"]
+[ext_resource type="Texture2D" uid="uid://bapi3bsbbkgtf" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_37.png" id="218_6ox8f"]
+[ext_resource type="Texture2D" uid="uid://b7br3mstvg00k" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_38.png" id="219_6plah"]
+[ext_resource type="Texture2D" uid="uid://eleb456jif8j" path="res://starss/images/animation_sprite/hurt/海星桌宠-hurt_39.png" id="220_wjqy5"]
+[ext_resource type="Texture2D" uid="uid://cx21p4n6f77f" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_00.png" id="221_dp7cy"]
+[ext_resource type="Texture2D" uid="uid://pd7grbm6o4ug" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_01.png" id="222_547rr"]
+[ext_resource type="Texture2D" uid="uid://3r45djwl42q6" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_02.png" id="223_s4ixk"]
+[ext_resource type="Texture2D" uid="uid://dij1fw0nlstpl" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_03.png" id="224_dwkp8"]
+[ext_resource type="Texture2D" uid="uid://bbmpks1lwlfc8" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_04.png" id="225_rynds"]
+[ext_resource type="Texture2D" uid="uid://dyobatfiteebd" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_05.png" id="226_2nlf4"]
+[ext_resource type="Texture2D" uid="uid://but5ugmm5i75b" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_06.png" id="227_kc8qf"]
+[ext_resource type="Texture2D" uid="uid://byy7iaee3whgq" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_07.png" id="228_rxlhr"]
+[ext_resource type="Texture2D" uid="uid://ce13ryvumc15w" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_08.png" id="229_xmu72"]
+[ext_resource type="Texture2D" uid="uid://dajdtab4b327w" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_09.png" id="230_eo1ks"]
+[ext_resource type="Texture2D" uid="uid://cl3uunji1tps" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_10.png" id="231_4kjef"]
+[ext_resource type="Texture2D" uid="uid://j3vcb06apuvc" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_11.png" id="232_vfcun"]
+[ext_resource type="Texture2D" uid="uid://diqq887lcgtcv" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_12.png" id="233_wh3gt"]
+[ext_resource type="Texture2D" uid="uid://cnnnvpi7ltobs" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_13.png" id="234_ef3b5"]
+[ext_resource type="Texture2D" uid="uid://byk6lns34yv58" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_14.png" id="235_q2u5j"]
+[ext_resource type="Texture2D" uid="uid://bil2vir34n3w7" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_15.png" id="236_7idym"]
+[ext_resource type="Texture2D" uid="uid://duo7400p1f3jl" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_16.png" id="237_d31ap"]
+[ext_resource type="Texture2D" uid="uid://bs1661wqve1uq" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_17.png" id="238_v2r2g"]
+[ext_resource type="Texture2D" uid="uid://blrku468r4877" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_18.png" id="239_2v0wx"]
+[ext_resource type="Texture2D" uid="uid://bvnxmkvnrkt1f" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_19.png" id="240_y70yn"]
+[ext_resource type="Texture2D" uid="uid://dim6qwngy2ene" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_20.png" id="241_lo44o"]
+[ext_resource type="Texture2D" uid="uid://d03sfsbpwotnj" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_21.png" id="242_smsgo"]
+[ext_resource type="Texture2D" uid="uid://c4l53w4s8tcak" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_22.png" id="243_spplr"]
+[ext_resource type="Texture2D" uid="uid://dyrfgiw3nqagd" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_23.png" id="244_to6p5"]
+[ext_resource type="Texture2D" uid="uid://btox5igceaadj" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_24.png" id="245_xfsfv"]
+[ext_resource type="Texture2D" uid="uid://beeoxoveda030" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_25.png" id="246_m218a"]
+[ext_resource type="Texture2D" uid="uid://sgu1ihaip81l" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_26.png" id="247_mrjv4"]
+[ext_resource type="Texture2D" uid="uid://bys3lqsa4cec7" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_27.png" id="248_jgq0d"]
+[ext_resource type="Texture2D" uid="uid://cgcwfr1rqevr5" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_28.png" id="249_g3xl4"]
+[ext_resource type="Texture2D" uid="uid://x46b2q3qm1fv" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_29.png" id="250_kumst"]
+[ext_resource type="Texture2D" uid="uid://dtih7v2b1txl7" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_30.png" id="251_lhclx"]
+[ext_resource type="Texture2D" uid="uid://bmstsjlmsgv8y" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_31.png" id="252_xy6dc"]
+[ext_resource type="Texture2D" uid="uid://bf58r87hcmlmi" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_32.png" id="253_mg0ic"]
+[ext_resource type="Texture2D" uid="uid://dl1p6yg13ypnw" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_33.png" id="254_ujhmd"]
+[ext_resource type="Texture2D" uid="uid://brv68x8pbo1q5" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_34.png" id="255_jggpf"]
+[ext_resource type="Texture2D" uid="uid://byh8rbvhmo3p8" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_35.png" id="256_lebwc"]
+[ext_resource type="Texture2D" uid="uid://c05j61cgfenf" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_36.png" id="257_xmg8h"]
+[ext_resource type="Texture2D" uid="uid://ddgj8c8a5s5m2" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_37.png" id="258_jc8n8"]
+[ext_resource type="Texture2D" uid="uid://r0y864nnyon3" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_38.png" id="259_2j2li"]
+[ext_resource type="Texture2D" uid="uid://byx1a6gunvdlx" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_39.png" id="260_auw3q"]
+[ext_resource type="Texture2D" uid="uid://b8cjyc0cm6vjo" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_40.png" id="261_acmkr"]
+[ext_resource type="Texture2D" uid="uid://celf7wogjy1ws" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_41.png" id="262_eslwt"]
+[ext_resource type="Texture2D" uid="uid://c7kvxnb5pln08" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_42.png" id="263_7alwi"]
+[ext_resource type="Texture2D" uid="uid://bxnhgvo7dvmx" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_43.png" id="264_xk3jc"]
+[ext_resource type="Texture2D" uid="uid://dcxusmhwuelr5" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_44.png" id="265_wm35w"]
+[ext_resource type="Texture2D" uid="uid://b5ailfgyvr4l8" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_45.png" id="266_wl4oe"]
+[ext_resource type="Texture2D" uid="uid://c1575cwwtj00o" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_46.png" id="267_mvqxw"]
+[ext_resource type="Texture2D" uid="uid://cvo2efq03dcnb" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_47.png" id="268_5mkpc"]
+[ext_resource type="Texture2D" uid="uid://cfmncppv0cldl" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_48.png" id="269_awbrf"]
+[ext_resource type="Texture2D" uid="uid://bmg1ibom027l6" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_49.png" id="270_yrevo"]
+[ext_resource type="Texture2D" uid="uid://c0nmkmii3crdo" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_50.png" id="271_bacv8"]
+[ext_resource type="Texture2D" uid="uid://d0tud7k8d2hrp" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_51.png" id="272_yl3ew"]
+[ext_resource type="Texture2D" uid="uid://ywkw23n326at" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_52.png" id="273_m6qo1"]
+[ext_resource type="Texture2D" uid="uid://c42ex2x6032dr" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_53.png" id="274_d2ie5"]
+[ext_resource type="Texture2D" uid="uid://v6css32erm1i" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_54.png" id="275_x8ngv"]
+[ext_resource type="Texture2D" uid="uid://d34vhf5er0uex" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_55.png" id="276_pasf6"]
+[ext_resource type="Texture2D" uid="uid://muomfvcrf8jm" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_56.png" id="277_vmtrc"]
+[ext_resource type="Texture2D" uid="uid://bv74sbkhebejw" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_57.png" id="278_vjs4m"]
+[ext_resource type="Texture2D" uid="uid://bfn5o400rc31m" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_58.png" id="279_twhl4"]
+[ext_resource type="Texture2D" uid="uid://carxptpbvqpqs" path="res://starss/images/animation_sprite/idle_loop/海星桌宠-idle_loop_59.png" id="280_03yam"]
 
-[node name="Control" type="Control"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_k4kup"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_b8e6u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qcpjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1gyjr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x65dd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i8uwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tl0vt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3cq7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yyrv6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6dowy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ncjq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_u0yv7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_3fshf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_mhxfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_mc1np")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_gewj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ob1w4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_hlrx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_6adsb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_mosli")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_7fjeu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_vkwkd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_leaqx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_884yt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_g6ds4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_jfsev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_c72h5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_3qwv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_moj1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_7l1f4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_nrksm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_pbhio")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_qyvk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_3rf5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_idsnb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_umllj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_buhw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_58j5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_20fdc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_sxggw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_0hbm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_mslg3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_hjygo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_poc1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_7dodx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_deg4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_73a87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_ps6du")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_cind0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_42tfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_gfvcd")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("51_661k2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_wm1g1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_u5ixp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_g868f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_vrd8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_w5i1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_ek2i4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_oymkq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_gosq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_oardl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_m00qh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_28cqk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_knfs4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_2604o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_vvaxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_4810i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_tl43a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_xcute")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_yvv5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_wpjxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_owhrd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_wdqpo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_igme6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_qjo1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_prjqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_3rm53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_irqxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_1v4qt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_p21im")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_y8vll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_cby52")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_2kfbw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_rc250")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_58l01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_g0qfu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_r83hy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_7eqnk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_eiok5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_0kk5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_unu71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_bixih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_40kea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_xuuo2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_6a4kd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_jo1xh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_5movd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_85vkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_lixwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_0l3av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_cj6vr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_1a8i6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_evioe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_6qq7c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_sfiu1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_2o4bt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_njx4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_k2s74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_uobin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_7tvct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_autfi")
+}],
+"loop": false,
+"name": &"cast",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("111_1xode")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_qtrhb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_w1vk7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_awv2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_bm282")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_8bkst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_3hdlm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_as6ut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_neafh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_14j8u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_54djv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_lqprx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_f20rq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_46kcd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_0dif1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_iqwjf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_qm4hl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_bfhmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_563jg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_trmdl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_dbb4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_lx14d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_gywsb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_2jj67")
+}, {
+"duration": 1.0,
+"texture": ExtResource("135_fqky4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("136_hpy8n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("137_djfab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("138_abjwt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("139_isk3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("140_vkumt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("141_e8p2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("142_7cmtb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_kffhg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_hqdej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("145_te0q0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_fkldi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_e1n0i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("148_hbr67")
+}, {
+"duration": 1.0,
+"texture": ExtResource("149_gpqb6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("150_jr3xx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("151_bxvhy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("152_l4hwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("153_qd4i5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("154_ncymp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_5mby5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("156_fft7f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("157_lficd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("158_c0622")
+}, {
+"duration": 1.0,
+"texture": ExtResource("159_hhtmm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("160_srukt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("161_mrovq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("162_r8tvm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("163_um6tw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("164_ie45m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("165_g6mkk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("166_2wl2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("167_salws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("168_oufbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("169_tnqv5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("170_f8gxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("171_2lc41")
+}, {
+"duration": 1.0,
+"texture": ExtResource("172_pf4iu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("173_no0pa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("174_7igl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("175_3yvfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("176_d1nbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("177_oxbly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("178_y122w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("179_txrus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("180_k3yac")
+}],
+"loop": false,
+"name": &"die",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("181_3fmpe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("182_kkfbl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("183_0sdtk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("184_qcw3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("185_3j8a1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("186_2lela")
+}, {
+"duration": 1.0,
+"texture": ExtResource("187_6sal5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("188_pawo6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("189_m2hqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("190_76bfx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("191_1n57c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("192_ml0rp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("193_ehdh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("194_qh6dh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("195_fy1ip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("196_grknf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("197_qlf32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("198_dwlyj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("199_d2v80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("200_vruky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("201_q408h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("202_6s6jk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("203_pjncm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("204_a1db8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("205_40sw2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("206_kmacf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("207_42cg1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("208_0mf7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("209_asppp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("210_ageua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("211_7hisj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("212_fpotj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("213_i0g2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("214_oskk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("215_xiqn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("216_bog1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("217_nrjrk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("218_6ox8f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("219_6plah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("220_wjqy5")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("221_dp7cy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("222_547rr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("223_s4ixk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("224_dwkp8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("225_rynds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("226_2nlf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("227_kc8qf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("228_rxlhr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("229_xmu72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("230_eo1ks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("231_4kjef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("232_vfcun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("233_wh3gt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("234_ef3b5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("235_q2u5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("236_7idym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("237_d31ap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("238_v2r2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("239_2v0wx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("240_y70yn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("241_lo44o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("242_smsgo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("243_spplr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("244_to6p5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("245_xfsfv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("246_m218a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("247_mrjv4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("248_jgq0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("249_g3xl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("250_kumst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("251_lhclx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("252_xy6dc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("253_mg0ic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("254_ujhmd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("255_jggpf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("256_lebwc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("257_xmg8h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("258_jc8n8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("259_2j2li")
+}, {
+"duration": 1.0,
+"texture": ExtResource("260_auw3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("261_acmkr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("262_eslwt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("263_7alwi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("264_xk3jc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("265_wm35w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("266_wl4oe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("267_mvqxw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("268_5mkpc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("269_awbrf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("270_yrevo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("271_bacv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("272_yl3ew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("273_m6qo1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("274_d2ie5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("275_x8ngv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("276_pasf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("277_vmtrc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("278_vjs4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("279_twhl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("280_03yam")
+}],
+"loop": true,
+"name": &"idle_loop",
+"speed": 30.0
+}]
+
+[node name="Starss" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Visuals" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(70, -121)
+scale = Vector2(0.3600509, 0.36005092)
+sprite_frames = SubResource("SpriteFrames_k4kup")
+animation = &"idle_loop"
+frame = 11
+frame_progress = 0.124880865
+
+[node name="Bounds" type="Control" parent="."]
+unique_name_in_owner = true
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_left = -121.0
+offset_top = -278.0
+offset_right = 121.0
+mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_u1ofc")
+[node name="CenterPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(4, -168)
+
+[node name="IntentPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(30, -310)

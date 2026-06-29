@@ -60,4 +60,6 @@ public class Starss : PlaceholderCharacterModel
     public override string CustomMapMarkerPath => "map_marker_char_name.png".CharacterUiPath();
     public override string? CustomCharacterSelectBg =>
         "res://starss/scenes/creature_visuals/starss_select.tscn";
+    //Battle sprite scene
+    public override string CustomVisualPath => "res://starss/scenes/creature_visuals/starss.tscn";
 }

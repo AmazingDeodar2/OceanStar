@@ -27,7 +27,7 @@ public class Starss : PlaceholderCharacterModel
         ModelDb.Card<RollDice>(),
         ModelDb.Card<WheelOfFate>(),
         ModelDb.Card<DefendStarss>(),
-        ModelDb.Card<TrojanHorse>(),
+        ModelDb.Card<SignalFailure>(),
         ModelDb.Card<DesertEagle>()
     ];
 

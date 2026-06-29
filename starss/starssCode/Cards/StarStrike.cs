@@ -16,7 +16,7 @@ public sealed class StarStrike : starssCard
         : base(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
     {
     }
-
+    
     protected override HashSet<CardTag> CanonicalTags =>
     [
         CardTag.Strike

@@ -22,7 +22,10 @@ public sealed class SpinningStrike : starssCard
         : base(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
     }
-
+    protected override HashSet<CardTag> CanonicalTags =>
+    [
+        CardTag.Strike
+    ];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(10M, ValueProp.Move),

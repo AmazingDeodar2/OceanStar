@@ -66,13 +66,14 @@ public sealed class PullYourCable : starssCard
 
         if (result.DoomSuccess)
         {
-            CardModel voidCard = ModelDb.Card<VoidCard>().ToMutable();
+            CardModel voidCard = Owner.Creature.CombatState.CreateCard<VoidCard>(Owner);
 
             await CardPileCmd.AddGeneratedCardToCombat(
                 voidCard,
                 PileType.Discard,
                 Owner
             );
+            PileType.Discard.GetPile(Owner).InvokeCardAddFinished();
         }
     }
 

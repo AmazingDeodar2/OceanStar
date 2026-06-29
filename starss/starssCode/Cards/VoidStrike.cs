@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using VoidCard = MegaCrit.Sts2.Core.Models.Cards.Void;
 
@@ -17,7 +18,15 @@ public sealed class VoidStrike : starssCard
         : base(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
     }
-
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        EnergyHoverTip,
+        HoverTipFactory.FromCard<VoidCard>()
+    ];
+    protected override HashSet<CardTag> CanonicalTags =>
+    [
+        CardTag.Strike
+    ];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(13M, ValueProp.Move)
@@ -31,13 +40,17 @@ public sealed class VoidStrike : starssCard
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        CardModel voidCard = ModelDb.Card<VoidCard>().ToMutable();
+        CardModel voidCard = Owner.Creature.CombatState.CreateCard<VoidCard>(Owner);
 
-        await CardPileCmd.AddGeneratedCardToCombat(
-            voidCard,
-            PileType.Discard,
-            Owner
+        CardCmd.PreviewCardPileAdd(
+            await CardPileCmd.AddGeneratedCardToCombat(
+                CombatState!.CreateCard<VoidCard>(Owner),
+                PileType.Discard,
+                Owner
+            )
         );
+        
+        PileType.Discard.GetPile(Owner).InvokeCardAddFinished();
     }
 
     protected override void OnUpgrade()

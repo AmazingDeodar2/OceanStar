@@ -12,7 +12,11 @@ public static class StateRandomHelper
         var states = new List<Func<StateModel>>
         {
             () => new PonyLandState(),
-            () => new FlatDomainState()
+            () => new FlatDomainState(),
+            () => new OrangeDogSpaceState(),
+            () => new JellyfishWorldState(),
+            () => new QiqiPlaneState(),
+            () => new RatCreviceState(),
         };
 
         var index = Random.Shared.Next(states.Count);

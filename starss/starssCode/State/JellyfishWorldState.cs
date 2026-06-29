@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models.Powers;
 using starss.starssCode.Mechanics;
+using starss.starssCode.Powers;
 
 namespace starss.starssCode.States;
 
@@ -19,7 +19,7 @@ public sealed class JellyfishWorldState : StateModel
 
     public override async Task OnEnter(PlayerChoiceContext choiceContext)
     {
-        await PowerCmd.Apply<RetainHandPower>(
+        await PowerCmd.Apply<JellyfishWorldPower>(
             choiceContext,
             Owner.Creature,
             1M,
@@ -30,6 +30,6 @@ public sealed class JellyfishWorldState : StateModel
 
     public override async Task OnExit(PlayerChoiceContext choiceContext)
     {
-        await PowerCmd.Remove<RetainHandPower>(Owner.Creature);
+        await PowerCmd.Remove<JellyfishWorldPower>(Owner.Creature);
     }
 }

@@ -14,7 +14,10 @@ public sealed class DefendStarss : starssCard
         : base(1, CardType.Skill, CardRarity.Basic, TargetType.Self)
     {
     }
-
+    protected override HashSet<CardTag> CanonicalTags =>
+    [
+        CardTag.Defend
+    ];
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>

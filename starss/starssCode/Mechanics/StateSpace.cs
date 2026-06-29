@@ -128,4 +128,15 @@ public class StateSpace
 
         return true;
     }
+    
+    public bool ShouldFlush(Player player)
+    {
+        foreach (var state in states)
+        {
+            if (!state.ShouldFlush(player))
+                return false;
+        }
+
+        return true;
+    }
 }

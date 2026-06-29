@@ -43,7 +43,7 @@ public sealed class OneeSanTime : starssCard
                 Owner
             )
         );
-
+        PileType.Discard.GetPile(Owner).InvokeCardAddFinished();
         await Cmd.Wait(0.5f);
     }
 

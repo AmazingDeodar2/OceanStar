@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using VoidCard = MegaCrit.Sts2.Core.Models.Cards.Void;
 
@@ -13,10 +14,14 @@ namespace starss.starssCode.Cards;
 public sealed class SignalFailure : starssCard
 {
     public SignalFailure()
-        : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+        : base(2, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
     }
-
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        EnergyHoverTip,
+        HoverTipFactory.FromCard<VoidCard>()
+    ];
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -45,13 +50,15 @@ public sealed class SignalFailure : starssCard
             Owner
         );
 
-        CardModel voidCard = ModelDb.Card<VoidCard>().ToMutable();
+        CardModel voidCard = Owner.Creature.CombatState.CreateCard<VoidCard>(Owner);
 
         await CardPileCmd.AddGeneratedCardToCombat(
             voidCard,
             PileType.Draw,
-            Owner
+            Owner,
+            CardPilePosition.Random
         );
+        PileType.Draw.GetPile(Owner).InvokeCardAddFinished();
     }
 
     protected override void OnUpgrade()

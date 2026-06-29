@@ -108,6 +108,23 @@
   "STARSS-NANA.description": "进入【水母世界】，存在时手牌获得保留。消耗。",
   "STARSS-NANA.upgradeDescription": "进入【水母世界】，存在时手牌获得保留。",
   "STARSS-QIQI.title": "淇淇",
-  "STARSS-QIQI.description": "进入【淇喵位面】，进入时获得7点格挡，离开状态时对随机敌人造成7点伤害"
- 
+  "STARSS-QIQI.description": "进入【淇喵位面】，进入时获得7点格挡，离开状态时对随机敌人造成7点伤害",
+  "STARSS-ALMOST_THERE.title": "就差一点",
+  "STARSS-ALMOST_THERE.description": "获得{Block:diff()}点格挡。命运{Fate:diff()}，给予2层虚弱。",
+  "STARSS-SATCHEL.title": "挎包",
+  "STARSS-SATCHEL.description": "获得{Block:diff()}点格挡，命运{Fate:diff()}，选择你手牌中的一张牌升级。",
+  "STARSS-SATCHEL.upgradeDescription": "获得{Block:diff()}点格挡，命运{Fate:diff()}，升级你手牌中的所有牌。",
+  "STARSS-GREAT_SUCCESS.title": "大成功！",
+  "STARSS-GREAT_SUCCESS.description": "下次检定时幸运100。消耗。",
+  "STARSS-DISASTER_RELIEF.title": "消灾",
+  "STARSS-DISASTER_RELIEF.description": "选择抽牌堆中一张牌消耗，获得{Luck:diff()}点幸运。",
+  "STARSS-RANK_SUPPRESSION.title": "位格压制",
+  "STARSS-RANK_SUPPRESSION.description": "所有敌人在本回合失去{StrengthLoss:diff()}点力量，将一张呼唤加入你的手牌。",
+  "STARSS-SEE_THROUGH.title": "看破",
+  "STARSS-SEE_THROUGH.description": "去除敌人身上所有人工制品和格挡，并给予{Power:diff()}层易伤。将一张呼唤加入你的手牌。",
+  "STARSS-ABYSS_COMBO.title": "深渊连击",
+  "STARSS-ABYSS_COMBO.description": "造成8点伤害{Hits:diff()}次，将一张虚空加入弃牌堆。",
+  "STARSS-T_T.title": "TT",
+  "STARSS-T_T.description": "进入【老鼠狭缝】，进入时选择抽牌堆中的一张牌加入你的手牌，离开是选择弃牌堆中的一张牌加入你的手牌。",
+  "STARSS-T_T.upgradeDescription": "进入【老鼠狭缝】，进入时选择抽牌堆中的一张牌加入你的手牌，离开是选择弃牌堆中的一张牌加入你的手牌。保留。"
 }

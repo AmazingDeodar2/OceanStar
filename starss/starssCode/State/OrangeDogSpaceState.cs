@@ -1,5 +1,8 @@
-using MegaCrit.Sts2.Core.Entities.Creatures;
+using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using starss.starssCode.Mechanics;
+using starss.starssCode.Powers;
 
 namespace starss.starssCode.States;
 
@@ -14,8 +17,19 @@ public sealed class OrangeDogSpaceState : StateModel
         Duration = int.MaxValue;
     }
 
-    public override bool ShouldClearBlock(Creature creature)
+    public override async Task OnEnter(PlayerChoiceContext choiceContext)
     {
-        return Owner.Creature != creature;
+        await PowerCmd.Apply<OrangeDogSpacePower>(
+            choiceContext,
+            Owner.Creature,
+            1M,
+            Owner.Creature,
+            null
+        );
+    }
+
+    public override async Task OnExit(PlayerChoiceContext choiceContext)
+    {
+        await PowerCmd.Remove<OrangeDogSpacePower>(Owner.Creature);
     }
 }

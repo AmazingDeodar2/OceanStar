@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -37,6 +38,10 @@ public abstract class StateModel
         return Task.CompletedTask;
     }
     public virtual bool ShouldClearBlock(Creature creature)
+    {
+        return true;
+    }
+    public virtual bool ShouldFlush(Player player)
     {
         return true;
     }

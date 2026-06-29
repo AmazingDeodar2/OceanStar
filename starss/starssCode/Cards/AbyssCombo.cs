@@ -3,37 +3,34 @@ using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Cards;
-using Void = MegaCrit.Sts2.Core.Models.Cards.Void;
+using VoidCard = MegaCrit.Sts2.Core.Models.Cards.Void;
 
 namespace starss.starssCode.Cards;
 
 
-public sealed class PenguinActivated : starssCard
+public sealed class AbyssCombo : starssCard
 {
-    public PenguinActivated()
-        : base(3, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    public AbyssCombo()
+        : base(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
     }
-
-    public override bool GainsBlock => true;
-
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
-    [
-        new DamageVar(25M, ValueProp.Move),
-        new BlockVar(10M, ValueProp.Unpowered)
-    ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         EnergyHoverTip,
-        HoverTipFactory.FromCard<Beckon>()
+        HoverTipFactory.FromCard<VoidCard>()
     ];
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DamageVar(8M, ValueProp.Move),
+        new DynamicVar("Hits", 3M)
+    ];
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
@@ -41,27 +38,23 @@ public sealed class PenguinActivated : starssCard
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_blunt")
+            .WithHitCount(DynamicVars["Hits"].IntValue)
+            .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        await CreatureCmd.GainBlock(
-            Owner.Creature,
-            DynamicVars.Block,
-            cardPlay
-        );
+        CardModel voidCard = Owner.Creature.CombatState.CreateCard<VoidCard>(Owner);
 
-        
-        CardModel callCard = Owner.Creature.CombatState.CreateCard<Beckon>(Owner);
         await CardPileCmd.AddGeneratedCardToCombat(
-            callCard,
+            voidCard,
             PileType.Discard,
             Owner
         );
-        
+
+        PileType.Discard.GetPile(Owner).InvokeCardAddFinished();
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(7M);
+        DynamicVars["Hits"].UpgradeValueBy(1M);
     }
 }

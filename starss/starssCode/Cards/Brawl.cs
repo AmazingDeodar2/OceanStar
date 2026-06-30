@@ -38,16 +38,18 @@ public sealed class Brawl : starssCard
             sourceCard: this
         );
 
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
-            .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
+        
 
         if (check.FateSuccess)
         {
             await DiceHelper.OnFateTriggered(choiceContext, this);
-
+            
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+                .FromCard(this)
+                .Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_attack_slash")
+                .Execute(choiceContext);
+            
             await CardPileCmd.Draw(
                 choiceContext,
                 DynamicVars.Cards.BaseValue,

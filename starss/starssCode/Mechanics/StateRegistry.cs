@@ -30,5 +30,6 @@ public static class StateRegistry
         PonyLandState.ClearGoldCounters();
         PineappleModelHelper.Clear();
         SevenSevenSevenHelper.Clear();
+        QiqiPlaneState.ClearEnterCounters();
     }
 }

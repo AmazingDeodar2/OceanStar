@@ -51,6 +51,8 @@ public sealed class LetUsBegin : starssCard
 
         if (check.FateSuccess)
         {
+            await DiceHelper.OnFateTriggered(choiceContext,
+                this);
             for (var i = 0; i < DynamicVars["Bonus"].IntValue; i++)
             {
                 await AttackEnemy(choiceContext, cardPlay.Target);

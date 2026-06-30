@@ -8,7 +8,10 @@ using MegaCrit.Sts2.Core.ValueProps;
 using starss.starssCode.Mechanics;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Models;
+
+
 
 namespace starss.starssCode.Cards;
 
@@ -20,14 +23,15 @@ public sealed class FoxFire : starssCard
     {
     }
 
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(7M, ValueProp.Move),
         new DynamicVar("Hits", 7M),
         new FateVar(40M),
         new DoomVar(81M),
-        new PowerVar<VulnerablePower>("Vulnerable", 2M),
-        new PowerVar<WeakPower>("Weak", 2M)
+        new PowerVar<VulnerablePower>(2M),
+        new PowerVar<WeakPower>(2M)
     ];
 
     public override async Task AfterCardDrawn(
@@ -43,6 +47,14 @@ public sealed class FoxFire : starssCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        
+        
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(this)
+            .WithHitCount(DynamicVars["Hits"].IntValue)
+            .TargetingAllOpponents(CombatState!)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
         var check = await DiceHelper.Check(
             Owner.Creature,
             fate: DynamicVars["Fate"].IntValue,
@@ -50,19 +62,11 @@ public sealed class FoxFire : starssCard
             choiceContext: choiceContext,
             sourceCard: this
         );
-
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
-            .WithHitCount(DynamicVars["Hits"].IntValue)
-            .TargetingAllOpponents(CombatState!)
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
-
         if (check.FateSuccess)
         {
             await DiceHelper.OnFateTriggered(choiceContext, this);
 
-            foreach (var enemy in CombatState!.HittableEnemies)
+            foreach (Creature enemy in CombatState!.HittableEnemies)
             {
                 await PowerCmd.Apply<VulnerablePower>(
                     choiceContext,
@@ -72,10 +76,13 @@ public sealed class FoxFire : starssCard
                     this
                 );
             }
+            
         }
 
         if (check.DoomSuccess)
         {
+            await DiceHelper.OnDoomTriggered(choiceContext,
+                this);
             await PowerCmd.Apply<WeakPower>(
                 choiceContext,
                 Owner.Creature,

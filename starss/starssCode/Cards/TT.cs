@@ -35,11 +35,7 @@ public sealed class TT : starssCard,IPcCard
             Owner.Character.CastAnimDelay
         );
 
-        await StateCmd.Enter(
-            choiceContext,
-            Owner,
-            new RatCreviceState(SelectionScreenPrompt)
-        );
+        await StateCmd.Enter(choiceContext, Owner, new RatCreviceState());
     }
 
     protected override void OnUpgrade()

@@ -38,7 +38,7 @@ public sealed class DisasterRelief : starssCard
 
         await CardCmd.Exhaust(choiceContext, card);
 
-        await PowerCmd.Apply<NextCheckLuckPower>(
+        await PowerCmd.Apply<LuckyPower>(
             choiceContext,
             Owner.Creature,
             DynamicVars["Luck"].BaseValue,

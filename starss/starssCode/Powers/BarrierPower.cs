@@ -35,6 +35,7 @@ public sealed class BarrierPower : PowerModel
         var check = await DiceHelper.Check(Owner, fate: 40, doom: 60);
 
         if (check.FateSuccess)
+            
             await PlayerCmd.GainEnergy(1M, Owner.Player);
 
         if (check.DoomSuccess)

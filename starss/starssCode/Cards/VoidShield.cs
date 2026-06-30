@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Models.Cards;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace starss.starssCode.Cards;
 
@@ -20,7 +21,7 @@ public sealed class VoidShield : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<BarrierPower>("Power", 6M)
+        new PowerVar<PlatingPower>("Power", 6M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -31,7 +32,7 @@ public sealed class VoidShield : starssCard
 
         decimal amount = DynamicVars["Power"].BaseValue + voidAndCallCount;
 
-        await PowerCmd.Apply<BarrierPower>(
+        await PowerCmd.Apply<PlatingPower>(
             choiceContext,
             Owner.Creature,
             amount,

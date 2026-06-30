@@ -1,5 +1,6 @@
-[gd_scene load_steps=282 format=3 uid="uid://shajl3pofvuf"]
+[gd_scene load_steps=283 format=3 uid="uid://dingk7bmrd1yc"]
 
+[ext_resource type="Script" uid="uid://by67p7e02k175" path="res://starss/scenes/creature_visuals/StarssBattle.cs" id="1_778jh"]
 [ext_resource type="Texture2D" uid="uid://bajpcyqspuyr0" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_00.png" id="1_b8e6u"]
 [ext_resource type="Texture2D" uid="uid://ylv6lyj1rpub" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_01.png" id="2_qcpjq"]
 [ext_resource type="Texture2D" uid="uid://dpr8itrh8bnpe" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_02.png" id="3_1gyjr"]
@@ -1145,11 +1146,12 @@ animations = [{
 "texture": ExtResource("280_03yam")
 }],
 "loop": true,
-"name": &"idle_loop",
+"name": &"idle",
 "speed": 30.0
 }]
 
 [node name="Starss" type="Node2D"]
+script = ExtResource("1_778jh")
 metadata/_edit_group_ = true
 
 [node name="Visuals" type="AnimatedSprite2D" parent="."]
@@ -1157,9 +1159,8 @@ unique_name_in_owner = true
 position = Vector2(70, -121)
 scale = Vector2(0.3600509, 0.36005092)
 sprite_frames = SubResource("SpriteFrames_k4kup")
-animation = &"attack"
-frame = 49
-frame_progress = 1.0
+animation = &"idle"
+autoplay = "idle"
 
 [node name="Bounds" type="Control" parent="."]
 unique_name_in_owner = true

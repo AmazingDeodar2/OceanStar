@@ -436,7 +436,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 30.0
+"speed": 45.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -836,7 +836,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"die",
-"speed": 30.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -961,7 +961,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hurt",
-"speed": 30.0
+"speed": 60.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1157,9 +1157,9 @@ unique_name_in_owner = true
 position = Vector2(70, -121)
 scale = Vector2(0.3600509, 0.36005092)
 sprite_frames = SubResource("SpriteFrames_k4kup")
-animation = &"idle_loop"
-frame = 11
-frame_progress = 0.124880865
+animation = &"attack"
+frame = 49
+frame_progress = 1.0
 
 [node name="Bounds" type="Control" parent="."]
 unique_name_in_owner = true

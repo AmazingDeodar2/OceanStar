@@ -173,6 +173,8 @@
   "STARSS-STOP_ACTING.title": "不演了",
   "STARSS-STOP_ACTING.description": "退出所有状态，获得{Block:diff()}点格挡。",
   "STARSS-WHITE_FORM.title": "白色形态",
-  "STARSS-WHITE_FORM.description": "每打出一张牌时，抽一张牌。"
+  "STARSS-WHITE_FORM.description": "每打出一张牌时，抽一张牌。",
+  "STARSS-RAINBOW_FRIENDSHIP_CANNON.title": "彩虹友谊大炮",
+  "STARSS-RAINBOW_FRIENDSHIP_CANNON.description": "造成{Damage:diff()}点伤害，每进入过一个状态，就再造成一次。"
 
 }

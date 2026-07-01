@@ -21,7 +21,9 @@ public class StateSpace
     public int Capacity { get; private set; }
 
     public IReadOnlyList<StateModel> States => states;
-
+    
+    public int EnteredStateCount { get; private set; }
+    
     public StateSpace(Player owner, int capacity = 1)
     {
         Owner = owner;
@@ -48,6 +50,7 @@ public class StateSpace
         }
 
         states.Add(state);
+        EnteredStateCount++;
         await state.OnEnter(choiceContext);
         var actorPower = Owner.Creature.GetPower<ProfessionalActorPower>();
         if (actorPower != null)

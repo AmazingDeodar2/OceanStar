@@ -1,5 +1,6 @@
-[gd_scene load_steps=282 format=3 uid="uid://dingk7bmrd1yc"]
+[gd_scene load_steps=283 format=3 uid="uid://dingk7bmrd1yc"]
 
+[ext_resource type="Script" uid="uid://c3pcvrxrrtb4g" path="res://starss/scenes/creature_visuals/StarssNCreature.cs" id="1_778jh"]
 [ext_resource type="Texture2D" uid="uid://bajpcyqspuyr0" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_00.png" id="1_b8e6u"]
 [ext_resource type="Texture2D" uid="uid://ylv6lyj1rpub" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_01.png" id="2_qcpjq"]
 [ext_resource type="Texture2D" uid="uid://dpr8itrh8bnpe" path="res://starss/images/animation_sprite/attack/海星桌宠-attack_02.png" id="3_1gyjr"]
@@ -1150,6 +1151,7 @@ animations = [{
 }]
 
 [node name="Starss" type="Node2D"]
+script = ExtResource("1_778jh")
 metadata/_edit_group_ = true
 
 [node name="Visuals" type="AnimatedSprite2D" parent="."]

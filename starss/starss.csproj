@@ -58,6 +58,8 @@
         <None Include="starss.json"/>
         <None Include="project.godot"/>
         <None Include="starss/**"/>
+        <None Include="starssCode\Patches\StarssAnimationPatch.cs" />
+        <None Include="starssCode\Patches\StarssAnimationPatch.cs.uid" />
     </ItemGroup>
 
     <ItemGroup>

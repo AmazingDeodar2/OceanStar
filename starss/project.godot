@@ -28,5 +28,4 @@ project/assembly_name="starss"
 
 [rendering]
 
-renderer/rendering_method="mobile"
 environment/defaults/default_clear_color=Color(0.0923724, 0.122398, 0.116929, 1)

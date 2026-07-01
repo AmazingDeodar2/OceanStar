@@ -68,4 +68,6 @@ public class Starss : PlaceholderCharacterModel
         "res://starss/scenes/creature_visuals/starss_select.tscn";
     //Battle sprite scene
     public override string CustomVisualPath => "res://starss/scenes/creature_visuals/starss.tscn";
+    //能量条场景
+    public override string CustomEnergyCounterPath => "res://starss/scenes/creature_visuals/defect_energy_counter.tscn";
 }

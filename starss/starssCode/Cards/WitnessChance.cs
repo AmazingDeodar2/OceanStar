@@ -40,9 +40,13 @@ public sealed class WitnessChance : starssCard
 
         // 分别掷 三面 / 六面 / 十面 / 二十面
         RollD3Result = DiceHelper.RollD3(user, this);
+        await DiceUi.ShowRoll(RollD3Result);
         RollD6Result = DiceHelper.RollD6(user, this);
+        await DiceUi.ShowRoll(RollD6Result);
         RollD10Result = DiceHelper.RollD10(user, this);
+        await DiceUi.ShowRoll(RollD10Result);
         RollD20Result = DiceHelper.RollD20(user, this);
+        await DiceUi.ShowRoll(RollD20Result);
 
         // 单颗骰子最终有效点数（奖励骰取最小之后的值）
         int valD3 = RollD3Result.Value;
@@ -58,7 +62,7 @@ public sealed class WitnessChance : starssCard
         var attackCmd = await DamageCmd.Attack((decimal)totalDmg)
             .FromCard(this)
             .Targeting(cardPlay.Target!)
-            .WithHitFx("vfx/vfx_attack_random")
+            .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
         bool targetKilled = attackCmd.Results

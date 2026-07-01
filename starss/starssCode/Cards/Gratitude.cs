@@ -9,10 +9,11 @@ using starss.starssCode.Cards.Interfaces;
 
 namespace starss.starssCode.Cards;
 
-public sealed class TT : starssCard,IPcCard
+
+public sealed class Gratitude : starssCard,IPcCard
 {
-    public TT()
-        : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+    public Gratitude()
+        : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
     }
 
@@ -35,7 +36,11 @@ public sealed class TT : starssCard,IPcCard
             Owner.Character.CastAnimDelay
         );
 
-        await StateCmd.Enter(choiceContext, Owner, new RatCreviceState());
+        await StateCmd.Enter(
+            choiceContext,
+            Owner,
+            new GooseEggKitchenState()
+        );
     }
 
     protected override void OnUpgrade()

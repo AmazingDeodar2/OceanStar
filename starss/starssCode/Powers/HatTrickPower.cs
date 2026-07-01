@@ -49,7 +49,7 @@ public sealed class HatTrickPower : PowerModel
 
     private static bool IsPcCard(CardModel card)
     {
-        return card is TrojanHorse || card is SnowCedar || card is ThreeW || card is Nana || card is Qiqi || card is TT;
+        return card is TrojanHorse || card is SnowCedar || card is ThreeW || card is Nana || card is Qiqi || card is TT || card is Gratitude;
     }
 
     private CardModel? GetRandomPcCard()

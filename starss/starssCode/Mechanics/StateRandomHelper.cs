@@ -18,6 +18,7 @@ public static class StateRandomHelper
             () => new JellyfishWorldState(),
             () => new QiqiPlaneState(),
             () => new RatCreviceState(),
+            () => new GooseEggKitchenState(),
         };
 
         var index = Random.Shared.Next(states.Count);

@@ -40,16 +40,18 @@ public sealed class Listen : starssCard
             sourceCard: this
         );
 
-        await CreatureCmd.GainBlock(
-            Owner.Creature,
-            DynamicVars.Block,
-            cardPlay
-        );
+        
 
         if (check.FateSuccess)
         {
-            await DiceHelper.OnFateTriggered(choiceContext, this);
+            
 
+            await CreatureCmd.GainBlock(
+                Owner.Creature,
+                DynamicVars.Block,
+                cardPlay
+            );
+            
             await PowerCmd.Apply<WeakPower>(
                 choiceContext,
                 cardPlay.Target,

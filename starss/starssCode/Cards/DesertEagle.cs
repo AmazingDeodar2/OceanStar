@@ -42,6 +42,7 @@ public sealed class DesertEagle : starssCard
 
         if (check.FateSuccess)
         {
+            
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .WithHitCount(DynamicVars["Repeat"].IntValue)
                 .FromCard(this)
@@ -53,6 +54,7 @@ public sealed class DesertEagle : starssCard
 
         if (check.DoomSuccess)
         {
+            
             await CreatureCmd.Damage(
                 choiceContext,
                 Owner.Creature,

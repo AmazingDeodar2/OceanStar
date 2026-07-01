@@ -47,10 +47,11 @@ public sealed class Intimidate : starssCard
 
         if (check.DoomSuccess)
         {
-            CardModel call = Owner.Creature.CombatState.CreateCard<Beckon>(Owner);
+            
+            CardModel callCard = Owner.Creature.CombatState.CreateCard<Beckon>(Owner);
 
             await CardPileCmd.AddGeneratedCardToCombat(
-                call,
+                callCard,
                 PileType.Hand,
                 Owner
             );

@@ -13,7 +13,7 @@ using starss.starssCode.Cards.Interfaces;
 namespace starss.starssCode.Powers;
 
 
-public sealed class HatTrickPower : PowerModel
+public sealed class HatTrickPower : starssPower
 {
     public override PowerType Type => PowerType.Buff;
 
@@ -49,8 +49,7 @@ public sealed class HatTrickPower : PowerModel
 
     private static bool IsPcCard(CardModel card)
     {
-        return card is TrojanHorse
-               || card is SnowCedar;
+        return card is TrojanHorse || card is SnowCedar || card is ThreeW || card is Nana || card is Qiqi || card is TT || card is Gratitude;
     }
 
     private CardModel? GetRandomPcCard()

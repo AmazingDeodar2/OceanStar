@@ -37,6 +37,15 @@ public static class StateCmd
             card,
             creator
         );
+        
+        bool isVoidOrCall =
+            card is MegaCrit.Sts2.Core.Models.Cards.Void
+            || card is MegaCrit.Sts2.Core.Models.Cards.Beckon;
+
+        if (isVoidOrCall)
+        {
+            GlobalVoidCallCounter.Increment(creator);
+        }
     }
 
     public static async Task ExitFirst(

@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Models;
 namespace starss.starssCode.Powers;
 
 
-public sealed class AbyssPower : PowerModel
+public sealed class AbyssPower : starssPower
 {
     public override PowerType Type => PowerType.Buff;
 

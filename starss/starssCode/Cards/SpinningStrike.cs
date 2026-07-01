@@ -58,6 +58,7 @@ public sealed class SpinningStrike : starssCard
 
         if (check.FateSuccess)
         {
+            
             await DamageCmd.Attack(DynamicVars["BonusDamage"].BaseValue)
                 .FromCard(this)
                 .Targeting(cardPlay.Target)

@@ -40,16 +40,15 @@ public sealed class AllIn : starssCard
     {
         var check = await DiceHelper.Check(
             Owner.Creature,
-            fate: 1,
-            doom: 100,
+            fate: DynamicVars["Fate"].IntValue,
+            doom: DynamicVars["Doom"].IntValue,
             choiceContext: choiceContext,
             sourceCard: this
         );
 
         if (check.FateSuccess)
         {
-            await DiceHelper.OnFateTriggered(choiceContext,
-                this);
+            
 
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this)
@@ -60,6 +59,7 @@ public sealed class AllIn : starssCard
 
         if (check.DoomSuccess)
         {
+            
             var hpLoss = Owner.Creature.CurrentHp - 1M;
 
             if (hpLoss > 0)

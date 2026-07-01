@@ -41,6 +41,7 @@ public sealed class AreYouSure : starssCard
 
         if (check.FateSuccess)
         {
+            
             await CreatureCmd.GainBlock(
                 Owner.Creature,
                 DynamicVars["BonusBlock"].BaseValue,

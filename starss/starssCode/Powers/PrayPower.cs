@@ -14,7 +14,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace starss.starssCode.Powers;
 
-public sealed class PrayPower : PowerModel
+public sealed class PrayPower : starssPower
 {
     public override PowerType Type => PowerType.Buff;
 

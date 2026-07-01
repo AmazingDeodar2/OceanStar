@@ -14,7 +14,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace starss.starssCode.Powers;
 
-public sealed class BarrierPower : PowerModel
+public sealed class BarrierPower : starssPower
 {
     public override PowerType Type => PowerType.Buff;
 
@@ -35,6 +35,7 @@ public sealed class BarrierPower : PowerModel
         var check = await DiceHelper.Check(Owner, fate: 40, doom: 60);
 
         if (check.FateSuccess)
+            
             await PlayerCmd.GainEnergy(1M, Owner.Player);
 
         if (check.DoomSuccess)

@@ -55,7 +55,7 @@ public sealed class LuckyFinish : starssCard
 
         if (check.FateSuccess)
         {
-            await DiceHelper.OnFateTriggered(choiceContext, this);
+           
 
             await CreatureCmd.GainBlock(
                 Owner.Creature,

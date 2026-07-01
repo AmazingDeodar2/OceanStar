@@ -46,9 +46,19 @@ public sealed class WildIdea : starssCard
             choiceContext: choiceContext,
             sourceCard: this
         );
+        if (check.DoomSuccess)
+        {
+            
+           
+            CardPile pile = PileType.Hand.GetPile(Owner);
+            CardModel card = Owner.RunState.Rng.CombatCardSelection.NextItem<CardModel>(pile.Cards);
 
+            if (card != null)
+                await CardCmd.Exhaust(choiceContext, card);
+        }
         if (check.FateSuccess)
         {
+            
             await PowerCmd.Apply<FreeNextCardPower>(
                 choiceContext,
                 Owner.Creature,
@@ -56,15 +66,6 @@ public sealed class WildIdea : starssCard
                 Owner.Creature,
                 this
             );
-        }
-
-        if (check.DoomSuccess)
-        {
-            CardPile pile = PileType.Hand.GetPile(Owner);
-            CardModel card = Owner.RunState.Rng.CombatCardSelection.NextItem<CardModel>(pile.Cards);
-
-            if (card != null)
-                await CardCmd.Exhaust(choiceContext, card);
         }
     }
 

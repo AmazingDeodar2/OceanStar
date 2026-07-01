@@ -12,7 +12,7 @@ namespace starss.starssCode.Cards;
 public sealed class ThreeW : starssCard, IPcCard
 {
     public ThreeW()
-        : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+        : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
     }
 

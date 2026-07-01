@@ -40,17 +40,18 @@ public sealed class Persuade : starssCard
         var check = await DiceHelper.Check(
             Owner.Creature,
             fate: 101,
-            doom: DynamicVars.Doom.IntValue,
+            doom: DynamicVars["Doom"].IntValue,
             choiceContext: choiceContext,
             sourceCard: this
         );
 
         if (check.DoomSuccess)
         {
-            CardModel call = Owner.Creature.CombatState.CreateCard<Beckon>(Owner);
+            
+            CardModel callCard = Owner.Creature.CombatState.CreateCard<Beckon>(Owner);
 
             await CardPileCmd.AddGeneratedCardToCombat(
-                call,
+                callCard,
                 PileType.Hand,
                 Owner
             );

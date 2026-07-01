@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Cards;
+using starss.starssCode.Powers;
 
 namespace starss.starssCode.Cards;
 
@@ -40,7 +41,7 @@ public sealed class RankSuppression : starssCard
 
         foreach (Creature enemy in CombatState!.HittableEnemies)
         {
-            await PowerCmd.Apply<PiercingWailPower>(
+            await PowerCmd.Apply<RankSuppressionPower>(
                 choiceContext,
                 enemy,
                 DynamicVars["StrengthLoss"].BaseValue,

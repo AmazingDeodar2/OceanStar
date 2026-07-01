@@ -2,39 +2,31 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.ValueProps;
 using System.Threading.Tasks;
-using MegaCrit.Sts2.Core.Models;
 
 namespace starss.starssCode.Powers;
 
 
-public sealed class MakkaPakkaPower : starssPower
+public sealed class WhiteFormPower : starssPower
 {
+    
     public override PowerType Type => PowerType.Buff;
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override async Task AfterCardExhausted(
+    public override async Task AfterCardPlayed(
         PlayerChoiceContext choiceContext,
-        CardModel card,
-        bool causedByEthereal)
+        CardPlay cardPlay)
     {
-        if (card.Owner != Owner.Player)
-            return;
-
-        if (card is not MegaCrit.Sts2.Core.Models.Cards.Void)
+        if (cardPlay.Card.Owner.Creature != Owner)
             return;
 
         Flash();
 
-        await CreatureCmd.Damage(
+        await CardPileCmd.Draw(
             choiceContext,
-            CombatState.HittableEnemies,
             Amount,
-            ValueProp.Unpowered,
-            null,
-            null
+            Owner.Player
         );
     }
 }

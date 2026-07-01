@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.Models.Cards;
 namespace starss.starssCode.Powers;
 
 
-public sealed class VoidCallPower : PowerModel
+public sealed class VoidCallPower : starssPower
 {
     public override PowerType Type => PowerType.Buff;
 

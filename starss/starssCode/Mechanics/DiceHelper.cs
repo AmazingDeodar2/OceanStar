@@ -41,15 +41,18 @@ public static class DiceHelper
         if (showUi)
             await DiceUi.ShowRoll(rollResult);
 
-        var finalFate = ApplyFate(fate, creature);
-        var finalDoom = ApplyDoom(doom, creature);
+        var fateEnabled = fate > 0 && fate <= 100;
+        var doomEnabled = doom > 0 && doom <= 100;
+
+        var finalFate = fateEnabled ? ApplyFate(fate, creature) : fate;
+        var finalDoom = doomEnabled ? ApplyDoom(doom, creature) : doom;
 
         var result = new DiceCheckResult(
             rollResult.Value,
             finalFate,
             finalDoom,
-            rollResult.Value <= finalFate,
-            rollResult.Value >= finalDoom,
+            fateEnabled && rollResult.Value <= finalFate,
+            doomEnabled && rollResult.Value >= finalDoom,
             rollResult
         );
         if (result.FateSuccess && choiceContext != null && sourceCard != null)
@@ -72,6 +75,16 @@ public static class DiceHelper
     public static DiceRollResult RollD6(Creature creature, CardModel? sourceCard = null)
     {
         return RollDice(creature, 6, sourceCard);
+    }
+    
+    public static DiceRollResult RollD3(Creature creature, CardModel? sourceCard = null)
+    {
+        return RollDice(creature, 3, sourceCard);
+    }
+    
+    public static DiceRollResult RollD10(Creature creature, CardModel? sourceCard = null)
+    {
+        return RollDice(creature, 10, sourceCard);
     }
     
     public static DiceRollResult RollD20(Creature creature, CardModel? sourceCard = null)

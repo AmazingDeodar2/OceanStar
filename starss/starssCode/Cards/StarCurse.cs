@@ -15,7 +15,10 @@ public sealed class StarCurse : starssCard
         : base(0, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
     {
     }
-
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<VulnerablePower>(1M),

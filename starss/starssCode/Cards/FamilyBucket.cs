@@ -66,7 +66,7 @@ public sealed class FamilyBucket : starssCard
             this
         );
 
-        await PowerCmd.Apply<BarrierPower>(
+        await PowerCmd.Apply<PlatingPower>(
             choiceContext,
             Owner.Creature,
             2M,
@@ -82,7 +82,7 @@ public sealed class FamilyBucket : starssCard
             this
         );
 
-        CardModel callCard = ModelDb.Card<Beckon>().ToMutable();
+        CardModel callCard = Owner.Creature.CombatState.CreateCard<Beckon>(Owner);
 
         await CardPileCmd.AddGeneratedCardToCombat(
             callCard,

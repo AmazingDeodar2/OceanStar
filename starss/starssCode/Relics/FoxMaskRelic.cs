@@ -1,11 +1,10 @@
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Factories;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Rooms;
 using starss.starssCode.Cards.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,17 +12,17 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace starss.starssCode.Relics;
 
-
 public sealed class FoxMask : starssRelic
 {
     public override RelicRarity Rarity => RelicRarity.Rare;
 
-    public override async Task AfterRoomEntered(AbstractRoom room)
+    public override async Task AfterSideTurnStart(
+        CombatSide side,
+        IReadOnlyList<Creature> participants,
+        ICombatState combatState)
     {
-        if (room is not CombatRoom)
+        if (!participants.Contains(Owner.Creature) || Owner.PlayerCombatState.TurnNumber > 1)
             return;
-
-        Flash();
 
         List<CardModel> choices = CardFactory
             .GetDistinctForCombat(
@@ -34,7 +33,7 @@ public sealed class FoxMask : starssRelic
                         Owner.RunState.CardMultiplayerConstraint
                     )
                     .Where(c => c is IPcCard),
-                3,
+                1,
                 Owner.RunState.Rng.CombatCardGeneration
             )
             .ToList();
@@ -42,20 +41,14 @@ public sealed class FoxMask : starssRelic
         if (choices.Count == 0)
             return;
 
-        CardModel card = await CardSelectCmd.FromChooseACardScreen(
-            new ThrowingPlayerChoiceContext(),
-            choices,
-            Owner,
-            true
-        );
+        Flash();
 
-        if (card == null)
-            return;
+        CardModel card = choices[0];
 
         card.SetToFreeThisTurn();
 
-        await CardPileCmd.AddGeneratedCardToCombat(
-            card,
+        await CardPileCmd.AddGeneratedCardsToCombat(
+            choices,
             PileType.Hand,
             Owner
         );

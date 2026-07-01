@@ -33,7 +33,6 @@ public sealed class Abyss : starssCard
 		{
 			
 			CardModel voidCard = Owner.Creature.CombatState.CreateCard<VoidCard>(Owner);
-			voidCard.Owner = Owner;
 
 			CardCmd.PreviewCardPileAdd(
 				await CardPileCmd.AddGeneratedCardToCombat(

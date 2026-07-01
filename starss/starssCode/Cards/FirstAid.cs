@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.ValueProps;
 using starss.starssCode.Mechanics;
 
@@ -26,17 +27,18 @@ public sealed class FirstAid : starssCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var fateCheck = await DiceHelper.Check(
+        
+        var check = await DiceHelper.Check(
             Owner.Creature,
             fate: DynamicVars["Fate"].IntValue,
-            doom: 101,
+            doom: DynamicVars["Doom"].IntValue,
             choiceContext: choiceContext,
             sourceCard: this
         );
-
-        if (fateCheck.FateSuccess)
+        
+        if (check.FateSuccess)
         {
-            await DiceHelper.OnFateTriggered(choiceContext, this);
+            
 
             await CreatureCmd.Heal(
                 Owner.Creature,
@@ -44,16 +46,9 @@ public sealed class FirstAid : starssCard
             );
         }
 
-        var doomCheck = await DiceHelper.Check(
-            Owner.Creature,
-            fate: 101,
-            doom: DynamicVars.Doom.IntValue,
-            choiceContext: choiceContext,
-            sourceCard: this
-        );
-
-        if (doomCheck.DoomSuccess)
+        if (check.DoomSuccess)
         {
+            
             VfxCmd.PlayOnCreatureCenter(
                 Owner.Creature,
                 "vfx/vfx_bloody_impact"
@@ -66,6 +61,8 @@ public sealed class FirstAid : starssCard
                 ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
                 this
             );
+            
+            
         }
     }
 

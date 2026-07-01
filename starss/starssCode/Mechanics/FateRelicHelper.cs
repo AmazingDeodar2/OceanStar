@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -33,7 +34,7 @@ public static class FateRelicHelper
 
         relic.Flash();
 
-        foreach (var enemy in player.Creature.CombatState.HittableEnemies)
+        foreach (var enemy in player.Creature.CombatState.HittableEnemies.ToList())
         {
             await CreatureCmd.Damage(
                 choiceContext,

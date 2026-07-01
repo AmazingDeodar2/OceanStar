@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 namespace starss.starssCode.Powers;
 
 
-public sealed class RecoveryPower : PowerModel
+public sealed class RecoveryPower : starssPower
 {
     public override PowerType Type => PowerType.Buff;
 

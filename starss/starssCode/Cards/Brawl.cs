@@ -42,7 +42,7 @@ public sealed class Brawl : starssCard
 
         if (check.FateSuccess)
         {
-            await DiceHelper.OnFateTriggered(choiceContext, this);
+           
             
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this)

@@ -42,8 +42,7 @@ public sealed class Please : starssCard
 
         if (check.DoomSuccess)
         {
-            await DiceHelper.OnDoomTriggered(choiceContext,
-                this);
+            
             CardModel callCard = Owner.Creature.CombatState.CreateCard<Beckon>(Owner);
 
             await CardPileCmd.AddGeneratedCardToCombat(

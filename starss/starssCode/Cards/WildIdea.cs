@@ -48,8 +48,8 @@ public sealed class WildIdea : starssCard
         );
         if (check.DoomSuccess)
         {
-            await DiceHelper.OnDoomTriggered(choiceContext,
-                this);
+            
+           
             CardPile pile = PileType.Hand.GetPile(Owner);
             CardModel card = Owner.RunState.Rng.CombatCardSelection.NextItem<CardModel>(pile.Cards);
 
@@ -58,8 +58,7 @@ public sealed class WildIdea : starssCard
         }
         if (check.FateSuccess)
         {
-            await DiceHelper.OnFateTriggered(choiceContext,
-                this);
+            
             await PowerCmd.Apply<FreeNextCardPower>(
                 choiceContext,
                 Owner.Creature,

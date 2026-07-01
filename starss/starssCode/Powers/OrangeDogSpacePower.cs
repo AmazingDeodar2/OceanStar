@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.Models;
 namespace starss.starssCode.Powers;
 
 
-public sealed class OrangeDogSpacePower : PowerModel
+public sealed class OrangeDogSpacePower : starssPower
 {
     public override PowerType Type => PowerType.Buff;
 

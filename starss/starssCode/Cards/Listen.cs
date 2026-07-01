@@ -44,7 +44,7 @@ public sealed class Listen : starssCard
 
         if (check.FateSuccess)
         {
-            await DiceHelper.OnFateTriggered(choiceContext, this);
+            
 
             await CreatureCmd.GainBlock(
                 Owner.Creature,

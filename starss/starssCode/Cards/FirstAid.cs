@@ -38,7 +38,7 @@ public sealed class FirstAid : starssCard
         
         if (check.FateSuccess)
         {
-            await DiceHelper.OnFateTriggered(choiceContext, this);
+            
 
             await CreatureCmd.Heal(
                 Owner.Creature,
@@ -48,8 +48,7 @@ public sealed class FirstAid : starssCard
 
         if (check.DoomSuccess)
         {
-            await DiceHelper.OnDoomTriggered(choiceContext,
-                this);
+            
             VfxCmd.PlayOnCreatureCenter(
                 Owner.Creature,
                 "vfx/vfx_bloody_impact"

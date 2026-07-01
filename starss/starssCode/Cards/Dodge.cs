@@ -38,7 +38,7 @@ public sealed class Dodge : starssCard
         if (!check.FateSuccess)
             return;
 
-        await DiceHelper.OnFateTriggered(choiceContext, this);
+       
 
         await CreatureCmd.GainBlock(
             Owner.Creature,

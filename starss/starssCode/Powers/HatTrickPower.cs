@@ -13,7 +13,7 @@ using starss.starssCode.Cards.Interfaces;
 namespace starss.starssCode.Powers;
 
 
-public sealed class HatTrickPower : PowerModel
+public sealed class HatTrickPower : starssPower
 {
     public override PowerType Type => PowerType.Buff;
 

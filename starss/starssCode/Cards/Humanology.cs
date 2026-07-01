@@ -97,7 +97,7 @@ public sealed class Humanology : starssCard
 
         if (diceResult.FateSuccess)
         {
-            await DiceHelper.OnFateTriggered(choiceContext, self);
+           
             BuffDamage(addAmount);
             BuffBlock(addAmount);
         }
@@ -105,7 +105,7 @@ public sealed class Humanology : starssCard
         bool doomTriggered = diceResult.DoomSuccess;
         if (doomTriggered)
         {
-            await DiceHelper.OnDoomTriggered(choiceContext, self);
+            
             
             await CardCmd.Exhaust(choiceContext, self);
             

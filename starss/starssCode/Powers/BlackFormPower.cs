@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Models;
 namespace starss.starssCode.Powers;
 
 
-public sealed class BlackFormPower : PowerModel
+public sealed class BlackFormPower : starssPower
 {
     public override PowerType Type => PowerType.Buff;
 
@@ -20,7 +20,7 @@ public sealed class BlackFormPower : PowerModel
         if (creator != Owner.Player)
             return;
 
-        if (card is not MegaCrit.Sts2.Core.Models.Cards.Void)
+        if (card is not MegaCrit.Sts2.Core.Models.Cards.Void && card is not MegaCrit.Sts2.Core.Models.Cards.Beckon)
             return;
 
         Flash();

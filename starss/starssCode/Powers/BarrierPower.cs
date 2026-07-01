@@ -14,7 +14,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace starss.starssCode.Powers;
 
-public sealed class BarrierPower : PowerModel
+public sealed class BarrierPower : starssPower
 {
     public override PowerType Type => PowerType.Buff;
 

@@ -3,7 +3,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace starss.starssCode.Powers;
 
-public sealed class FearlessFatePower : PowerModel
+public sealed class FearlessFatePower : starssPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;

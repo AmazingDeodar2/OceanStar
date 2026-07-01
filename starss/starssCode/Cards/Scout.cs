@@ -43,7 +43,7 @@ public sealed class Scout : starssCard
 
         if (check.FateSuccess)
         {
-            await DiceHelper.OnFateTriggered(choiceContext, this);
+            
             
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this)

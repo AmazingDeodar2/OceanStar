@@ -3,7 +3,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace starss.starssCode.Powers;
 
-public sealed class RewardDicePower : PowerModel
+public sealed class RewardDicePower : starssPower
 {
     public override PowerType Type => PowerType.Buff;
 

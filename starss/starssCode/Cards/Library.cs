@@ -34,7 +34,7 @@ public sealed class Library : starssCard
 
         if (check.FateSuccess)
         {
-            await DiceHelper.OnFateTriggered(choiceContext, this);
+            
 
             await CardPileCmd.Draw(
                 choiceContext,

@@ -74,7 +74,7 @@
   "STARSS-VOID_SHIELD.title": "虚无护盾",
   "STARSS-VOID_SHIELD.description": "获得{Power:diff()}层覆甲。额外获得等同于消耗牌堆中虚空与呼唤牌数量之和的覆甲。",
   "STARSS-BLACK_FORM.title": "黑色形态",
-  "STARSS-BLACK_FORM.description": "你的骰点不会小于50。每当你生成一张虚空时，获得1点力量与1点敏捷。",
+  "STARSS-BLACK_FORM.description": "你的骰点不会小于50。每当你生成一张虚空或呼唤时，获得1点力量与1点敏捷。",
   "STARSS-GRAVITY_LENS.title": "引力透镜",
   "STARSS-GRAVITY_LENS.description": "消耗所有手牌中的状态牌。获得{Block:diff()}倍被消耗数量的格挡。如果其中存在虚空，获得{Energy:energyIcons()}。",
   "STARSS-SIGNAL_FAILURE.title": "信号故障",
@@ -171,6 +171,8 @@
   "STARSS-GRATITUDE.title": "感恩",
   "STARSS-GRATITUDE.description": "进入【鹅蛋厨房】，进入时随机获得一瓶药水，离开时随机获得一瓶药水。",
   "STARSS-STOP_ACTING.title": "不演了",
-  "STARSS-STOP_ACTING.description": "退出所有状态，获得{Block:diff()}点格挡。"
+  "STARSS-STOP_ACTING.description": "退出所有状态，获得{Block:diff()}点格挡。",
+  "STARSS-WHITE_FORM.title": "白色形态",
+  "STARSS-WHITE_FORM.description": "每打出一张牌时，抽一张牌。"
 
 }

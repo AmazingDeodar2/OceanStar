@@ -48,7 +48,7 @@ public sealed class AlmostThere : starssCard
 
         if (check.FateSuccess)
         {
-            await DiceHelper.OnFateTriggered(choiceContext, this);
+            
 
             await PowerCmd.Apply<WeakPower>(
                 choiceContext,

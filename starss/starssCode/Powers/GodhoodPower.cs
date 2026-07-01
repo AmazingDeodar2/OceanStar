@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.Models;
 namespace starss.starssCode.Powers;
 
 
-public sealed class GodhoodPower : PowerModel
+public sealed class GodhoodPower : starssPower
 {
     public override PowerType Type => PowerType.Buff;
 

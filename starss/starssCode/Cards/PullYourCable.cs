@@ -66,8 +66,7 @@ public sealed class PullYourCable : starssCard
 
         if (result.DoomSuccess)
         {
-            await DiceHelper.OnDoomTriggered(choiceContext,
-                this);
+           
             CardModel voidCard = Owner.Creature.CombatState.CreateCard<VoidCard>(Owner);
 
             await CardPileCmd.AddGeneratedCardToCombat(

@@ -42,7 +42,7 @@ public sealed class Stealth : starssCard
         if (!check.FateSuccess)
             return;
 
-        await DiceHelper.OnFateTriggered(choiceContext, this);
+        
 
         await PowerCmd.Apply<BufferPower>(
             choiceContext,

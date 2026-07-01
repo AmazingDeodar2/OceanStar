@@ -46,7 +46,7 @@ public sealed class Satchel : starssCard
         if (!check.FateSuccess)
             return;
 
-        await DiceHelper.OnFateTriggered(choiceContext, this);
+       
 
         if (IsUpgraded)
         {

@@ -58,7 +58,7 @@ public sealed class SanCheck : starssCard
 
         if (check.FateSuccess)
         {
-            await DiceHelper.OnFateTriggered(choiceContext, this);
+           
 
             CardModel card = await CardSelectCmd.FromChooseACardScreen(
                 choiceContext,
@@ -90,7 +90,7 @@ public sealed class SanCheck : starssCard
 
         if (check.DoomSuccess)
         {
-            await DiceHelper.OnDoomTriggered(choiceContext, this);
+           
             CardSelectorPrefs prefs = new CardSelectorPrefs(CardSelectorPrefs.EnchantSelectionPrompt, 1);
 
             CardModel? card = (await CardSelectCmd.FromHand(

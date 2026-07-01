@@ -74,7 +74,7 @@ public sealed class SleightOfHand : starssCard
 
         if (check.DoomSuccess)
         {
-            await DiceHelper.OnDoomTriggered(choiceContext, this);
+            
 
             CardCmd.PreviewCardPileAdd(
                 await CardPileCmd.AddGeneratedCardToCombat(

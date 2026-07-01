@@ -64,7 +64,7 @@ public sealed class FoxFire : starssCard
         );
         if (check.FateSuccess)
         {
-            await DiceHelper.OnFateTriggered(choiceContext, this);
+           
 
             foreach (Creature enemy in CombatState!.HittableEnemies)
             {
@@ -81,8 +81,7 @@ public sealed class FoxFire : starssCard
 
         if (check.DoomSuccess)
         {
-            await DiceHelper.OnDoomTriggered(choiceContext,
-                this);
+            
             await PowerCmd.Apply<WeakPower>(
                 choiceContext,
                 Owner.Creature,

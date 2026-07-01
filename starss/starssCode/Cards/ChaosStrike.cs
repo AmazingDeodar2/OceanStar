@@ -46,16 +46,16 @@ public sealed class ChaosStrike : starssCard
 
         if (check.FateSuccess)
         {
-            await DiceHelper.OnFateTriggered(choiceContext,
-                this);
+            
+            
             damage += 3M;
             
         }
 
         if (check.DoomSuccess)
         {
-            await DiceHelper.OnDoomTriggered(choiceContext,
-                this);
+            
+             
             damage -= 3M;
         }
         

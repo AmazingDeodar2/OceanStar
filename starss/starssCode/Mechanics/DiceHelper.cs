@@ -100,9 +100,13 @@ public static class DiceHelper
         var rollCount = 1 + rewardDice;
 
         var rolls = new List<int>();
-        var rng = creature.Player.RunState.Rng.CombatTargets;
+        var rng = sourceCard?.Owner.RunState.Rng.Niche
+                  ?? creature.CombatState.RunState.Rng.Niche;
+
         for (var i = 0; i < rollCount; i++)
-            rolls.Add(rng.NextInt(sides) + 1);
+        {
+            rolls.Add((int)rng.NextFloat(sides) + 1);
+        }
 
         var modifiedRolls = rolls
             .Select(roll => StateCmd.ModifyDiceRoll(creature, sourceCard, roll))

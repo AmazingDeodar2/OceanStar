@@ -40,7 +40,7 @@ public sealed class LuckyFinish : starssCard
         var damage = GetLuckDamage(this);
 
         await DamageCmd.Attack(damage)
-            .FromCard(this)
+            .FromCard(this,cardPlay)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

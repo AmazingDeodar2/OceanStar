@@ -51,7 +51,7 @@ public sealed class AllIn : starssCard
             
 
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCard(this,cardPlay)
                 .TargetingAllOpponents(CombatState!)
                 .WithHitFx("vfx/vfx_attack_blunt")
                 .Execute(choiceContext);
@@ -61,7 +61,7 @@ public sealed class AllIn : starssCard
         {
             
             var hpLoss = Owner.Creature.CurrentHp - 1M;
-
+            
             if (hpLoss > 0)
             {
                 await CreatureCmd.Damage(
@@ -69,7 +69,8 @@ public sealed class AllIn : starssCard
                     Owner.Creature,
                     hpLoss,
                     ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
-                    this
+                    this,
+                    cardPlay
                 );
             }
         }

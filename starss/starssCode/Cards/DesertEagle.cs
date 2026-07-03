@@ -45,7 +45,7 @@ public sealed class DesertEagle : starssCard
             
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .WithHitCount(DynamicVars["Repeat"].IntValue)
-                .FromCard(this)
+                .FromCard(this,cardPlay)
                 .Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
@@ -60,7 +60,8 @@ public sealed class DesertEagle : starssCard
                 Owner.Creature,
                 DynamicVars.Damage.BaseValue,
                 ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
-                this
+                this,
+                cardPlay
             );
 
             await CardCmd.Exhaust(choiceContext, this);

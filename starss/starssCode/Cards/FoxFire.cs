@@ -50,7 +50,7 @@ public sealed class FoxFire : starssCard
         
         
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this,cardPlay)
             .WithHitCount(DynamicVars["Hits"].IntValue)
             .TargetingAllOpponents(CombatState!)
             .WithHitFx("vfx/vfx_attack_slash")

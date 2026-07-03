@@ -38,7 +38,7 @@ public sealed class LetUsBegin : starssCard
     {
         for (var i = 0; i < DynamicVars["Repeat"].IntValue; i++)
         {
-            await AttackEnemy(choiceContext, cardPlay.Target);
+            await AttackEnemy(choiceContext, cardPlay.Target,cardPlay);
         }
 
         var check = await DiceHelper.Check(
@@ -54,15 +54,15 @@ public sealed class LetUsBegin : starssCard
             
             for (var i = 0; i < DynamicVars["Bonus"].IntValue; i++)
             {
-                await AttackEnemy(choiceContext, cardPlay.Target);
+                await AttackEnemy(choiceContext, cardPlay.Target,cardPlay);
             }
         }
     }
 
-    private async Task AttackEnemy(PlayerChoiceContext choiceContext, Creature target)
+    private async Task AttackEnemy(PlayerChoiceContext choiceContext, Creature target, CardPlay cardPlay)
     {
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this,cardPlay)
             .Targeting(target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

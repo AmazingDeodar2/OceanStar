@@ -60,7 +60,7 @@ public sealed class ChaosStrike : starssCard
         }
         
         await DamageCmd.Attack(damage)
-            .FromCard(this)
+            .FromCard(this,cardPlay)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

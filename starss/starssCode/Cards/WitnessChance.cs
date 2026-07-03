@@ -60,7 +60,7 @@ public sealed class WitnessChance : starssCard
         // RollD3Result.Rolls 就是该骰子全部投出的数组
 
         var attackCmd = await DamageCmd.Attack((decimal)totalDmg)
-            .FromCard(this)
+            .FromCard(this,cardPlay)
             .Targeting(cardPlay.Target!)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

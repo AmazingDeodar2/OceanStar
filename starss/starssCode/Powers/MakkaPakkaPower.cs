@@ -1,3 +1,4 @@
+using System.Linq;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -27,14 +28,17 @@ public sealed class MakkaPakkaPower : starssPower
             return;
 
         Flash();
-
-        await CreatureCmd.Damage(
-            choiceContext,
-            CombatState.HittableEnemies,
-            Amount,
-            ValueProp.Unpowered,
-            null,
-            null
-        );
+        
+        foreach (var enemy in CombatState.HittableEnemies.ToList())
+        {
+            await CreatureCmd.Damage(
+                choiceContext,
+                enemy,
+                Amount,
+                ValueProp.Unpowered,
+                null,
+                null
+            );
+        }
     }
 }

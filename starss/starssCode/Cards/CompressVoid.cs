@@ -52,7 +52,7 @@ public sealed class CompressVoid : starssCard
         decimal damage = DynamicVars.Damage.BaseValue * count;
 
         await DamageCmd.Attack(damage)
-            .FromCard(this)
+            .FromCard(this,cardPlay)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
             .Execute(choiceContext);

@@ -59,7 +59,8 @@ public sealed class FirstAid : starssCard
                 Owner.Creature,
                 DynamicVars.Heal.BaseValue,
                 ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
-                this
+                this,
+                cardPlay
             );
             
             

@@ -36,12 +36,12 @@ public sealed class AbyssCombo : starssCard
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this,cardPlay)
             .Targeting(cardPlay.Target)
             .WithHitCount(DynamicVars["Hits"].IntValue)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-
+        
         CardModel voidCard = Owner.Creature.CombatState.CreateCard<VoidCard>(Owner);
 
         await CardPileCmd.AddGeneratedCardToCombat(

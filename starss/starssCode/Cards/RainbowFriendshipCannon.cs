@@ -33,7 +33,7 @@ public sealed class RainbowFriendshipCannon : starssCard
         int hitCount = 1 + enteredStates;
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this,cardPlay)
             .Targeting(cardPlay.Target)
             .WithHitCount(hitCount)
             .WithHitFx("vfx/vfx_attack_slash")

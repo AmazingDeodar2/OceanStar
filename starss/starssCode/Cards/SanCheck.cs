@@ -45,7 +45,8 @@ public sealed class SanCheck : starssCard
             Owner.Creature,
             DynamicVars.HpLoss.BaseValue,
             ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
-            this
+            this,
+            cardPlay
         );
 
         var check = await DiceHelper.Check(

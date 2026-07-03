@@ -43,7 +43,7 @@ public sealed class SpinningStrike : starssCard
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCard(this,cardPlay)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
@@ -60,7 +60,7 @@ public sealed class SpinningStrike : starssCard
         {
             
             await DamageCmd.Attack(DynamicVars["BonusDamage"].BaseValue)
-                .FromCard(this)
+                .FromCard(this,cardPlay)
                 .Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);

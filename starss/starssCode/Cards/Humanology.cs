@@ -76,7 +76,7 @@ public sealed class Humanology : starssCard
         // 总伤害 = 基础伤害 + 本卡本局累计伤害加成
         decimal totalAttackDmg = DynamicVars.Damage.BaseValue + TotalDamageBonus;
         await DamageCmd.Attack(totalAttackDmg)
-            .FromCard(self)
+            .FromCard(self,cardPlay)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

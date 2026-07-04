@@ -18,7 +18,7 @@ public sealed class Library : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar(4),
+        new CardsVar(2),
         new FateVar(60M)
     ];
 
@@ -31,16 +31,20 @@ public sealed class Library : starssCard
             choiceContext: choiceContext,
             sourceCard: this
         );
-
+        await CardPileCmd.Draw(
+            choiceContext,
+            DynamicVars.Cards.BaseValue,
+            Owner
+        );
         if (check.FateSuccess)
         {
-            
-
             await CardPileCmd.Draw(
                 choiceContext,
-                DynamicVars.Cards.BaseValue,
+                2,
                 Owner
             );
+
+            
         }
     }
 

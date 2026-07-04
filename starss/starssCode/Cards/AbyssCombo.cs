@@ -27,8 +27,8 @@ public sealed class AbyssCombo : starssCard
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8M, ValueProp.Move),
-        new DynamicVar("Hits", 3M)
+        new DamageVar(20M, ValueProp.Move),
+        
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -37,8 +37,7 @@ public sealed class AbyssCombo : starssCard
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this,cardPlay)
-            .Targeting(cardPlay.Target)
-            .WithHitCount(DynamicVars["Hits"].IntValue)
+            .Targeting(cardPlay.Target!)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
         
@@ -55,6 +54,6 @@ public sealed class AbyssCombo : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Hits"].UpgradeValueBy(1M);
+        DynamicVars["Hits"].UpgradeValueBy(5M);
     }
 }

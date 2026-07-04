@@ -147,7 +147,7 @@ public static class DiceHelper
 
     public static int ApplyDoom(int baseDoom, Creature creature)
     {
-        return baseDoom;
+        return baseDoom + GetLuck(creature)/2;
     }
 
     public static async Task ConsumeNextCheckLuck(Creature creature)

@@ -22,7 +22,7 @@ public sealed class DesertEagle : starssCard
     // private bool exhaustThisPlay;
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6M, ValueProp.Move),
+        new DamageVar(8M, ValueProp.Move),
         new DynamicVar("Repeat", 3M),
         new FateVar(80M),
         new DoomVar(81M)

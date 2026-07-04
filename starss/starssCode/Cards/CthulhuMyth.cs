@@ -56,7 +56,6 @@ public sealed class CthulhuMyth : starssCard
     /// 升级示例：减少扣除上限代价（可按需自行修改）
     protected override void OnUpgrade()
     {
-        // 升级后只扣12点生命上限
-        DynamicVars.MaxHp.UpgradeValueBy(-3M);
+        AddKeyword(CardKeyword.Ethereal);
     }
 }

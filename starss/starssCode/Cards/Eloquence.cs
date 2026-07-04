@@ -24,7 +24,7 @@ public sealed class Eloquence : starssCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(12M, ValueProp.Unpowered),
-        new DoomVar(60M)
+        new DoomVar(70M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

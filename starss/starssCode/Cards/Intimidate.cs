@@ -24,7 +24,7 @@ public sealed class Intimidate : starssCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(10M, ValueProp.Move),
-        new DoomVar(60M)
+        new DoomVar(70M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

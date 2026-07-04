@@ -38,7 +38,7 @@ public sealed class Satchel : starssCard
         var check = await DiceHelper.Check(
             Owner.Creature,
             fate: (int)DynamicVars["Fate"].BaseValue,
-            doom: 0,
+            doom: 101,
             choiceContext: choiceContext,
             sourceCard: this
         );

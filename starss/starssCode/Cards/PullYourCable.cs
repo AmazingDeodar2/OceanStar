@@ -23,7 +23,8 @@ public sealed class PullYourCable : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar(7)
+        new CardsVar(7),
+        new DoomVar(51M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -58,8 +59,8 @@ public sealed class PullYourCable : starssCard
 
         var result = await DiceHelper.Check(
             Owner.Creature,
-            fate: 0,
-            doom: 51,
+            fate: 101,
+            doom: DynamicVars["Doom"].IntValue,
             choiceContext: choiceContext,
             sourceCard: this
         );

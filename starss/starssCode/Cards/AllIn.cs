@@ -33,7 +33,7 @@ public sealed class AllIn : starssCard
     [
         new DamageVar(100M, ValueProp.Move),
         new FateVar(1M),
-        new DoomVar(100M)
+        new DoomVar(91M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

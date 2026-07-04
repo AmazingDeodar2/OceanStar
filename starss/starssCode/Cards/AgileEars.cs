@@ -12,44 +12,40 @@ namespace starss.starssCode.Cards;
 public sealed class AgileEars : starssCard
 {
     public AgileEars()
-        : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+        : base(1, CardType.Attack, CardRarity.Common, TargetType.Self)
     {
     }
 
-    public override bool GainsBlock => true;
-
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
+     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(7M, ValueProp.Unpowered),
-        new PowerVar<NextCheckLuckPower>("Power", 6M)
+        new DamageVar(10M, ValueProp.Move),
+        new CardsVar(1)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.TriggerAnim(
-            Owner.Creature,
-            "Cast",
-            Owner.Character.CastAnimDelay
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(this, cardPlay)
+            .Targeting(cardPlay.Target)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
+
+        var clovers = CloverLeaf.Create(
+            Owner,
+            (int)DynamicVars.Cards.BaseValue,
+            CombatState!
         );
 
-        await CreatureCmd.GainBlock(
-            Owner.Creature,
-            DynamicVars.Block,
-            cardPlay
-        );
-
-        await PowerCmd.Apply<NextCheckLuckPower>(
-            choiceContext,
-            Owner.Creature,
-            DynamicVars["Power"].BaseValue,
-            Owner.Creature,
-            this
+        await CardPileCmd.AddGeneratedCardsToCombat(
+            clovers,
+            PileType.Draw,
+            Owner
         );
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(1M);
-        DynamicVars["Power"].UpgradeValueBy(6M);
+        DynamicVars.Damage.UpgradeValueBy(2M);
+        DynamicVars.Cards.UpgradeValueBy(1M);
     }
 }

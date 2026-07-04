@@ -21,7 +21,7 @@ public sealed class Please : starssCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(2),
-        new DoomVar(60M)
+        new DoomVar(70M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

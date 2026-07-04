@@ -69,7 +69,7 @@ public sealed class LuckyFinish : starssCard
     private static decimal GetLuckDamage(CardModel card)
     {
         var luck = card.Owner.Creature.GetPower<LuckyPower>()?.Amount ?? 0M;
-        return Math.Floor(luck / 2M);
+        return Math.Floor(luck / 1M);
     }
 
     protected override void OnUpgrade()

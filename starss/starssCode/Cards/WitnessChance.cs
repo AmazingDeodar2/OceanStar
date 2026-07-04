@@ -19,7 +19,7 @@ namespace starss.starssCode.Cards;
 public sealed class WitnessChance : starssCard
 {
     public WitnessChance()
-        : base(3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
+        : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
     }
 
@@ -32,6 +32,7 @@ public sealed class WitnessChance : starssCard
     public DiceRollResult RollD6Result { get; private set; }
     public DiceRollResult RollD10Result { get; private set; }
     public DiceRollResult RollD20Result { get; private set; }
+    public DiceRollResult ExtraRollD20Result { get; private set; }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -53,8 +54,18 @@ public sealed class WitnessChance : starssCard
         int valD6 = RollD6Result.Value;
         int valD10 = RollD10Result.Value;
         int valD20 = RollD20Result.Value;
-
-        int totalDmg = valD3 + valD6 + valD10 + valD20;
+        int totalDmg =
+            valD3 +
+            valD6 +
+            valD10 +
+            valD20;
+        if (IsUpgraded)
+        {
+            ExtraRollD20Result = DiceHelper.RollD20(user, this);
+            await DiceUi.ShowRoll(ExtraRollD20Result);
+            totalDmg += ExtraRollD20Result.Value;
+        }
+        
 
         // 如果你需要后续弹窗打印每一颗原始投点列表：
         // RollD3Result.Rolls 就是该骰子全部投出的数组
@@ -83,6 +94,6 @@ public sealed class WitnessChance : starssCard
 
     protected override void OnUpgrade()
     {
-        this.EnergyCost.UpgradeBy(-1);
+        
     }
 }

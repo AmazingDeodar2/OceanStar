@@ -21,30 +21,36 @@ public sealed class Dodge : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(30M, ValueProp.Unpowered),
+        new BlockVar(20M, ValueProp.Move),
+        new BlockVar("BonusBlock", 10M, ValueProp.Move),
         new FateVar(60M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var check = await DiceHelper.Check(
-            Owner.Creature,
-            fate: DynamicVars["Fate"].IntValue,
-            doom: 101,
-            choiceContext: choiceContext,
-            sourceCard: this
-        );
-
-        if (!check.FateSuccess)
-            return;
-
-       
-
+        // 初始获得格挡
         await CreatureCmd.GainBlock(
             Owner.Creature,
             DynamicVars.Block,
             cardPlay
         );
+
+        // 命运判定
+        var check = await DiceHelper.Check(
+            Owner.Creature,
+            fate: DynamicVars["Fate"].IntValue,
+            doom: 101
+        );
+
+        // 成功则固定再获得10点格挡
+        if (check.FateSuccess)
+        {
+            await CreatureCmd.GainBlock(
+                Owner.Creature,
+                (BlockVar)DynamicVars["BonusBlock"],
+                cardPlay
+            );
+        }
     }
 
     protected override void OnUpgrade()

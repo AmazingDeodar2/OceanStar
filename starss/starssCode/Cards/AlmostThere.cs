@@ -15,51 +15,57 @@ namespace starss.starssCode.Cards;
 public sealed class AlmostThere : starssCard
 {
     public AlmostThere()
-        : base(2, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
+        : base(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
     }
 
-    public override bool GainsBlock => true;
-
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(14M, ValueProp.Unpowered),
-        new FateVar(50M),
-        new DynamicVar("Weak", 2M)
+        new DamageVar(12M, ValueProp.Move),
+        new CardsVar(4),
+        new FateVar(50M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target);
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(this, cardPlay)
+            .Targeting(cardPlay.Target)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
 
-        await CreatureCmd.GainBlock(
-            Owner.Creature,
-            DynamicVars.Block,
-            cardPlay
+        // 加入四叶草
+        var clovers = CloverLeaf.Create(
+            Owner,
+            (int)DynamicVars.Cards.BaseValue,
+            CombatState!
         );
 
+        await CardPileCmd.AddGeneratedCardsToCombat(
+            clovers,
+            PileType.Draw,
+            Owner
+        );
+
+        // 命运检定
         var check = await DiceHelper.Check(
             Owner.Creature,
-            fate: (int)DynamicVars["Fate"].BaseValue,
-            doom: 0,
-            choiceContext: choiceContext,
-            sourceCard: this
+            fate: DynamicVars["Fate"].IntValue,
+            doom: 101
         );
 
+        // 命运成功，追加一次伤害
         if (check.FateSuccess)
         {
-            
-
-            await PowerCmd.Apply<WeakPower>(
-                choiceContext,
-                cardPlay.Target,
-                DynamicVars["Weak"].BaseValue,
-                Owner.Creature,
-                this
-            );
+            await DamageCmd.Attack(8)
+                .FromCard(this, cardPlay)
+                .Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_attack_slash")
+                .Execute(choiceContext);
         }
     }
 
+   
     protected override void OnUpgrade()
     {
         DynamicVars["Fate"].UpgradeValueBy(20M);

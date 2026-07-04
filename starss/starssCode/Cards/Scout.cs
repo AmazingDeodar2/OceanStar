@@ -38,19 +38,15 @@ public sealed class Scout : starssCard
             choiceContext: choiceContext,
             sourceCard: this
         );
-
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(this,cardPlay)
+            .Targeting(cardPlay.Target)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
         
 
         if (check.FateSuccess)
         {
-            
-            
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this,cardPlay)
-                .Targeting(cardPlay.Target)
-                .WithHitFx("vfx/vfx_attack_slash")
-                .Execute(choiceContext);
-            
             await PowerCmd.Apply<VulnerablePower>(
                 choiceContext,
                 cardPlay.Target,

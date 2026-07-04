@@ -28,26 +28,13 @@ public sealed class AlmostThere : starssCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await DoEffect(choiceContext, cardPlay);
-
-        var check = await DiceHelper.Check(
-            Owner.Creature,
-            fate: DynamicVars["Fate"].IntValue,
-            doom: 101
-        );
-
-        if (check.FateSuccess)
-            await DoEffect(choiceContext, cardPlay);
-    }
-
-    private async Task DoEffect(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-    {
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
+        // 加入四叶草
         var clovers = CloverLeaf.Create(
             Owner,
             (int)DynamicVars.Cards.BaseValue,
@@ -59,8 +46,26 @@ public sealed class AlmostThere : starssCard
             PileType.Draw,
             Owner
         );
+
+        // 命运检定
+        var check = await DiceHelper.Check(
+            Owner.Creature,
+            fate: DynamicVars["Fate"].IntValue,
+            doom: 101
+        );
+
+        // 命运成功，追加一次伤害
+        if (check.FateSuccess)
+        {
+            await DamageCmd.Attack(8)
+                .FromCard(this, cardPlay)
+                .Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_attack_slash")
+                .Execute(choiceContext);
+        }
     }
 
+   
     protected override void OnUpgrade()
     {
         DynamicVars["Fate"].UpgradeValueBy(20M);

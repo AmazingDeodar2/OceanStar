@@ -23,7 +23,7 @@
             <Private>false</Private>
         </Reference>
         <Reference Include="sts2">
-            <HintPath>E:\SteamLibrary\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64/sts2.dll</HintPath>
+            <HintPath>E:\SteamLibrary\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64\sts2.dll</HintPath>
             <Private>true</Private>
         </Reference>
     </ItemGroup>

@@ -12,7 +12,7 @@ namespace starss.starssCode.Cards;
 public sealed class AgileEars : starssCard
 {
     public AgileEars()
-        : base(1, CardType.Attack, CardRarity.Common, TargetType.Self)
+        : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
     }
 

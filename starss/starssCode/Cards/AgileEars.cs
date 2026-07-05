@@ -41,6 +41,7 @@ public sealed class AgileEars : starssCard
             PileType.Draw,
             Owner
         );
+        PileType.Draw.GetPile(Owner).InvokeCardAddFinished();
     }
 
     protected override void OnUpgrade()

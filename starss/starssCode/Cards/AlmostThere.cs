@@ -46,6 +46,7 @@ public sealed class AlmostThere : starssCard
             PileType.Draw,
             Owner
         );
+        PileType.Draw.GetPile(Owner).InvokeCardAddFinished();
 
         // 命运检定
         var check = await DiceHelper.Check(

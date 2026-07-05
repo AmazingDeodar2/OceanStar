@@ -18,6 +18,7 @@ namespace starss.starssCode.Relics;
 [Pool(typeof(starssRelicPool))]
 public abstract class starssRelic : CustomRelicModel
 {
+    
     public override string PackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".RelicImagePath();
 
     protected override string PackedIconOutlinePath =>

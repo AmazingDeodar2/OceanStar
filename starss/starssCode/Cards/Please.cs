@@ -5,9 +5,10 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Cards;
 using starss.starssCode.Mechanics;
-
+using VoidCard = MegaCrit.Sts2.Core.Models.Cards.Void;
 namespace starss.starssCode.Cards;
 
 
@@ -23,7 +24,10 @@ public sealed class Please : starssCard
         new CardsVar(2),
         new DoomVar(70M)
     ];
-
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromCard<VoidCard>()
+    ];
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CardPileCmd.Draw(
@@ -43,13 +47,14 @@ public sealed class Please : starssCard
         if (check.DoomSuccess)
         {
             
-            CardModel callCard = Owner.Creature.CombatState.CreateCard<Beckon>(Owner);
-
-            await CardPileCmd.AddGeneratedCardToCombat(
-                callCard,
-                PileType.Hand,
-                Owner
+            CardCmd.PreviewCardPileAdd(
+                await CardPileCmd.AddGeneratedCardToCombat(
+                    CombatState!.CreateCard<VoidCard>(Owner),
+                    PileType.Discard,
+                    Owner
+                )
             );
+            PileType.Discard.GetPile(Owner).InvokeCardAddFinished();
         }
     }
 

@@ -50,6 +50,9 @@ public sealed class GravityLens : starssCard
                 (c.Type is CardType.Status or CardType.Curse)
             );
     }
-
+    protected override void OnUpgrade()
+    {
+        
+    }
     
 }

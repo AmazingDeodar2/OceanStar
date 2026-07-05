@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Models.Cards;
 using starss.starssCode.Mechanics;
-
+using VoidCard = MegaCrit.Sts2.Core.Models.Cards.Void;
 namespace starss.starssCode.Cards;
 
 
@@ -24,10 +24,11 @@ public sealed class Persuade : starssCard
         new EnergyVar(3),
         new DoomVar(70M)
     ];
-
+    
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        EnergyHoverTip
+        EnergyHoverTip,
+        HoverTipFactory.FromCard<VoidCard>()
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -48,13 +49,14 @@ public sealed class Persuade : starssCard
         if (check.DoomSuccess)
         {
             
-            CardModel callCard = Owner.Creature.CombatState.CreateCard<Beckon>(Owner);
-
-            await CardPileCmd.AddGeneratedCardToCombat(
-                callCard,
-                PileType.Hand,
-                Owner
+            CardCmd.PreviewCardPileAdd(
+                await CardPileCmd.AddGeneratedCardToCombat(
+                    CombatState!.CreateCard<VoidCard>(Owner),
+                    PileType.Discard,
+                    Owner
+                )
             );
+            PileType.Discard.GetPile(Owner).InvokeCardAddFinished();
         }
     }
 

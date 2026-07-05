@@ -7,10 +7,11 @@ using MegaCrit.Sts2.Core.ValueProps;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using starss.starssCode.Mechanics;
-
+using VoidCard = MegaCrit.Sts2.Core.Models.Cards.Void;
 namespace starss.starssCode.Cards;
 
 
@@ -26,7 +27,10 @@ public sealed class Intimidate : starssCard
         new DamageVar(10M, ValueProp.Move),
         new DoomVar(70M)
     ];
-
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromCard<VoidCard>()
+    ];
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
@@ -48,13 +52,14 @@ public sealed class Intimidate : starssCard
         if (check.DoomSuccess)
         {
             
-            CardModel callCard = Owner.Creature.CombatState.CreateCard<Beckon>(Owner);
-
-            await CardPileCmd.AddGeneratedCardToCombat(
-                callCard,
-                PileType.Hand,
-                Owner
+            CardCmd.PreviewCardPileAdd(
+                await CardPileCmd.AddGeneratedCardToCombat(
+                    CombatState!.CreateCard<VoidCard>(Owner),
+                    PileType.Discard,
+                    Owner
+                )
             );
+            PileType.Discard.GetPile(Owner).InvokeCardAddFinished();
         }
     }
 

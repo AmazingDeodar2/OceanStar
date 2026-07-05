@@ -180,6 +180,11 @@
   "STARSS-FLOWER_FIELD.title": "花田",
   "STARSS-FLOWER_FIELD.description": "获得{Block:diff()}点格挡，将2张{IfUpgraded:show:四叶草叶片+|四叶草叶片}加入手牌。",
   "STARSS-FLOWER_SEA.title": "花海",
-  "STARSS-FLOWER_SEA.description": "将2X张{IfUpgraded:show:四叶草叶片+|四叶草叶片}放入抽牌堆，获得4X点格挡。"
-
+  "STARSS-FLOWER_SEA.description": "将2X张{IfUpgraded:show:四叶草叶片+|四叶草叶片}放入抽牌堆，获得4X点格挡。",
+  "STARSS-ONE_MORE_TIME.title": "再来一次！",
+  "STARSS-ONE_MORE_TIME.description": "这个回合你打出的下{Cards:diff()}张牌会被额外打出一次，厄运{Doom:diff()}，将一张呼唤加入弃牌堆。",
+  "STARSS-FATE_STRIKE.title": "命运打击",
+  "STARSS-FATE_STRIKE.description": "造成{Damage:diff()}点伤害，每次命运触发时将这张牌放入你的手牌。",
+  "STARSS-SAPLING.title": "幼苗",
+  "STARSS-SAPLING.description": "将1张四叶草叶片放入抽牌堆，让所有“幼苗”牌加入的四叶草叶片数量翻倍。"
 }

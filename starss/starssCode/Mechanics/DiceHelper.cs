@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using starss.starssCode.Cards;
 using starss.starssCode.Relics;
 
 namespace starss.starssCode.Mechanics;
@@ -181,6 +182,11 @@ public static class DiceHelper
             choiceContext,
             sourceCard.Owner
         );
+        
+        await TriggerFateCards(
+            choiceContext,
+            sourceCard
+        );
     }
 
     public static async Task OnDoomTriggered(
@@ -243,6 +249,17 @@ public static class DiceHelper
                 ValueProp.Unpowered,
                 null
             );
+        }
+    }
+    
+    private static async Task TriggerFateCards(
+        PlayerChoiceContext choiceContext,
+        CardModel sourceCard)
+    {
+        foreach (var card in sourceCard.Owner.PlayerCombatState.AllCards)
+        {
+            if (card is FateStrike fateStrike)
+                await fateStrike.OnFateTriggered(choiceContext);
         }
     }
 }

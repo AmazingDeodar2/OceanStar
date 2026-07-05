@@ -31,7 +31,6 @@ public sealed class PenguinActivated : starssCard
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        EnergyHoverTip,
         HoverTipFactory.FromCard<Beckon>()
     ];
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -57,11 +56,12 @@ public sealed class PenguinActivated : starssCard
             PileType.Discard,
             Owner
         );
+        PileType.Discard.GetPile(Owner).InvokeCardAddFinished();
         
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(7M);
+        DynamicVars.Block.UpgradeValueBy(5M);
     }
 }

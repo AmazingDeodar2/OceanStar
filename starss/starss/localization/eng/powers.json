@@ -60,6 +60,13 @@
   "STARSS-ORANGE_DOG_SPACE_POWER.description": "回合结束时保留格挡。",
   "STARSS-ORANGE_DOG_SPACE_POWER.smartDescription": "回合结束时保留格挡。",
   "STARSS-WHITE_FORM_POWER.title": "白色形态",
-  "STARSS-WHITE_FORM_POWER.description": "打出牌时抽牌",
-  "STARSS-WHITE_FORM_POWER.smartDescription": "打出牌时抽牌"
+  "STARSS-WHITE_FORM_POWER.description": "打出牌时抽牌。",
+  "STARSS-WHITE_FORM_POWER.smartDescription": "打出牌时抽牌。",
+  "STARSS-ONE_MORE_TIME_POWER.title": "再来一次！",
+  "STARSS-ONE_MORE_TIME_POWER.description": "下张牌再打出一次。",
+  "STARSS-ONE_MORE_TIME_POWER.smartDescription": "下张牌再打出一次。",
+  "STARSS-SAPLING_POWER.title": "幼苗",
+  "STARSS-SAPLING_POWER.description": "生成四叶草叶片数量。",
+  "STARSS-SAPLING_POWER.smartDescription": "生成四叶草叶片数量。"
+
  }

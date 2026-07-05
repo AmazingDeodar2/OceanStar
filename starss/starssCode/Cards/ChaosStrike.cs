@@ -26,7 +26,7 @@ public sealed class ChaosStrike : starssCard
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(9M, ValueProp.Move),
+        new DamageVar(11M, ValueProp.Move),
         new FateVar(50M),
         new DoomVar(51M)
     ];

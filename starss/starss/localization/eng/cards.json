@@ -140,7 +140,8 @@
   "STARSS-INTIMIDATE.description": "造成{Damage:diff()}点伤害，厄运{Doom:diff()}，将一张虚空加入你的弃牌堆。",
   "STARSS-PLEASE.title": "取悦",
   "STARSS-PLEASE.description": "抽{Cards:diff()}张牌，厄运{Doom:diff()}，将一张虚空加入你的弃牌堆。",
-
+  "STARSS-ABYSS_COMBO.title": "深渊连击",
+  "STARSS-ABYSS_COMBO.description": "造成{Damage:diff()}点伤害{Hits:diff()}次，将一张虚空加入你的弃牌堆。",
   "STARSS-EVER_CHANGING.upgradeDescription": "随机进入X+1个不同的状态。",
   "STARSS-BRAWL.title": "斗殴",
   "STARSS-BRAWL.description": "造成{Damage:diff()}点伤害，命运{Fate:diff()}，抽一张牌。",
@@ -179,6 +180,6 @@
   "STARSS-FLOWER_FIELD.title": "花田",
   "STARSS-FLOWER_FIELD.description": "获得{Block:diff()}点格挡，将2张{IfUpgraded:show:四叶草叶片+|四叶草叶片}加入手牌。",
   "STARSS-FLOWER_SEA.title": "花海",
-  "STARSS-FLOWER_SEA.description": "将2x张{IfUpgraded:show:四叶草叶片+|四叶草叶片}放入抽牌堆，获得4x点格挡。"
+  "STARSS-FLOWER_SEA.description": "将2X张{IfUpgraded:show:四叶草叶片+|四叶草叶片}放入抽牌堆，获得4X点格挡。"
 
 }

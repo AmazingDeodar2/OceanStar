@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using starss.starssCode.Mechanics;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace starss.starssCode.Cards;
@@ -18,7 +19,10 @@ public sealed class AreYouSure : starssCard
     }
 
     public override bool GainsBlock => true;
-
+    // protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    // [
+    //     StarssHoverTips.FromKey("FATE")
+    // ];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(8M, ValueProp.Move),

@@ -42,6 +42,6 @@ public sealed class BurnLuck : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Cards.UpgradeValueBy(1M);
+        DynamicVars["Luck"].UpgradeValueBy(-3M);
     }
 }

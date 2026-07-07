@@ -6,6 +6,8 @@ using MegaCrit.Sts2.Core.ValueProps;
 using starss.starssCode.Mechanics;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.CardSelection;
+using MegaCrit.Sts2.Core.Models;
 
 namespace starss.starssCode.Cards;
 
@@ -21,8 +23,7 @@ public sealed class Dodge : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(20M, ValueProp.Move),
-        new BlockVar("BonusBlock", 10M, ValueProp.Move),
+        new BlockVar(10M, ValueProp.Move),
         new FateVar(60M)
     ];
 
@@ -39,22 +40,42 @@ public sealed class Dodge : starssCard
         var check = await DiceHelper.Check(
             Owner.Creature,
             fate: DynamicVars["Fate"].IntValue,
-            doom: 101
+            doom: 101,
+            choiceContext: choiceContext,
+            sourceCard: this
         );
 
         // 成功则固定再获得10点格挡
-        if (check.FateSuccess)
-        {
-            await CreatureCmd.GainBlock(
-                Owner.Creature,
-                (BlockVar)DynamicVars["BonusBlock"],
-                cardPlay
-            );
-        }
+        if (!check.FateSuccess)
+            return;
+
+        
+
+        CardSelectorPrefs prefs = new(
+            SelectionScreenPrompt,
+            1
+        );
+
+        CardModel card =
+            (await CardSelectCmd.FromCombatPile(
+                choiceContext,
+                PileType.Discard.GetPile(Owner),
+                Owner,
+                prefs))
+            .FirstOrDefault();
+
+        if (card == null)
+            return;
+
+        await CardPileCmd.Add(
+            card,
+            PileType.Draw,
+            CardPilePosition.Top
+        );
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(10M);
+        DynamicVars.Block.UpgradeValueBy(4M);
     }
 }

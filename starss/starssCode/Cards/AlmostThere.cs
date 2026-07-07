@@ -52,7 +52,9 @@ public sealed class AlmostThere : starssCard
         var check = await DiceHelper.Check(
             Owner.Creature,
             fate: DynamicVars["Fate"].IntValue,
-            doom: 101
+            doom: 101,
+            choiceContext: choiceContext,
+            sourceCard: this
         );
 
         // 命运成功，追加一次伤害

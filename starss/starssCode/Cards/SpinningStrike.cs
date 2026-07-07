@@ -50,7 +50,7 @@ public sealed class SpinningStrike : starssCard
 
         var check = await DiceHelper.Check(
             Owner.Creature,
-            fate: 50,
+            fate: DynamicVars["Fate"].IntValue,
             doom: 101,
             choiceContext: choiceContext,
             sourceCard: this

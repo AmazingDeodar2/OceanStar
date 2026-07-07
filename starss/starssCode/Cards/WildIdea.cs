@@ -41,8 +41,8 @@ public sealed class WildIdea : starssCard
 
         var check = await DiceHelper.Check(
             Owner.Creature,
-            fate: 50,
-            doom: 51,
+            fate: DynamicVars["Fate"].IntValue,
+            doom: DynamicVars["Doom"].IntValue,
             choiceContext: choiceContext,
             sourceCard: this
         );

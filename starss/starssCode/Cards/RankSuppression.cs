@@ -23,7 +23,8 @@ public sealed class RankSuppression : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("StrengthLoss", 8M)
+        new DynamicVar("StrengthLoss", 8M),
+        new PowerVar<WeakPower>(2M)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -45,6 +46,13 @@ public sealed class RankSuppression : starssCard
                 choiceContext,
                 enemy,
                 DynamicVars["StrengthLoss"].BaseValue,
+                Owner.Creature,
+                this
+            );
+            await PowerCmd.Apply<WeakPower>(
+                choiceContext,
+                enemy,
+                DynamicVars.Weak.BaseValue,
                 Owner.Creature,
                 this
             );

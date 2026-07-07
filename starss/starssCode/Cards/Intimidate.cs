@@ -24,8 +24,8 @@ public sealed class Intimidate : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(10M, ValueProp.Move),
-        new DoomVar(70M)
+        new DamageVar(17M, ValueProp.Move),
+        new DoomVar(51M)
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [

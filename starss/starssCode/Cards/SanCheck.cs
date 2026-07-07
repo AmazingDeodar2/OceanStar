@@ -27,9 +27,9 @@ public sealed class SanCheck : starssCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(3),
-        new HpLossVar(1M),
+        new HpLossVar(3M),
         new FateVar(50M),
-        new DoomVar(50M)
+        new DoomVar(51M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

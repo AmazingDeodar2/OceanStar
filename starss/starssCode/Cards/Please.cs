@@ -22,7 +22,7 @@ public sealed class Please : starssCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(2),
-        new DoomVar(70M)
+        new DoomVar(51M)
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [

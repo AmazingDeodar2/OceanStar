@@ -34,8 +34,8 @@ public sealed class DesertEagle : starssCard
 
         var check = await DiceHelper.Check(
             Owner.Creature,
-            fate: 80,
-            doom: 81,
+            fate: DynamicVars["Fate"].IntValue,
+            doom: DynamicVars["Doom"].IntValue,
             choiceContext: choiceContext,
             sourceCard: this
         );

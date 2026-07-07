@@ -21,7 +21,7 @@ public sealed class RainbowFriendshipCannon : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(10M, ValueProp.Move)
+        new DamageVar(7M, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

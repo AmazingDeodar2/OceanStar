@@ -24,8 +24,8 @@ public sealed class Eloquence : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(12M, ValueProp.Unpowered),
-        new DoomVar(70M)
+        new BlockVar(15M, ValueProp.Unpowered),
+        new DoomVar(51M)
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
@@ -63,6 +63,6 @@ public sealed class Eloquence : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(3M);
+        DynamicVars.Block.UpgradeValueBy(4M);
     }
 }

@@ -22,7 +22,7 @@ public sealed class MakkaPakka : starssCard
         {
             return new DynamicVar[]
             {
-                new DamageVar("Damage", 2M, ValueProp.Unpowered)
+                new DamageVar("Damage", 6M, ValueProp.Unpowered)
             };
         }
     }
@@ -48,6 +48,6 @@ public sealed class MakkaPakka : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Damage"].UpgradeValueBy(1M);
+        DynamicVars["Damage"].UpgradeValueBy(2M);
     }
 }

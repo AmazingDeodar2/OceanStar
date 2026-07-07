@@ -5,15 +5,18 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using BaseLib.Abstracts;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using starss.starssCode.Powers;
 
 namespace starss.starssCode.Cards;
 
-
-public sealed class CloverLeaf : starssCard
+[Pool(typeof(ColorlessCardPool))]
+public sealed class CloverLeaf : CustomCardModel
 {
     public CloverLeaf()
         : base(0, CardType.Skill, CardRarity.Token, TargetType.Self)

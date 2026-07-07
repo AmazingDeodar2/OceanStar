@@ -24,7 +24,7 @@ public class Starss : PlaceholderCharacterModel
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
-        ModelDb.Card<Humanology>(),
+        ModelDb.Card<StarStrike>(),
         ModelDb.Card<StarStrike>(),
         ModelDb.Card<StarStrike>(),
         ModelDb.Card<StarStrike>(),

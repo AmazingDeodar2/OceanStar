@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using starss.starssCode.Mechanics;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace starss.starssCode.Cards;
 
@@ -21,7 +22,8 @@ public sealed class StopActing : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(6M, ValueProp.Unpowered)
+        new BlockVar(6M, ValueProp.Unpowered),
+        new EnergyVar(1)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -41,6 +43,13 @@ public sealed class StopActing : starssCard
             Owner.Creature,
             DynamicVars.Block,
             cardPlay
+        );
+        await PowerCmd.Apply<EnergyNextTurnPower>(
+            choiceContext,
+            Owner.Creature,
+            DynamicVars.Energy.BaseValue,
+            Owner.Creature,
+            this
         );
     }
 

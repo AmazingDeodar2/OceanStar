@@ -29,7 +29,7 @@ public sealed class QiqiPlaneState : StateModel
     public override async Task OnEnter(PlayerChoiceContext choiceContext)
     {
         int enterTimes = GetEnterCount(Owner);
-        decimal blockAmount = 7M + enterTimes * 2M;
+        decimal blockAmount = 8M + enterTimes * 3M;
         await CreatureCmd.GainBlock(
             Owner.Creature,
             blockAmount,
@@ -42,7 +42,7 @@ public sealed class QiqiPlaneState : StateModel
     public override async Task OnExit(PlayerChoiceContext choiceContext)
     {
         int enterTimes = GetEnterCount(Owner);
-        decimal damageAmount = 7M + enterTimes * 2M;
+        decimal damageAmount = 8M + enterTimes * 3M;
         var enemies = Owner.Creature.CombatState.HittableEnemies.ToList();
         if (enemies.Count == 0)
             return;

@@ -61,6 +61,9 @@ public static class DiceHelper
 
         if (result.DoomSuccess && choiceContext != null && sourceCard != null)
             await OnDoomTriggered(choiceContext, sourceCard);
+        
+        if (choiceContext != null && sourceCard != null)
+            await OnDiceCheckResolved(choiceContext, sourceCard, result);
 
         if (consumeTemporaryLuck)
             await ConsumeNextCheckLuck(creature);
@@ -194,33 +197,7 @@ public static class DiceHelper
         CardModel sourceCard)
     {
         var creature = sourceCard.Owner.Creature;
-        var power = creature.GetPower<SharedMisfortunePower>();
-
-        if (power != null)
-        {
-            var combatState = sourceCard.CombatState;
-            if (combatState != null)
-            {
-                var target = sourceCard.Owner.RunState.Rng.CombatTargets
-                    .NextItem(combatState.HittableEnemies);
-
-                if (target != null)
-                {
-                    VfxCmd.PlayOnCreatureCenter(
-                        target,
-                        "vfx/vfx_attack_blunt"
-                    );
-
-                    await CreatureCmd.Damage(
-                        choiceContext,
-                        target,
-                        power.Amount,
-                        ValueProp.Unpowered,
-                        creature
-                    );
-                }
-            }
-        }
+        
 
         var blessing = creature.GetPower<MisfortuneBlessingPower>();
 
@@ -251,7 +228,46 @@ public static class DiceHelper
             );
         }
     }
-    
+    public static async Task OnDiceCheckResolved(
+        PlayerChoiceContext choiceContext,
+        CardModel sourceCard,
+        DiceCheckResult result)
+    {
+        var creature = sourceCard.Owner.Creature;
+        var power = creature.GetPower<SharedMisfortunePower>();
+
+        if (power == null)
+            return;
+
+        // 只有命运成功且没有触发厄运时，不触发
+        if (result.FateSuccess && !result.DoomSuccess)
+            return;
+
+        var combatState = sourceCard.CombatState;
+        if (combatState == null || combatState.HittableEnemies.Count == 0)
+            return;
+
+        var target = sourceCard.Owner.RunState.Rng.CombatTargets
+            .NextItem(combatState.HittableEnemies);
+
+        if (target == null)
+            return;
+
+        
+        VfxCmd.PlayOnCreatureCenter(
+            target,
+            "vfx/vfx_attack_blunt"
+        );
+
+        await CreatureCmd.Damage(
+            choiceContext,
+            target,
+            power.Amount,
+            ValueProp.Unpowered,
+            sourceCard,
+            null
+        );
+    }
     private static async Task TriggerFateCards(
         PlayerChoiceContext choiceContext,
         CardModel sourceCard)

@@ -23,13 +23,13 @@ public sealed class CompressVoid : starssCard
     private const string CalculatedDamageKey = "CalculatedDamage";
 
     public CompressVoid()
-        : base(0, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+        : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6M, ValueProp.Move),
+        new DamageVar(3M, ValueProp.Move),
         new CalculationBaseVar(0M),
         new CalculationExtraVar(1M),
         new CalculatedVar(CalculatedDamageKey)
@@ -69,6 +69,6 @@ public sealed class CompressVoid : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2M);
+        DynamicVars.Damage.UpgradeValueBy(1M);
     }
 }

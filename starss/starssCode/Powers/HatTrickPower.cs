@@ -24,6 +24,7 @@ public sealed class HatTrickPower : starssPower
         CardPlay cardPlay)
     {
         CardModel card = cardPlay.Card;
+
         if (card.Owner != Owner.Player)
             return;
 
@@ -36,20 +37,23 @@ public sealed class HatTrickPower : starssPower
         {
             CardModel? generatedCard = GetRandomPcCard();
 
-            if (generatedCard != null)
-            {
-                await CardPileCmd.AddGeneratedCardToCombat(
-                    generatedCard,
-                    PileType.Hand,
-                    Owner.Player
-                );
-            }
+            if (generatedCard == null)
+                continue;
+
+            CardCmd.ApplyKeyword(generatedCard, CardKeyword.Ethereal);
+            CardCmd.ApplyKeyword(generatedCard, CardKeyword.Exhaust);
+
+            await CardPileCmd.AddGeneratedCardToCombat(
+                generatedCard,
+                PileType.Hand,
+                Owner.Player
+            );
         }
     }
 
     private static bool IsPcCard(CardModel card)
     {
-        return card is TrojanHorse || card is SnowCedar || card is ThreeW || card is Nana || card is Qiqi || card is TT || card is Gratitude;
+        return card is IPcCard;
     }
 
     private CardModel? GetRandomPcCard()

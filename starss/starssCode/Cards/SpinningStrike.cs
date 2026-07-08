@@ -37,7 +37,7 @@ public sealed class SpinningStrike : starssCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (!HasVoidOrCallInHand())
+        if (!HasVoidOrCall())
             return;
 
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
@@ -67,11 +67,14 @@ public sealed class SpinningStrike : starssCard
         }
     }
 
-    private bool HasVoidOrCallInHand()
+    private bool HasVoidOrCall()
     {
-        return PileType.Hand.GetPile(Owner).Cards.Any(card =>
-            card is VoidCard || card is BeckonCard
-        );
+        return
+            PileType.Hand.GetPile(Owner).Cards.Any(card =>
+                card is VoidCard || card is BeckonCard)
+            ||
+            PileType.Discard.GetPile(Owner).Cards.Any(card =>
+                card is VoidCard || card is BeckonCard);
     }
     
     protected override void OnUpgrade()

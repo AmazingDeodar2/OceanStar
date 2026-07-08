@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using starss.starssCode.Powers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace starss.starssCode.Cards;
 
@@ -17,7 +18,7 @@ public sealed class SharedMisfortune : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("Power", 8M)
+        new DamageVar(10M, ValueProp.Unpowered)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -25,7 +26,7 @@ public sealed class SharedMisfortune : starssCard
         await PowerCmd.Apply<SharedMisfortunePower>(
             choiceContext,
             Owner.Creature,
-            DynamicVars["Power"].BaseValue,
+            DynamicVars.Damage.BaseValue,
             Owner.Creature,
             this
         );
@@ -33,6 +34,6 @@ public sealed class SharedMisfortune : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Power"].UpgradeValueBy(4M);
+        DynamicVars.Damage.UpgradeValueBy(2M);
     }
 }

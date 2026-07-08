@@ -27,7 +27,7 @@ public sealed class AbyssCombo : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8M, ValueProp.Move),
+        new DamageVar(4M, ValueProp.Move),
         new DynamicVar("Hits", 4M)
     ];
 

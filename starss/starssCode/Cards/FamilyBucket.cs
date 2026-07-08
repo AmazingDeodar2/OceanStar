@@ -53,7 +53,7 @@ public sealed class FamilyBucket : starssCard
         await PowerCmd.Apply<StrengthPower>(
             choiceContext,
             Owner.Creature,
-            2M,
+            1M,
             Owner.Creature,
             this
         );
@@ -61,7 +61,7 @@ public sealed class FamilyBucket : starssCard
         await PowerCmd.Apply<DexterityPower>(
             choiceContext,
             Owner.Creature,
-            2M,
+            1M,
             Owner.Creature,
             this
         );

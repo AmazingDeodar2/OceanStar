@@ -44,6 +44,7 @@ public sealed class OneeSanTime : starssCard
             )
         );
         PileType.Discard.GetPile(Owner).InvokeCardAddFinished();
+        EnergyCost.AddThisCombat(1);
         await Cmd.Wait(0.5f);
     }
 

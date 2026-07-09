@@ -19,7 +19,7 @@ namespace starss.starssCode.Cards;
 public sealed class FoxFire : starssCard
 {
     public FoxFire()
-        : base(7, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
+        : base(9, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
     {
     }
 

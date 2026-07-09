@@ -21,7 +21,7 @@ public sealed class Persuade : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new EnergyVar(3),
+        new EnergyVar(2),
         new DoomVar(51M)
     ];
     

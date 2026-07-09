@@ -24,7 +24,8 @@ public sealed class Scout : starssCard
     [
         new DamageVar(10M, ValueProp.Move),
         new FateVar(60M),
-        new PowerVar<VulnerablePower>(2M)
+        new PowerVar<VigorPower>("power",2M)
+        
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -47,10 +48,10 @@ public sealed class Scout : starssCard
 
         if (check.FateSuccess)
         {
-            await PowerCmd.Apply<VulnerablePower>(
+            await PowerCmd.Apply<VigorPower>(
                 choiceContext,
-                cardPlay.Target,
-                DynamicVars.Vulnerable.BaseValue,
+                Owner.Creature,
+                DynamicVars["power"].BaseValue,
                 Owner.Creature,
                 this
             );
@@ -60,6 +61,6 @@ public sealed class Scout : starssCard
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(2M);
-        DynamicVars.Vulnerable.UpgradeValueBy(1M);
+        DynamicVars["power"].UpgradeValueBy(1M);
     }
 }

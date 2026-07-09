@@ -14,9 +14,7 @@
   "STARSS-SHARED_MISFORTUNE_POWER.title": "一损俱损",
   "STARSS-SHARED_MISFORTUNE_POWER.description": "每次厄运触发时，对所有敌人造成伤害。",
   "STARSS-SHARED_MISFORTUNE_POWER.smartDescription": "每次厄运触发时，对所有敌人造成伤害。",
-  "STARSS-GODHOOD_POWER.title": "神性",
-  "STARSS-GODHOOD_POWER.description": "每回合打出的第一张耗能为0的技能牌，会放回你的手牌",
-  "STARSS-GODHOOD_POWER.smartDescription": "每回合打出的第一张耗能为0的技能牌，会放回你的手牌",
+
   "STARSS-PRAY_POWER.title": "祈福",
   "STARSS-PRAY_POWER.description": "每回合开始时获得幸运。",
   "STARSS-PRAY_POWER.smartDescription": "每回合开始时获得幸运。",
@@ -67,6 +65,8 @@
   "STARSS-ONE_MORE_TIME_POWER.smartDescription": "下张牌再打出一次。",
   "STARSS-SAPLING_POWER.title": "幼苗",
   "STARSS-SAPLING_POWER.description": "生成四叶草叶片数量。",
-  "STARSS-SAPLING_POWER.smartDescription": "生成四叶草叶片数量。"
-
+  "STARSS-SAPLING_POWER.smartDescription": "生成四叶草叶片数量。",
+  "STARSS-GARDEN_KEEPER_POWER.description": "打出四叶草叶片时获得格挡。",
+  "STARSS-GARDEN_KEEPER_POWER.smartDescription": "打出四叶草叶片时获得格挡。",
+  "STARSS-GARDEN_KEEPER_POWER.title": "园丁"
  }

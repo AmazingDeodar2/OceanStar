@@ -38,19 +38,16 @@ public sealed class Exorcise : starssCard
                 Owner,
                 new CardSelectorPrefs(SelectionScreenPrompt, 0, 999999999),
                 (Func<CardModel, bool>)null,
-                this
+                (AbstractModel)this
             )).ToList();
 
-        foreach (CardModel card in selectedCards)
-        {
-            await CardCmd.DiscardAndDraw(choiceContext, selectedCards, 0);
-        }
+        await CardCmd.DiscardAndDraw(choiceContext, selectedCards, 0);
 
         List<CloverLeaf> clovers = [];
 
         for (int i = 0; i < DynamicVars.Cards.IntValue; i++)
         {
-            CloverLeaf clover = CombatState!.CreateCard<CloverLeaf>(Owner);
+            CloverLeaf clover = CombatState.CreateCard<CloverLeaf>(Owner);
 
             if (IsUpgraded)
                 CardCmd.Upgrade(clover);

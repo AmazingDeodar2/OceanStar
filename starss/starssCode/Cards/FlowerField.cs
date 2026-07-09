@@ -40,7 +40,7 @@ public sealed class FlowerField : starssCard
         if (CombatState is null)
             return;
 
-        for (int i = 0; i < DynamicVars.Cards.BaseValue; i++)
+        for (int i = 0; i < DynamicVars.Cards.IntValue; i++)
         {
             var clover = CombatState.CreateCard<CloverLeaf>(Owner);
 
@@ -49,10 +49,11 @@ public sealed class FlowerField : starssCard
 
             await CardPileCmd.AddGeneratedCardToCombat(
                 clover,
-                PileType.Hand,
+                PileType.Draw,
                 Owner
             );
         }
+        PileType.Draw.GetPile(Owner).InvokeCardAddFinished();
     }
 
     protected override void OnUpgrade()

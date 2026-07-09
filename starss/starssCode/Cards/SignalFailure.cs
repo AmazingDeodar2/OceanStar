@@ -26,7 +26,7 @@ public sealed class SignalFailure : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(20M, ValueProp.Unpowered),
+        new BlockVar(15M, ValueProp.Unpowered),
         new CardsVar(1)
     ];
 

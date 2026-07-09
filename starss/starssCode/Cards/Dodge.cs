@@ -15,7 +15,7 @@ namespace starss.starssCode.Cards;
 public sealed class Dodge : starssCard
 {
     public Dodge()
-        : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+        : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
     }
 
@@ -29,14 +29,12 @@ public sealed class Dodge : starssCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 初始获得格挡
         await CreatureCmd.GainBlock(
             Owner.Creature,
             DynamicVars.Block,
             cardPlay
         );
 
-        // 命运判定
         var check = await DiceHelper.Check(
             Owner.Creature,
             fate: DynamicVars["Fate"].IntValue,
@@ -45,33 +43,34 @@ public sealed class Dodge : starssCard
             sourceCard: this
         );
 
-        // 成功则固定再获得10点格挡
         if (!check.FateSuccess)
             return;
-
-        
-
-        CardSelectorPrefs prefs = new(
-            SelectionScreenPrompt,
-            1
-        );
-
-        CardModel card =
-            (await CardSelectCmd.FromCombatPile(
-                choiceContext,
-                PileType.Discard.GetPile(Owner),
-                Owner,
-                prefs))
-            .FirstOrDefault();
-
-        if (card == null)
+        Dodge dodge = this;
+        CardSelectorPrefs prefs = new CardSelectorPrefs(dodge.SelectionScreenPrompt, 1);
+        PileType.Discard.GetPile(dodge.Owner);
+        CardModel card = (await CardSelectCmd.FromCombatPile(choiceContext, PileType.Discard.GetPile(dodge.Owner), dodge.Owner, prefs)).FirstOrDefault<CardModel>();
+        bool flag1 = card != null;
+        if (flag1)
+        {
+            PileType? type = card.Pile?.Type;
+            bool flag2;
+            if (type.HasValue)
+            {
+                switch (type.GetValueOrDefault())
+                {
+                    case PileType.Draw:
+                    case PileType.Discard:
+                        flag2 = true;
+                        goto label_7;
+                }
+            }
+            flag2 = false;
+            label_7:
+            flag1 = flag2;
+        }
+        if (!flag1)
             return;
-
-        await CardPileCmd.Add(
-            card,
-            PileType.Draw,
-            CardPilePosition.Top
-        );
+        CardPileAddResult cardPileAddResult = await CardPileCmd.Add(card, PileType.Draw, CardPilePosition.Top);
     }
 
     protected override void OnUpgrade()

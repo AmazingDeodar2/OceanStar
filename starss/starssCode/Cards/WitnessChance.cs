@@ -86,7 +86,7 @@ public sealed class WitnessChance : starssCard
             // 额外一轮卡牌奖励，配置同TheHunt房间卡牌奖励生成规则
             combatRoom.AddExtraReward(Owner, new CardReward(
                 CardCreationOptions.ForRoom(Owner, combatRoom.RoomType),
-                1,
+                3,
                 Owner
             ));
         }

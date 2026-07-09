@@ -72,8 +72,8 @@ public sealed class Humanology : starssCard
         new DamageVar(CurrentDamage, ValueProp.Move),
         new BlockVar(CurrentBlock, ValueProp.Move),
         new IntVar("BonusKey", 3M),
-        new FateVar(40M),
-        new DoomVar(80M)
+        new FateVar(30M),
+        new DoomVar(71M)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new List<IHoverTip>();

@@ -45,32 +45,35 @@ public sealed class Dodge : starssCard
 
         if (!check.FateSuccess)
             return;
-        Dodge dodge = this;
-        CardSelectorPrefs prefs = new CardSelectorPrefs(dodge.SelectionScreenPrompt, 1);
-        PileType.Discard.GetPile(dodge.Owner);
-        CardModel card = (await CardSelectCmd.FromCombatPile(choiceContext, PileType.Discard.GetPile(dodge.Owner), dodge.Owner, prefs)).FirstOrDefault<CardModel>();
-        bool flag1 = card != null;
-        if (flag1)
-        {
-            PileType? type = card.Pile?.Type;
-            bool flag2;
-            if (type.HasValue)
-            {
-                switch (type.GetValueOrDefault())
-                {
-                    case PileType.Draw:
-                    case PileType.Discard:
-                        flag2 = true;
-                        goto label_7;
-                }
-            }
-            flag2 = false;
-            label_7:
-            flag1 = flag2;
-        }
-        if (!flag1)
+        CardSelectorPrefs prefs = new(
+            SelectionScreenPrompt,
+            1
+        );
+
+        CardModel? selectedCard =
+            (await CardSelectCmd.FromCombatPile(
+                choiceContext,
+                PileType.Discard.GetPile(Owner),
+                Owner,
+                prefs
+            )).FirstOrDefault();
+
+        if (selectedCard == null)
             return;
-        CardPileAddResult cardPileAddResult = await CardPileCmd.Add(card, PileType.Draw, CardPilePosition.Top);
+
+        PileType? pileType = selectedCard.Pile?.Type;
+
+        if (pileType != PileType.Draw &&
+            pileType != PileType.Discard)
+        {
+            return;
+        }
+
+        await CardPileCmd.Add(
+            selectedCard,
+            PileType.Draw,
+            CardPilePosition.Top
+        );
     }
 
     protected override void OnUpgrade()

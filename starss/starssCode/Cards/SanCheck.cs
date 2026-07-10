@@ -92,7 +92,10 @@ public sealed class SanCheck : starssCard
         if (check.DoomSuccess)
         {
            
-            CardSelectorPrefs prefs = new CardSelectorPrefs(CardSelectorPrefs.EnchantSelectionPrompt, 1);
+            CardSelectorPrefs prefs = new CardSelectorPrefs(
+                SelectionScreenPrompt,
+                1
+            );
 
             CardModel? card = (await CardSelectCmd.FromHand(
                     choiceContext,

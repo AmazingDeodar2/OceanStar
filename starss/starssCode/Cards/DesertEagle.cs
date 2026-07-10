@@ -59,7 +59,7 @@ public sealed class DesertEagle : starssCard
                 choiceContext,
                 Owner.Creature,
                 DynamicVars.Damage.BaseValue,
-                ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move,
+                ValueProp.Unpowered | ValueProp.Move,
                 this,
                 cardPlay
             );

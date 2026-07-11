@@ -17,7 +17,7 @@ public class Starss : PlaceholderCharacterModel
     public const string CharacterId = "starss";
 
     public static readonly Color Color = new("FFB7C5");
-
+    public override Color MapDrawingColor => new Color("FFB7C5");
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Neutral;
     public override int StartingHp => 77;

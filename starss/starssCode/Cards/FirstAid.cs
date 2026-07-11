@@ -14,7 +14,7 @@ namespace starss.starssCode.Cards;
 public sealed class FirstAid : starssCard
 {
     public FirstAid()
-        : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+        : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
     }
 

@@ -52,7 +52,7 @@ public class StateSpace
         states.Add(state);
         EnteredStateCount++;
         await state.OnEnter(choiceContext);
-        var actorPower = Owner.Creature.GetPower<ProfessionalActorPower>();
+        var actorPower = Owner.Creature.GetPower<LalangPower>();
         if (actorPower != null)
         {
             await actorPower.AfterStateEntered(choiceContext, state);

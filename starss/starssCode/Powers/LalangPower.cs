@@ -4,12 +4,12 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using starss.starssCode.Mechanics;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace starss.starssCode.Powers;
 
 
-public sealed class RecruitmentProcessPower : starssPower
+
+public sealed class LalangPower : starssPower
 {
     public override PowerType Type => PowerType.Buff;
 
@@ -19,12 +19,6 @@ public sealed class RecruitmentProcessPower : starssPower
     {
         Flash();
 
-        await PowerCmd.Apply<VigorPower>(
-            choiceContext,
-            Owner,
-            Amount,
-            Owner,
-            null
-        );
+        Owner.Player.PlayerCombatState.GainEnergy(1M * Amount);
     }
 }

@@ -18,7 +18,7 @@ public sealed class GardenKeeper : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("Amount", 1M)
+        new DynamicVar("Amount", 2M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -26,7 +26,7 @@ public sealed class GardenKeeper : starssCard
         await PowerCmd.Apply<GardenKeeperPower>(
             choiceContext,
             Owner.Creature,
-            DynamicVars["Amount"].IntValue,
+            DynamicVars["Amount"].BaseValue,
             Owner.Creature,
             this
         );

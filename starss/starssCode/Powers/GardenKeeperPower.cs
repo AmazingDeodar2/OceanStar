@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.Powers;
 using starss.starssCode.Cards;
 
 namespace starss.starssCode.Powers;
@@ -29,10 +30,12 @@ public sealed class GardenKeeperPower : starssPower
 
         Flash();
 
-        await CreatureCmd.GainBlock(
+        await PowerCmd.Apply<PoisonPower>(
+            choiceContext,
+            CombatState.HittableEnemies,
+            Amount,
             Owner,
-            new BlockVar(Amount, ValueProp.Unpowered),
-            cardPlay
+            null
         );
     }
 }

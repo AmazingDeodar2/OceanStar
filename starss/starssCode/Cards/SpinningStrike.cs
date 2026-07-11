@@ -19,7 +19,7 @@ namespace starss.starssCode.Cards;
 public sealed class SpinningStrike : starssCard
 {
     public SpinningStrike()
-        : base(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+        : base(0, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
     }
     protected override HashSet<CardTag> CanonicalTags =>

@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Models.Cards;
 using starss.starssCode.Powers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace starss.starssCode.Cards;
 
@@ -22,7 +23,7 @@ public sealed class RecruitmentProcess : starssCard
         {
             return new DynamicVar[]
             {
-                new PowerVar<LuckyPower>(2M)
+                new PowerVar<VigorPower>(2M)
             };
         }
     }
@@ -38,7 +39,7 @@ public sealed class RecruitmentProcess : starssCard
         await PowerCmd.Apply<RecruitmentProcessPower>(
             choiceContext,
             Owner.Creature,
-            DynamicVars["LuckyPower"].BaseValue,
+            DynamicVars["VigorPower"].BaseValue,
             Owner.Creature,
             this
         );
@@ -46,6 +47,6 @@ public sealed class RecruitmentProcess : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars["LuckyPower"].UpgradeValueBy(1M);
+        DynamicVars["VigorPower"].UpgradeValueBy(1M);
     }
 }

@@ -25,7 +25,7 @@ public sealed class FlowerField : starssCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(8M, ValueProp.Move),
-        new CardsVar(2)
+        new CardsVar(1)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -49,11 +49,11 @@ public sealed class FlowerField : starssCard
 
             await CardPileCmd.AddGeneratedCardToCombat(
                 clover,
-                PileType.Draw,
+                PileType.Hand,
                 Owner
             );
         }
-        PileType.Draw.GetPile(Owner).InvokeCardAddFinished();
+        
     }
 
     protected override void OnUpgrade()

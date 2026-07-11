@@ -21,9 +21,10 @@
   "STARSS-BARRIER_POWER.title": "结界",
   "STARSS-BARRIER_POWER.description": "每回合多抽1张牌，并在回合开始时进行一次命运/厄运检定。",
   "STARSS-BARRIER_POWER.smartDescription": "每回合多抽1张牌，并在回合开始时进行一次命运/厄运检定。",
-  "STARSS-PROFESSIONAL_ACTOR_POWER.title": "专职演员",
-  "STARSS-PROFESSIONAL_ACTOR_POWER.description": "每进入一个状态，抽两张牌，获得1费",
-  "STARSS-PROFESSIONAL_ACTOR_POWER.smartDescription": "每进入一个状态，抽两张牌，获得1费",
+  "STARSS-LALANG_POWER.title": "拉郎",
+  "STARSS-LALANG_POWER.description": "每进入一个状态，获得能量。",
+  "STARSS-LALANG_POWER.smartDescription": "每进入一个状态，获得能量。",
+
   "STARSS-RECRUITMENT_PROCESS_POWER.title": "招募流程",
   "STARSS-RECRUITMENT_PROCESS_POWER.description": "每进入一个状态，获得幸运。",
   "STARSS-RECRUITMENT_PROCESS_POWER.smartDescription": "每进入一个状态，获得幸运。",
@@ -68,5 +69,9 @@
   "STARSS-SAPLING_POWER.smartDescription": "生成四叶草叶片数量。",
   "STARSS-GARDEN_KEEPER_POWER.description": "打出四叶草叶片时获得格挡。",
   "STARSS-GARDEN_KEEPER_POWER.smartDescription": "打出四叶草叶片时获得格挡。",
-  "STARSS-GARDEN_KEEPER_POWER.title": "园丁"
+  "STARSS-GARDEN_KEEPER_POWER.title": "园丁",
+  "STARSS-EVIL_SMILE_POWER.title": "邪恶微笑",
+  "STARSS-EVIL_SMILE_POWER.description": "回合结束时给予灾厄。",
+  "STARSS-EVIL_SMILE_POWER.smartDescription": "回合结束时给予灾厄。"
+
  }

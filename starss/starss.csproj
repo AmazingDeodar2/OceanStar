@@ -64,7 +64,6 @@
 
     <ItemGroup>
         <Folder Include="starss\images\animation_sprite\" />
-        <Folder Include="starss\images\powers\big\"/>
         <Folder Include="starss\images\relics\big\"/>
     </ItemGroup>
 

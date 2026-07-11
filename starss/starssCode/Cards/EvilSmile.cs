@@ -1,46 +1,51 @@
-using System.Collections.Generic;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models.Cards;
-using starss.starssCode.Powers;
-using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using starss.starssCode.Mechanics;
+using starss.starssCode.Powers;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace starss.starssCode.Cards;
 
-public sealed class Lalang : starssCard
+
+public sealed class EvilSmile : starssCard
 {
-    public Lalang()
-        : base(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+    public EvilSmile()
+        : base(
+            1,
+            CardType.Power,
+            CardRarity.Rare,
+            TargetType.Self)
     {
     }
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new EnergyVar(1)
+        new DynamicVar("Amount", 3M)
     ];
-    
 
-    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    protected override async Task OnPlay(
+        PlayerChoiceContext choiceContext,
+        CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(
             Owner.Creature,
             "PowerUp",
             Owner.Character.PowerUpAnimDelay
         );
-        
 
-        await PowerCmd.Apply<LalangPower>(
+        await PowerCmd.Apply<EvilSmilePower>(
             choiceContext,
             Owner.Creature,
-            1M,
+            DynamicVars["Amount"].BaseValue,
             Owner.Creature,
             this
         );
     }
+
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars["Amount"].UpgradeValueBy(2M);
     }
 }

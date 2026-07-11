@@ -21,7 +21,7 @@
   "STARSS-SHARED_MISFORTUNE.title": "一损俱损",
   "STARSS-SHARED_MISFORTUNE.description": "命运没有被触发或是触发厄运时，对随机敌方造成{Damage:diff()}点伤害",
   "STARSS-GARDEN_KEEPER.title": "园丁",
-  "STARSS-GARDEN_KEEPER.description": "你打出的每张四叶草会使你获得{Amount:diff()}点格挡。",
+  "STARSS-GARDEN_KEEPER.description": "你打出的每张四叶草会使所有敌人获得{Amount:diff()}层中毒。",
 
   "STARSS-PRAY.title": "祈福",
   "STARSS-PRAY.description": "每回合开始时获得{Power:diff()}点幸运。",
@@ -49,12 +49,11 @@
   "STARSS-SNOW_CEDAR.title": "雪松",
   "STARSS-SNOW_CEDAR.description": "进入【平板领域】。在【平板领域】存在时，生成的虚空牌会立刻被消耗。离开【平板领域】时，获得{Energy:energyIcons()}。",
   "STARSS-LALANG.title": "拉郎",
-  "STARSS-LALANG.description": "额外获得1个状态栏。",
+  "STARSS-LALANG.description": "每进入一个状态，获得{Energy:energyIcons()}",
   "STARSS-LALANG.upgradeDescription": "固有。额外获得1个状态栏。",
-  "STARSS-PROFESSIONAL_ACTOR.title": "专职演员",
-  "STARSS-PROFESSIONAL_ACTOR.description": "每当你进入一个状态时，抽2张牌，获得{Energy:energyIcons()}。",
+ 
   "STARSS-RECRUITMENT_PROCESS.title": "招募流程",
-  "STARSS-RECRUITMENT_PROCESS.description": "每当你进入一个状态时，获得{LuckyPower:diff()}点幸运。",
+  "STARSS-RECRUITMENT_PROCESS.description": "每当你进入一个状态时，获得{VigorPower:diff()}点活力。",
   "STARSS-HAT_TRICK.title": "帽子戏法",
   "STARSS-HAT_TRICK.description": "每当你使用一张PC牌时，将一张随机PC牌加入你的手牌。该牌获得虚无和消耗。",
   "STARSS-ROLE_PLAY.title": "角色扮演",
@@ -96,7 +95,7 @@
   "STARSS-PENGUIN_ACTIVATED.title": "企鹅卡我启动了",
   "STARSS-PENGUIN_ACTIVATED.description": "造成{Damage:diff()}点伤害，获得{Block:diff()}点格挡，将一张呼唤加入弃牌堆。",
   "STARSS-SPINNING_STRIKE.title": "旋身打击",
-  "STARSS-SPINNING_STRIKE.description": "如果你弃牌堆和手牌中有虚空或是呼唤卡，造成{Damage:diff()}点伤害，命运{Fate:diff()}，额外造成4点伤害。",
+  "STARSS-SPINNING_STRIKE.description": "如果你弃牌堆和手牌中有状态牌，造成{Damage:diff()}点伤害，命运{Fate:diff()}，额外造成4点伤害。",
   "STARSS-WHEEL_OF_FATE.title": "命运之轮",
   "STARSS-WHEEL_OF_FATE.description": "对所有敌人造成{Damage:diff()}点伤害。下次检定时获得{Luck:diff()}点幸运。",
   "STARSS-BURN_LUCK.title": "燃运",
@@ -130,7 +129,7 @@
   "STARSS-A_BIT_IMMORTAL.title": "一点仙",
   "STARSS-A_BIT_IMMORTAL.description": "获得{Block:diff()}点格挡，下次检定时幸运{Luck:diff()}。",
   "STARSS-SCOUT.title": "侦查",
-  "STARSS-SCOUT.description": "造成{Damage:diff()}点伤害，命运{Fate:diff()}，获得{VigorPower:diff()}点活力。",
+  "STARSS-SCOUT.description": "造成{Damage:diff()}点伤害，命运{Fate:diff()}，获得{power:diff()}点活力。",
   "STARSS-LISTEN.title": "聆听",
   "STARSS-LISTEN.description": "获得{Block:diff()}格挡，命运{Fate:diff()}，给予{WeakPower:diff()}层虚弱",
   "STARSS-LIBRARY.title": "图书馆",
@@ -181,7 +180,7 @@
   "STARSS-CLOVER_LEAF.title": "四叶草叶片",
   "STARSS-CLOVER_LEAF.description": "抽1张牌，获得{Power:diff()}点幸运。",
   "STARSS-FLOWER_FIELD.title": "花田",
-  "STARSS-FLOWER_FIELD.description": "获得{Block:diff()}点格挡，将2张{IfUpgraded:show:四叶草叶片+|四叶草叶片}加入抽牌堆。",
+  "STARSS-FLOWER_FIELD.description": "获得{Block:diff()}点格挡，将1张{IfUpgraded:show:四叶草叶片+|四叶草叶片}加入手牌。",
   "STARSS-FLOWER_SEA.title": "花海",
   "STARSS-FLOWER_SEA.description": "将2X张{IfUpgraded:show:四叶草叶片+|四叶草叶片}放入抽牌堆，获得4X点格挡。",
   "STARSS-ONE_MORE_TIME.title": "再来一次！",
@@ -189,5 +188,8 @@
   "STARSS-FATE_STRIKE.title": "命运打击",
   "STARSS-FATE_STRIKE.description": "造成{Damage:diff()}点伤害，每次命运触发时将这张牌放入你的手牌。",
   "STARSS-SAPLING.title": "幼苗",
-  "STARSS-SAPLING.description": "将1张{IfUpgraded:show:四叶草叶片+|四叶草叶片}放入抽牌堆，让所有“幼苗”牌加入的四叶草叶片数量翻倍。"
+  "STARSS-SAPLING.description": "将1张{IfUpgraded:show:四叶草叶片+|四叶草叶片}放入抽牌堆，让所有“幼苗”牌加入的四叶草叶片数量翻倍。",
+  "STARSS-EVIL_SMILE.title": "邪恶微笑",
+  "STARSS-EVIL_SMILE.description": "回合结束时，本局每进入过一个状态，给予所有敌人{Amount:diff()}层灾厄。"
+ 
 }

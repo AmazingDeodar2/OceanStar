@@ -12,7 +12,7 @@ namespace starss.starssCode.Potions;
 
 public sealed class LalangPotion : starssPotion
 {
-    public override PotionRarity Rarity => PotionRarity.Rare;
+    public override PotionRarity Rarity => PotionRarity.Uncommon;
 
     public override PotionUsage Usage => PotionUsage.CombatOnly;
 

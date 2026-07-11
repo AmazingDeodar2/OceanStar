@@ -15,7 +15,7 @@ using starss.starssCode.Powers;
 
 namespace starss.starssCode.Cards;
 
-[Pool(typeof(ColorlessCardPool))]
+[Pool(typeof(TokenCardPool))]
 public sealed class CloverLeaf : CustomCardModel
 {
     public CloverLeaf()

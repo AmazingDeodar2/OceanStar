@@ -26,7 +26,8 @@ public sealed class ChaosStrike : starssCard
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(11M, ValueProp.Move),
+        new DamageVar(1M, ValueProp.Move),
+        new DynamicVar("Hits", 6M),
         new FateVar(50M),
         new DoomVar(51M)
     ];
@@ -35,7 +36,7 @@ public sealed class ChaosStrike : starssCard
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
-        var damage = DynamicVars.Damage.BaseValue;
+        
         var check = await DiceHelper.Check(
             Owner.Creature,
             fate: DynamicVars["Fate"].IntValue,
@@ -47,27 +48,29 @@ public sealed class ChaosStrike : starssCard
         if (check.FateSuccess)
         {
             
-            
-            damage += 3M;
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+                .WithHitCount(DynamicVars["Hits"].IntValue)
+                .FromCard(this, cardPlay)
+                .Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_attack_slash")
+                .Execute(choiceContext);
             
         }
 
         if (check.DoomSuccess)
         {
-            
-             
-            damage -= 3M;
+            await DamageCmd.Attack(DynamicVars["Hits"].IntValue)
+                .FromCard(this,cardPlay)
+                .Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_attack_slash")
+                .Execute(choiceContext);
         }
         
-        await DamageCmd.Attack(damage)
-            .FromCard(this,cardPlay)
-            .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
+        
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3M);
+        DynamicVars["Hits"].UpgradeValueBy(2M);
     }
 }

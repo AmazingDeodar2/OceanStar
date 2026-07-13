@@ -8,6 +8,7 @@ using VoidCard = MegaCrit.Sts2.Core.Models.Cards.Void;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using starss.starssCode.Mechanics;
 
 namespace starss.starssCode.Cards;
 
@@ -20,7 +21,8 @@ public sealed class OneeSanTime : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new EnergyVar(4)
+        new EnergyVar(4),
+        new FateVar(30M),
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -35,17 +37,20 @@ public sealed class OneeSanTime : starssCard
             DynamicVars.Energy.IntValue,
             Owner
         );
-
-        CardCmd.PreviewCardPileAdd(
-            await CardPileCmd.AddGeneratedCardToCombat(
-                CombatState!.CreateCard<VoidCard>(Owner),
-                PileType.Discard,
-                Owner
-            )
+        var check = await DiceHelper.Check(
+            Owner.Creature,
+            fate: DynamicVars["Fate"].IntValue,
+            doom: 101,
+            choiceContext: choiceContext,
+            sourceCard: this
         );
-        PileType.Discard.GetPile(Owner).InvokeCardAddFinished();
+        if (check.FateSuccess)
+        {
+            return;
+        }
+
         EnergyCost.AddThisCombat(1);
-        await Cmd.Wait(0.5f);
+        
     }
 
     protected override void OnUpgrade()

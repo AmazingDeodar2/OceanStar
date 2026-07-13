@@ -19,7 +19,7 @@ namespace starss.starssCode.Cards;
 public sealed class TrojanHorse : starssCard, IPcCard
 {
     public TrojanHorse()
-        : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+        : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
     }
 

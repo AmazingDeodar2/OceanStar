@@ -16,10 +16,7 @@ public sealed class GoodLuck : starssCard
         : base(0, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
     }
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Exhaust
-    ];
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<StrengthPower>("Power", 1M)
@@ -78,6 +75,6 @@ public sealed class GoodLuck : starssCard
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Exhaust);
-    }
+        DynamicVars["Power"].UpgradeValueBy(1M);
+        }
 }

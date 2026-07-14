@@ -78,7 +78,7 @@
   "STARSS-GRAVITY_LENS.title": "引力透镜",
   "STARSS-GRAVITY_LENS.description": "将所有牌库中的状态和诅咒牌变为{IfUpgraded:show:四叶草叶片+|四叶草叶片}。",
   "STARSS-SIGNAL_FAILURE.title": "信号故障",
-  "STARSS-SIGNAL_FAILURE.description": "获得{Block:diff()}点格挡。抽{Cards:diff()}张牌。将一张虚空加入你的抽牌堆。",
+  "STARSS-SIGNAL_FAILURE.description": "获得{Block:diff()}点格挡，在下个回合，获得{Block:diff()}点格挡。抽{Cards:diff()}张牌。将一张虚空加入你的抽牌堆。",
   "STARSS-PULL_YOUR_CABLE.title": "拔你网线",
   "STARSS-PULL_YOUR_CABLE.description": "抽7张卡，选择消耗一张牌，厄运{Doom:diff()}，将一张虚空加入弃牌堆。",
   "STARSS-PULL_YOUR_CABLE.upgradeDescription": "保留。抽7张卡，选择消耗一张牌，厄运{Doom:diff()}，将一张虚空加入弃牌堆。",

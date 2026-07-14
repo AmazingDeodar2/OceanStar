@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 using VoidCard = MegaCrit.Sts2.Core.Models.Cards.Void;
 
 namespace starss.starssCode.Cards;
@@ -14,19 +15,18 @@ namespace starss.starssCode.Cards;
 public sealed class SignalFailure : starssCard
 {
     public SignalFailure()
-        : base(2, CardType.Skill, CardRarity.Common, TargetType.Self)
+        : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
     }
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        EnergyHoverTip,
-        HoverTipFactory.FromCard<VoidCard>()
+        HoverTipFactory.FromCard<VoidCard>(),
     ];
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(15M, ValueProp.Unpowered),
+        new BlockVar(8M, ValueProp.Unpowered),
         new CardsVar(1)
     ];
 
@@ -37,13 +37,19 @@ public sealed class SignalFailure : starssCard
             "Cast",
             Owner.Character.CastAnimDelay
         );
-
-        await CreatureCmd.GainBlock(
+        
+        decimal amount = await CreatureCmd.GainBlock(
             Owner.Creature,
             DynamicVars.Block,
             cardPlay
         );
-
+        await PowerCmd.Apply<BlockNextTurnPower>(
+            choiceContext,
+            Owner.Creature,
+            amount,
+            Owner.Creature,
+            this
+        );
         await CardPileCmd.Draw(
             choiceContext,
             DynamicVars.Cards.BaseValue,

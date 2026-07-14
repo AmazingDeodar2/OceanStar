@@ -34,6 +34,6 @@ public sealed class Recovery : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Power"].UpgradeValueBy(1M);
+        EnergyCost.UpgradeBy(-1);
     }
 }

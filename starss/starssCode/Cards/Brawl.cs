@@ -15,48 +15,40 @@ namespace starss.starssCode.Cards;
 public sealed class Brawl : starssCard
 {
     public Brawl()
-        : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+        : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
     {
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(16M, ValueProp.Move),
-        new FateVar(60M),
-        new CardsVar(1)
+        new DamageVar(15M, ValueProp.Move),
+        new CardsVar(1),
+        new FateVar(60M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target);
-
+        // 对所有可以被攻击的敌人造成伤害。
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue) 
+            .FromCard(this, cardPlay) 
+            .TargetingAllOpponents(CombatState) 
+            .WithHitFx("vfx/vfx_attack_slash") 
+            .Execute(choiceContext); 
+        // 抽牌不受命运结果影响。
+        await CardPileCmd.Draw( choiceContext, DynamicVars.Cards.BaseValue, Owner ); 
+        
         var check = await DiceHelper.Check(
-            Owner.Creature,
-            fate: DynamicVars["Fate"].IntValue,
-            doom: 101,
-            choiceContext: choiceContext,
-            sourceCard: this
-        );
-
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this,cardPlay)
-            .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
-
-        if (check.FateSuccess)
-        {
-           
-            await CardPileCmd.Draw(
-                choiceContext,
-                DynamicVars.Cards.BaseValue,
-                Owner
-            );
-        }
+            Owner.Creature, 
+            fate: DynamicVars["Fate"].IntValue, 
+            doom: 101, 
+            choiceContext: choiceContext, 
+            sourceCard: this ); 
+        // 命运成功：这张卡在本场战斗中的费用减少 1。
+        if (check.FateSuccess) { EnergyCost.AddThisCombat(-1); }
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4M);
+        DynamicVars.Cards.UpgradeValueBy(1M);
     }
 }

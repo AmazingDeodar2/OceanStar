@@ -1,54 +1,64 @@
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.Entities.Players;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.Commands; 
+using MegaCrit.Sts2.Core.Entities.Cards; 
+using MegaCrit.Sts2.Core.Entities.Players; 
+using MegaCrit.Sts2.Core.Entities.Powers; 
+using MegaCrit.Sts2.Core.GameActions.Multiplayer; 
+using MegaCrit.Sts2.Core.HoverTips; 
+using MegaCrit.Sts2.Core.Models.Powers; 
+using MegaCrit.Sts2.Core.ValueProps; 
+using System.Collections.Generic; 
 using System.Threading.Tasks;
-using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.Models;
 
 namespace starss.starssCode.Powers;
 
 
 public sealed class RecoveryPower : starssPower
 {
-    public override PowerType Type => PowerType.Buff;
-
+    public override PowerType Type => PowerType.Buff; 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override async Task AfterDamageReceived(
-        PlayerChoiceContext choiceContext,
-        Creature target,
-        DamageResult result,
-        ValueProp props,
-        Creature? dealer,
-        CardModel? cardSource)
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => 
+        [ 
+            HoverTipFactory.FromPower<LuckyPower>(), 
+            HoverTipFactory.FromPower<VigorPower>(), 
+            HoverTipFactory.Static(StaticHoverTip.Block) 
+        ];
+
+    public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
-        if (target != Owner)
-            return;
-
-        // 只在自己的回合
-        if (CombatState.CurrentSide != Owner.Side)
-            return;
-
-        // 必须真的掉了血
-        if (result.UnblockedDamage <= 0)
-            return;
-
-        // 立即恢复1点生命
-        await CreatureCmd.Heal(
-            Owner,
-            1M
-        );
-
-        // 获得敏捷
-        DexterityPower dexterityPower = await PowerCmd.Apply<DexterityPower>(
+        // 只在这个能力拥有者自己的回合开始时触发。
+        if (player != Owner.Player) return; 
+        
+        Flash();
+        
+        decimal stacks = Amount;
+        // 每层再生失去1点幸运。
+        await PowerCmd.Apply<LuckyPower>(
             choiceContext,
             Owner,
-            Amount,
+            -1M * stacks, 
             Owner,
+            (CardModel?)null 
+            );
+        // 每层再生获得6点格挡。
+       
+        await CreatureCmd.GainBlock(
+            Owner, 
+            6M * stacks,
+            ValueProp.Unpowered, 
+            (CardPlay?)null 
+            );
+        
+        
+        // 每层再生获得3点原版活力。
+        await PowerCmd.Apply<VigorPower>( 
+            choiceContext, 
+            Owner, 
+            3M * stacks, 
+            Owner, 
             (CardModel?)null
-        );
+            );
+        
     }
 }

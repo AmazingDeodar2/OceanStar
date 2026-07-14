@@ -23,7 +23,7 @@ public sealed class RecruitmentProcess : starssCard
         {
             return new DynamicVar[]
             {
-                new PowerVar<VigorPower>(2M)
+                new PowerVar<VigorPower>(4M)
             };
         }
     }
@@ -47,6 +47,6 @@ public sealed class RecruitmentProcess : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars["VigorPower"].UpgradeValueBy(1M);
+        DynamicVars["VigorPower"].UpgradeValueBy(2M);
     }
 }

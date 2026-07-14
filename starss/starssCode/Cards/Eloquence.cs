@@ -15,8 +15,22 @@ namespace starss.starssCode.Cards;
 
 public sealed class Eloquence : starssCard
 {
+    private const string IncreaseKey = "Increase";
+
+    private decimal _extraDamageFromPlays;
+    
+    private decimal ExtraDamageFromPlays
+    {
+        get => _extraDamageFromPlays;
+        set
+        {
+            AssertMutable();
+            _extraDamageFromPlays = value;
+        }
+    }
+    
     public Eloquence()
-        : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+        : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
     }
 
@@ -24,8 +38,12 @@ public sealed class Eloquence : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(15M, ValueProp.Unpowered),
-        new DoomVar(51M)
+        new DamageVar(7M, ValueProp.Move),
+
+        // 每次使用后增加的伤害
+        new DynamicVar(IncreaseKey, 7M),
+
+        new DoomVar(71M)
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
@@ -33,11 +51,27 @@ public sealed class Eloquence : starssCard
     ];
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.GainBlock(
-            Owner.Creature,
-            DynamicVars.Block,
-            cardPlay
-        );
+        ArgumentNullException.ThrowIfNull(cardPlay.Target);
+
+
+        await DamageCmd.Attack(
+                DynamicVars.Damage.BaseValue
+            )
+            .FromCard(this, cardPlay)
+            .Targeting(cardPlay.Target)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
+
+
+        // 类似 Rampage：
+        // 使用后增加这张卡本场战斗中的伤害
+        DynamicVars.Damage.BaseValue +=
+            DynamicVars[IncreaseKey].BaseValue;
+
+
+        ExtraDamageFromPlays +=
+            DynamicVars[IncreaseKey].BaseValue;
+
 
         var check = await DiceHelper.Check(
             Owner.Creature,
@@ -47,9 +81,9 @@ public sealed class Eloquence : starssCard
             sourceCard: this
         );
 
+
         if (check.DoomSuccess)
         {
-            
             CardCmd.PreviewCardPileAdd(
                 await CardPileCmd.AddGeneratedCardToCombat(
                     CombatState!.CreateCard<VoidCard>(Owner),
@@ -57,12 +91,25 @@ public sealed class Eloquence : starssCard
                     Owner
                 )
             );
-            PileType.Discard.GetPile(Owner).InvokeCardAddFinished();
+
+            PileType.Discard
+                .GetPile(Owner)
+                .InvokeCardAddFinished();
         }
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(4M);
+        DynamicVars[IncreaseKey]
+            .UpgradeValueBy(2M);
+    }
+    
+    protected override void AfterDowngraded()
+    {
+        base.AfterDowngraded();
+
+        // 恢复因为降级导致丢失的成长值
+        DynamicVars.Damage.BaseValue +=
+            ExtraDamageFromPlays;
     }
 }

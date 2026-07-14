@@ -135,7 +135,7 @@
   "STARSS-LIBRARY.title": "图书馆",
   "STARSS-LIBRARY.description": "抽{Cards:diff()}张牌，命运{Fate:diff()}，抽2张牌。",
   "STARSS-ELOQUENCE.title": "话术",
-  "STARSS-ELOQUENCE.description": "获得{Block:diff()}点格挡，厄运{Doom:diff()}，将一张虚空加入你的弃牌堆。",
+  "STARSS-ELOQUENCE.description": "造成{Damage:diff()}点伤害，使这张卡在本场战斗中的伤害增加{Increase:diff()}点。厄运{Doom:diff()}：将一张虚空加入你的弃牌堆。",
   "STARSS-INTIMIDATE.title": "恐吓",
   "STARSS-INTIMIDATE.description": "造成{Damage:diff()}点伤害，厄运{Doom:diff()}，将一张虚空加入你的弃牌堆。",
   "STARSS-PLEASE.title": "取悦",

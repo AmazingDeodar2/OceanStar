@@ -114,8 +114,7 @@
   "STARSS-SATCHEL.title": "挎包",
   "STARSS-SATCHEL.description": "获得{Block:diff()}点格挡，命运{Fate:diff()}，升级你手牌中的{IfUpgraded:show:所有牌|一张牌}。",
   "STARSS-SATCHEL.upgradeDescription": "获得{Block:diff()}点格挡，命运{Fate:diff()}，升级你手牌中的所有牌。",
-  "STARSS-GREAT_SUCCESS.title": "大成功！",
-  "STARSS-GREAT_SUCCESS.description": "下次检定时幸运100。",
+
   "STARSS-DISASTER_RELIEF.title": "消灾",
   "STARSS-DISASTER_RELIEF.description": "选择抽牌堆中一张牌消耗，获得{Luck:diff()}点幸运。",
   "STARSS-RANK_SUPPRESSION.title": "位格压制",
@@ -137,7 +136,7 @@
   "STARSS-ELOQUENCE.title": "话术",
   "STARSS-ELOQUENCE.description": "造成{Damage:diff()}点伤害，使这张卡在本场战斗中的伤害增加{Increase:diff()}点。厄运{Doom:diff()}：将一张虚空加入你的弃牌堆。",
   "STARSS-INTIMIDATE.title": "恐吓",
-  "STARSS-INTIMIDATE.description": "造成{Damage:diff()}点伤害，厄运{Doom:diff()}，将一张虚空加入你的弃牌堆。",
+  "STARSS-INTIMIDATE.description": "造成{Damage:diff()}点伤害。如果本回合生成过状态牌，额外造成一次伤害并给予{WeakPower:diff()}层虚弱。",
   "STARSS-PLEASE.title": "取悦",
   "STARSS-PLEASE.description": "抽{Cards:diff()}张牌，厄运{Doom:diff()}，将一张虚空加入你的弃牌堆。",
   "STARSS-ABYSS_COMBO.title": "深渊连击",
@@ -155,7 +154,7 @@
   "STARSS-PERSUADE.title": "说服",
   "STARSS-PERSUADE.description": "获得{Energy:energyIcons()}，厄运{Doom:diff()}，将一张虚空加入你的弃牌堆。",
   "STARSS-ABYSS_JUDGMENT.title": "深渊审判",
-  "STARSS-ABYSS_JUDGMENT.description": "造成{CalculatedDamage:diff()}点伤害，你每生成一张虚空或呼唤牌，该伤害增加{ExtraDamage:diff()}点",
+  "STARSS-ABYSS_JUDGMENT.description": "造成{CalculatedDamage:diff()}点伤害，本场战斗你每生成一张虚空或呼唤牌，该伤害增加{ExtraDamage:diff()}点",
   "STARSS-ANNIHILATION.title": "湮灭!",
   "STARSS-ANNIHILATION.description": "消耗你的所有手牌，每消耗1张获得{Block:diff()}点格挡。",
   "STARSS-CTHULHU_MYTH.title": "克苏鲁神话",
@@ -190,6 +189,8 @@
   "STARSS-SAPLING.title": "幼苗",
   "STARSS-SAPLING.description": "将1张{IfUpgraded:show:四叶草叶片+|四叶草叶片}放入抽牌堆，让所有“幼苗”牌加入的四叶草叶片数量翻倍。",
   "STARSS-EVIL_SMILE.title": "邪恶微笑",
-  "STARSS-EVIL_SMILE.description": "回合结束时，本局每进入过一个状态，给予所有敌人{Amount:diff()}层灾厄。"
- 
+  "STARSS-EVIL_SMILE.description": "回合结束时，本局每进入过一个状态，给予所有敌人{Amount:diff()}层灾厄。",
+
+  "STARSS-TIME_REVERSAL.title": "时~光~倒~流~",
+  "STARSS-TIME_REVERSAL.description": "获得{Luck:diff()}点幸运。每回合开始时，失去{LuckLoss}点幸运。"
 }

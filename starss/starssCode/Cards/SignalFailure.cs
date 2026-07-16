@@ -56,15 +56,15 @@ public sealed class SignalFailure : starssCard
             Owner
         );
 
-        CardModel voidCard = Owner.Creature.CombatState.CreateCard<VoidCard>(Owner);
-
-        await CardPileCmd.AddGeneratedCardToCombat(
-            voidCard,
-            PileType.Draw,
-            Owner,
-            CardPilePosition.Random
+        CardCmd.PreviewCardPileAdd(
+            await CardPileCmd.AddGeneratedCardToCombat(
+                Owner.Creature.CombatState.CreateCard<VoidCard>(Owner),
+                PileType.Draw,
+                Owner
+            )
         );
-        PileType.Draw.GetPile(Owner).InvokeCardAddFinished();
+
+        await Cmd.Wait(0.5f);
     }
 
     protected override void OnUpgrade()

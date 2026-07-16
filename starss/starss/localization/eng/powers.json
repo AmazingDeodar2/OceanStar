@@ -72,6 +72,9 @@
   "STARSS-GARDEN_KEEPER_POWER.title": "园丁",
   "STARSS-EVIL_SMILE_POWER.title": "邪恶微笑",
   "STARSS-EVIL_SMILE_POWER.description": "回合结束时给予灾厄。",
-  "STARSS-EVIL_SMILE_POWER.smartDescription": "回合结束时给予灾厄。"
-
+  "STARSS-EVIL_SMILE_POWER.smartDescription": "回合结束时给予灾厄。",
+  
+  "STARSS-TIME_REVERSAL_POWER.title": "时光倒流",
+  "STARSS-TIME_REVERSAL_POWER.description": "每回合开始时失去幸运。",
+  "STARSS-TIME_REVERSAL_POWER.smartDescription": "每回合开始时，每层失去10点幸运。"
  }

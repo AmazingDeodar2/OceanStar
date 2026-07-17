@@ -22,7 +22,6 @@ public sealed class Brawl : starssCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(15M, ValueProp.Move),
-        new CardsVar(1),
         new FateVar(60M)
     ];
 
@@ -34,8 +33,7 @@ public sealed class Brawl : starssCard
             .TargetingAllOpponents(CombatState) 
             .WithHitFx("vfx/vfx_attack_slash") 
             .Execute(choiceContext); 
-        // 抽牌不受命运结果影响。
-        await CardPileCmd.Draw( choiceContext, DynamicVars.Cards.BaseValue, Owner ); 
+      
         
         var check = await DiceHelper.Check(
             Owner.Creature, 
@@ -49,6 +47,6 @@ public sealed class Brawl : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Cards.UpgradeValueBy(1M);
+        DynamicVars.Damage.UpgradeValueBy(5M);
     }
 }

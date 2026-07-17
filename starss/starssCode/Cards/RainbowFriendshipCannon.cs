@@ -14,6 +14,8 @@ namespace starss.starssCode.Cards;
 
 public sealed class RainbowFriendshipCannon : starssCard
 {
+    private const string CalculatedHitsKey = "CalculatedHits";
+    
     public RainbowFriendshipCannon()
         : base(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
@@ -21,7 +23,19 @@ public sealed class RainbowFriendshipCannon : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7M, ValueProp.Move)
+        new DamageVar(7M, ValueProp.Move),
+        
+        // 基础攻击1次
+        new CalculationBaseVar(1M),
+
+        // 每进入过一个状态，额外攻击1次
+        new CalculationExtraVar(1M),
+
+        // 最终次数 = 1 + 进入过的状态数量 × 1
+        new CalculatedVar(CalculatedHitsKey)
+            .WithMultiplier(
+                (card, _) => StateRegistry.Get(card.Owner).EnteredStateCount
+            )
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

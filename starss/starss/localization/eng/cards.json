@@ -70,7 +70,7 @@
   "STARSS-FAMILY_BUCKET.title": "全家桶",
   "STARSS-FAMILY_BUCKET.description": "获得{LuckyPower:diff()}点幸运、{Energy:energyIcons()}，抽2张牌，获得1点力量、1点敏捷、2点覆甲、2点活力。将一张呼唤加入你的手牌。",
   "STARSS-RECOVERY.title": "新生",
-  "STARSS-RECOVERY.description": "在自己回合开始时候，失去2点幸运，获得6点格挡和3点活力。",
+  "STARSS-RECOVERY.description": "在自己回合开始时候，失去{Power:diff()}点幸运，获得{Power:diff()}点格挡和{Power:diff()}点活力。",
   "STARSS-VOID_SHIELD.title": "虚无护盾",
   "STARSS-VOID_SHIELD.description": "获得{Power:diff()}层覆甲。额外获得等同于消耗牌堆中虚空与呼唤牌数量之和的覆甲。",
   "STARSS-BLACK_FORM.title": "黑色形态",

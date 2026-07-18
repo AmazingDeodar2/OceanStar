@@ -54,7 +54,8 @@ public sealed class Sapling : starssCard
         await CardPileCmd.AddGeneratedCardsToCombat(
             clovers,
             PileType.Draw,
-            Owner
+            Owner,
+            CardPilePosition.Random
         );
         PileType.Draw.GetPile(Owner).InvokeCardAddFinished();
         int current = Owner.Creature.GetPowerAmount<SaplingPower>();

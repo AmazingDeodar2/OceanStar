@@ -39,7 +39,8 @@ public sealed class AgileEars : starssCard
         await CardPileCmd.AddGeneratedCardsToCombat(
             clovers,
             PileType.Draw,
-            Owner
+            Owner,
+            CardPilePosition.Random
         );
         PileType.Draw.GetPile(Owner).InvokeCardAddFinished();
     }

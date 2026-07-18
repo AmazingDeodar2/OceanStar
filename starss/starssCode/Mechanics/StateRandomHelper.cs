@@ -21,7 +21,10 @@ public static class StateRandomHelper
             () => new GooseEggKitchenState(),
         };
 
-        var index = Random.Shared.Next(states.Count);
+        var rng = player.RunState.Rng.CombatCardGeneration;
+
+        int index = rng.NextInt(states.Count);
+
         return states[index]();
     }
     public static List<StateModel> GetRandomDifferentStates(Player player, int count)
@@ -34,10 +37,12 @@ public static class StateRandomHelper
             () => new JellyfishWorldState(),
             () => new QiqiPlaneState(),
             () => new RatCreviceState(),
+            () => new GooseEggKitchenState(),
         };
 
+        player.RunState.Rng.CombatCardGeneration.Shuffle(states);
+
         return states
-            .OrderBy(_ => Random.Shared.Next())
             .Take(count)
             .Select(factory => factory())
             .ToList();

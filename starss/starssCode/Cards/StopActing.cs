@@ -22,7 +22,7 @@ public sealed class StopActing : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(6M, ValueProp.Unpowered),
+        new BlockVar(6M, ValueProp.Move),
         new EnergyVar(1)
     ];
 

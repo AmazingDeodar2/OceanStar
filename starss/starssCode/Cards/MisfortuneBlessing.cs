@@ -21,7 +21,7 @@ public sealed class MisfortuneBlessing : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(9M, ValueProp.Unpowered),
+        new BlockVar(9M, ValueProp.Move),
         new EnergyVar(1)
     ];
 

@@ -18,7 +18,7 @@ public sealed class Recovery : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<RecoveryPower>("Power", 1M)
+        new PowerVar<RecoveryPower>("Power", 2M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -34,6 +34,6 @@ public sealed class Recovery : starssCard
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars["Power"].UpgradeValueBy(1M);
     }
 }

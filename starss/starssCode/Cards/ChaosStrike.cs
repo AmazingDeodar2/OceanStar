@@ -26,8 +26,10 @@ public sealed class ChaosStrike : starssCard
     
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(1M, ValueProp.Move),
-        new DynamicVar("Hits", 6M),
+        new DamageVar(2M, ValueProp.Move),
+        new DynamicVar("Hits", 5M),
+        new DynamicVar("Power", 5M),
+        new DynamicVar("Hitss", 2M),
         new FateVar(50M),
         new DoomVar(51M)
     ];
@@ -59,7 +61,8 @@ public sealed class ChaosStrike : starssCard
 
         if (check.DoomSuccess)
         {
-            await DamageCmd.Attack(DynamicVars["Hits"].IntValue)
+            await DamageCmd.Attack(DynamicVars["Power"].IntValue)
+                .WithHitCount(DynamicVars["Hitss"].IntValue)
                 .FromCard(this,cardPlay)
                 .Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_slash")
@@ -71,6 +74,7 @@ public sealed class ChaosStrike : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Hits"].UpgradeValueBy(2M);
+        DynamicVars["Hits"].UpgradeValueBy(1M);
+        DynamicVars["Power"].UpgradeValueBy(1M);
     }
 }

@@ -20,7 +20,7 @@ public sealed class WheelOfFate : starssCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(12M, ValueProp.Move),
-        new DynamicVar("Luck", 20M)
+        new DynamicVar("Luck", 40M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

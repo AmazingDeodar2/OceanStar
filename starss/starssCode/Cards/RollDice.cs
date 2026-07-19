@@ -21,7 +21,7 @@ public sealed class RollDice : starssCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(3M, ValueProp.Move),
-        new DynamicVar("Luck", 6M)
+        new DynamicVar("Luck", 12M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -46,6 +46,6 @@ public sealed class RollDice : starssCard
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(1M);
-        DynamicVars["Luck"].UpgradeValueBy(6M);
+        DynamicVars["Luck"].UpgradeValueBy(8M);
     }
 }

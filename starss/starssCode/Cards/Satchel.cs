@@ -23,7 +23,7 @@ public sealed class Satchel : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(8M, ValueProp.Unpowered),
+        new BlockVar(8M, ValueProp.Move),
         new FateVar(50M)
     ];
 

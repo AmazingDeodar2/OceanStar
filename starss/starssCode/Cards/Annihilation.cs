@@ -22,7 +22,7 @@ public sealed class Annihilation : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(4M, ValueProp.Unpowered)
+        new BlockVar(4M, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -38,7 +38,7 @@ public sealed class Annihilation : starssCard
             await CreatureCmd.GainBlock(
                 Owner.Creature,
                 DynamicVars.Block.BaseValue,
-                ValueProp.Unpowered,
+                ValueProp.Move,
                 cardPlay
             );
         }

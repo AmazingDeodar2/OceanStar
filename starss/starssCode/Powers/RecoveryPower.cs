@@ -45,7 +45,7 @@ public sealed class RecoveryPower : starssPower
        
         await CreatureCmd.GainBlock(
             Owner, 
-            6M * stacks,
+            2M * stacks,
             ValueProp.Unpowered, 
             (CardPlay?)null 
             );
@@ -55,7 +55,7 @@ public sealed class RecoveryPower : starssPower
         await PowerCmd.Apply<VigorPower>( 
             choiceContext, 
             Owner, 
-            3M * stacks, 
+            1M * stacks, 
             Owner, 
             (CardModel?)null
             );

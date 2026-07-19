@@ -22,7 +22,7 @@ public sealed class ABitImmortal : starssCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(3M, ValueProp.Unpowered),
-        new DynamicVar("Luck", 6M)
+        new DynamicVar("Luck", 12M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -45,6 +45,6 @@ public sealed class ABitImmortal : starssCard
     protected override void OnUpgrade()
     {
         DynamicVars.Block.UpgradeValueBy(1M);
-        DynamicVars["Luck"].UpgradeValueBy(6M);
+        DynamicVars["Luck"].UpgradeValueBy(8M);
     }
 }

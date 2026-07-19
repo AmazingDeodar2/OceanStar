@@ -60,7 +60,8 @@ public sealed class SignalFailure : starssCard
             await CardPileCmd.AddGeneratedCardToCombat(
                 Owner.Creature.CombatState.CreateCard<VoidCard>(Owner),
                 PileType.Draw,
-                Owner
+                Owner,
+                CardPilePosition.Random
             )
         );
 

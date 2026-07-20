@@ -21,6 +21,11 @@ public sealed class CthulhuMyth : starssCard
         : base(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
     }
+    
+    public override CardMultiplayerConstraint MultiplayerConstraint
+    {
+        get => CardMultiplayerConstraint.MultiplayerOnly;
+    }
 
     /// 变量对齐 BrightestFlame：MaxHpVar 用来表示扣除的生命上限数值
     protected override IEnumerable<DynamicVar> CanonicalVars =>

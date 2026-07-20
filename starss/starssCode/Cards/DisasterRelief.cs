@@ -24,19 +24,30 @@ public sealed class DisasterRelief : starssCard
         new DynamicVar("Luck", 5M)
     ];
 
-    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    protected override async Task OnPlay(
+        PlayerChoiceContext choiceContext,
+        CardPlay cardPlay)
     {
-        CardModel card = (await CardSelectCmd.FromCombatPile(
+        CardModel? selected = (await CardSelectCmd.FromCombatPile(
             choiceContext,
             PileType.Draw.GetPile(Owner),
             Owner,
-            new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, 1)
+            new CardSelectorPrefs(
+                CardSelectorPrefs.TransformSelectionPrompt,
+                1
+            )
         )).FirstOrDefault();
 
-        if (card == null)
-            return;
+        if (selected != null)
+        {
+            CardPileAddResult? result =
+                await CardCmd.TransformTo<CloverLeaf>(selected);
 
-        await CardCmd.Exhaust(choiceContext, card);
+            if (IsUpgraded && result.HasValue)
+            {
+                CardCmd.Upgrade(result.Value.cardAdded);
+            }
+        }
 
         await PowerCmd.Apply<LuckyPower>(
             choiceContext,

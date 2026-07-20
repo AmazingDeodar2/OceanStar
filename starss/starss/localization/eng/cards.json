@@ -116,7 +116,7 @@
   "STARSS-SATCHEL.upgradeDescription": "获得{Block:diff()}点格挡，命运{Fate:diff()}，升级你手牌中的所有牌。",
 
   "STARSS-DISASTER_RELIEF.title": "消灾",
-  "STARSS-DISASTER_RELIEF.description": "选择抽牌堆中一张牌消耗，获得{Luck:diff()}点幸运。",
+  "STARSS-DISASTER_RELIEF.description": "选择抽牌堆中一张牌变为{IfUpgraded:show:四叶草叶片+|四叶草叶片}，获得{Luck:diff()}点幸运。",
   "STARSS-RANK_SUPPRESSION.title": "位格压制",
   "STARSS-RANK_SUPPRESSION.description": "所有敌人在本回合失去{StrengthLoss:diff()}点力量并给予{WeakPower:diff()}层虚弱，将一张呼唤加入你的手牌。",
   "STARSS-EXORCISE.title": "祓除",
@@ -192,5 +192,9 @@
   "STARSS-EVIL_SMILE.description": "回合结束时，本局每进入过一个状态，给予所有敌人{Amount:diff()}层灾厄。",
 
   "STARSS-TIME_REVERSAL.title": "时~光~倒~流~",
-  "STARSS-TIME_REVERSAL.description": "获得{Luck:diff()}点幸运。每回合开始时，失去{LuckLoss}点幸运。"
+  "STARSS-TIME_REVERSAL.description": "获得{Luck:diff()}点幸运。每回合开始时，失去{LuckLoss}点幸运。",
+  "STARSS-REPUTATION.title": "信誉",
+  "STARSS-REPUTATION.description": "造成等同于当前金币数1/{Divisor:diff()}的伤害。命运{Fate:diff()}，获得20金币。厄运{Doom:diff()}，失去20金币。"
+
+
 }

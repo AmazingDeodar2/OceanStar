@@ -1,9 +1,0 @@
-{
-  "STARSS-FRIENDSHIP_MAGIC.title": "友谊魔法",
-  "STARSS-FRIENDSHIP_MAGIC.pages.INITIAL.description": "七位熟悉的身影出现在你的面前。你可以邀请其中两位同行，也可以接受一份更加实际的礼物。",
-  "STARSS-FRIENDSHIP_MAGIC.pages.INITIAL.options.CHOOSE_CARDS": "邀请同行者。 NL 从7张PC牌中选择2张加入牌组。",
-  "STARSS-FRIENDSHIP_MAGIC.pages.INITIAL.options.GAIN_GOLD": "接受礼物。 NL 获得77金币。",
-  "STARSS-FRIENDSHIP_MAGIC.pages.CHOOSE_CARDS.selectionScreenPrompt": "选择2张PC牌加入牌组。",
-  "STARSS-FRIENDSHIP_MAGIC.pages.CHOOSE_CARDS.description": "你选择了两位同行者。友谊的魔法将在接下来的旅途中陪伴着你。",
-  "STARSS-FRIENDSHIP_MAGIC.pages.GAIN_GOLD.description": "你收下了77金币。友谊有时也会以更加实际的形式出现。"
-}

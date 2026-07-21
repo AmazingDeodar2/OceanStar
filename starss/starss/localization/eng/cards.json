@@ -194,7 +194,11 @@
   "STARSS-TIME_REVERSAL.title": "时~光~倒~流~",
   "STARSS-TIME_REVERSAL.description": "获得{Luck:diff()}点幸运。每回合开始时，失去{LuckLoss}点幸运。",
   "STARSS-REPUTATION.title": "信誉",
-  "STARSS-REPUTATION.description": "造成等同于当前金币数1/{Divisor:diff()}的伤害。命运{Fate:diff()}，获得20金币。厄运{Doom:diff()}，失去20金币。"
+  "STARSS-REPUTATION.description": "造成等同于当前金币数1/{Divisor:diff()}的伤害。命运{Fate:diff()}，获得20金币。厄运{Doom:diff()}，失去20金币。",
+  "STARSS-PSYCHOANALYSIS.title": "精神分析",
+  "STARSS-PSYCHOANALYSIS.description": "消耗所有其他玩家牌库中的状态和诅咒牌，并向你的抽牌堆中加入等量的{IfUpgraded:show:四叶草叶片+|四叶草叶片}。",
+  "STARSS-PSYCHOLOGY.title": "心理学",
+  "STARSS-PSYCHOLOGY.description": "本回合其他玩家给予该敌人的负面效果翻倍。"
 
 
 }

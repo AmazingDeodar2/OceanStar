@@ -28,7 +28,10 @@ public sealed class Reputation : starssCard
     {
     }
     
-    
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

@@ -41,8 +41,8 @@
   "STARSS-MAKKA_PAKKA_POWER.description": "每当一张虚空牌消耗时，对所有敌人造成伤害。",
   "STARSS-MAKKA_PAKKA_POWER.smartDescription": "每当一张虚空牌消耗时，对所有敌人造成伤害。",
   "STARSS-RECOVERY_POWER.title": "再生",
-  "STARSS-RECOVERY_POWER.description": "在你的回合开始时，每层再生失去1点幸运，获得6点格挡和3点活力。",
-  "STARSS-RECOVERY_POWER.smartDescription": "在你的回合开始时，每层再生失去1点幸运，获得6点格挡和3点活力。",
+  "STARSS-RECOVERY_POWER.description": "在你的回合开始时，每层再生失去1点幸运，获得2点格挡和1点活力。",
+  "STARSS-RECOVERY_POWER.smartDescription": "在你的回合开始时，每层再生失去1点幸运，获得2点格挡和1点活力。",
   "STARSS-BLACK_FORM_POWER.title": "黑色形态",
   "STARSS-BLACK_FORM_POWER.description": "你的骰点不会小于50。每张生成的虚空给你提供力量与敏捷。",
   "STARSS-BLACK_FORM_POWER.smartDescription": "你的骰点不会小于50。每张生成的虚空给你提供力量与敏捷。",
@@ -76,5 +76,10 @@
   
   "STARSS-TIME_REVERSAL_POWER.title": "时光倒流",
   "STARSS-TIME_REVERSAL_POWER.description": "每回合开始时失去幸运。",
-  "STARSS-TIME_REVERSAL_POWER.smartDescription": "每回合开始时，每层失去10点幸运。"
+  "STARSS-TIME_REVERSAL_POWER.smartDescription": "每回合开始时，每层失去10点幸运。",
+
+  "STARSS-PSYCHOLOGY_POWER.title": "心理学",
+  "STARSS-PSYCHOLOGY_POWER.description": "受到负面状态翻倍。",
+  "STARSS-PSYCHOLOGY_POWER.smartDescription": "受到负面状态翻倍。"
+
  }

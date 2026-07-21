@@ -198,7 +198,9 @@
   "STARSS-PSYCHOANALYSIS.title": "精神分析",
   "STARSS-PSYCHOANALYSIS.description": "消耗所有其他玩家牌库中的状态和诅咒牌，并向你的抽牌堆中加入等量的{IfUpgraded:show:四叶草叶片+|四叶草叶片}。",
   "STARSS-PSYCHOLOGY.title": "心理学",
-  "STARSS-PSYCHOLOGY.description": "本回合其他玩家给予该敌人的负面效果翻倍。"
+  "STARSS-PSYCHOLOGY.description": "本回合其他玩家给予该敌人的负面效果翻倍。",
+  "STARSS-OCCULTISM.title": "神秘学",
+  "STARSS-OCCULTISM.description": "选择一名其他玩家并投掷一枚六面骰，根据骰点其获得{IfUpgraded:show:非常神秘的奖励|神秘的奖励}。厄运60，将一张悔恨加入你的手牌。"
 
 
 }

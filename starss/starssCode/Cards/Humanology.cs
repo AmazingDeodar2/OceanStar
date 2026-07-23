@@ -101,6 +101,13 @@ public sealed class Humanology : starssCard
             if (DeckVersion is Humanology deckVersion)
                 deckVersion.BuffFromPlay(addAmount);
         }
+        if (diceResult.HardSuccess)
+        {
+            BuffFromPlay(addAmount);
+
+            if (DeckVersion is Humanology deckVersion)
+                deckVersion.BuffFromPlay(addAmount);
+        }
 
         if (diceResult.DoomSuccess)
         {

@@ -43,37 +43,71 @@ public sealed class Dodge : starssCard
             sourceCard: this
         );
 
-        if (!check.FateSuccess)
-            return;
-        CardSelectorPrefs prefs = new(
-            SelectionScreenPrompt,
-            1
-        );
-
-        CardModel? selectedCard =
-            (await CardSelectCmd.FromCombatPile(
-                choiceContext,
-                PileType.Discard.GetPile(Owner),
-                Owner,
-                prefs
-            )).FirstOrDefault();
-
-        if (selectedCard == null)
-            return;
-
-        PileType? pileType = selectedCard.Pile?.Type;
-
-        if (pileType != PileType.Draw &&
-            pileType != PileType.Discard)
+        if (check.FateSuccess)
         {
-            return;
-        }
+            CardSelectorPrefs prefs = new(
+                SelectionScreenPrompt,
+                1
+            );
 
-        await CardPileCmd.Add(
-            selectedCard,
-            PileType.Draw,
-            CardPilePosition.Top
-        );
+            CardModel? selectedCard =
+                (await CardSelectCmd.FromCombatPile(
+                    choiceContext,
+                    PileType.Discard.GetPile(Owner),
+                    Owner,
+                    prefs
+                )).FirstOrDefault();
+
+            if (selectedCard == null)
+                return;
+
+            PileType? pileType = selectedCard.Pile?.Type;
+
+            if (pileType != PileType.Draw &&
+                pileType != PileType.Discard)
+            {
+                return;
+            }
+
+            await CardPileCmd.Add(
+                selectedCard,
+                PileType.Draw,
+                CardPilePosition.Top
+            );
+        }
+        if (check.HardSuccess)
+        {
+            CardSelectorPrefs prefs = new(
+                SelectionScreenPrompt,
+                1
+            );
+
+            CardModel? selectedCard =
+                (await CardSelectCmd.FromCombatPile(
+                    choiceContext,
+                    PileType.Discard.GetPile(Owner),
+                    Owner,
+                    prefs
+                )).FirstOrDefault();
+
+            if (selectedCard == null)
+                return;
+
+            PileType? pileType = selectedCard.Pile?.Type;
+
+            if (pileType != PileType.Draw &&
+                pileType != PileType.Discard)
+            {
+                return;
+            }
+
+            await CardPileCmd.Add(
+                selectedCard,
+                PileType.Draw,
+                CardPilePosition.Top
+            );
+        }
+        
     }
 
     protected override void OnUpgrade()

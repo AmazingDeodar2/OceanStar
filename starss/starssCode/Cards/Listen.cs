@@ -57,6 +57,17 @@ public sealed class Listen : starssCard
                 this
             );
         }
+        if (check.HardSuccess)
+        {
+            
+            await PowerCmd.Apply<WeakPower>(
+                choiceContext,
+                cardPlay.Target,
+                DynamicVars.Weak.BaseValue,
+                Owner.Creature,
+                this
+            );
+        }
     }
 
     protected override void OnUpgrade()

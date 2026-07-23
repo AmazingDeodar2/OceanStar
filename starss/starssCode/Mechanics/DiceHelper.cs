@@ -21,6 +21,7 @@ public readonly record struct DiceCheckResult(
     int Roll,
     int Fate,
     int Doom,
+    bool HardSuccess,
     bool FateSuccess,
     bool DoomSuccess,
     DiceRollResult RollResult
@@ -48,11 +49,20 @@ public static class DiceHelper
         var finalFate = fateEnabled ? ApplyFate(fate, creature) : fate;
         var finalDoom = doomEnabled ? ApplyDoom(doom, creature) : doom;
 
+        bool fateSuccess =
+            fateEnabled &&
+            rollResult.Value <= finalFate;
+
+        bool hardSuccess =
+            fateSuccess &&
+            rollResult.Value <= finalFate / 2;
+
         var result = new DiceCheckResult(
             rollResult.Value,
             finalFate,
             finalDoom,
-            fateEnabled && rollResult.Value <= finalFate,
+            fateSuccess,
+            hardSuccess,
             doomEnabled && rollResult.Value >= finalDoom,
             rollResult
         );

@@ -56,6 +56,16 @@ public sealed class Scout : starssCard
                 this
             );
         }
+        if (check.HardSuccess)
+        {
+            await PowerCmd.Apply<VigorPower>(
+                choiceContext,
+                Owner.Creature,
+                DynamicVars["power"].BaseValue,
+                Owner.Creature,
+                this
+            );
+        }
     }
 
     protected override void OnUpgrade()

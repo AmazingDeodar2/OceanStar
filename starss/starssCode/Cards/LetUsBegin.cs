@@ -71,6 +71,19 @@ public sealed class LetUsBegin : starssCard
                 this
             );
         }
+        if (check.HardSuccess)
+        {
+            for (int i = 0; i < DynamicVars["Bonus"].IntValue; i++)
+                await AttackEnemy(choiceContext, cardPlay.Target, cardPlay);
+
+            await PowerCmd.Apply<DrawCardsNextTurnPower>(
+                choiceContext,
+                Owner.Creature,
+                DynamicVars.Cards.BaseValue,
+                Owner.Creature,
+                this
+            );
+        }
     }
 
     private async Task AttackEnemy(PlayerChoiceContext choiceContext, Creature target, CardPlay cardPlay)

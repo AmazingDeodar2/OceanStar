@@ -67,6 +67,17 @@ public sealed class WildIdea : starssCard
                 this
             );
         }
+        if (check.HardSuccess)
+        {
+            
+            await PowerCmd.Apply<FreeNextCardPower>(
+                choiceContext,
+                Owner.Creature,
+                1M,
+                Owner.Creature,
+                this
+            );
+        }
     }
 
     protected override void OnUpgrade()

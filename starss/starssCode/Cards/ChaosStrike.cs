@@ -58,6 +58,18 @@ public sealed class ChaosStrike : starssCard
                 .Execute(choiceContext);
             
         }
+        
+        if (check.HardSuccess)
+        {
+            
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+                .WithHitCount(DynamicVars["Hits"].IntValue)
+                .FromCard(this, cardPlay)
+                .Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_attack_slash")
+                .Execute(choiceContext);
+            
+        }
 
         if (check.DoomSuccess)
         {

@@ -46,27 +46,53 @@ public sealed class Satchel : starssCard
         if (!check.FateSuccess)
             return;
 
-       
 
-        if (IsUpgraded)
+        if (check.FateSuccess)
         {
-            foreach (CardModel card in PileType.Hand.GetPile(Owner).Cards
-                         .Where(c => c.IsUpgradable))
+            if (IsUpgraded)
             {
-                CardCmd.Upgrade(card);
+                foreach (CardModel card in PileType.Hand.GetPile(Owner).Cards
+                             .Where(c => c.IsUpgradable))
+                {
+                    CardCmd.Upgrade(card);
+                }
+            }
+            else
+            {
+                CardModel card = await CardSelectCmd.FromHandForUpgrade(
+                    choiceContext,
+                    Owner,
+                    this
+                );
+
+                if (card != null)
+                    CardCmd.Upgrade(card);
             }
         }
-        else
+        if (check.HardSuccess)
         {
-            CardModel card = await CardSelectCmd.FromHandForUpgrade(
-                choiceContext,
-                Owner,
-                this
-            );
+            if (IsUpgraded)
+            {
+                foreach (CardModel card in PileType.Hand.GetPile(Owner).Cards
+                             .Where(c => c.IsUpgradable))
+                {
+                    CardCmd.Upgrade(card);
+                }
+            }
+            else
+            {
+                CardModel card = await CardSelectCmd.FromHandForUpgrade(
+                    choiceContext,
+                    Owner,
+                    this
+                );
 
-            if (card != null)
-                CardCmd.Upgrade(card);
+                if (card != null)
+                    CardCmd.Upgrade(card);
+            }
         }
+
+        
     }
 
     protected override void OnUpgrade()

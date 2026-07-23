@@ -45,6 +45,15 @@ public sealed class FirstAid : starssCard
                 DynamicVars.Heal.BaseValue
             );
         }
+        if (check.HardSuccess)
+        {
+            
+
+            await CreatureCmd.Heal(
+                Owner.Creature,
+                DynamicVars.Heal.BaseValue
+            );
+        }
 
         if (check.DoomSuccess)
         {

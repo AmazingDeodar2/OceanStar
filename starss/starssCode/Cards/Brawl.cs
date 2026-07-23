@@ -43,6 +43,7 @@ public sealed class Brawl : starssCard
             sourceCard: this ); 
         // 命运成功：这张卡在本场战斗中的费用减少 1。
         if (check.FateSuccess) { EnergyCost.AddThisCombat(-1); }
+        if (check.HardSuccess) { EnergyCost.AddThisCombat(-1); }
     }
 
     protected override void OnUpgrade()

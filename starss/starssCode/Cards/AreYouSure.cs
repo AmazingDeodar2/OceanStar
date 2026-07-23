@@ -56,6 +56,17 @@ public sealed class AreYouSure : starssCard
                 Owner.Creature,
                 this);
         }
+        
+        if (check.HardSuccess)
+        {
+            
+            await PowerCmd.Apply<VulnerablePower>(
+                choiceContext,
+                cardPlay.Target,
+                DynamicVars.Vulnerable.BaseValue,
+                Owner.Creature,
+                this);
+        }
     }
 
     protected override void OnUpgrade()

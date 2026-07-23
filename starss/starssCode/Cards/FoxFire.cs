@@ -78,6 +78,22 @@ public sealed class FoxFire : starssCard
             }
             
         }
+        if (check.HardSuccess)
+        {
+           
+
+            foreach (Creature enemy in CombatState!.HittableEnemies)
+            {
+                await PowerCmd.Apply<VulnerablePower>(
+                    choiceContext,
+                    enemy,
+                    DynamicVars.Vulnerable.BaseValue,
+                    Owner.Creature,
+                    this
+                );
+            }
+            
+        }
 
         if (check.DoomSuccess)
         {

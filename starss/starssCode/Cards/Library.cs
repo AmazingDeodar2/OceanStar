@@ -43,7 +43,17 @@ public sealed class Library : starssCard
                 2,
                 Owner
             );
-
+        
+            
+        }
+        if (check.HardSuccess)
+        {
+            await CardPileCmd.Draw(
+                choiceContext,
+                2,
+                Owner
+            );
+        
             
         }
     }

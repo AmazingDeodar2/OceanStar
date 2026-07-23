@@ -42,15 +42,28 @@ public sealed class Stealth : starssCard
         if (!check.FateSuccess)
             return;
 
-        
+        if (check.FateSuccess)
+        {
+            await PowerCmd.Apply<BufferPower>(
+                choiceContext,
+                Owner.Creature,
+                DynamicVars["BufferPower"].BaseValue,
+                Owner.Creature,
+                this
+            );
+        }
+        if (check.HardSuccess)
+        {
+            await PowerCmd.Apply<BufferPower>(
+                choiceContext,
+                Owner.Creature,
+                DynamicVars["BufferPower"].BaseValue,
+                Owner.Creature,
+                this
+            );
+        }
 
-        await PowerCmd.Apply<BufferPower>(
-            choiceContext,
-            Owner.Creature,
-            DynamicVars["BufferPower"].BaseValue,
-            Owner.Creature,
-            this
-        );
+        
     }
 
     protected override void OnUpgrade()

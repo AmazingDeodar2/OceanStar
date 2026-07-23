@@ -88,6 +88,37 @@ public sealed class SanCheck : starssCard
             }
             
         }
+        if (check.HardSuccess)
+        {
+           
+
+            CardModel card = await CardSelectCmd.FromChooseACardScreen(
+                choiceContext,
+                CardFactory.GetDistinctForCombat(
+                    Owner,
+                    Owner.Character.CardPool.GetUnlockedCards(
+                        Owner.UnlockState,
+                        Owner.RunState.CardMultiplayerConstraint
+                    ).Where(c => c.Type == CardType.Skill),
+                    3,
+                    Owner.RunState.Rng.CombatCardGeneration
+                ).ToList(),
+                Owner,
+                true
+            );
+
+            if (card != null)
+            {
+                card.SetToFreeThisTurn();
+
+                await CardPileCmd.AddGeneratedCardToCombat(
+                    card,
+                    PileType.Hand,
+                    Owner
+                );
+            }
+            
+        }
 
         if (check.DoomSuccess)
         {

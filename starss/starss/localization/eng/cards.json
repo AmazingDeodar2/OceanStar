@@ -194,13 +194,23 @@
   "STARSS-TIME_REVERSAL.title": "时~光~倒~流~",
   "STARSS-TIME_REVERSAL.description": "获得{Luck:diff()}点幸运。每回合开始时，失去{LuckLoss}点幸运。",
   "STARSS-REPUTATION.title": "信誉",
-  "STARSS-REPUTATION.description": "造成等同于当前金币数1/{Divisor:diff()}的伤害。命运{Fate:diff()}，获得20金币。厄运{Doom:diff()}，失去20金币。",
+  "STARSS-REPUTATION.description": "进入商店并购买一项服务！在【小马国度】中消费减半！",
   "STARSS-PSYCHOANALYSIS.title": "精神分析",
   "STARSS-PSYCHOANALYSIS.description": "消耗所有其他玩家牌库中的状态和诅咒牌，并向你的抽牌堆中加入等量的{IfUpgraded:show:四叶草叶片+|四叶草叶片}。",
   "STARSS-PSYCHOLOGY.title": "心理学",
   "STARSS-PSYCHOLOGY.description": "本回合其他玩家给予该敌人的负面效果翻倍。",
   "STARSS-OCCULTISM.title": "神秘学",
-  "STARSS-OCCULTISM.description": "选择一名其他玩家并投掷一枚六面骰，根据骰点其获得{IfUpgraded:show:非常神秘的奖励|神秘的奖励}。厄运60，将一张悔恨加入你的手牌。"
+  "STARSS-OCCULTISM.description": "选择一名其他玩家并投掷一枚六面骰，根据骰点其获得{IfUpgraded:show:非常神秘的奖励|神秘的奖励}。厄运60，将一张悔恨加入你的手牌。",
+  "STARSS-CIRCLET_PACKAGE_SERVICE.title": "头环！",
+  "STARSS-CIRCLET_PACKAGE_SERVICE.description": "你可以免费买一个头环，附赠一张随机金卡，本回合可以被免费打出。",
+  "STARSS-RANDOM_RELIC_SERVICE.title": "随机遗物！",
+  "STARSS-RANDOM_RELIC_SERVICE.description": "花费{Price:diff()}金币购买一个随机遗物！",
+  "STARSS-REMOVE_CARD_SERVICE.title": "卡牌移除！",
+  "STARSS-REMOVE_CARD_SERVICE.description": "花费{Price:diff()}金币永久移除一张卡牌！",
+  "STARSS-CHOOSE_GOD.title": "选神",
+  "STARSS-CHOOSE_GOD.description": "{IfUpgraded:show:选择一名其他玩家，}将一张神之骰加入{IfUpgraded:show:所有其他玩家|他}的手牌。",
+  "STARSS-GOD_DICE.title": "神之骰",
+  "STARSS-GOD_DICE.description": "投掷一个{Sides:diff()}面骰，造成对应骰点的伤害。命运{Fate:diff()}，升级为12面/20面/30面/50面/100面骰子。厄运{Doom:diff()}，复制一张神之骰进入弃牌堆。"
 
 
 }

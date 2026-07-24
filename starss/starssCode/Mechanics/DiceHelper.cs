@@ -91,6 +91,21 @@ public static class DiceHelper
         return RollDice(creature, 6, sourceCard);
     }
     
+    public static DiceRollResult RollD12(Creature creature, CardModel? sourceCard = null)
+    {
+        return RollDice(creature, 12, sourceCard);
+    }
+    
+    public static DiceRollResult RollD30(Creature creature, CardModel? sourceCard = null)
+    {
+        return RollDice(creature, 30, sourceCard);
+    }
+    
+    public static DiceRollResult RollD50(Creature creature, CardModel? sourceCard = null)
+    {
+        return RollDice(creature, 50, sourceCard);
+    }
+    
     public static DiceRollResult RollD3(Creature creature, CardModel? sourceCard = null)
     {
         return RollDice(creature, 3, sourceCard);

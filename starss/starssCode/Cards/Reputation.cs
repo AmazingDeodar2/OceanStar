@@ -1,94 +1,97 @@
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.ValueProps;
-using starss.starssCode.Mechanics;
-using System;
+using starss.starssCode.Cards.ReputationServices;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using starss.starssCode.States;
 
 namespace starss.starssCode.Cards;
 
-
 public sealed class Reputation : starssCard
 {
-    private const string DivisorKey = "Divisor";
-    
-    private const string GoldKey = "Gold";
+    private const int RandomRelicBasePrice = 150;
+    private const int RemoveCardBasePrice = 100;
 
     public Reputation()
         : base(
-            2,
-            CardType.Attack,
+            1,
+            CardType.Skill,
             CardRarity.Rare,
-            TargetType.AnyEnemy)
+            TargetType.Self)
     {
     }
-    
+
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         CardKeyword.Exhaust
     ];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-    [
-        // 当前金币的 1/5；升级后改为 1/3。
-        new DynamicVar(DivisorKey, 5M),
-
-        new FateVar(20M),
-        new DoomVar(81M),
-        new DynamicVar(GoldKey, 20M)
-    ];
+        [];
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target);
-
-        int divisor = DynamicVars[DivisorKey].IntValue;
-
-        // 使用向下取整，例如：
-        // 99 金币时，未升级造成 19 点伤害。
-        int damage = Owner.Gold / DynamicVars["Divisor"].IntValue;
-
-        await DamageCmd
-            .Attack(damage)
-            .FromCard(this, cardPlay)
-            .Targeting(cardPlay.Target)
-            .Execute(choiceContext);
-
-        DiceCheckResult check = await DiceHelper.Check(
+        await CreatureCmd.TriggerAnim(
             Owner.Creature,
-            DynamicVars["Fate"].IntValue,
-            DynamicVars["Doom"].IntValue,
-            choiceContext,
-            this
+            "Cast",
+            Owner.Character.CastAnimDelay
         );
 
-        // 命运和厄运根据你的检定系统分别判断。
-        if (check.FateSuccess)
-        {
-            await PlayerCmd.GainGold(
-                DynamicVars[GoldKey].BaseValue,
-                Owner
-            );
-        }
+        bool isInPonyLand =
+            StateRegistry
+                .Get(Owner)
+                .Has<PonyLandState>();
 
-        if (check.DoomSuccess)
-        {
-            await PlayerCmd.LoseGold(
-                DynamicVars[GoldKey].BaseValue,
+        int randomRelicPrice = isInPonyLand
+            ? RandomRelicBasePrice / 2
+            : RandomRelicBasePrice;
+
+        int cardRemovalPrice = isInPonyLand
+            ? RemoveCardBasePrice / 2
+            : RemoveCardBasePrice;
+
+        RandomRelicService randomRelicService =
+            CombatState.CreateCard<RandomRelicService>(Owner);
+
+        randomRelicService.DynamicVars["Price"].BaseValue =
+            randomRelicPrice;
+
+        RemoveCardService removeCardService =
+            CombatState.CreateCard<RemoveCardService>(Owner);
+
+        removeCardService.DynamicVars["Price"].BaseValue =
+            cardRemovalPrice;
+
+        CircletPackageService circletPackageService =
+            CombatState.CreateCard<CircletPackageService>(Owner);
+
+        List<CardModel> services =
+        [
+            randomRelicService,
+            removeCardService,
+            circletPackageService
+        ];
+
+        CardModel? selectedService =
+            await CardSelectCmd.FromChooseACardScreen(
+                choiceContext,
+                services,
                 Owner
             );
-        }
+
+        if (selectedService is not IReputationService service)
+            return;
+
+        await service.OnChosen();
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Divisor"].UpgradeValueBy(-2M);
+        EnergyCost.UpgradeBy(-1);
     }
 }

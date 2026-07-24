@@ -11,7 +11,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 using VoidCard = MegaCrit.Sts2.Core.Models.Cards.Void;
 using BeckonCard =  MegaCrit.Sts2.Core.Models.Cards.Beckon;
 
@@ -23,39 +25,65 @@ public sealed class CompressVoid : starssCard
     private const string CalculatedDamageKey = "CalculatedDamage";
 
     public CompressVoid()
-        : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+        : base(1, CardType.Skill,CardRarity.Uncommon, TargetType.Self)
     {
     }
-
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
+    
+    
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(3M, ValueProp.Move),
-        new CalculationBaseVar(0M),
-        new CalculationExtraVar(1M),
-        new CalculatedVar(CalculatedDamageKey)
-            .WithMultiplier((card, _) => GetVoidAndCallCards(card.Owner).Count())
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var cardsToExhaust = GetVoidAndCallCards(Owner).ToList();
+        int voidCount =
+            PileType.Exhaust
+                .GetPile(Owner)
+                .Cards
+                .Count(IsVoid);
 
-        foreach (CardModel card in cardsToExhaust)
+
+        // 少于5张虚空
+        if (voidCount < 5)
         {
-            await CardCmd.Exhaust(choiceContext, card);
+            await PowerCmd.Apply<ArtifactPower>(
+                choiceContext,
+                Owner.Creature,
+                1,
+                Owner.Creature,
+                this);
+
+            return;
         }
 
-        int count = cardsToExhaust.Count;
-        if (count <= 0 || cardPlay.Target == null)
+
+        // 5~7张虚空
+        if (voidCount < 8)
+        {
+            await PowerCmd.Apply<IntangiblePower>(
+                choiceContext,
+                Owner.Creature,
+                1,
+                Owner.Creature,
+                this);
+
             return;
+        }
 
-        decimal damage = DynamicVars.Damage.BaseValue * count;
 
-        await DamageCmd.Attack(damage)
-            .FromCard(this,cardPlay)
-            .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_blunt", tmpSfx: "blunt_attack.mp3")
-            .Execute(choiceContext);
+        // 8张以上
+        foreach (PowerModel power in Owner.Creature.Powers.ToList())
+        {
+            if (power.Type == PowerType.Debuff)
+            {
+                await PowerCmd.Remove(power);
+            }
+        }
     }
 
     private static IEnumerable<CardModel> GetVoidAndCallCards(Player owner)
@@ -67,8 +95,13 @@ public sealed class CompressVoid : starssCard
             );
     }
 
+    private static bool IsVoid(CardModel card)
+    {
+        return card is VoidCard;
+    }
+    
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(1M);
+        EnergyCost.UpgradeBy(-1);
     }
 }

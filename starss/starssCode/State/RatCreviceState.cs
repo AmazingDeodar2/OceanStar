@@ -28,6 +28,30 @@ public sealed class RatCreviceState : StateModel
 
     public override async Task OnEnter(PlayerChoiceContext choiceContext)
     {
+        var discardPile = PileType.Discard.GetPile(Owner);
+        if (discardPile.Cards.Count <= 0)
+            return;
+                                                     
+        CardSelectorPrefs prefs = new CardSelectorPrefs(_selectText, 1);
+                                                     
+        var selectedCards = await CardSelectCmd.FromCombatPile(
+            choiceContext,
+            discardPile,
+            Owner,
+            prefs
+            );
+        CardModel? picked = selectedCards.FirstOrDefault();
+        if (picked == null)
+            return;
+                                                     
+        picked.RemoveFromCurrentPile();
+        await CardPileCmd.Add(picked, PileType.Hand);
+    }
+
+
+    public override async Task OnExit(PlayerChoiceContext choiceContext)
+    {
+       
         // 匹配FromCombatPile内部防御：战斗收尾直接退出，防止UI错乱卡死
         if (CombatManager.Instance.IsEnding || CombatManager.Instance.IsOverOrEnding)
             return;
@@ -53,29 +77,6 @@ public sealed class RatCreviceState : StateModel
 
         // State上下文必须携带choiceContext，解决指令入队卡死问题
         picked.RemoveFromCurrentPile();
-        await CardPileCmd.Add(picked, PileType.Hand);
-    }
-
-
-    public override async Task OnExit(PlayerChoiceContext choiceContext)
-    {
-        var discardPile = PileType.Discard.GetPile(Owner);
-        if (discardPile.Cards.Count <= 0)
-            return;
-
-        CardSelectorPrefs prefs = new CardSelectorPrefs(_selectText, 1);
-
-        var selectedCards = await CardSelectCmd.FromCombatPile(
-            choiceContext,
-            discardPile,
-            Owner,
-            prefs
-        );
-        CardModel? picked = selectedCards.FirstOrDefault();
-        if (picked == null)
-            return;
-
-        picked.RemoveFromCurrentPile();
-        await CardPileCmd.Add(picked, PileType.Hand);
+        await CardPileCmd.Add(picked, PileType.Hand); 
     }
 }

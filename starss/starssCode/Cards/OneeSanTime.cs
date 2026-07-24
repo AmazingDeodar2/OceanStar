@@ -28,7 +28,6 @@ public sealed class OneeSanTime : starssCard
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         EnergyHoverTip,
-        HoverTipFactory.FromCard<VoidCard>()
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

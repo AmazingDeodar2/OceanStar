@@ -55,8 +55,6 @@ public sealed class LuckyFinish : starssCard
 
         if (check.FateSuccess)
         {
-           
-
             await CreatureCmd.GainBlock(
                 Owner.Creature,
                 damage,
@@ -64,6 +62,14 @@ public sealed class LuckyFinish : starssCard
                 cardPlay
             );
         }
+        if (check.HardSuccess) 
+        { 
+            await CreatureCmd.GainBlock(
+            Owner.Creature,
+            damage,
+            ValueProp.Unpowered,
+            cardPlay
+        );}
     }
 
     private static decimal GetLuckDamage(CardModel card)

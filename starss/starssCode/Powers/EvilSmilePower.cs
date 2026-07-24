@@ -1,27 +1,27 @@
-using MegaCrit.Sts2.Core.Combat;
+using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models.Powers;
 using starss.starssCode.Mechanics;
 
 namespace starss.starssCode.Powers;
 
-
 public sealed class EvilSmilePower : starssPower
 {
-    private int _statesEntered;
+    private int _statesEnteredThisCombat;
 
     public override PowerType Type => PowerType.Buff;
 
-    public override PowerStackType StackType => PowerStackType.Counter;
+    public override PowerStackType StackType =>
+        PowerStackType.Counter;
+
+    public void AfterStateEntered(StateModel state)
+    {
+        _statesEnteredThisCombat++;
+    }
 
     public override async Task BeforeFlushLate(
         PlayerChoiceContext choiceContext,
@@ -31,18 +31,18 @@ public sealed class EvilSmilePower : starssPower
         if (player != Owner.Player)
             return;
 
-        // 与官方 WellLaidPlansPower 一致，确认本次确实会进行回合末清手
-        if (!Hook.ShouldFlush(player.Creature.CombatState, player))
+        if (!Hook.ShouldFlush(
+                player.Creature.CombatState,
+                player))
+        {
             return;
+        }
 
-        int enteredStateCount =
-            StateRegistry.Get(player).EnteredStateCount;
-
-        if (enteredStateCount <= 0)
+        if (_statesEnteredThisCombat <= 0)
             return;
 
         decimal totalAmount =
-            enteredStateCount * Amount;
+            _statesEnteredThisCombat * Amount;
 
         Flash();
 
@@ -53,5 +53,7 @@ public sealed class EvilSmilePower : starssPower
             Owner,
             null
         );
+
+        // 不清零，继续累计整场战斗进入的状态数
     }
 }

@@ -48,8 +48,6 @@ public sealed class AllIn : starssCard
 
         if (check.FateSuccess)
         {
-            
-
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this,cardPlay)
                 .TargetingAllOpponents(CombatState!)
@@ -57,6 +55,15 @@ public sealed class AllIn : starssCard
                 .Execute(choiceContext);
         }
 
+        if (check.HardSuccess)
+        {
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+                .FromCard(this,cardPlay)
+                .TargetingAllOpponents(CombatState!)
+                .WithHitFx("vfx/vfx_attack_blunt")
+                .Execute(choiceContext);
+        }
+        
         if (check.DoomSuccess)
         {
             

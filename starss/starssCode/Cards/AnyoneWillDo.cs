@@ -10,14 +10,16 @@ namespace starss.starssCode.Cards;
 public sealed class AnyoneWillDo : starssCard
 {
     public AnyoneWillDo()
-        : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+        : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
     }
 
     public override IEnumerable<CardKeyword> CanonicalKeywords
         => new[] { CardKeyword.Exhaust };
 
-    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    protected override async Task OnPlay(
+        PlayerChoiceContext choiceContext,
+        CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(
             Owner.Creature,
@@ -25,10 +27,17 @@ public sealed class AnyoneWillDo : starssCard
             Owner.Character.CastAnimDelay
         );
 
+        StateModel? state =
+            StateRandomHelper.GetRandomDifferentState(Owner);
+
+        // 极端情况下，七种状态全部存在，不再进入状态。
+        if (state == null)
+            return;
+
         await StateCmd.Enter(
             choiceContext,
             Owner,
-            StateRandomHelper.GetRandomState(Owner)
+            StateRandomHelper.GetRandomDifferentState(Owner)
         );
     }
 

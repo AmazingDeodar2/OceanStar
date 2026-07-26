@@ -14,7 +14,7 @@ namespace starss.starssCode.Cards;
 public sealed class RolePlay : starssCard
 {
     public RolePlay()
-        : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+        : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
     {
     }
 

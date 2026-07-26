@@ -1,6 +1,25 @@
 {
+  "THE_ARCHITECT.talk.STARSS-STARSS.0-0r.ancient": "又一张新面孔。",
+  "THE_ARCHITECT.talk.STARSS-STARSS.0-0r.next": "继续",
   "THE_ARCHITECT.talk.STARSS-STARSS.0-0r.char": "没想到塔顶竟有如此的存在。",
-  "THE_ARCHITECT.talk.STARSS-STARSS.0-0r.next": "新奇的生物。",
-  "THE_ARCHITECT.talk.STARSS-STARSS.0-1r.ancient": "死吧。",
-  "THE_ARCHITECT.talk.STARSS-STARSS.0-attack": "不要再出现在我的面前。"
+  "THE_ARCHITECT.talk.STARSS-STARSS.0-1r.ancient": "不管是谁，都从我的眼前消失。",
+  "THE_ARCHITECT.talk.STARSS-STARSS.0-attack": "不要再出现在我的面前。",
+  "NEOW.talk.STARSS-STARSS.0-0r.ancient": "你醒了……清理……叶子……很费……时间",
+  "NEOW.talk.STARSS-STARSS.0-0r.next": "继续",
+  "NEOW.talk.STARSS-STARSS.0-1r.char": "这些运势，代价是什么？",
+  "NEOW.talk.STARSS-STARSS.0-1r.next": "继续",
+  "NEOW.talk.STARSS-STARSS.0-2r.ancient": "往后……你……会知道。",
+  "OROBAS.talk.STARSS-STARSS.0-0r.ancient": "毛茸茸的朋友！你会喜欢这些的！",
+  "PAEL.talk.STARSS-STARSS.0-0r.ancient": "小家伙，你的血肉也在成为养料。",
+  "PAEL.talk.STARSS-STARSS.0-0r.next": "继续",
+  "PAEL.talk.STARSS-STARSS.0-1r.char": "……没关系，它们让我变得强大。",
+  "TEZCATARA.talk.STARSS-STARSS.0-0r.ancient": "亲爱的，快进来！天呐你头上怎么长了这么多草，要我帮你烧掉它们吗？",
+  "TEZCATARA.talk.STARSS-STARSS.0-0r.next": "继续",
+  "TEZCATARA.talk.STARSS-STARSS.0-1r.char": "谢谢你的好意，特兹卡塔拉，不过我想我还有更重要的事要做。",
+  "DARV.talk.STARSS-STARSS.0-0r.ancient": "小狐狸！想要什么就自己拿吧！",
+  "NONUPEIPE.talk.STARSS-STARSS.0-0r.ancient": "美丽的客人！你也是去挑战塔顶之人的吗？带上这些吧，它们能给你带来好运。",
+  "TANX.talk.STARSS-STARSS.0-0r.ancient": "战斗！朋友！！不要变成区！！！",
+  "VAKUU.talk.STARSS-STARSS.0-0r.ancient": "看来已经有东西先我一步与你达成契约了。",
+  "VAKUU.talk.STARSS-STARSS.0-0r.next": "继续",
+  "VAKUU.talk.STARSS-STARSS.0-1r.char": "这是我自己的选择，容不得你指手画脚，恶魔。"
 }

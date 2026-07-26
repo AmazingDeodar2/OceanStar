@@ -28,6 +28,7 @@ public sealed class AreYouSure : starssCard
         new BlockVar(8M, ValueProp.Move),
         new FateVar(50M),
         new PowerVar<VulnerablePower>(1M),
+        new PowerVar<WeakPower>(1M),
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -55,6 +56,13 @@ public sealed class AreYouSure : starssCard
                 DynamicVars.Vulnerable.BaseValue,
                 Owner.Creature,
                 this);
+            
+            await PowerCmd.Apply<WeakPower>(
+                choiceContext,
+                cardPlay.Target,
+                DynamicVars.Weak.BaseValue,
+                Owner.Creature,
+                this);
         }
         
         if (check.HardSuccess)
@@ -66,6 +74,12 @@ public sealed class AreYouSure : starssCard
                 DynamicVars.Vulnerable.BaseValue,
                 Owner.Creature,
                 this);
+            await PowerCmd.Apply<WeakPower>(
+                choiceContext,
+                cardPlay.Target,
+                DynamicVars.Weak.BaseValue,
+                Owner.Creature,
+                this);
         }
     }
 
@@ -73,5 +87,6 @@ public sealed class AreYouSure : starssCard
     {
         DynamicVars.Block.UpgradeValueBy(3M);
         DynamicVars.Vulnerable.UpgradeValueBy(1M);
+        DynamicVars.Weak.UpgradeValueBy(1M);
     }
 }

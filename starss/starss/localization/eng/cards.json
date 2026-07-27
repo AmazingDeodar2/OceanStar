@@ -109,8 +109,7 @@
   "STARSS-NANA.upgradeDescription": "进入【水母世界】，存在时手牌获得保留。",
   "STARSS-QIQI.title": "淇淇",
   "STARSS-QIQI.description": "进入【淇喵位面】，进入时获得8点格挡，离开状态时对随机敌人造成8点伤害，每进入一次该数值增加3。",
-  "STARSS-ALMOST_THERE.title": "就差一点",
-  "STARSS-ALMOST_THERE.description": "造成{Damage:diff()}点伤害，将4张四叶草加入抽牌堆。命运{Fate:diff()}，再造成8点伤害。",
+
   "STARSS-SATCHEL.title": "挎包",
   "STARSS-SATCHEL.description": "获得{Block:diff()}点格挡，命运{Fate:diff()}，升级你手牌中的{IfUpgraded:show:所有牌|一张牌}。",
   "STARSS-SATCHEL.upgradeDescription": "获得{Block:diff()}点格挡，命运{Fate:diff()}，升级你手牌中的所有牌。",
@@ -173,7 +172,7 @@
   "STARSS-STOP_ACTING.title": "不演了",
   "STARSS-STOP_ACTING.description": "退出所有状态，获得{Block:diff()}点格挡。下一回合额外获得1点能量。",
   "STARSS-WHITE_FORM.title": "白色形态",
-  "STARSS-WHITE_FORM.description": "每打出两张牌时，抽一张牌。",
+  "STARSS-WHITE_FORM.description": "每回合打出前三张牌时，抽一张牌。",
   "STARSS-RAINBOW_FRIENDSHIP_CANNON.title": "彩虹友谊大炮",
   "STARSS-RAINBOW_FRIENDSHIP_CANNON.description": "造成{Damage:diff()}点伤害，每进入过一个状态，就再造成一次。（一共造成{CalculatedHits}次）",
   "STARSS-CLOVER_LEAF.title": "四叶草叶片",
@@ -210,7 +209,9 @@
   "STARSS-CHOOSE_GOD.title": "选神",
   "STARSS-CHOOSE_GOD.description": "{IfUpgraded:show:选择一名其他玩家，}将一张神之骰加入{IfUpgraded:show:所有其他玩家|他}的手牌。",
   "STARSS-GOD_DICE.title": "神之骰",
-  "STARSS-GOD_DICE.description": "投掷一个{Sides:diff()}面骰，造成对应骰点的伤害。命运{Fate:diff()}，升级为12面/20面/30面/50面/100面骰子。厄运{Doom:diff()}，复制一张神之骰进入弃牌堆。"
+  "STARSS-GOD_DICE.description": "投掷一个{Sides:diff()}面骰，造成对应骰点的伤害。命运{Fate:diff()}，升级为12面/20面/30面/50面/100面骰子。厄运{Doom:diff()}，复制一张神之骰进入弃牌堆。",
+  "STARSS-NATURAL_HISTORY.title": "博物学",
+  "STARSS-NATURAL_HISTORY.description": "本回合对有两种及以上负面效果的敌人造成伤害增加50%。"
 
 
 }

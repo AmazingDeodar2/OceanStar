@@ -163,7 +163,7 @@
   "STARSS-HUMANOLOGY.title": "人类学",
   "STARSS-HUMANOLOGY.description": "造成{Damage:diff()}点伤害，获得{Block:diff()}点格挡。命运{Fate:diff()}，数值本局游戏伤害与格挡永久+{BonusKey:diff()}，厄运{Doom:diff()}，消耗。",
   "STARSS-SAN_CHECK.title": "SAN CHECK！",
-  "STARSS-SAN_CHECK.description": "抽3张牌，损失1点生命值。命运{Fate:diff()}，从三张技能卡中选择一张牌加入你的手牌，当前回合可以免费打出；厄运{Doom:diff()}，选择当前的一张手牌消耗变为0费",
+  "STARSS-SAN_CHECK.description": "抽3张牌，损失3点生命值。命运{Fate:diff()}，从三张技能卡中选择一张牌加入你的手牌，当前回合可以免费打出；厄运{Doom:diff()}，选择当前的一张手牌消耗变为0费",
   "STARSS-SAN_CHECK.selectionScreenPrompt": "选择一张手牌，使其在本场战斗中变为0费。",
   "STARSS-SLEIGHT_OF_HAND.title": "妙手",
   "STARSS-SLEIGHT_OF_HAND.description": "敌方失去X{IfUpgraded:show:+1}点力量，你获得对应X力量。厄运{Doom:diff()}，将一张虚空加入弃牌堆。",

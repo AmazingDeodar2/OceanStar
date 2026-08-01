@@ -16,7 +16,7 @@ namespace starss.starssCode.Cards;
 public sealed class Scout : starssCard
 {
     public Scout()
-        : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+        : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
     }
 

@@ -13,7 +13,7 @@ public sealed class NaturalHistory : starssCard
         : base(
             1,
             CardType.Skill,
-            CardRarity.Common,
+            CardRarity.Uncommon,
             TargetType.Self)
     {
     }

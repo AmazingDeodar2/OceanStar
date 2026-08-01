@@ -17,7 +17,7 @@ public sealed class FearlessFate : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<FearlessFatePower>("Power", 3M)
+        new PowerVar<FearlessFatePower>("Power", 5M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -33,6 +33,6 @@ public sealed class FearlessFate : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Power"].UpgradeValueBy(1M);
+        DynamicVars["Power"].UpgradeValueBy(2M);
     }
 }

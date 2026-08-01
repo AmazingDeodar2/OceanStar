@@ -18,7 +18,7 @@ public sealed class GardenKeeper : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("Amount", 2M)
+        new DynamicVar("Amount", 4M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -34,6 +34,6 @@ public sealed class GardenKeeper : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Amount"].UpgradeValueBy(1M);
+        DynamicVars["Amount"].UpgradeValueBy(2M);
     }
 }

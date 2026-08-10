@@ -8,32 +8,52 @@ using System.Linq;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Models;
 
-namespace starss.starssCode.Cards;
+using VoidCard = MegaCrit.Sts2.Core.Models.Cards.Void;
 
+namespace starss.starssCode.Cards;
 
 public sealed class Annihilation : starssCard
 {
     public Annihilation()
-        : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+        : base(
+            1,
+            CardType.Skill,
+            CardRarity.Uncommon,
+            TargetType.Self)
     {
     }
 
+
     public override bool GainsBlock => true;
+
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(4M, ValueProp.Move)
     ];
 
-    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+
+    protected override async Task OnPlay(
+        PlayerChoiceContext choiceContext,
+        CardPlay cardPlay)
     {
-        var handCards = PileType.Hand.GetPile(Owner).Cards
+        var handCards = PileType.Hand
+            .GetPile(Owner)
+            .Cards
             .Where(c => c != this)
             .ToList();
 
+
+        int exhaustedCount = handCards.Count;
+
+
         foreach (CardModel card in handCards)
         {
-            await CardCmd.Exhaust(choiceContext, card);
+            await CardCmd.Exhaust(
+                choiceContext,
+                card
+            );
+
 
             await CreatureCmd.GainBlock(
                 Owner.Creature,
@@ -42,7 +62,34 @@ public sealed class Annihilation : starssCard
                 cardPlay
             );
         }
+
+
+        // 根据消耗数量生成对应数量 Void
+        if (exhaustedCount > 0)
+        {
+            List<CardModel> voids = [];
+
+            for (int i = 0; i < exhaustedCount; i++)
+            {
+                CardModel voidCard =
+                    CombatState.CreateCard<VoidCard>(Owner);
+
+                voids.Add(voidCard);
+            }
+
+
+            await CardPileCmd.AddGeneratedCardsToCombat(
+                voids,
+                PileType.Hand,
+                Owner
+            );
+
+            PileType.Hand
+                .GetPile(Owner)
+                .InvokeCardAddFinished();
+        }
     }
+
 
     protected override void OnUpgrade()
     {

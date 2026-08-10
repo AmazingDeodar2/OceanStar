@@ -38,7 +38,12 @@ public static class DiceHelper
         bool showUi = true,
         bool consumeTemporaryLuck = true)
     {
-        var rollResult = RollD100(creature, sourceCard);
+        var rollResult = RollDice(
+            creature,
+            100,
+            sourceCard,
+            true
+        );
 
         if (showUi)
             await DiceUi.ShowRoll(rollResult);
@@ -121,33 +126,63 @@ public static class DiceHelper
         return RollDice(creature, 20, sourceCard);
     }
 
-    private static DiceRollResult RollDice(Creature creature, int sides, CardModel? sourceCard)
+    private static DiceRollResult RollDice(
+        Creature creature,
+        int sides,
+        CardModel? sourceCard,
+        bool isCheck = false)
     {
-        var rewardDice = GetRewardDice(creature);
+        int rewardDice = 0;
 
-        // 基础投1次；每层奖励骰额外投1次。
+        if (isCheck)
+        {
+            rewardDice = GetRewardDice(creature);
+        }
+
+        // 只有检定才有奖励骰
         var rollCount = 1 + rewardDice;
 
+
         var rolls = new List<int>();
+
         var rng = sourceCard?.Owner.RunState.Rng.Niche
                   ?? creature.CombatState.RunState.Rng.Niche;
+
 
         for (var i = 0; i < rollCount; i++)
         {
             rolls.Add((int)rng.NextFloat(sides) + 1);
         }
 
+
         var modifiedRolls = rolls
-            .Select(roll => StateCmd.ModifyDiceRoll(creature, sourceCard, roll))
+            .Select(roll => StateCmd.ModifyDiceRoll(
+                creature,
+                sourceCard,
+                roll))
             .ToList();
-        // 奖励骰：取最低值。
+
+
+        // 默认取最低值
         var value = modifiedRolls.Min();
 
-        var blackForm = creature.GetPower<BlackFormPower>();
-        if (blackForm != null)
-            value = RemapRoll(value, 51);
 
-        return new DiceRollResult(value, modifiedRolls);
+        // BlackForm只影响检定
+        if (isCheck)
+        {
+            var blackForm = creature.GetPower<BlackFormPower>();
+
+            if (blackForm != null)
+            {
+                value = RemapRoll(value, 51);
+            }
+        }
+
+
+        return new DiceRollResult(
+            value,
+            modifiedRolls
+        );
     }
 
     private static int RemapRoll(int roll, int minRoll)

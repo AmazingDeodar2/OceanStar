@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.ValueProps;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Models;
@@ -17,7 +18,9 @@ public sealed class NaturalHistoryPower : starssPower
 {
     public override PowerType Type => PowerType.Buff;
 
-    public override PowerStackType StackType => PowerStackType.Counter;
+    public override PowerStackType StackType =>
+        PowerStackType.Counter;
+
 
     public override decimal ModifyDamageMultiplicative(
         Creature? target,
@@ -27,27 +30,37 @@ public sealed class NaturalHistoryPower : starssPower
         CardModel? cardSource,
         CardPlay? cardPlay)
     {
-        // 只增强攻击伤害
+        // 只影响攻击伤害
         if (!props.IsPoweredAttack())
             return 1M;
 
-        // 必须是自己（或自己的宠物）造成的伤害
-        if (dealer != Owner && !Owner.Pets.Contains(dealer))
+
+        // 只影响自己造成的伤害
+        if (dealer != Owner)
             return 1M;
+
 
         if (target == null)
             return 1M;
 
+
         int debuffKinds = target.Powers
-            .Where(p =>
-                p.IsVisible &&
-                p.Type == PowerType.Debuff)
-            .Select(p => p.GetType())
+            .Where(power =>
+                power.Type == PowerType.Debuff)
+            .Select(power =>
+                power.GetType())
             .Distinct()
             .Count();
 
-        return debuffKinds >= 2 ? 1.5M : 1M;
+
+        // 至少两种不同负面状态
+        if (debuffKinds < 2)
+            return 1M;
+
+
+        return 1M + Amount / 100M;
     }
+
 
     public override async Task AfterSideTurnEnd(
         PlayerChoiceContext choiceContext,
@@ -56,6 +69,7 @@ public sealed class NaturalHistoryPower : starssPower
     {
         if (!participants.Contains(Owner))
             return;
+
 
         await PowerCmd.Remove(this);
     }

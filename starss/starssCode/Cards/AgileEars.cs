@@ -30,19 +30,21 @@ public sealed class AgileEars : starssCard
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
-        var clovers = CloverLeaf.Create(
-            Owner,
-            (int)DynamicVars.Cards.BaseValue,
-            CombatState!
-        );
+        
 
-        await CardPileCmd.AddGeneratedCardsToCombat(
-            clovers,
-            PileType.Draw,
-            Owner,
-            CardPilePosition.Random
-        );
-        PileType.Draw.GetPile(Owner).InvokeCardAddFinished();
+        for (int i = 0; i < DynamicVars.Cards.IntValue; i++)
+        {
+            var clover = CombatState.CreateCard<CloverLeaf>(Owner);
+
+            if (IsUpgraded)
+                CardCmd.Upgrade(clover);
+
+            await CardPileCmd.AddGeneratedCardToCombat(
+                clover,
+                PileType.Hand,
+                Owner
+            );
+        }
     }
 
     protected override void OnUpgrade()

@@ -66,11 +66,11 @@
   "STARSS-VOID_CALL.title": "虚空呼唤",
   "STARSS-VOID_CALL.description": "每当你抽到虚空或呼唤牌时，获得{Energy:energyIcons()}，抽一张牌。",
   "STARSS-MAKKA_PAKKA.title": "玛卡巴卡",
-  "STARSS-MAKKA_PAKKA.description": "每当一张虚空牌被消耗时，对所有敌人造成{Damage:diff()}点伤害。",
+  "STARSS-MAKKA_PAKKA.description": "每当一张虚空牌被生成时，对所有敌人造成{Damage:diff()}点伤害。",
   "STARSS-FAMILY_BUCKET.title": "全家桶",
   "STARSS-FAMILY_BUCKET.description": "获得{LuckyPower:diff()}点幸运、{Energy:energyIcons()}，抽2张牌，获得1点力量、1点敏捷、2点覆甲、2点活力。将一张呼唤加入你的手牌。",
   "STARSS-RECOVERY.title": "新生",
-  "STARSS-RECOVERY.description": "在自己回合开始时候，失去{Power:diff()}点幸运，获得{Power:diff()}点格挡和{Power:diff()}点活力。",
+  "STARSS-RECOVERY.description": "在自己回合开始时候，失去{Power:diff()}点幸运，获得{IfUpgraded:show:6|4}点格挡和{Power:diff()}点活力。",
   "STARSS-VOID_SHIELD.title": "虚无护盾",
   "STARSS-VOID_SHIELD.description": "获得{Power:diff()}层覆甲。额外获得等同于消耗牌堆中虚空与呼唤牌数量之和的覆甲。",
   "STARSS-BLACK_FORM.title": "黑色形态",
@@ -89,7 +89,7 @@
   "STARSS-FOX_FIRE.title": "狐火",
   "STARSS-FOX_FIRE.description": "对全体敌人造成{Damage:diff()}点伤害7次，每次抽到这张牌时候费用减少2。命运{Fate:diff()}，对对方额外上2层易伤。厄运{Doom:diff()}，自己获得2层虚弱。",
   "STARSS-AGILE_EARS.title": "灵动耳朵",
-  "STARSS-AGILE_EARS.description": "造成{Damage:diff()}点伤害，将{Cards:diff()}张四叶草叶片加入抽牌堆",
+  "STARSS-AGILE_EARS.description": "造成{Damage:diff()}点伤害，将{Cards:diff()}张四叶草叶片加入手牌。",
   "STARSS-VOID_STRIKE.title": "虚空打击",
   "STARSS-VOID_STRIKE.description": "造成{Damage:diff()}点伤害。将一张虚空加入你的弃牌堆。",
   "STARSS-PENGUIN_ACTIVATED.title": "企鹅卡我启动了",
@@ -155,7 +155,7 @@
   "STARSS-ABYSS_JUDGMENT.title": "深渊审判",
   "STARSS-ABYSS_JUDGMENT.description": "造成{CalculatedDamage:diff()}点伤害，本场战斗你每生成一张虚空或呼唤牌，该伤害增加{ExtraDamage:diff()}点",
   "STARSS-ANNIHILATION.title": "湮灭!",
-  "STARSS-ANNIHILATION.description": "消耗你的所有手牌，每消耗1张获得{Block:diff()}点格挡。",
+  "STARSS-ANNIHILATION.description": "消耗你的所有手牌，每消耗1张获得{Block:diff()}点格挡，并将一张虚空加入你的手牌。",
   "STARSS-CTHULHU_MYTH.title": "克苏鲁神话",
   "STARSS-CTHULHU_MYTH.description": "失去{MaxHp:diff()}点生命上限，直接获得非boss关的胜利。",
   "STARSS-WITNESS_CHANCE.title": "见证偶然",
@@ -187,8 +187,7 @@
   "STARSS-FATE_STRIKE.description": "造成{Damage:diff()}点伤害，每次命运触发时将这张牌放入你的手牌。",
   "STARSS-SAPLING.title": "幼苗",
   "STARSS-SAPLING.description": "将1张{IfUpgraded:show:四叶草叶片+|四叶草叶片}放入抽牌堆，让所有“幼苗”牌加入的四叶草叶片数量翻倍。",
-  "STARSS-EVIL_SMILE.title": "邪恶微笑",
-  "STARSS-EVIL_SMILE.description": "回合结束时，本局每进入过一个状态，给予所有敌人{Amount:diff()}层灾厄。",
+
 
   "STARSS-TIME_REVERSAL.title": "时~光~倒~流~",
   "STARSS-TIME_REVERSAL.description": "获得{Luck:diff()}点幸运。每回合开始时，失去{LuckLoss}点幸运。",
@@ -211,7 +210,9 @@
   "STARSS-GOD_DICE.title": "神之骰",
   "STARSS-GOD_DICE.description": "投掷一个{Sides:diff()}面骰，造成对应骰点的伤害。命运{Fate:diff()}，升级为12面/20面/30面/50面/100面骰子。厄运{Doom:diff()}，复制一张神之骰进入弃牌堆。",
   "STARSS-NATURAL_HISTORY.title": "博物学",
-  "STARSS-NATURAL_HISTORY.description": "本回合对有两种及以上负面效果的敌人造成伤害增加50%。"
+  "STARSS-NATURAL_HISTORY.description": "本回合对有两种及以上负面效果的敌人造成伤害增加{NaturalHistoryPower:diff()}%。",
+  "STARSS-MECHANICAL_REPAIR.title": "机械维修",
+  "STARSS-MECHANICAL_REPAIR.description": "抽一张牌，使牌库中所有未附魔的牌获得随机附魔。"
 
 
 }

@@ -62,11 +62,11 @@ public class StateSpace
         {
             await recruitmentPower.AfterStateEntered(choiceContext, state);
         }
-        var evilSmilePower = Owner.Creature.GetPower<EvilSmilePower>();
-        if (evilSmilePower != null)
-        {
-            evilSmilePower.AfterStateEntered(state);
-        }
+        // var evilSmilePower = Owner.Creature.GetPower<EvilSmilePower>();
+        // if (evilSmilePower != null)
+        // {
+        //     evilSmilePower.AfterStateEntered(state);
+        // }
         StateUi.Refresh(this);
     }
 

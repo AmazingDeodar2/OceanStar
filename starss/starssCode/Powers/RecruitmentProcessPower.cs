@@ -3,8 +3,10 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using starss.starssCode.Mechanics;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace starss.starssCode.Powers;
 
@@ -19,12 +21,12 @@ public sealed class RecruitmentProcessPower : starssPower
     {
         Flash();
 
-        await PowerCmd.Apply<VigorPower>(
-            choiceContext,
-            Owner,
+        
+        await CreatureCmd.GainBlock(
+            Owner, 
             Amount,
-            Owner,
-            null
+            ValueProp.Unpowered, 
+            (CardPlay?)null 
         );
     }
 }

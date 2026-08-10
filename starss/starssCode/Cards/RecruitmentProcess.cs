@@ -23,7 +23,7 @@ public sealed class RecruitmentProcess : starssCard
         {
             return new DynamicVar[]
             {
-                new PowerVar<VigorPower>(4M)
+                new PowerVar<VigorPower>(8M)
             };
         }
     }

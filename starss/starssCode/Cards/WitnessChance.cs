@@ -22,7 +22,10 @@ public sealed class WitnessChance : starssCard
         : base(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
     {
     }
-
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
     
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new List<DynamicVar>();

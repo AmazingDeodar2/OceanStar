@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.ValueProps;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
 
 namespace starss.starssCode.Powers;
@@ -16,23 +17,25 @@ public sealed class MakkaPakkaPower : starssPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override async Task AfterCardExhausted(
-        PlayerChoiceContext choiceContext,
+
+    public override async Task AfterCardGeneratedForCombat(
         CardModel card,
-        bool causedByEthereal)
+        Player? creator)
     {
-        if (card.Owner != Owner.Player)
+        if (creator != Owner.Player)
             return;
 
         if (card is not MegaCrit.Sts2.Core.Models.Cards.Void)
             return;
 
+
         Flash();
-        
+
+
         foreach (var enemy in CombatState.HittableEnemies.ToList())
         {
             await CreatureCmd.Damage(
-                choiceContext,
+                new BlockingPlayerChoiceContext(),
                 enemy,
                 Amount,
                 ValueProp.Unpowered,

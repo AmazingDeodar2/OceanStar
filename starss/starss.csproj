@@ -60,6 +60,13 @@
         <None Include="starss/**"/>
         <None Include="starssCode\Patches\StarssAnimationPatch.cs" />
         <None Include="starssCode\Patches\StarssAnimationPatch.cs.uid" />
+        <None Include="starssCode\Vfx\States\Pony\NFlatDomainVfx.cs.uid" />
+        <None Include="starssCode\Vfx\States\Pony\NGooseEggVfx.cs.uid" />
+        <None Include="starssCode\Vfx\States\Pony\NJellyfishVfx.cs.uid" />
+        <None Include="starssCode\Vfx\States\Pony\NOrangeDogVfx.cs.uid" />
+        <None Include="starssCode\Vfx\States\Pony\NPonyKingdomVfx.cs.uid" />
+        <None Include="starssCode\Vfx\States\Pony\NQiqiVfx.cs.uid" />
+        <None Include="starssCode\Vfx\States\Pony\NRatCreviceVfx.cs.uid" />
     </ItemGroup>
 
     <ItemGroup>

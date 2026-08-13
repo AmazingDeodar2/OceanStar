@@ -11,6 +11,8 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using starss.starssCode.Cards.Interfaces;
 using starss.starssCode.Mechanics;
 using starss.starssCode.States;
+using starss.starssCode.Vfx.States;
+
 
 
 namespace starss.starssCode.Cards;
@@ -30,7 +32,9 @@ public sealed class TrojanHorse : starssCard, IPcCard
             "Cast",
             Owner.Character.CastAnimDelay
         );
-
+        
+        
+        
         await StateCmd.Enter(
             choiceContext,
             Owner,

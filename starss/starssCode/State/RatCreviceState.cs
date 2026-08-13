@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Nodes.Vfx.Forms;
 
 namespace starss.starssCode.States;
 
@@ -23,7 +24,13 @@ public sealed class RatCreviceState : StateModel
     {
         Duration = int.MaxValue;
     }
-
+    
+    protected override NFormVfx? CreateVfx()
+    {
+        return NRatCreviceVfx.Create(
+            Owner.Creature
+        );
+    }
     
 
     public override async Task OnEnter(PlayerChoiceContext choiceContext)

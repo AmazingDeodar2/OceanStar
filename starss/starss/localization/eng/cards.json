@@ -85,7 +85,7 @@
   "STARSS-COMPRESS_VOID.title": "压缩虚空",
   "STARSS-COMPRESS_VOID.description": "根据消耗牌堆中虚空的数量获得效果。\n少于5张，获得1层人工制品。\n5至7张，获得1层无实体。\n8张或以上，清除所有负面效果。",
   "STARSS-ACTIVATED.title": "我已启动",
-  "STARSS-ACTIVATED.description": "对所有敌人造成{Damage:diff()}点伤害。获得{Power:diff()}点幸运。",
+  "STARSS-ACTIVATED.description": "对所有敌人造成{Damage:diff()}点伤害。获得等量于伤害的点幸运。",
   "STARSS-FOX_FIRE.title": "狐火",
   "STARSS-FOX_FIRE.description": "对全体敌人造成{Damage:diff()}点伤害7次，每次抽到这张牌时候费用减少2。命运{Fate:diff()}，对对方额外上2层易伤。厄运{Doom:diff()}，自己获得2层虚弱。",
   "STARSS-AGILE_EARS.title": "灵动耳朵",

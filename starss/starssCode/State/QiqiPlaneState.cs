@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Nodes.Vfx.Forms;
 using MegaCrit.Sts2.Core.ValueProps;
 using starss.starssCode.Mechanics;
 
@@ -25,6 +26,12 @@ public sealed class QiqiPlaneState : StateModel
         if (!EnterCountByPlayer.TryGetValue(player, out int count))
             count = 0;
         return count;
+    }
+    protected override NFormVfx? CreateVfx()
+    {
+        return NQiqiVfx.Create(
+            Owner.Creature
+        );
     }
     public override async Task OnEnter(PlayerChoiceContext choiceContext)
     {

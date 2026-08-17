@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Nodes.Vfx.Forms;
 using starss.starssCode.Mechanics;
 
 namespace starss.starssCode.States;
@@ -14,6 +15,13 @@ public class FlatDomainState : StateModel
     public override string Id => "starss:flat_domain";
 
     public override string DisplayName => "平板领域";
+    
+    protected override NFormVfx? CreateVfx()
+    {
+        return NFlatDomainVfx.Create(
+            Owner.Creature
+        );
+    }
 
     public override async Task AfterCardGeneratedForCombat(
         CardModel card,

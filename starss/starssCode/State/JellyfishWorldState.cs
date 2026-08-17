@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Nodes.Vfx.Forms;
 using starss.starssCode.Mechanics;
 using starss.starssCode.Powers;
 
@@ -16,7 +17,14 @@ public sealed class JellyfishWorldState : StateModel
     {
         Duration = int.MaxValue;
     }
-
+    
+    protected override NFormVfx? CreateVfx()
+    {
+        return NJellyfishVfx.Create(
+            Owner.Creature
+        );
+    }
+    
     public override async Task OnEnter(PlayerChoiceContext choiceContext)
     {
         await PowerCmd.Apply<JellyfishWorldPower>(

@@ -30,95 +30,167 @@ public class StateSpace
         Capacity = capacity;
     }
 
-    public async Task Enter(PlayerChoiceContext choiceContext, StateModel state)
+
+    public async Task Enter(
+        PlayerChoiceContext choiceContext,
+        StateModel state)
     {
-        StateModel? existing = states.FirstOrDefault(s => s.Id == state.Id);
+        StateModel? existing =
+            states.FirstOrDefault(
+                s => s.Id == state.Id
+            );
+
 
         if (existing != null)
         {
             StateUi.Refresh(this);
             return;
         }
-        
+
+
         state.Owner = Owner;
+
+
 
         while (states.Count >= Capacity)
         {
             StateModel oldState = states[0];
+
             states.RemoveAt(0);
+
+
+            oldState.RemoveVfxInstance();
+
+
             await oldState.OnExit(choiceContext);
         }
 
+
+
         states.Add(state);
+
         EnteredStateCount++;
+
+
+
+        // 状态效果
         await state.OnEnter(choiceContext);
-        var actorPower = Owner.Creature.GetPower<LalangPower>();
+
+
+
+        // 创建视觉
+        state.CreateVfxInstance();
+
+
+
+        var actorPower =
+            Owner.Creature.GetPower<LalangPower>();
+
         if (actorPower != null)
         {
-            await actorPower.AfterStateEntered(choiceContext, state);
+            await actorPower.AfterStateEntered(
+                choiceContext,
+                state);
         }
-        var recruitmentPower = Owner.Creature.GetPower<RecruitmentProcessPower>();
+
+
+        var recruitmentPower =
+            Owner.Creature.GetPower<RecruitmentProcessPower>();
+
         if (recruitmentPower != null)
         {
-            await recruitmentPower.AfterStateEntered(choiceContext, state);
+            await recruitmentPower.AfterStateEntered(
+                choiceContext,
+                state);
         }
-        // var evilSmilePower = Owner.Creature.GetPower<EvilSmilePower>();
-        // if (evilSmilePower != null)
-        // {
-        //     evilSmilePower.AfterStateEntered(state);
-        // }
+
+
         StateUi.Refresh(this);
     }
 
-    public async Task ExitFirst(PlayerChoiceContext choiceContext)
+
+
+    public async Task ExitFirst(
+        PlayerChoiceContext choiceContext)
     {
         if (states.Count <= 0)
             return;
 
+
         StateModel state = states[0];
+
         states.RemoveAt(0);
+
+
+        // 删除状态视觉效果
+        state.RemoveVfxInstance();
+
+
         await state.OnExit(choiceContext);
+
+
         StateUi.Refresh(this);
     }
 
-    public async Task Exit(PlayerChoiceContext choiceContext, StateModel state)
+
+
+    public async Task Exit(
+        PlayerChoiceContext choiceContext,
+        StateModel state)
     {
         if (!states.Remove(state))
             return;
 
+
+        // 删除状态视觉效果
+        state.RemoveVfxInstance();
+
+
         await state.OnExit(choiceContext);
+
+
         StateUi.Refresh(this);
     }
 
-    
+
 
     public bool Has<T>() where T : StateModel
     {
         return states.Any(s => s is T);
     }
 
+
+
     public T? Get<T>() where T : StateModel
     {
         return states.OfType<T>().FirstOrDefault();
     }
 
+
+
     public void AddCapacity(int amount)
     {
         Capacity += amount;
     }
-    
+
+
+
     public async Task AfterCardGeneratedForCombat(
         CardModel card,
         Player? creator)
     {
         foreach (var state in states.ToList())
         {
-            await state.AfterCardGeneratedForCombat(card, creator);
+            await state.AfterCardGeneratedForCombat(
+                card,
+                creator);
         }
+
 
         if (creator == Owner && IsAbyssGeneratedCard(card))
         {
-            var abyssPower = Owner.Creature.GetPower<AbyssPower>();
+            var abyssPower =
+                Owner.Creature.GetPower<AbyssPower>();
 
             if (abyssPower != null)
             {
@@ -126,24 +198,42 @@ public class StateSpace
             }
         }
 
+
         StateUi.Refresh(this);
     }
-    
-    private static bool IsAbyssGeneratedCard(CardModel card)
+
+
+
+    private static bool IsAbyssGeneratedCard(
+        CardModel card)
     {
-        return card is MegaCrit.Sts2.Core.Models.Cards.Void || card is Beckon;
+        return card is MegaCrit.Sts2.Core.Models.Cards.Void
+               || card is Beckon;
     }
-    public int ModifyDiceRoll(Creature creature, CardModel? sourceCard, int roll)
+
+
+
+    public int ModifyDiceRoll(
+        Creature creature,
+        CardModel? sourceCard,
+        int roll)
     {
         foreach (var state in states)
         {
-            roll = state.ModifyDiceRoll(creature, sourceCard, roll);
+            roll =
+                state.ModifyDiceRoll(
+                    creature,
+                    sourceCard,
+                    roll);
         }
 
         return roll;
     }
-    
-    public bool ShouldClearBlock(Creature creature)
+
+
+
+    public bool ShouldClearBlock(
+        Creature creature)
     {
         foreach (var state in states)
         {
@@ -153,8 +243,11 @@ public class StateSpace
 
         return true;
     }
-    
-    public bool ShouldFlush(Player player)
+
+
+
+    public bool ShouldFlush(
+        Player player)
     {
         foreach (var state in states)
         {

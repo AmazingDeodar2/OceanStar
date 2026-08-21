@@ -16,7 +16,7 @@ public sealed class RankSuppression : starssCard
         : base(
             1,
             CardType.Skill,
-            CardRarity.Common,
+            CardRarity.Uncommon,
             TargetType.Self)
     {
     }

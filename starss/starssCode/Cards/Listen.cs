@@ -15,7 +15,7 @@ namespace starss.starssCode.Cards;
 public sealed class Listen : starssCard
 {
     public Listen()
-        : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
+        : base(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
     {
     }
 

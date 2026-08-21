@@ -8,6 +8,7 @@ using starss.starssCode.Mechanics;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.Nodes.Vfx;
 
 namespace starss.starssCode.Cards;
 
@@ -38,16 +39,28 @@ public sealed class RainbowFriendshipCannon : starssCard
             )
     ];
 
-    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    protected override async Task OnPlay(
+        PlayerChoiceContext choiceContext,
+        CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
-        int enteredStates = StateRegistry.Get(Owner).EnteredStateCount;
+
+        int enteredStates =
+            StateRegistry.Get(Owner).EnteredStateCount;
 
         int hitCount = 1 + enteredStates;
 
+
+        // Hyperbeam 光束
+        NHyperbeamVfx.Create(
+            Owner.Creature,
+            cardPlay.Target
+        );
+
+
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .FromCard(this,cardPlay)
+            .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .WithHitCount(hitCount)
             .WithHitFx("vfx/vfx_attack_slash")

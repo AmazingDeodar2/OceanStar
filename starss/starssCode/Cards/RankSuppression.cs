@@ -21,7 +21,16 @@ public sealed class RankSuppression : starssCard
     {
     }
 
-
+    public override IEnumerable<CardKeyword> CanonicalKeywords
+    {
+        get
+        {
+            return
+            [
+                CardKeyword.Exhaust
+            ];
+        }
+    }
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new RepeatVar(3)

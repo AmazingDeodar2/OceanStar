@@ -39,8 +39,7 @@ public sealed class Stealth : starssCard
             sourceCard: this
         );
 
-        if (!check.FateSuccess)
-            return;
+        
 
         if (check.FateSuccess)
         {

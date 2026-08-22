@@ -33,7 +33,8 @@ public sealed class RankSuppression : starssCard
     }
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new RepeatVar(3)
+        
+        new DynamicVar("Repeat", 3M),
     ];
 
 
@@ -51,7 +52,7 @@ public sealed class RankSuppression : starssCard
         await PowerCmd.Apply<RankSuppressionPower>(
             choiceContext,
             Owner.Creature,
-            DynamicVars.Repeat.BaseValue,
+            DynamicVars["Repeat"].BaseValue,
             Owner.Creature,
             this
         );
@@ -60,6 +61,6 @@ public sealed class RankSuppression : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Repeat.UpgradeValueBy(2M);
+        DynamicVars["Repeat"].UpgradeValueBy(2M);
     }
 }

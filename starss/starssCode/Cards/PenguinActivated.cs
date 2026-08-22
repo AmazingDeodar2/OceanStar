@@ -26,7 +26,7 @@ public sealed class PenguinActivated : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(25M, ValueProp.Move),
+        new DamageVar(35M, ValueProp.Move),
         new BlockVar(10M, ValueProp.Unpowered)
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -62,6 +62,7 @@ public sealed class PenguinActivated : starssCard
 
     protected override void OnUpgrade()
     {
+        DynamicVars.Damage.UpgradeValueBy(8M);
         DynamicVars.Block.UpgradeValueBy(5M);
     }
 }

@@ -65,5 +65,6 @@ public sealed class Exorcise : starssCard
 
     protected override void OnUpgrade()
     {
+        this.AddKeyword(CardKeyword.Retain);
     }
 }

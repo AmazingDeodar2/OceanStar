@@ -39,10 +39,10 @@ public sealed class Eloquence : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7M, ValueProp.Move),
+        new DamageVar(12M, ValueProp.Move),
 
         // 每次使用后增加的伤害
-        new DynamicVar(IncreaseKey, 7M),
+        new DynamicVar(IncreaseKey, 12M),
 
         new DoomVar(71M)
     ];

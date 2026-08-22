@@ -1,7 +1,7 @@
 {
   "STARSS-LUCKY_POWER.title": "幸运",
-  "STARSS-LUCKY_POWER.description": "每层幸运使命运判定值增加1。",
-  "STARSS-LUCKY_POWER.smartDescription": "每层幸运使命运判定值增加1。",
+  "STARSS-LUCKY_POWER.description": "每层幸运使命运判定值增加1，每两层幸运使厄运判定值增加1。",
+  "STARSS-LUCKY_POWER.smartDescription": "每层幸运使命运判定值增加1，每两层幸运使厄运判定值增加1。",
   "STARSS-REWARD_DICE_POWER.title": "奖励骰",
   "STARSS-REWARD_DICE_POWER.description": "你的骰点改为投掷额外次数，并取最低值。",
   "STARSS-REWARD_DICE_POWER.smartDescription": "你的骰点改为投掷额外次数，并取最低值。",
@@ -56,8 +56,8 @@
   "STARSS-JELLYFISH_WORLD_POWER.description": "回合结束时保留手牌。",
   "STARSS-JELLYFISH_WORLD_POWER.smartDescription": "回合结束时保留手牌。",
   "STARSS-ORANGE_DOG_SPACE_POWER.title": "橘狗空间",
-  "STARSS-ORANGE_DOG_SPACE_POWER.description": "回合结束时保留格挡。",
-  "STARSS-ORANGE_DOG_SPACE_POWER.smartDescription": "回合结束时保留格挡。",
+  "STARSS-ORANGE_DOG_SPACE_POWER.description": "幸运可用于抵消伤害。",
+  "STARSS-ORANGE_DOG_SPACE_POWER.smartDescription": "幸运可用于抵消伤害。",
   "STARSS-WHITE_FORM_POWER.title": "白色形态",
   "STARSS-WHITE_FORM_POWER.description": "每回合打出前三张牌时，抽一张牌。",
   "STARSS-WHITE_FORM_POWER.smartDescription": "每回合打出前三张牌时，抽一张牌。",
@@ -67,8 +67,8 @@
   "STARSS-SAPLING_POWER.title": "幼苗",
   "STARSS-SAPLING_POWER.description": "生成四叶草叶片数量。",
   "STARSS-SAPLING_POWER.smartDescription": "生成四叶草叶片数量。",
-  "STARSS-GARDEN_KEEPER_POWER.description": "打出四叶草叶片时获得格挡。",
-  "STARSS-GARDEN_KEEPER_POWER.smartDescription": "打出四叶草叶片时获得格挡。",
+  "STARSS-GARDEN_KEEPER_POWER.description": "打出四叶草叶片时使敌方获得中毒。",
+  "STARSS-GARDEN_KEEPER_POWER.smartDescription": "打出四叶草叶片时使敌方获得中毒。",
   "STARSS-GARDEN_KEEPER_POWER.title": "园丁",
 
   
@@ -81,6 +81,9 @@
   "STARSS-PSYCHOLOGY_POWER.smartDescription": "受到负面状态翻倍。",
   "STARSS-NATURAL_HISTORY_POWER.title": "博物学",
   "STARSS-NATURAL_HISTORY_POWER.description": "对有两种及以上负面效果的敌人造成额外伤害。",
-  "STARSS-NATURAL_HISTORY_POWER.smartDescription": "对有两种及以上负面效果的敌人造成额外伤害。"
+  "STARSS-NATURAL_HISTORY_POWER.smartDescription": "对有两种及以上负面效果的敌人造成额外伤害。",
+  "STARSS-RANK_SUPPRESSION_POWER.title": "位格压制",
+  "STARSS-RANK_SUPPRESSION_POWER.description": "造成额外30%伤害。",
+  "STARSS-RANK_SUPPRESSION_POWER.smartDescription": "造成额外30%伤害。"
 
  }

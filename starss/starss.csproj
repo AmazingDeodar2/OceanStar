@@ -23,7 +23,7 @@
             <Private>false</Private>
         </Reference>
         <Reference Include="sts2">
-            <HintPath>E:\SteamLibrary\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64\sts2.dll</HintPath>
+            <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Slay the Spire 2\data_sts2_windows_x86_64\sts2.dll</HintPath>
             <Private>true</Private>
         </Reference>
     </ItemGroup>
@@ -50,6 +50,14 @@
         <EmbeddedResource Remove="materials/**"/>
         <EmbeddedResource Remove="shaders/**"/>
         <EmbeddedResource Remove="images/**"/>
+    </ItemGroup>
+
+    <!-- 场景挂载的 C# 脚本需要编译进 dll，并在运行时通过 LookupScriptsInAssembly 注册，
+         否则 Godot 无法实例化这些 tscn 的根脚本（StarssNCreature 等）。 -->
+    <ItemGroup>
+        <Compile Include="starss\scenes\creature_visuals\StarssNCreature.cs"/>
+        <Compile Include="starss\scenes\creature_visuals\StarssEnergyCounter.cs"/>
+        <Compile Include="starss\scenes\creature_visuals\CustomMegaLabel.cs"/>
     </ItemGroup>
 
     <ItemGroup>

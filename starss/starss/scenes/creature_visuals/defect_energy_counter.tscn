@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://henpsot3itrw"]
 
-[ext_resource type="Script" uid="uid://1rotqupk4v52" path="res://starss/scenes/creature_visuals/StarssEnergyCounter.cs" id="1_eor7a"]
-[ext_resource type="Script" uid="uid://ev1brcsf2oq0" path="res://starss/scenes/creature_visuals/CustomMegaLabel.cs" id="2_5nj17"]
+[ext_resource type="Script" uid="uid://dnmk28dq5kgdj" path="res://starss/scenes/creature_visuals/StarssEnergyCounter.cs" id="1_eor7a"]
+[ext_resource type="Script" uid="uid://b5r0j3yphjg7f" path="res://starss/scenes/creature_visuals/CustomMegaLabel.cs" id="2_5nj17"]
 [ext_resource type="Texture2D" uid="uid://h2x7ii3sbne4" path="res://starss/images/ui/combat/energy_counters/defect_orb_layer_1.png" id="2_7ixi6"]
 [ext_resource type="Texture2D" uid="uid://c015owhit5q4w" path="res://starss/images/ui/combat/energy_counters/defect_orb_layer_2.png" id="3_rxeod"]
 [ext_resource type="Texture2D" uid="uid://ddacduenv0vju" path="res://starss/images/ui/combat/energy_counters/defect_orb_layer_3.png" id="4_63210"]
@@ -136,4 +136,5 @@ text = "3/3"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_5nj17")
-theme_override_colors/font_outline_color = Color(0.87, 0.2262, 0.5481, 1)
+MinFontSize = 32
+MaxFontSize = 36

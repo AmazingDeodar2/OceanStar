@@ -42,11 +42,19 @@ public abstract class StateModel
     /// 由 StateSpace 调用
     /// 进入状态时创建视觉效果
     /// </summary>
+    // 全局状态动画开关
+    // true = 启用动画
+    // false = 禁用动画
+    public static bool EnableStateVfx = false;
+
     public void CreateVfxInstance()
     {
-        if (Vfx != null)
+        // 暂时禁用所有状态动画
+        if (!EnableStateVfx)
             return;
 
+        if (Vfx != null)
+            return;
 
         Vfx = CreateVfx();
     }

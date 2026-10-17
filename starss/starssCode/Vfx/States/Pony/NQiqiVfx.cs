@@ -43,12 +43,10 @@ public partial class NQiqiVfx
         );
 
 
-        creature.Visuals
-            .AddFormVfx(vfx);
+        vfx.AttachTo(creature.Visuals);
 
-
-
-        vfx.FadeIn();
+        // 启动动画
+        vfx.SetActive(true);
 
 
         return vfx;

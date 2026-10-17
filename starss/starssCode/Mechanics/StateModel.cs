@@ -45,7 +45,7 @@ public abstract class StateModel
     // 全局状态动画开关
     // true = 启用动画
     // false = 禁用动画
-    public static bool EnableStateVfx = false;
+    public static bool EnableStateVfx = true;
 
     public void CreateVfxInstance()
     {

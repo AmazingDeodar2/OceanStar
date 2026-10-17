@@ -52,12 +52,11 @@ public partial class NPonyKingdomVfx
         );
 
 
-        creature.Visuals
-            .AddFormVfx(vfx);
+        vfx.AttachTo(creature.Visuals);
 
+        // 启动动画
+        vfx.SetActive(true);
 
-
-        vfx.FadeIn();
 
 
         return vfx;

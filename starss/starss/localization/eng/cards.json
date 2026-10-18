@@ -212,7 +212,8 @@
   "STARSS-NATURAL_HISTORY.title": "博物学",
   "STARSS-NATURAL_HISTORY.description": "本回合对有两种及以上负面效果的敌人造成伤害增加{NaturalHistoryPower:diff()}%。",
   "STARSS-MECHANICAL_REPAIR.title": "机械维修",
-  "STARSS-MECHANICAL_REPAIR.description": "抽一张牌，使牌库中所有未附魔的牌获得随机附魔。"
-
+  "STARSS-MECHANICAL_REPAIR.description": "抽一张牌，使牌库中所有未附魔的牌获得随机附魔。",
+  "STARSS-PARASITE.title": "寄生",
+  "STARSS-PARASITE.description": "若回合结束时这张牌在你的手牌中，失去1点生命。"
 
 }

@@ -23,7 +23,46 @@
   "VAKUU.talk.STARSS-STARSS.0-0r.next": "继续",
   "VAKUU.talk.STARSS-STARSS.0-1r.char": "这是我自己的选择，容不得你指手画脚，恶魔。",
   "STARSS-STARSS_ANCIENT.epithet": "",
-  "STARSS-STARSS_ANCIENT.talk.ANY.0-0r.ancient": "Reusable generic greeting.",
-  "STARSS-STARSS_ANCIENT.talk.firstVisitEver.0-0.ancient": "First time greeting.",
-  "STARSS-STARSS_ANCIENT.title": "“幸运”的海王星辰"
+
+  "STARSS-STARSS_ANCIENT.talk.firstVisitEver.0-0.ancient": "初次见面，或者，好久不见。",
+  "STARSS-STARSS_ANCIENT.title": "“幸运”的海王星辰",
+  "STARSS-STARSS_ANCIENT.talk.IRONCLAD.0-0r.ancient": "恶魔的契约者，还在战斗中轮回吗？",
+  "STARSS-STARSS_ANCIENT.talk.IRONCLAD.0-0r.next": "继续",
+  "STARSS-STARSS_ANCIENT.talk.IRONCLAD.0-1r.char": "（铁甲战士愤怒地盯着海星）",
+  "STARSS-STARSS_ANCIENT.talk.IRONCLAD.0-1r.next": "继续",
+  "STARSS-STARSS_ANCIENT.talk.IRONCLAD.0-2r.ancient": "……我愿意予你好运，你还愿意付出代价么？",
+
+  "STARSS-STARSS_ANCIENT.talk.SILENT.0-0r.ancient": "带上这颗四叶草吧，猎手。",
+  "STARSS-STARSS_ANCIENT.talk.SILENT.0-0r.next": "继续",
+  "STARSS-STARSS_ANCIENT.talk.SILENT.0-1r.char": "……",
+
+  "STARSS-STARSS_ANCIENT.talk.DEFECT.0-0r.ancient": "修好你？我想除了建筑师也许有其他人也能做到。",
+  "STARSS-STARSS_ANCIENT.talk.DEFECT.0-0r.next": "继续",
+  "STARSS-STARSS_ANCIENT.talk.DEFECT.0-1r.char": "<兴奋的嘀嘀声>",
+  "STARSS-STARSS_ANCIENT.talk.DEFECT.0-1r.next": "继续",
+  "STARSS-STARSS_ANCIENT.talk.DEFECT.0-2r.ancient": "别报太大期望，我已经被困在这里太久，太久没见过他了。",
+
+  "STARSS-STARSS_ANCIENT.talk.NECROBINDER.0-0r.ancient": "复仇者，别让愤怒支配自己。",
+  "STARSS-STARSS_ANCIENT.talk.NECROBINDER.0-0r.next": "继续",
+  "STARSS-STARSS_ANCIENT.talk.NECROBINDER.0-1r.char": "在杀死建筑师之前，我不会停下。",
+  "STARSS-STARSS_ANCIENT.talk.NECROBINDER.0-1r.next": "继续",
+  "STARSS-STARSS_ANCIENT.talk.NECROBINDER.0-2r.ancient": "弱小的召唤师……我愿意赐你好运。",
+
+  "STARSS-STARSS_ANCIENT.talk.REGENT.0-0r.ancient": "旅行者，别再继续了，这是无尽的诅咒。",
+  "STARSS-STARSS_ANCIENT.talk.REGENT.0-0r.next": "继续",
+  "STARSS-STARSS_ANCIENT.talk.REGENT.0-1r.char": "无论多少次！我都可以战无不胜！",
+  "STARSS-STARSS_ANCIENT.talk.REGENT.0-1r.next": "继续",
+  "STARSS-STARSS_ANCIENT.talk.REGENT.0-2r.ancient": "……那么，祝你好运。",
+
+  "STARSS-STARSS_ANCIENT.talk.STARSS-STARSS.0-0r.ancient": "既然你已经看到了自己的未来，为何还不停下。",
+  "STARSS-STARSS_ANCIENT.talk.STARSS-STARSS.0-0r.next": "继续",
+  "STARSS-STARSS_ANCIENT.talk.STARSS-STARSS.0-1r.char": "万千条世界线中，终有我与那种力量共存的一条。",
+  "STARSS-STARSS_ANCIENT.talk.STARSS-STARSS.0-1r.next": "继续",
+  "STARSS-STARSS_ANCIENT.talk.STARSS-STARSS.0-2r.ancient": "……就知道劝不动你，如果你执意要去，带上这些吧。",
+  "STARSS-STARSS_ANCIENT.talk.STARSS-STARSS.0-2r.next": "继续",
+  "STARSS-STARSS_ANCIENT.talk.STARSS-STARSS.0-3r.char": "谢谢，那么，让我们——",
+  "STARSS-STARSS_ANCIENT.talk.STARSS-STARSS.0-3r.next": "继续",
+  "STARSS-STARSS_ANCIENT.talk.STARSS-STARSS.0-4r.ancient": "开始吧。",
+
+  "STARSS-STARSS_ANCIENT.talk.ANY.0-0r.ancient": "欢迎。"
 }

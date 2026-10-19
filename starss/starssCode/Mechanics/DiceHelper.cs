@@ -66,8 +66,8 @@ public static class DiceHelper
             rollResult.Value,
             finalFate,
             finalDoom,
-            fateSuccess,
             hardSuccess,
+            fateSuccess,
             doomEnabled && rollResult.Value >= finalDoom,
             rollResult
         );

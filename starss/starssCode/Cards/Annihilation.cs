@@ -1,12 +1,14 @@
+
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.Models;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MegaCrit.Sts2.Core.Models;
 
 using VoidCard = MegaCrit.Sts2.Core.Models.Cards.Void;
 
@@ -23,38 +25,45 @@ public sealed class Annihilation : starssCard
     {
     }
 
-
     public override bool GainsBlock => true;
-
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(4M, ValueProp.Move)
     ];
 
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay cardPlay)
     {
-        var handCards = PileType.Hand
+        // 与原版 Stoke 保持一致，先播放施法动画
+        await CreatureCmd.TriggerAnim(
+            Owner.Creature,
+            "Cast",
+            Owner.Character.CastAnimDelay
+        );
+
+        // 获取当前手牌快照，排除湮灭自身
+        List<CardModel> handCards = PileType.Hand
             .GetPile(Owner)
             .Cards
-            .Where(c => c != this)
+            .Where(card => card != this)
             .ToList();
-
 
         int exhaustedCount = handCards.Count;
 
-
+        // 第一步：先消耗全部目标手牌
         foreach (CardModel card in handCards)
         {
             await CardCmd.Exhaust(
                 choiceContext,
                 card
             );
+        }
 
-
+        // 第二步：每消耗一张牌，获得一次格挡
+        for (int i = 0; i < exhaustedCount; i++)
+        {
             await CreatureCmd.GainBlock(
                 Owner.Creature,
                 DynamicVars.Block.BaseValue,
@@ -63,33 +72,29 @@ public sealed class Annihilation : starssCard
             );
         }
 
-
-        // 根据消耗数量生成对应数量 Void
+        // 第三步：生成与消耗数量相同的虚空
         if (exhaustedCount > 0)
         {
-            List<CardModel> voids = [];
+            List<CardModel> voidCards = new();
 
             for (int i = 0; i < exhaustedCount; i++)
             {
                 CardModel voidCard =
                     CombatState.CreateCard<VoidCard>(Owner);
 
-                voids.Add(voidCard);
+                voidCards.Add(voidCard);
             }
 
-
+            // 与 Stoke 一样，一次性加入手牌
             await CardPileCmd.AddGeneratedCardsToCombat(
-                voids,
+                voidCards,
                 PileType.Hand,
                 Owner
             );
-
-            PileType.Hand
-                .GetPile(Owner)
-                .InvokeCardAddFinished();
         }
-    }
 
+        // 不再手动调用 InvokeCardAddFinished()
+    }
 
     protected override void OnUpgrade()
     {

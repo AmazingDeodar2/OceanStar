@@ -16,7 +16,7 @@ using starss.starssCode.Powers;
 namespace starss.starssCode.Cards;
 
 [Pool(typeof(TokenCardPool))]
-public sealed class CloverLeaf : CustomCardModel
+public sealed class CloverLeaf : starssCard
 {
     public CloverLeaf()
         : base(0, CardType.Skill, CardRarity.Token, TargetType.Self)

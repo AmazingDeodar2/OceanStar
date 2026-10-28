@@ -84,6 +84,9 @@
   "STARSS-NATURAL_HISTORY_POWER.smartDescription": "对有两种及以上负面效果的敌人造成额外伤害。",
   "STARSS-RANK_SUPPRESSION_POWER.title": "位格压制",
   "STARSS-RANK_SUPPRESSION_POWER.description": "造成额外30%伤害。",
-  "STARSS-RANK_SUPPRESSION_POWER.smartDescription": "造成额外30%伤害。"
+  "STARSS-RANK_SUPPRESSION_POWER.smartDescription": "造成额外30%伤害。",
+  "STARSS-MEDICINE_POWER.title": "医学",
+  "STARSS-MEDICINE_POWER.description": "你的卡牌不再消耗能量，改为失去等量的生命值，你获得的能量改为获得等量的生命值。",
+  "STARSS-MEDICINE_POWER.smartDescription": "你的卡牌不再消耗能量，改为失去等量的生命值，你获得的能量改为获得等量的生命值。"
 
  }

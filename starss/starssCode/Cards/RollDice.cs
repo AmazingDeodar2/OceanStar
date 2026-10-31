@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using starss.starssCode.Mechanics;
 using starss.starssCode.Powers;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ public sealed class RollDice : starssCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(3M, ValueProp.Move),
-        new DynamicVar("Luck", 12M)
+        new NextCheckLuckVar(12M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

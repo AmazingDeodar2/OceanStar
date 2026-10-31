@@ -1,3 +1,14 @@
 {
-  
+  "STARSS-FATE.title": "命运",
+  "STARSS-FATE.description": "投点[blue]小于等于[/blue]此值时触发。每[blue]1[/blue]点幸运，此值+1。",
+  "STARSS-FATE.smartDescription": "投点[blue]小于等于[/blue]此值时触发。每[blue]1[/blue]点幸运，此值+1。",
+  "STARSS-DOOM.title": "厄运",
+  "STARSS-DOOM.description": "投点[blue]大于等于[/blue]此值时触发。每[blue]2[/blue]点幸运，此值+1。",
+  "STARSS-DOOM.smartDescription": "投点[blue]大于等于[/blue]此值时触发。每[blue]2[/blue]点幸运，此值+1。",
+  "STARSS-LUCK.title": "幸运",
+  "STARSS-LUCK.description": "提高命运与厄运的判定值，每层幸运使命运判定值增加[blue]1[/blue]，每两层幸运使厄运判定值增加[blue]2[/blue]。",
+  "STARSS-LUCK.smartDescription": "每层幸运使命运判定值增加[blue]1[/blue]，每两层幸运使厄运判定值增加[blue]2[/blue]。",
+  "STARSS-NEXT_CHECK_LUCK.title": "下次检定幸运",
+  "STARSS-NEXT_CHECK_LUCK.description": "临时幸运，只作用于[blue]下一次[/blue]投点判定，判定后消失。",
+  "STARSS-NEXT_CHECK_LUCK.smartDescription": "临时幸运，只作用于[blue]下一次[/blue]投点判定，判定后消失。"
 }

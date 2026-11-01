@@ -1,8 +1,10 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using starss.starssCode.Mechanics;
 using starss.starssCode.Powers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -18,6 +20,12 @@ public sealed class MisfortuneBlessing : starssCard
     }
 
     public override bool GainsBlock => true;
+
+    // 描述里的"厄运"是骰点阈值概念，不是官方 DoomPower ⇒ 用我们自己的静态 tip
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        StarssHoverTips.Doom
+    ];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

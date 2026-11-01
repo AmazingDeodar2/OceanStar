@@ -65,8 +65,8 @@
   "STARSS-ONE_MORE_TIME_POWER.description": "下张牌再打出一次。",
   "STARSS-ONE_MORE_TIME_POWER.smartDescription": "下张牌再打出一次。",
   "STARSS-SAPLING_POWER.title": "幼苗",
-  "STARSS-SAPLING_POWER.description": "生成四叶草叶片数量。",
-  "STARSS-SAPLING_POWER.smartDescription": "生成四叶草叶片数量。",
+  "STARSS-SAPLING_POWER.description": "四叶草叶片获得重放次数。",
+  "STARSS-SAPLING_POWER.smartDescription": "四叶草叶片获得重放次数。",
   "STARSS-GARDEN_KEEPER_POWER.description": "打出四叶草叶片时使敌方获得中毒。",
   "STARSS-GARDEN_KEEPER_POWER.smartDescription": "打出四叶草叶片时使敌方获得中毒。",
   "STARSS-GARDEN_KEEPER_POWER.title": "园丁",
@@ -82,9 +82,7 @@
   "STARSS-NATURAL_HISTORY_POWER.title": "博物学",
   "STARSS-NATURAL_HISTORY_POWER.description": "对有两种及以上负面效果的敌人造成额外伤害。",
   "STARSS-NATURAL_HISTORY_POWER.smartDescription": "对有两种及以上负面效果的敌人造成额外伤害。",
-  "STARSS-RANK_SUPPRESSION_POWER.title": "位格压制",
-  "STARSS-RANK_SUPPRESSION_POWER.description": "造成额外30%伤害。",
-  "STARSS-RANK_SUPPRESSION_POWER.smartDescription": "造成额外30%伤害。",
+
   "STARSS-MEDICINE_POWER.title": "医学",
   "STARSS-MEDICINE_POWER.description": "你的卡牌不再消耗能量，改为失去等量的生命值，你获得的能量改为获得等量的生命值。",
   "STARSS-MEDICINE_POWER.smartDescription": "你的卡牌不再消耗能量，改为失去等量的生命值，你获得的能量改为获得等量的生命值。"

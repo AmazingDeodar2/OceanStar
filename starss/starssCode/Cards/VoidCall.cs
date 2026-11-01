@@ -5,8 +5,11 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Cards;
 using starss.starssCode.Powers;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+// Void 与 System.Void 撞名，项目内统一用别名引用（见 Eloquence.cs / VoidStrike.cs）
+using VoidCard = MegaCrit.Sts2.Core.Models.Cards.Void;
 
 namespace starss.starssCode.Cards;
 
@@ -33,6 +36,13 @@ public sealed class VoidCall : starssCard
             Owner.Creature,
             this);
     }
+    // VoidCallPower 监听 AfterCardDrawn，虚空牌与呼唤牌都会触发 ⇒ 两张牌的预览都要给
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromCard<VoidCard>(),
+        HoverTipFactory.FromCard<Beckon>()
+    ];
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new EnergyVar(1)

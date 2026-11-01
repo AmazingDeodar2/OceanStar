@@ -1,6 +1,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using System;
@@ -19,6 +20,15 @@ public sealed class StarCurse : starssCard
     [
         CardKeyword.Exhaust
     ];
+    // PowerVar<T> 不会自动生成 tip，四个词都要手动挂（见官方 Abrasive.cs 的写法）
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<VulnerablePower>(),
+        HoverTipFactory.FromPower<WeakPower>(),
+        HoverTipFactory.FromPower<PoisonPower>(),
+        HoverTipFactory.FromPower<DoomPower>()
+    ];
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<VulnerablePower>(1M),

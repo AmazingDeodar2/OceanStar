@@ -1,6 +1,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -18,6 +19,12 @@ public sealed class Activated : starssCard
     {
     }
 
+
+    // 幸运的获得量取决于实际造成的总伤害，做不成 DynamicVar ⇒ 只能给卡级 tip
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<LuckyPower>()
+    ];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

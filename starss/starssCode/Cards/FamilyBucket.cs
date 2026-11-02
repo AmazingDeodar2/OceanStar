@@ -1,6 +1,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
@@ -17,6 +18,12 @@ public sealed class FamilyBucket : starssCard
         : base(0, CardType.Power, CardRarity.Rare, TargetType.Self)
     {
     }
+
+    // 描述里会生成「呼唤」牌（Beckon），补上对应卡牌预览 tip
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromCard<Beckon>()
+    ];
 
     protected override IEnumerable<DynamicVar> CanonicalVars
     {

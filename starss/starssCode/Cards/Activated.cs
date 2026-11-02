@@ -44,10 +44,12 @@ public sealed class Activated : starssCard
                 .Execute(choiceContext);
 
 
+        // 只统计实际扣除的生命值（UnblockedDamage 已扣除格挡，且不含溢出，
+        // 见 DamageResult.cs:32-41），与官方 Omnislice 取 DamageResult 的做法一致。
         int totalDamage =
             results.Results
                 .SelectMany(r => r)
-                .Sum(r => r.TotalDamage);
+                .Sum(r => r.UnblockedDamage);
 
 
         if (totalDamage > 0)

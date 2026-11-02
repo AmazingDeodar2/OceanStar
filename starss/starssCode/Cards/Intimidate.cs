@@ -35,13 +35,13 @@ public sealed class Intimidate : starssCard
     }
 
     public Intimidate()
-        : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+        : base(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(14M, ValueProp.Move),
+        new DamageVar(8M, ValueProp.Move),
         new PowerVar<WeakPower>(1M)
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

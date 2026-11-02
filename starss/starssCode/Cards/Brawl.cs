@@ -21,7 +21,7 @@ public sealed class Brawl : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(15M, ValueProp.Move),
+        new DamageVar(12M, ValueProp.Move),
         new FateVar(60M)
     ];
 
@@ -48,6 +48,6 @@ public sealed class Brawl : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(5M);
+        DynamicVars.Damage.UpgradeValueBy(3M);
     }
 }

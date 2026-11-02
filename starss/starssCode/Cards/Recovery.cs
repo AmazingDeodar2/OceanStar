@@ -31,7 +31,6 @@ public sealed class Recovery : starssCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 代价：Debuff，amount = 本卡要失去的幸运。
         await PowerCmd.Apply<RecoveryDrainPower>(
             choiceContext,
             Owner.Creature,
@@ -40,7 +39,6 @@ public sealed class Recovery : starssCard
             this
         );
 
-        // 收益：Buff，amount = 层数（未升级 2 / 升级 3），Counter 叠层自动累加。
         RecoveryPower? buff = await PowerCmd.Apply<RecoveryPower>(
             choiceContext,
             Owner.Creature,

@@ -14,7 +14,7 @@ public sealed class NaturalHistory : starssCard
     public NaturalHistory()
         : base(
             1,
-            CardType.Power,
+            CardType.Skill,
             CardRarity.Uncommon,
             TargetType.Self)
     {

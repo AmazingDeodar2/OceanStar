@@ -5,5 +5,40 @@
   "STARSS-FRIENDSHIP_MAGIC.pages.INITIAL.options.GAIN_GOLD": "接受礼物。 NL 获得77金币。",
   "STARSS-FRIENDSHIP_MAGIC.pages.CHOOSE_CARDS.selectionScreenPrompt": "选择2张PC牌加入牌组。",
   "STARSS-FRIENDSHIP_MAGIC.pages.CHOOSE_CARDS.description": "你选择了两位同行者。友谊的魔法将在接下来的旅途中陪伴着你。",
-  "STARSS-FRIENDSHIP_MAGIC.pages.GAIN_GOLD.description": "你收下了77金币。友谊有时也会以更加实际的形式出现。"
+  "STARSS-FRIENDSHIP_MAGIC.pages.GAIN_GOLD.description": "你收下了77金币。友谊有时也会以更加实际的形式出现。",
+
+  "LEAKY_SPOON_CIRCLE.title": "漏勺是一个圈",
+  "LEAKY_SPOON_CIRCLE.pages.INITIAL.description": "恍惚中，你似乎看到7位不同的身影向你走来，其中三位向你伸出了手。",
+
+  "LEAKY_SPOON_CIRCLE.pages.INITIAL.options.WOODEN_HORSE.title": "木马",
+  "LEAKY_SPOON_CIRCLE.pages.INITIAL.options.WOODEN_HORSE.description": "支付100金币，获得300金币。",
+
+  "LEAKY_SPOON_CIRCLE.pages.INITIAL.options.WOODEN_HORSE_LOCKED.title": "木马",
+  "LEAKY_SPOON_CIRCLE.pages.INITIAL.options.WOODEN_HORSE_LOCKED.description": "需要至少100金币。",
+
+  "LEAKY_SPOON_CIRCLE.pages.INITIAL.options.THREE_W.title": "3w",
+  "LEAKY_SPOON_CIRCLE.pages.INITIAL.options.THREE_W.description": "进入一场精英战斗，额外获得一个遗物。",
+
+  "LEAKY_SPOON_CIRCLE.pages.INITIAL.options.QIQI.title": "淇淇",
+  "LEAKY_SPOON_CIRCLE.pages.INITIAL.options.QIQI.description": "获得一件随机涅奥遗物。",
+
+  "LEAKY_SPOON_CIRCLE.pages.INITIAL.options.TT.title": "TT",
+  "LEAKY_SPOON_CIRCLE.pages.INITIAL.options.TT.description": "获得三组其他角色的卡牌奖励。",
+
+  "LEAKY_SPOON_CIRCLE.pages.INITIAL.options.XUESONG.title": "雪松",
+  "LEAKY_SPOON_CIRCLE.pages.INITIAL.options.XUESONG.description": "从七张PC牌中选择两张。",
+
+  "LEAKY_SPOON_CIRCLE.pages.INITIAL.options.NANA.title": "娜娜",
+  "LEAKY_SPOON_CIRCLE.pages.INITIAL.options.NANA.description": "获得5点最大生命值。",
+
+  "LEAKY_SPOON_CIRCLE.pages.INITIAL.options.GOOSE.title": "鹅鹅",
+  "LEAKY_SPOON_CIRCLE.pages.INITIAL.options.GOOSE.description": "增加药水栏位并获得混沌药水。",
+
+  "LEAKY_SPOON_CIRCLE.pages.WOODEN_HORSE.description": "木马向你点了点头。",
+  "LEAKY_SPOON_CIRCLE.pages.THREE_W.description": "3w向你发出了挑战。",
+  "LEAKY_SPOON_CIRCLE.pages.QIQI.description": "淇淇递给你一件礼物。",
+  "LEAKY_SPOON_CIRCLE.pages.TT.description": "TT向你展示了一些卡牌。",
+  "LEAKY_SPOON_CIRCLE.pages.XUESONG.description": "雪松邀请你挑选卡牌。",
+  "LEAKY_SPOON_CIRCLE.pages.NANA.description": "娜娜给予了你祝福。",
+  "LEAKY_SPOON_CIRCLE.pages.GOOSE.description": "鹅鹅递给你一瓶药水。"
 }

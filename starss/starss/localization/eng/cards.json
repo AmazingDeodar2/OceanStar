@@ -117,7 +117,7 @@
   "STARSS-DISASTER_RELIEF.title": "消灾",
   "STARSS-DISASTER_RELIEF.description": "选择抽牌堆中一张牌变为{IfUpgraded:show:四叶草叶片+|四叶草叶片}，获得{Luck:diff()}点幸运。",
   "STARSS-RANK_SUPPRESSION.title": "位格压制",
-  "STARSS-RANK_SUPPRESSION.description": "造成30%伤害，持续{Repeat:diff()}回合。",
+  "STARSS-RANK_SUPPRESSION.description": "击晕一名敌人。将一张呼唤加入你的手牌。",
   "STARSS-EXORCISE.title": "祓除",
   "STARSS-EXORCISE.description": "丢弃手牌中任意张牌，将2张{IfUpgraded:show:四叶草叶片+|四叶草叶片}加入抽牌堆",
   "STARSS-EXORCISE.selectionScreenPrompt": "选择任意张手牌丢弃。",
@@ -187,7 +187,7 @@
   "STARSS-FATE_STRIKE.title": "命运打击",
   "STARSS-FATE_STRIKE.description": "造成{Damage:diff()}点伤害，每次命运触发时将这张牌放入你的手牌。",
   "STARSS-SAPLING.title": "幼苗",
-  "STARSS-SAPLING.description": "将1张{IfUpgraded:show:四叶草叶片+|四叶草叶片}放入抽牌堆，让所有“幼苗”牌加入的四叶草叶片数量翻倍。",
+  "STARSS-SAPLING.description": "将一张四叶草叶片放入你的手牌。本场战斗你所有的四叶草叶片获得重放。",
 
 
   "STARSS-TIME_REVERSAL.title": "时~光~倒~流~",

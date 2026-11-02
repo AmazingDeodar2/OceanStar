@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Models;
 using starss.starssCode.Cards;
 using starss.starssCode.Cards.Interfaces;
+using starss.starssCode.Mechanics;
 
 namespace starss.starssCode.Powers;
 
@@ -58,17 +59,6 @@ public sealed class HatTrickPower : starssPower
 
     private CardModel? GetRandomPcCard()
     {
-        return CardFactory
-            .GetDistinctForCombat(
-                Owner.Player,
-                Owner.Player.Character.CardPool
-                    .GetUnlockedCards(
-                        Owner.Player.UnlockState,
-                        Owner.Player.RunState.CardMultiplayerConstraint)
-                    .Where(card => card is IPcCard),
-                1,
-                Owner.Player.RunState.Rng.CombatCardGeneration
-            )
-            .FirstOrDefault();
+        return PcCardHelper.GetRandomPcCard(Owner.Player);
     }
 }

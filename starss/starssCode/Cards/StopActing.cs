@@ -1,6 +1,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using starss.starssCode.Mechanics;
@@ -17,6 +18,11 @@ public sealed class StopActing : starssCard
         : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
     }
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        StarssHoverTips.State
+    ];
 
     public override bool GainsBlock => true;
 

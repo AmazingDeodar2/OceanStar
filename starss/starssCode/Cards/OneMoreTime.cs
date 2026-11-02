@@ -10,10 +10,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Models.Cards;
 
+using starss.starssCode.Cards.Interfaces;
+
 namespace starss.starssCode.Cards;
 
 
-public sealed class OneMoreTime : starssCard
+public sealed class OneMoreTime : starssCard, IDoomCard
 {
     public OneMoreTime()
         : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)

@@ -12,10 +12,12 @@ using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.Models;
 using starss.starssCode.Mechanics;
 
+using starss.starssCode.Cards.Interfaces;
+
 namespace starss.starssCode.Cards;
 
 
-public sealed class SanCheck : starssCard
+public sealed class SanCheck : starssCard, IDoomCard
 {
     public SanCheck()
         : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)

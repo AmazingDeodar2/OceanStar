@@ -25,6 +25,12 @@ public sealed class TrojanHorse : starssCard, IPcCard
     {
     }
 
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        StarssHoverTips.Pc,
+        StarssHoverTips.State
+    ];
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(

@@ -9,10 +9,12 @@ using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Models.Cards;
 using starss.starssCode.Mechanics;
 using VoidCard = MegaCrit.Sts2.Core.Models.Cards.Void;
+using starss.starssCode.Cards.Interfaces;
+
 namespace starss.starssCode.Cards;
 
 
-public sealed class Persuade : starssCard
+public sealed class Persuade : starssCard, IDoomCard
 {
     public Persuade()
         : base(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)

@@ -11,10 +11,12 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using starss.starssCode.Mechanics;
 using VoidCard = MegaCrit.Sts2.Core.Models.Cards.Void;
+using starss.starssCode.Cards.Interfaces;
+
 namespace starss.starssCode.Cards;
 
 
-public sealed class Eloquence : starssCard
+public sealed class Eloquence : starssCard, IDoomCard
 {
     private const string IncreaseKey = "Increase";
 

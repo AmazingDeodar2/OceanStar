@@ -12,10 +12,12 @@ using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Models.Cards;
 using RegretCard = MegaCrit.Sts2.Core.Models.Cards.Regret;
 
+using starss.starssCode.Cards.Interfaces;
+
 namespace starss.starssCode.Cards;
 
 
-public sealed class Occultism : starssCard
+public sealed class Occultism : starssCard, IDoomCard
 {
     public Occultism()
         : base(

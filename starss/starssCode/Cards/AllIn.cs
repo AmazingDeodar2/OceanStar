@@ -9,9 +9,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using starss.starssCode.Mechanics;
 
+using starss.starssCode.Cards.Interfaces;
+
 namespace starss.starssCode.Cards;
 
-public sealed class AllIn : starssCard
+public sealed class AllIn : starssCard, IDoomCard
 {
     public AllIn()
         : base(0, CardType.Skill, CardRarity.Rare, TargetType.AllEnemies)

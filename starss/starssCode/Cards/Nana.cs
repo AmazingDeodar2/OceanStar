@@ -1,6 +1,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
 using starss.starssCode.States;
 using System.Collections.Generic;
@@ -17,6 +18,12 @@ public sealed class Nana : starssCard, IPcCard
         : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
     }
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        StarssHoverTips.Pc,
+        StarssHoverTips.State
+    ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [

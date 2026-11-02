@@ -11,9 +11,11 @@ using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Models;
 
+using starss.starssCode.Cards.Interfaces;
+
 namespace starss.starssCode.Cards;
 
-public sealed class DesertEagle : starssCard
+public sealed class DesertEagle : starssCard, IDoomCard
 {
     public DesertEagle()
         : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)

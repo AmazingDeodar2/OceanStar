@@ -13,10 +13,12 @@ using MegaCrit.Sts2.Core.Models;
 
 
 
+using starss.starssCode.Cards.Interfaces;
+
 namespace starss.starssCode.Cards;
 
 
-public sealed class FoxFire : starssCard
+public sealed class FoxFire : starssCard, IDoomCard
 {
     public FoxFire()
         : base(9, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)

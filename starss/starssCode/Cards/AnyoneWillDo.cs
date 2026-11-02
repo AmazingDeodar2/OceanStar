@@ -1,6 +1,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using starss.starssCode.Mechanics;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,6 +14,11 @@ public sealed class AnyoneWillDo : starssCard
         : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
     }
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        StarssHoverTips.State
+    ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords
         => new[] { CardKeyword.Exhaust };

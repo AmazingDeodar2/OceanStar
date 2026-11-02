@@ -19,7 +19,7 @@ public sealed class Library : starssCard
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(2),
-        new FateVar(60M)
+        new FateVar(30M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -60,6 +60,7 @@ public sealed class Library : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Cards.UpgradeValueBy(1M);
+        // 升级只提高命运判定值（30→60），抽牌数不变。
+        DynamicVars["Fate"].UpgradeValueBy(30M);
     }
 }

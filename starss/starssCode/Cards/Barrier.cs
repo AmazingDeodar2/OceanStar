@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using starss.starssCode.Mechanics;
 
+using starss.starssCode.Cards.Interfaces;
+
 namespace starss.starssCode.Cards;
 
-public sealed class Barrier : starssCard
+public sealed class Barrier : starssCard, IDoomCard
 {
     public Barrier()
         : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)

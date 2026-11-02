@@ -9,7 +9,10 @@ namespace starss.starssCode.Mechanics;
 ///
 /// 用法：卡牌/遗物/药水里 override <c>ExtraHoverTips</c>，返回 <c>StarssHoverTips.Doom</c> 之类即可。
 /// 注意它是**卡级**提示（显示在卡牌下方那排图标），与 DiceVars 里用 BaseLib WithTooltip 做的
-/// **变量级**提示（悬停描述里的数字）是两套东西，通常两处都要挂。
+/// **变量级**提示（悬停描述里的数字）是两套东西。
+/// ⚠️ 别对 Fate / Doom 重复挂：FateVar / DoomVar 已经带了变量级提示，
+/// 卡级再挂一份 <see cref="Fate"/> / <see cref="Doom"/> 会同时弹两条一模一样的（实测 2026-11-02 取悦）。
+/// 这两条卡级 tip 只该给**没有** FateVar/DoomVar、却和骰点机制相关的牌用（如共担厄运 / 厄运赐福）。
 /// </summary>
 public static class StarssHoverTips
 {
@@ -40,4 +43,13 @@ public static class StarssHoverTips
 
     /// <summary>临时幸运，只作用于下一次投点判定。</summary>
     public static IHoverTip NextCheckLuck => FromKey("STARSS-NEXT_CHECK_LUCK");
+
+    // 状态系统两个概念。注意：它们只是**卡级**提示，不影响任何逻辑；
+    // 「一张牌是不是 PC 牌」由 <c>IPcCard</c> 标记接口判定（Mechanics/IPcCard.cs）。
+
+    /// <summary>能让你进入状态的卡牌。部分卡牌、遗物与药水会从 PC 牌池中随机抽取。</summary>
+    public static IHoverTip Pc => FromKey("STARSS-PC_CARD");
+
+    /// <summary>由 PC 牌进入的持续效果。</summary>
+    public static IHoverTip State => FromKey("STARSS-STATE");
 }

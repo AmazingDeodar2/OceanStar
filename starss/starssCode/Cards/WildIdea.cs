@@ -13,9 +13,11 @@ using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Models;
 using starss.starssCode.Powers;
 
+using starss.starssCode.Cards.Interfaces;
+
 namespace starss.starssCode.Cards;
 
-public sealed class WildIdea : starssCard
+public sealed class WildIdea : starssCard, IDoomCard
 {
     public WildIdea()
         : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)

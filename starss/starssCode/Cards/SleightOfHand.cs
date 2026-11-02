@@ -10,10 +10,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Void = MegaCrit.Sts2.Core.Models.Cards.Void;
 
+using starss.starssCode.Cards.Interfaces;
+
 namespace starss.starssCode.Cards;
 
 
-public sealed class SleightOfHand : starssCard
+public sealed class SleightOfHand : starssCard, IDoomCard
 {
     public SleightOfHand()
         : base(0, CardType.Skill, CardRarity.Rare, TargetType.AnyEnemy)

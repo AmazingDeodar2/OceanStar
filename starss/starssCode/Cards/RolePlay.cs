@@ -2,11 +2,13 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Models;
 using starss.starssCode.Cards.Interfaces;
+using starss.starssCode.Mechanics;
 
 namespace starss.starssCode.Cards;
 
@@ -18,6 +20,11 @@ public sealed class RolePlay : starssCard
     {
     }
 
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        StarssHoverTips.Pc
+    ];
+
     public override IEnumerable<CardKeyword> CanonicalKeywords
         => new[] { CardKeyword.Exhaust };
 
@@ -28,16 +35,7 @@ public sealed class RolePlay : starssCard
             "Cast",
             Owner.Character.CastAnimDelay);
 
-        CardModel? card = CardFactory.GetDistinctForCombat(
-                Owner,
-                Owner.Character.CardPool
-                    .GetUnlockedCards(
-                        Owner.UnlockState,
-                        Owner.RunState.CardMultiplayerConstraint)
-                    .Where(c => c is IPcCard),
-                1,
-                Owner.RunState.Rng.CombatCardGeneration)
-            .FirstOrDefault();
+        CardModel? card = PcCardHelper.GetRandomPcCard(Owner);
 
         if (card == null)
             return;

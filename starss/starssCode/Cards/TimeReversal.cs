@@ -29,8 +29,10 @@ public sealed class TimeReversal : starssCard
     [
         // 打出时立即获得的幸运
         new PowerVar<LuckyPower>("Luck", 50M),
-        // 每层“时光倒流”每回合减少的幸运
-        new DynamicVar("LuckLoss", 10M),
+        // 每层“时光倒流”每回合减少的幸运。
+        // 这个名字带 TimeReversal 前缀：它是“时光倒流”这个 debuff 自己的数值，
+        // 跟其它卡（如新生）的幸运损失不是一回事，别混用。
+        new DynamicVar("TimeReversalLuckLoss", 10M),
         // 每次使用获得1层负面效果
         new PowerVar<TimeReversalPower>("Power", 1M)
     ];

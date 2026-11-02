@@ -9,10 +9,12 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using starss.starssCode.Mechanics;
 
+using starss.starssCode.Cards.Interfaces;
+
 namespace starss.starssCode.Cards;
 
 [Pool(typeof(TokenCardPool))]
-public sealed class GodDice : starssCard
+public sealed class GodDice : starssCard, IDoomCard
 {
     private static readonly int[] DiceStages =
     [

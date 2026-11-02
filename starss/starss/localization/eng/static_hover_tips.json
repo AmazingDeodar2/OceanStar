@@ -10,5 +10,11 @@
   "STARSS-LUCK.smartDescription": "每层幸运使命运判定值增加[blue]1[/blue]，每两层幸运使厄运判定值增加[blue]2[/blue]。",
   "STARSS-NEXT_CHECK_LUCK.title": "下次检定幸运",
   "STARSS-NEXT_CHECK_LUCK.description": "临时幸运，只作用于[blue]下一次[/blue]投点判定，判定后消失。",
-  "STARSS-NEXT_CHECK_LUCK.smartDescription": "临时幸运，只作用于[blue]下一次[/blue]投点判定，判定后消失。"
+  "STARSS-NEXT_CHECK_LUCK.smartDescription": "临时幸运，只作用于[blue]下一次[/blue]投点判定，判定后消失。",
+  "STARSS-PC_CARD.title": "PC牌",
+  "STARSS-PC_CARD.description": "海星能从中获得羁绊，能让海星进入状态的卡牌。",
+  "STARSS-PC_CARD.smartDescription": "海星能从中获得羁绊，能让海星进入状态的卡牌。",
+  "STARSS-STATE.title": "状态",
+  "STARSS-STATE.description": "由PC牌进入的持续效果。默认同时只能存在[blue]1[/blue]个，进入新状态会顶替最早进入的那个；已存在的相同状态不会重复进入。",
+  "STARSS-STATE.smartDescription": "由PC牌进入的持续效果。默认同时只能存在[blue]1[/blue]个，进入新状态会顶替最早进入的那个；已存在的相同状态不会重复进入。"
 }

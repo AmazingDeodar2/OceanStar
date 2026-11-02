@@ -1,6 +1,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using starss.starssCode.Mechanics;
 using starss.starssCode.States;
 using System.Collections.Generic;
@@ -16,6 +17,12 @@ public sealed class Gratitude : starssCard,IPcCard
         : base(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
     {
     }
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        StarssHoverTips.Pc,
+        StarssHoverTips.State
+    ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords
     {

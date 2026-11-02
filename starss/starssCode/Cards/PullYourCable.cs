@@ -1,30 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using starss.starssCode.Mechanics;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-using VoidCard = MegaCrit.Sts2.Core.Models.Cards.Void;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace starss.starssCode.Cards;
 
- 
+
 public sealed class PullYourCable : starssCard
 {
     public PullYourCable()
-        : base(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+        : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
     }
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<PoisonPower>(),
+        HoverTipFactory.FromPower<DoomPower>()
+    ];
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar(7),
-        new DoomVar(51M)
+        // 需要丢弃的张数
+        new CardsVar(2),
+        // 每抽到一张牌，给全体敌人上的层数
+        new PowerVar<PoisonPower>("PoisonPower", 1M),
+        new PowerVar<DoomPower>("DoomPower", 1M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -35,52 +50,57 @@ public sealed class PullYourCable : starssCard
             Owner.Character.CastAnimDelay
         );
 
-        await CardPileCmd.Draw(
+        // 1) 弃牌：玩家从手牌里选。多张必须走集合重载（不要循环调单张版本）。
+        await CardCmd.Discard(
             choiceContext,
-            DynamicVars.Cards.BaseValue,
-            Owner
+            await CardSelectCmd.FromHandForDiscard(
+                choiceContext,
+                Owner,
+                new CardSelectorPrefs(
+                    CardSelectorPrefs.DiscardSelectionPrompt,
+                    DynamicVars.Cards.IntValue
+                ),
+                null,
+                this
+            )
         );
 
-        CardSelectorPrefs prefs = new CardSelectorPrefs(
-            CardSelectorPrefs.ExhaustSelectionPrompt,
-            1
-        );
+        // 2) 抽满手牌。差值必须在弃牌**之后**算，否则会把刚弃掉的牌又算进手牌数。
+        int num = CardPile.MaxCardsInHand - PileType.Hand.GetPile(Owner).Cards.Count;
 
-        CardModel card = (await CardSelectCmd.FromHand(
-            choiceContext,
-            Owner,
-            prefs,
-            null,
-            this
-        )).FirstOrDefault();
+        if (num <= 0)
+            return;
 
-        if (card != null)
-            await CardCmd.Exhaust(choiceContext, card);
+        IReadOnlyList<Creature> enemies =
+            Owner.Creature.CombatState?.HittableEnemies ?? Array.Empty<Creature>();
 
-        var result = await DiceHelper.Check(
-            Owner.Creature,
-            fate: 101,
-            doom: DynamicVars["Doom"].IntValue,
-            choiceContext: choiceContext,
-            sourceCard: this
-        );
-
-        if (result.DoomSuccess)
+        // 3) 逐张结算。
+        //    Draw 会返回本次真正抽到的牌，天然只作用于「这一次抽牌」——所以不需要 Power：
+        //    官方腐蚀波那种 Power 挂的是 AfterCardDrawn，本回合任何来源的抽牌都会触发，
+        //    而且要到回合结束才移除，语义完全不一样。
+        foreach (CardModel _ in await CardPileCmd.Draw(choiceContext, num, Owner))
         {
-           
-            CardModel voidCard = Owner.Creature.CombatState.CreateCard<VoidCard>(Owner);
-
-            await CardPileCmd.AddGeneratedCardToCombat(
-                voidCard,
-                PileType.Discard,
-                Owner
+            await PowerCmd.Apply<PoisonPower>(
+                choiceContext,
+                enemies,
+                DynamicVars["PoisonPower"].BaseValue,
+                Owner.Creature,
+                this
             );
-            PileType.Discard.GetPile(Owner).InvokeCardAddFinished();
+
+            await PowerCmd.Apply<DoomPower>(
+                choiceContext,
+                enemies,
+                DynamicVars["DoomPower"].BaseValue,
+                Owner.Creature,
+                this
+            );
         }
     }
 
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Retain);
+        DynamicVars["PoisonPower"].UpgradeValueBy(1M);
+        DynamicVars["DoomPower"].UpgradeValueBy(1M);
     }
 }

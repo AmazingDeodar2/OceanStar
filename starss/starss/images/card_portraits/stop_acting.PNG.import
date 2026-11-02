@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ch826k8p41xlc"
-path="res://.godot/imported/stop_acting.PNG-cf6f25cc2dd8cf3d8a6d749b6c6c3ffd.ctex"
+path="res://.godot/imported/stop_acting.png-03b9a6f884029dcafc815e0bc6d922bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starss/images/card_portraits/stop_acting.PNG"
-dest_files=["res://.godot/imported/stop_acting.PNG-cf6f25cc2dd8cf3d8a6d749b6c6c3ffd.ctex"]
+source_file="res://starss/images/card_portraits/stop_acting.png"
+dest_files=["res://.godot/imported/stop_acting.png-03b9a6f884029dcafc815e0bc6d922bf.ctex"]
 
 [params]
 

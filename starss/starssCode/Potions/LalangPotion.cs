@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Models;
 using starss.starssCode.Cards;
+using starss.starssCode.Mechanics;
 
 namespace starss.starssCode.Potions;
 
@@ -30,23 +31,16 @@ public sealed class LalangPotion : starssPotion
         PlayerChoiceContext choiceContext,
         Creature? target)
     {
-        var combatState = Owner.Creature.CombatState;
+        // 走 PC 牌池而不是硬编码卡牌清单：以后新增/移除 PC 牌会自动同步，且尊重解锁状态。
+        List<CardModel> choices = PcCardHelper.GetPcChoices(Owner, 3);
 
-        List<CardModel> choices =
-        [
-            combatState.CreateCard<TT>(Owner),
-            combatState.CreateCard<TrojanHorse>(Owner),
-            combatState.CreateCard<Qiqi>(Owner),
-            combatState.CreateCard<ThreeW>(Owner),
-            combatState.CreateCard<SnowCedar>(Owner),
-            combatState.CreateCard<Nana>(Owner),
-            combatState.CreateCard<Gratitude>(Owner)
-        ];
-        
+        if (choices.Count == 0)
+            return;
+
         CardModel? selectedCard =
             await CardSelectCmd.FromChooseACardScreen(
                 choiceContext,
-                choices.Take(3).ToList(),
+                choices,
                 Owner,
                 true
             );

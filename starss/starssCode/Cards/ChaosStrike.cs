@@ -10,10 +10,12 @@ using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using Godot;
 using starss.starssCode.Mechanics;
+using starss.starssCode.Cards.Interfaces;
+
 namespace starss.starssCode.Cards;
 
 
-public sealed class ChaosStrike : starssCard
+public sealed class ChaosStrike : starssCard, IDoomCard
 {
     public ChaosStrike()
         : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)

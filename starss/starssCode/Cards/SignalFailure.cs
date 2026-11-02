@@ -26,8 +26,7 @@ public sealed class SignalFailure : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(10M, ValueProp.Move),
-        new CardsVar(1)
+        new BlockVar(8M, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -50,12 +49,6 @@ public sealed class SignalFailure : starssCard
             Owner.Creature,
             this
         );
-        await CardPileCmd.Draw(
-            choiceContext,
-            DynamicVars.Cards.BaseValue,
-            Owner
-        );
-
         CardCmd.PreviewCardPileAdd(
             await CardPileCmd.AddGeneratedCardToCombat(
                 Owner.Creature.CombatState.CreateCard<VoidCard>(Owner),
@@ -70,6 +63,6 @@ public sealed class SignalFailure : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Cards.UpgradeValueBy(1M);
+        DynamicVars.Block.UpgradeValueBy(1M);
     }
 }

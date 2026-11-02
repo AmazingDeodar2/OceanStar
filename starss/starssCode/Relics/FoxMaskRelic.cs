@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Factories;
 using starss.starssCode.Cards.Interfaces;
+using starss.starssCode.Mechanics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,19 +25,7 @@ public sealed class FoxMask : starssRelic
         if (!participants.Contains(Owner.Creature) || Owner.PlayerCombatState.TurnNumber > 1)
             return;
 
-        List<CardModel> choices = CardFactory
-            .GetDistinctForCombat(
-                Owner,
-                Owner.Character.CardPool
-                    .GetUnlockedCards(
-                        Owner.UnlockState,
-                        Owner.RunState.CardMultiplayerConstraint
-                    )
-                    .Where(c => c is IPcCard),
-                1,
-                Owner.RunState.Rng.CombatCardGeneration
-            )
-            .ToList();
+        List<CardModel> choices = PcCardHelper.GetPcChoices(Owner, 1);
 
         if (choices.Count == 0)
             return;

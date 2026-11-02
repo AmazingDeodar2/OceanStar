@@ -11,9 +11,11 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
+using starss.starssCode.Cards.Interfaces;
+
 namespace starss.starssCode.Cards;
 
-public sealed class Humanology : starssCard
+public sealed class Humanology : starssCard, IDoomCard
 {
     private const int BaseValue = 7;
 

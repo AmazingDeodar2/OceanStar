@@ -1,0 +1,14 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://c38ucat5q62c0"
+path="res://.godot/imported/starspine2.skel-4973e08daa6d72948da3e7045da9ba51.spskel"
+
+[deps]
+
+source_file="res://starss/images/spine/starspine2.skel"
+dest_files=["res://.godot/imported/starspine2.skel-4973e08daa6d72948da3e7045da9ba51.spskel"]
+
+[params]
+

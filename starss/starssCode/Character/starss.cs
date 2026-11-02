@@ -3,7 +3,10 @@ using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
 using starss.starssCode.Extensions;
 using Godot;
+using MegaCrit.Sts2.Core.Animation;
+using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Entities.Characters;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Relics;
@@ -58,6 +61,34 @@ public class Starss : PlaceholderCharacterModel
             icon.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
             return icon;
         }
+    }
+
+    // 战斗立绘改用 spine（%Visuals = SpineSprite），需要自己声明 trigger → 动画名的映射。
+    // 不能沿用基类 CharacterModel.GenerateAnimator（CharacterModel.cs:247-265）：它会硬引用
+    // low_health_loop / relaxed_loop 两个动画，而我们的 skeleton 里没有。
+    // 写法照官方怪物，如 TurretOperator.cs:67-83。
+    public override CreatureAnimator GenerateAnimator(MegaSprite controller, Creature creature)
+    {
+        var idle = new AnimState("idle_loop", isLooping: true);
+        var die = new AnimState("die");
+        var hurt = new AnimState("hurt");
+        var attack = new AnimState("attack");
+        var cast = new AnimState("cast");
+
+        // 一次性动作播完自动回 idle；die 不给 NextState（死了就该停在死亡帧）
+        hurt.NextState = idle;
+        attack.NextState = idle;
+        cast.NextState = idle;
+
+        var animator = new CreatureAnimator(idle, controller);
+        animator.AddAnyState("Idle", idle);
+        animator.AddAnyState("Dead", die);
+        animator.AddAnyState("Hit", hurt);
+        animator.AddAnyState("Attack", attack);
+        animator.AddAnyState("Cast", cast);
+        // 官方把 PowerUp 也映射到 cast（CharacterModel.cs:232），此处保持一致
+        animator.AddAnyState("PowerUp", cast);
+        return animator;
     }
 
     public override string CustomIconTexturePath => "character_icon_char_name.png".CharacterUiPath();

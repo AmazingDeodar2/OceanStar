@@ -1,0 +1,9 @@
+[gd_resource type="SpineSkeletonDataResource" load_steps=3 format=3 uid="uid://cxbmk2h4akapx"]
+
+[ext_resource type="SpineAtlasResource" uid="uid://dvjwq80gbylqa" path="res://starss/images/spine/star11142.atlas" id="1_xylhg"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://c38ucat5q62c0" path="res://starss/images/spine/starspine2.skel" id="2_nshjg"]
+
+[resource]
+atlas_res = ExtResource("1_xylhg")
+skeleton_file_res = ExtResource("2_nshjg")
+default_mix = 0.2

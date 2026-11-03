@@ -170,7 +170,7 @@
   "STARSS-WHITE_FORM.title": "白色形态",
   "STARSS-WHITE_FORM.description": "每回合打出前三张牌时，抽一张牌。",
   "STARSS-RAINBOW_FRIENDSHIP_CANNON.title": "彩虹友谊大炮",
-  "STARSS-RAINBOW_FRIENDSHIP_CANNON.description": "每进入过一个状态，就造成一次{Damage:diff()}点伤害。{InCombat:\n(攻击{CalculatedHits:diff()}次)|}",
+  "STARSS-RAINBOW_FRIENDSHIP_CANNON.description": "每进入过一个状态，就发射一枚{Damage:diff()}点伤害的[sine][rainbow]超级友谊彩虹炮弹[/rainbow][/sine]。{InCombat:\n(攻击{CalculatedHits:diff()}次)|}",
   "STARSS-CLOVER_LEAF.title": "四叶草叶片",
   "STARSS-CLOVER_LEAF.description": "抽1张牌，获得{Power:diff()}点[green]幸运[/green]。",
   "STARSS-FLOWER_FIELD.title": "花田",

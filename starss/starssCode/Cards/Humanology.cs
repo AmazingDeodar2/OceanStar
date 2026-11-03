@@ -15,7 +15,7 @@ using starss.starssCode.Cards.Interfaces;
 
 namespace starss.starssCode.Cards;
 
-public sealed class Humanology : starssCard, IDoomCard
+public sealed class Humanology : starssCard, IDoomCard, IFateCard
 {
     private const int BaseValue = 7;
 
@@ -96,14 +96,7 @@ public sealed class Humanology : starssCard, IDoomCard
             showUi: true
         );
 
-        if (diceResult.FateSuccess)
-        {
-            BuffFromPlay(addAmount);
-
-            if (DeckVersion is Humanology deckVersion)
-                deckVersion.BuffFromPlay(addAmount);
-        }
-        if (diceResult.HardSuccess)
+        for (int i = 0; i < FateEffect.GetRepeatCount(diceResult, user); i++)
         {
             BuffFromPlay(addAmount);
 

@@ -1,3 +1,4 @@
+using starss.starssCode.Cards.Interfaces;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -13,7 +14,7 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace starss.starssCode.Cards;
 
-public sealed class LuckyFinish : starssCard
+public sealed class LuckyFinish : starssCard, IFateCard
 {
     private const string CalculatedDamageKey = "CalculatedDamage";
 
@@ -53,7 +54,7 @@ public sealed class LuckyFinish : starssCard
             sourceCard: this
         );
 
-        if (check.FateSuccess)
+        for (int i = 0; i < FateEffect.GetRepeatCount(check, Owner.Creature); i++)
         {
             await CreatureCmd.GainBlock(
                 Owner.Creature,
@@ -62,14 +63,6 @@ public sealed class LuckyFinish : starssCard
                 cardPlay
             );
         }
-        if (check.HardSuccess) 
-        { 
-            await CreatureCmd.GainBlock(
-            Owner.Creature,
-            damage,
-            ValueProp.Unpowered,
-            cardPlay
-        );}
     }
 
     private static decimal GetLuckDamage(CardModel card)

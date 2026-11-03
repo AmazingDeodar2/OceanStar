@@ -14,7 +14,7 @@ using starss.starssCode.Cards.Interfaces;
 namespace starss.starssCode.Cards;
 
 [Pool(typeof(TokenCardPool))]
-public sealed class GodDice : starssCard, IDoomCard
+public sealed class GodDice : starssCard, IDoomCard, IFateCard
 {
     private static readonly int[] DiceStages =
     [
@@ -91,11 +91,9 @@ public sealed class GodDice : starssCard, IDoomCard
          *
          * D6 → D12 → D20 → D30 → D50 → D100
          */
-        if (check.FateSuccess)
+        for (int i = 0; i < FateEffect.GetRepeatCount(check, Owner.Creature); i++)
             AdvanceDiceStage();
         
-        if (check.HardSuccess)
-            AdvanceDiceStage();
 
         /*
          * 厄运成功：

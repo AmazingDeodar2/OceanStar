@@ -34,13 +34,7 @@ public sealed class BarrierPower : starssPower
 
         var check = await DiceHelper.Check(Owner, fate: 40, doom: 61);
 
-        if (check.FateSuccess)
-            
-            await PlayerCmd.GainEnergy(1M, Owner.Player);
-        
-        if (check.HardSuccess)
-            
-            await PlayerCmd.GainEnergy(1M, Owner.Player);
+        await FateEffect.Run(check, Owner, () => PlayerCmd.GainEnergy(1M, Owner.Player!));
 
         if (check.DoomSuccess)
         {

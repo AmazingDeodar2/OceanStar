@@ -1,3 +1,4 @@
+using starss.starssCode.Cards.Interfaces;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -12,7 +13,7 @@ using starss.starssCode.Mechanics;
 
 namespace starss.starssCode.Cards;
 
-public sealed class OneeSanTime : starssCard
+public sealed class OneeSanTime : starssCard, IFateCard
 {
     public OneeSanTime()
         : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)

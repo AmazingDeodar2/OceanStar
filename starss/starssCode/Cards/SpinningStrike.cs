@@ -4,7 +4,6 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
-using starss.starssCode.Mechanics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +19,6 @@ public sealed class SpinningStrike : starssCard
     {
     }
 
-    // 打击牌：可触发打击木偶（StrikeDummy.cs:29 判 Tags.Contains(CardTag.Strike)，
-    // 条件是 IsPoweredAttack = Move 且非 Unpowered，ValuePropExtensions.cs:5-12）。
     protected override HashSet<CardTag> CanonicalTags =>
     [
         CardTag.Strike
@@ -29,58 +26,31 @@ public sealed class SpinningStrike : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        // BodySlam.cs:16-21 三件套：伤害 = 8 + 4 × 连续命运成功次数，卡面 {CalculatedDamage} 实时显示。
-        new CalculationBaseVar(8M),
-        new ExtraDamageVar(4M),
-        new CalculatedDamageVar(ValueProp.Move)
-            .WithMultiplier((card, _) => ((SpinningStrike)card)._bonusStacks),
-        new FateVar(50M)
+        new DamageVar(14M, ValueProp.Move)
     ];
-
-    /// <summary>
-    /// 连续命运成功的叠加层数：成功 +1（伤害 +4），失败清零（伤害回到 8）。
-    /// 只统计本张牌自己的判定，跨回合保留到本次战斗结束。
-    /// 注意：该字段不参与游戏序列化——战斗中读档会丢失叠加层数。
-    /// </summary>
-    private int _bonusStacks;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
-        // 直接传 CalculatedDamage：隐式转换取 Calculate(null)（CalculatedVar.cs:107-110）。
         // 自动打出时 cardPlay.Target 已被 CardCmd.AutoPlay 随机选好（CardCmd.cs:73-84）。
-        await DamageCmd.Attack(DynamicVars.CalculatedDamage)
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this, cardPlay)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-
-        // 命运 50 判定；doom 传 0 表示完全不用厄运（DiceHelper.cs:52 只在 doom > 0 时启用）。
-        var check = await DiceHelper.Check(
-            Owner.Creature,
-            fate: DynamicVars["Fate"].IntValue,
-            doom: 0,
-            choiceContext: choiceContext,
-            sourceCard: this
-        );
-
-        if (check.FateSuccess)
-            _bonusStacks++;
-        else
-            _bonusStacks = 0;
     }
 
     /// <summary>
-    /// 回合开始时（AutoPrePlay 阶段，抽牌之后）：若手牌或弃牌堆中有状态牌，
+    /// 回合结束时（AutoPostPlay 阶段，手牌尚未 flush）：若手牌或弃牌堆中有状态牌，
     /// 且本牌在抽牌堆或弃牌堆中，则自动打出（免费）。
     ///
-    /// 用 Early 变体是官方 Bombardment.cs:44-55 的原话做法：防止与乱战等其它
-    /// auto-pre-play 效果重复触发（例如乱战正把这张牌从抽牌堆顶打出）。
+    /// 模板照官方 HowlFromBeyond.cs:32-39（彼岸咆哮，回合结束自动打出）。
     /// 牌在非常规堆也能自动打出，因为 OnPlayWrapper 对 isAutoPlay 会无条件先移到
     /// Play 堆（CardModel.cs:1868-1875）。
+    /// 手牌此时仍在手上：Hand flush 发生在 End 阶段（PlayerTurnPhase.cs:50-60）。
     /// </summary>
-    public override async Task AfterAutoPrePlayPhaseEnteredEarly(PlayerChoiceContext choiceContext, Player player)
+    public override async Task AfterAutoPostPlayPhaseEntered(PlayerChoiceContext choiceContext, Player player)
     {
         CardPile? pile = Pile;
 
@@ -109,7 +79,6 @@ public sealed class SpinningStrike : starssCard
 
     protected override void OnUpgrade()
     {
-        // 升级：命运 50 → 70
-        DynamicVars["Fate"].UpgradeValueBy(20M);
+        DynamicVars.Damage.UpgradeValueBy(3M);
     }
 }

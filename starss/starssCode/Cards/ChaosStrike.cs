@@ -15,7 +15,7 @@ using starss.starssCode.Cards.Interfaces;
 namespace starss.starssCode.Cards;
 
 
-public sealed class ChaosStrike : starssCard, IDoomCard
+public sealed class ChaosStrike : starssCard, IDoomCard, IFateCard
 {
     public ChaosStrike()
         : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
@@ -49,7 +49,7 @@ public sealed class ChaosStrike : starssCard, IDoomCard
             sourceCard: this
         );
 
-        if (check.FateSuccess)
+        for (int i = 0; i < FateEffect.GetRepeatCount(check, Owner.Creature); i++)
         {
             
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
@@ -61,17 +61,6 @@ public sealed class ChaosStrike : starssCard, IDoomCard
             
         }
         
-        if (check.HardSuccess)
-        {
-            
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .WithHitCount(DynamicVars["Hits"].IntValue)
-                .FromCard(this, cardPlay)
-                .Targeting(cardPlay.Target)
-                .WithHitFx("vfx/vfx_attack_slash")
-                .Execute(choiceContext);
-            
-        }
 
         if (check.DoomSuccess)
         {

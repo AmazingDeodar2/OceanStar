@@ -18,7 +18,7 @@ using starss.starssCode.Cards.Interfaces;
 namespace starss.starssCode.Cards;
 
 
-public sealed class FoxFire : starssCard, IDoomCard
+public sealed class FoxFire : starssCard, IDoomCard, IFateCard
 {
     public FoxFire()
         : base(9, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
@@ -64,23 +64,7 @@ public sealed class FoxFire : starssCard, IDoomCard
             choiceContext: choiceContext,
             sourceCard: this
         );
-        if (check.FateSuccess)
-        {
-           
-
-            foreach (Creature enemy in CombatState!.HittableEnemies)
-            {
-                await PowerCmd.Apply<VulnerablePower>(
-                    choiceContext,
-                    enemy,
-                    DynamicVars.Vulnerable.BaseValue,
-                    Owner.Creature,
-                    this
-                );
-            }
-            
-        }
-        if (check.HardSuccess)
+        for (int i = 0; i < FateEffect.GetRepeatCount(check, Owner.Creature); i++)
         {
            
 

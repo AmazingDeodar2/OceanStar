@@ -1,3 +1,4 @@
+using starss.starssCode.Cards.Interfaces;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 namespace starss.starssCode.Cards;
 
 
-public sealed class Scout : starssCard
+public sealed class Scout : starssCard, IFateCard
 {
     public Scout()
         : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
@@ -46,17 +47,7 @@ public sealed class Scout : starssCard
             .Execute(choiceContext);
         
 
-        if (check.FateSuccess)
-        {
-            await PowerCmd.Apply<VigorPower>(
-                choiceContext,
-                Owner.Creature,
-                DynamicVars["power"].BaseValue,
-                Owner.Creature,
-                this
-            );
-        }
-        if (check.HardSuccess)
+        for (int i = 0; i < FateEffect.GetRepeatCount(check, Owner.Creature); i++)
         {
             await PowerCmd.Apply<VigorPower>(
                 choiceContext,

@@ -11,7 +11,7 @@ using starss.starssCode.Cards.Interfaces;
 
 namespace starss.starssCode.Cards;
 
-public sealed class Barrier : starssCard, IDoomCard
+public sealed class Barrier : starssCard, IDoomCard, IFateCard
 {
     public Barrier()
         : base(2, CardType.Power, CardRarity.Rare, TargetType.Self)

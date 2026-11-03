@@ -1,3 +1,4 @@
+using starss.starssCode.Cards.Interfaces;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 namespace starss.starssCode.Cards;
 
 
-public sealed class Stealth : starssCard
+public sealed class Stealth : starssCard, IFateCard
 {
     public Stealth()
         : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
@@ -41,7 +42,7 @@ public sealed class Stealth : starssCard
 
         
 
-        if (check.FateSuccess)
+        await FateEffect.Run(check, Owner.Creature, async () =>
         {
             await PowerCmd.Apply<BufferPower>(
                 choiceContext,
@@ -50,17 +51,7 @@ public sealed class Stealth : starssCard
                 Owner.Creature,
                 this
             );
-        }
-        if (check.HardSuccess)
-        {
-            await PowerCmd.Apply<BufferPower>(
-                choiceContext,
-                Owner.Creature,
-                DynamicVars["BufferPower"].BaseValue,
-                Owner.Creature,
-                this
-            );
-        }
+        });
 
         
     }

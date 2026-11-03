@@ -1,3 +1,4 @@
+using starss.starssCode.Cards.Interfaces;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -11,7 +12,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace starss.starssCode.Cards;
 
-public sealed class AreYouSure : starssCard
+public sealed class AreYouSure : starssCard, IFateCard
 {
     public AreYouSure()
         : base(1, CardType.Skill, CardRarity.Basic, TargetType.AnyEnemy)
@@ -47,7 +48,7 @@ public sealed class AreYouSure : starssCard
             sourceCard: this
         );
 
-        if (check.FateSuccess)
+        for (int i = 0; i < FateEffect.GetRepeatCount(check, Owner.Creature); i++)
         {
             
             await PowerCmd.Apply<VulnerablePower>(
@@ -65,22 +66,6 @@ public sealed class AreYouSure : starssCard
                 this);
         }
         
-        if (check.HardSuccess)
-        {
-            
-            await PowerCmd.Apply<VulnerablePower>(
-                choiceContext,
-                cardPlay.Target,
-                DynamicVars.Vulnerable.BaseValue,
-                Owner.Creature,
-                this);
-            await PowerCmd.Apply<WeakPower>(
-                choiceContext,
-                cardPlay.Target,
-                DynamicVars.Weak.BaseValue,
-                Owner.Creature,
-                this);
-        }
     }
 
     protected override void OnUpgrade()

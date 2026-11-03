@@ -1,3 +1,4 @@
+using starss.starssCode.Cards.Interfaces;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace starss.starssCode.Cards;
 
 
-public sealed class Library : starssCard
+public sealed class Library : starssCard, IFateCard
 {
     public Library()
         : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
@@ -36,17 +37,7 @@ public sealed class Library : starssCard
             DynamicVars.Cards.BaseValue,
             Owner
         );
-        if (check.FateSuccess)
-        {
-            await CardPileCmd.Draw(
-                choiceContext,
-                2,
-                Owner
-            );
-        
-            
-        }
-        if (check.HardSuccess)
+        for (int i = 0; i < FateEffect.GetRepeatCount(check, Owner.Creature); i++)
         {
             await CardPileCmd.Draw(
                 choiceContext,

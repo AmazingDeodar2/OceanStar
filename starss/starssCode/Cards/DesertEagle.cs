@@ -15,7 +15,7 @@ using starss.starssCode.Cards.Interfaces;
 
 namespace starss.starssCode.Cards;
 
-public sealed class DesertEagle : starssCard, IDoomCard
+public sealed class DesertEagle : starssCard, IDoomCard, IFateCard
 {
     public DesertEagle()
         : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
@@ -42,18 +42,7 @@ public sealed class DesertEagle : starssCard, IDoomCard
             sourceCard: this
         );
 
-        if (check.FateSuccess)
-        {
-            
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .WithHitCount(DynamicVars["Repeat"].IntValue)
-                .FromCard(this,cardPlay)
-                .Targeting(cardPlay.Target)
-                .WithHitFx("vfx/vfx_attack_slash")
-                .Execute(choiceContext);
-            
-        }
-        if (check.HardSuccess)
+        for (int i = 0; i < FateEffect.GetRepeatCount(check, Owner.Creature); i++)
         {
             
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)

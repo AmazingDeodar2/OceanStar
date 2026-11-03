@@ -1,3 +1,4 @@
+using starss.starssCode.Cards.Interfaces;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -13,7 +14,7 @@ using MegaCrit.Sts2.Core.Models;
 namespace starss.starssCode.Cards;
 
 
-public sealed class Dodge : starssCard
+public sealed class Dodge : starssCard, IFateCard
 {
     public Dodge()
         : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
@@ -44,39 +45,7 @@ public sealed class Dodge : starssCard
             sourceCard: this
         );
 
-        if (check.FateSuccess)
-        {
-            CardSelectorPrefs prefs = new(
-                SelectionScreenPrompt,
-                1
-            );
-
-            CardModel? selectedCard =
-                (await CardSelectCmd.FromCombatPile(
-                    choiceContext,
-                    PileType.Discard.GetPile(Owner),
-                    Owner,
-                    prefs
-                )).FirstOrDefault();
-
-            if (selectedCard == null)
-                return;
-
-            PileType? pileType = selectedCard.Pile?.Type;
-
-            if (pileType != PileType.Draw &&
-                pileType != PileType.Discard)
-            {
-                return;
-            }
-
-            await CardPileCmd.Add(
-                selectedCard,
-                PileType.Draw,
-                CardPilePosition.Top
-            );
-        }
-        if (check.HardSuccess)
+        for (int i = 0; i < FateEffect.GetRepeatCount(check, Owner.Creature); i++)
         {
             CardSelectorPrefs prefs = new(
                 SelectionScreenPrompt,

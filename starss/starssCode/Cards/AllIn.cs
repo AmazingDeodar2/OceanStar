@@ -13,10 +13,10 @@ using starss.starssCode.Cards.Interfaces;
 
 namespace starss.starssCode.Cards;
 
-public sealed class AllIn : starssCard, IDoomCard
+public sealed class AllIn : starssCard, IDoomCard, IFateCard
 {
     public AllIn()
-        : base(0, CardType.Skill, CardRarity.Rare, TargetType.AllEnemies)
+        : base(0, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
     {
     }
 
@@ -48,7 +48,7 @@ public sealed class AllIn : starssCard, IDoomCard
             sourceCard: this
         );
 
-        if (check.FateSuccess)
+        for (int i = 0; i < FateEffect.GetRepeatCount(check, Owner.Creature); i++)
         {
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                 .FromCard(this,cardPlay)
@@ -57,14 +57,6 @@ public sealed class AllIn : starssCard, IDoomCard
                 .Execute(choiceContext);
         }
 
-        if (check.HardSuccess)
-        {
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-                .FromCard(this,cardPlay)
-                .TargetingAllOpponents(CombatState!)
-                .WithHitFx("vfx/vfx_attack_blunt")
-                .Execute(choiceContext);
-        }
         
         if (check.DoomSuccess)
         {

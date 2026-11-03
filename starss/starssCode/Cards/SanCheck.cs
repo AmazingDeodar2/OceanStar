@@ -17,7 +17,7 @@ using starss.starssCode.Cards.Interfaces;
 namespace starss.starssCode.Cards;
 
 
-public sealed class SanCheck : starssCard, IDoomCard
+public sealed class SanCheck : starssCard, IDoomCard, IFateCard
 {
     public SanCheck()
         : base(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
@@ -59,38 +59,7 @@ public sealed class SanCheck : starssCard, IDoomCard
             sourceCard: this
         );
 
-        if (check.FateSuccess)
-        {
-           
-
-            CardModel card = await CardSelectCmd.FromChooseACardScreen(
-                choiceContext,
-                CardFactory.GetDistinctForCombat(
-                    Owner,
-                    Owner.Character.CardPool.GetUnlockedCards(
-                        Owner.UnlockState,
-                        Owner.RunState.CardMultiplayerConstraint
-                    ).Where(c => c.Type == CardType.Skill),
-                    3,
-                    Owner.RunState.Rng.CombatCardGeneration
-                ).ToList(),
-                Owner,
-                true
-            );
-
-            if (card != null)
-            {
-                card.SetToFreeThisTurn();
-
-                await CardPileCmd.AddGeneratedCardToCombat(
-                    card,
-                    PileType.Hand,
-                    Owner
-                );
-            }
-            
-        }
-        if (check.HardSuccess)
+        for (int i = 0; i < FateEffect.GetRepeatCount(check, Owner.Creature); i++)
         {
            
 

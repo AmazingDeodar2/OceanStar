@@ -17,7 +17,7 @@ using starss.starssCode.Cards.Interfaces;
 
 namespace starss.starssCode.Cards;
 
-public sealed class WildIdea : starssCard, IDoomCard
+public sealed class WildIdea : starssCard, IDoomCard, IFateCard
 {
     public WildIdea()
         : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
@@ -58,9 +58,8 @@ public sealed class WildIdea : starssCard, IDoomCard
             if (card != null)
                 await CardCmd.Exhaust(choiceContext, card);
         }
-        if (check.FateSuccess)
+        await FateEffect.Run(check, Owner.Creature, async () =>
         {
-            
             await PowerCmd.Apply<FreeNextCardPower>(
                 choiceContext,
                 Owner.Creature,
@@ -68,18 +67,7 @@ public sealed class WildIdea : starssCard, IDoomCard
                 Owner.Creature,
                 this
             );
-        }
-        if (check.HardSuccess)
-        {
-            
-            await PowerCmd.Apply<FreeNextCardPower>(
-                choiceContext,
-                Owner.Creature,
-                1M,
-                Owner.Creature,
-                this
-            );
-        }
+        });
     }
 
     protected override void OnUpgrade()

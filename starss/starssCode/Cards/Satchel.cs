@@ -1,3 +1,4 @@
+using starss.starssCode.Cards.Interfaces;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -12,7 +13,7 @@ using MegaCrit.Sts2.Core.Models;
 namespace starss.starssCode.Cards;
 
 
-public sealed class Satchel : starssCard
+public sealed class Satchel : starssCard, IFateCard
 {
     public Satchel()
         : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
@@ -47,29 +48,7 @@ public sealed class Satchel : starssCard
             return;
 
 
-        if (check.FateSuccess)
-        {
-            if (IsUpgraded)
-            {
-                foreach (CardModel card in PileType.Hand.GetPile(Owner).Cards
-                             .Where(c => c.IsUpgradable))
-                {
-                    CardCmd.Upgrade(card);
-                }
-            }
-            else
-            {
-                CardModel card = await CardSelectCmd.FromHandForUpgrade(
-                    choiceContext,
-                    Owner,
-                    this
-                );
-
-                if (card != null)
-                    CardCmd.Upgrade(card);
-            }
-        }
-        if (check.HardSuccess)
+        for (int i = 0; i < FateEffect.GetRepeatCount(check, Owner.Creature); i++)
         {
             if (IsUpgraded)
             {

@@ -1,3 +1,4 @@
+using starss.starssCode.Cards.Interfaces;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 namespace starss.starssCode.Cards;
 
 
-public sealed class Brawl : starssCard
+public sealed class Brawl : starssCard, IFateCard
 {
     public Brawl()
         : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
@@ -41,9 +42,8 @@ public sealed class Brawl : starssCard
             doom: 101, 
             choiceContext: choiceContext, 
             sourceCard: this ); 
-        // 命运成功：这张卡在本场战斗中的费用减少 1。
-        if (check.FateSuccess) { EnergyCost.AddThisCombat(-1); }
-        if (check.HardSuccess) { EnergyCost.AddThisCombat(-1); }
+        // 命运：这张卡在本场战斗中的费用减少 1（困难成功的额外次数由「坦途」提供）。
+        await FateEffect.Run(check, Owner.Creature, () => EnergyCost.AddThisCombat(-1));
     }
 
     protected override void OnUpgrade()

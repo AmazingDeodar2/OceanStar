@@ -1,3 +1,4 @@
+using starss.starssCode.Cards.Interfaces;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 namespace starss.starssCode.Cards;
 
 
-public sealed class Listen : starssCard
+public sealed class Listen : starssCard, IFateCard
 {
     public Listen()
         : base(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
@@ -52,18 +53,7 @@ public sealed class Listen : starssCard
             cardPlay
         );
 
-        if (check.FateSuccess)
-        {
-            
-            await PowerCmd.Apply<WeakPower>(
-                choiceContext,
-                cardPlay.Target,
-                DynamicVars.Weak.BaseValue,
-                Owner.Creature,
-                this
-            );
-        }
-        if (check.HardSuccess)
+        for (int i = 0; i < FateEffect.GetRepeatCount(check, Owner.Creature); i++)
         {
             
             await PowerCmd.Apply<WeakPower>(

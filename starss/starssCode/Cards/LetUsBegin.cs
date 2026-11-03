@@ -1,3 +1,4 @@
+using starss.starssCode.Cards.Interfaces;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -13,7 +14,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace starss.starssCode.Cards;
 
-public sealed class LetUsBegin : starssCard
+public sealed class LetUsBegin : starssCard, IFateCard
 {
     public LetUsBegin()
         : base(0, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
@@ -58,20 +59,7 @@ public sealed class LetUsBegin : starssCard
             sourceCard: this
         );
 
-        if (check.FateSuccess)
-        {
-            for (int i = 0; i < DynamicVars["Bonus"].IntValue; i++)
-                await AttackEnemy(choiceContext, cardPlay.Target, cardPlay);
-
-            await PowerCmd.Apply<DrawCardsNextTurnPower>(
-                choiceContext,
-                Owner.Creature,
-                DynamicVars.Cards.BaseValue,
-                Owner.Creature,
-                this
-            );
-        }
-        if (check.HardSuccess)
+        for (int _fateRepeat = 0; _fateRepeat < FateEffect.GetRepeatCount(check, Owner.Creature); _fateRepeat++)
         {
             for (int i = 0; i < DynamicVars["Bonus"].IntValue; i++)
                 await AttackEnemy(choiceContext, cardPlay.Target, cardPlay);

@@ -27,19 +27,21 @@ public sealed class PullYourCable : starssCard
         CardKeyword.Exhaust
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<PoisonPower>(),
-        HoverTipFactory.FromPower<DoomPower>()
-    ];
+    // 「每抽到一张牌 → 全体敌人中毒+灾厄」已按需求暂时关闭，tip 一并注释。
+    // 恢复效果时取消下面整块注释即可。
+    // protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    // [
+    //     HoverTipFactory.FromPower<PoisonPower>(),
+    //     HoverTipFactory.FromPower<DoomPower>()
+    // ];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         // 需要丢弃的张数
-        new CardsVar(2),
-        // 每抽到一张牌，给全体敌人上的层数
-        new PowerVar<PoisonPower>("PoisonPower", 1M),
-        new PowerVar<DoomPower>("DoomPower", 1M)
+        new CardsVar(2)
+        // 效果已关闭；恢复时补回下面两行（并给上一行补逗号）
+        // new PowerVar<PoisonPower>("PoisonPower", 1M),
+        // new PowerVar<DoomPower>("DoomPower", 1M)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -71,13 +73,14 @@ public sealed class PullYourCable : starssCard
         if (num <= 0)
             return;
 
+        await CardPileCmd.Draw(choiceContext, num, Owner);
+
+        // 3) 【已注释】每抽到一张牌，给予所有敌人中毒与灾厄。
+        //    恢复时取消整块注释，并把上面的 Draw 改回 foreach 形式。
+        /*
         IReadOnlyList<Creature> enemies =
             Owner.Creature.CombatState?.HittableEnemies ?? Array.Empty<Creature>();
 
-        // 3) 逐张结算。
-        //    Draw 会返回本次真正抽到的牌，天然只作用于「这一次抽牌」——所以不需要 Power：
-        //    官方腐蚀波那种 Power 挂的是 AfterCardDrawn，本回合任何来源的抽牌都会触发，
-        //    而且要到回合结束才移除，语义完全不一样。
         foreach (CardModel _ in await CardPileCmd.Draw(choiceContext, num, Owner))
         {
             await PowerCmd.Apply<PoisonPower>(
@@ -96,11 +99,16 @@ public sealed class PullYourCable : starssCard
                 this
             );
         }
+        */
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["PoisonPower"].UpgradeValueBy(1M);
-        DynamicVars["DoomPower"].UpgradeValueBy(1M);
+        // 升级：获得「保留」（项目先例 Exorcise.cs:68 / Gratitude.cs:55）
+        AddKeyword(CardKeyword.Retain);
+
+        // 原升级（中毒/灾厄层数 +1）随效果一起注释
+        // DynamicVars["PoisonPower"].UpgradeValueBy(1M);
+        // DynamicVars["DoomPower"].UpgradeValueBy(1M);
     }
 }

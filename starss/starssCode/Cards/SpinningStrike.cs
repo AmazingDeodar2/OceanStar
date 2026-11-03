@@ -15,7 +15,7 @@ namespace starss.starssCode.Cards;
 public sealed class SpinningStrike : starssCard
 {
     public SpinningStrike()
-        : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+        : base(3, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
     {
     }
 
@@ -79,6 +79,6 @@ public sealed class SpinningStrike : starssCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3M);
+        DynamicVars.Damage.UpgradeValueBy(4M);
     }
 }

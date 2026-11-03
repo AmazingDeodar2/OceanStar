@@ -31,7 +31,7 @@
   "STARSS-GOOD_LUCK.title": "好运",
   "STARSS-GOOD_LUCK.description": "获得{Power:diff()}点[gold]力量[/gold]、{Power:diff()}点[gold]敏捷[/gold]、{Power:diff()}点[gold]活力[/gold]、{Power:diff()}点[gold]覆甲[/gold]。本回合结束时失去{Power:diff()}点力量和{Power:diff()}点敏捷。",
   "STARSS-LET_US_BEGIN.title": "让我们开始吧！",
-  "STARSS-LET_US_BEGIN.description": "对一名敌人造成{Damage:diff()}点伤害{Repeat:diff()}次，下回合额外抽1张牌。[orange]命运[/orange]{Fate:diff()}：再造成{Bonus:diff()}次伤害。下回合再额外抽1张牌。",
+  "STARSS-LET_US_BEGIN.description": "对一名敌人造成{Damage:diff()}点伤害{Repeat:diff()}次，下回合额外抽1张牌。[orange]命运[/orange]{Fate:diff()}：下回合额外抽1张牌并获得{Energy:energyIcons()}。",
   "STARSS-DESERT_EAGLE.title": "沙漠之鹰",
   "STARSS-DESERT_EAGLE.description": "[orange]命运[/orange]{Fate:diff()}：造成{Damage:diff()}点伤害{Repeat:diff()}次。[red]厄运[/red]{Doom:diff()}：对自己造成{Damage:diff()}点伤害并消耗。",
   "STARSS-WILD_IDEA.title": "奇思妙想",

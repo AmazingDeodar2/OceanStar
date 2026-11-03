@@ -32,8 +32,8 @@ public sealed class LetUsBegin : starssCard, IFateCard
         new DamageVar(4M, ValueProp.Move),
         new DynamicVar("Repeat", 2M),
         new FateVar(50M),
-        new DynamicVar("Bonus", 1M),
-        new CardsVar(1)
+        new CardsVar(1),
+        new EnergyVar(1)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -61,13 +61,18 @@ public sealed class LetUsBegin : starssCard, IFateCard
 
         for (int _fateRepeat = 0; _fateRepeat < FateEffect.GetRepeatCount(check, Owner.Creature); _fateRepeat++)
         {
-            for (int i = 0; i < DynamicVars["Bonus"].IntValue; i++)
-                await AttackEnemy(choiceContext, cardPlay.Target, cardPlay);
-
             await PowerCmd.Apply<DrawCardsNextTurnPower>(
                 choiceContext,
                 Owner.Creature,
                 DynamicVars.Cards.BaseValue,
+                Owner.Creature,
+                this
+            );
+
+            await PowerCmd.Apply<EnergyNextTurnPower>(
+                choiceContext,
+                Owner.Creature,
+                DynamicVars.Energy.BaseValue,
                 Owner.Creature,
                 this
             );
@@ -85,6 +90,6 @@ public sealed class LetUsBegin : starssCard, IFateCard
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Bonus"].UpgradeValueBy(1M);
+        DynamicVars["Repeat"].UpgradeValueBy(1M);
     }
 }

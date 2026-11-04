@@ -38,7 +38,7 @@ public sealed class TT : starssCard,IPcCard
     {
         await CreatureCmd.TriggerAnim(
             Owner.Creature,
-            "Cast",
+            "PcPower",
             Owner.Character.CastAnimDelay
         );
 

@@ -39,7 +39,7 @@ public sealed class Gratitude : starssCard,IPcCard
     {
         await CreatureCmd.TriggerAnim(
             Owner.Creature,
-            "Cast",
+            "PcPower",
             Owner.Character.CastAnimDelay
         );
 

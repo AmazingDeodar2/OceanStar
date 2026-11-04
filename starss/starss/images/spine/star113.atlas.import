@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://c8cl62rpi7ch7"
+path="res://.godot/imported/star113.atlas-2140ac6177b9af51797a037a18bcbd60.spatlas"
+
+[deps]
+
+source_file="res://starss/images/spine/star113.atlas"
+dest_files=["res://.godot/imported/star113.atlas-2140ac6177b9af51797a037a18bcbd60.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

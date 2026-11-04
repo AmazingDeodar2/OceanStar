@@ -56,5 +56,8 @@
   "FISHING_NET.title": "捕鱼网",
   "GREEN_GOD_HEART.description": "获得时，失去相当于最大生命值60%的生命，随机获得3件不同的海星遗物。",
   "GREEN_GOD_HEART.flavor": "你会是她的希望吗？",
-  "GREEN_GOD_HEART.title": "绿神之心"
+  "GREEN_GOD_HEART.title": "绿神之心",
+  "TWIN_SEED.description": "每场战斗开始时，失去1点生命。当你的生命值将要降低至0或以下时，恢复至最大生命值的60%。此效果仅能触发一次。",
+  "TWIN_SEED.flavor": "毁灭……与希望。",
+  "TWIN_SEED.title": "双生之种"
 }

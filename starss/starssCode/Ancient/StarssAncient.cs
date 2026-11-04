@@ -127,6 +127,7 @@ public class StarssAncient : CustomAncientModel
         CheckRelicPool<MarkedCard>();
         CheckRelicPool<CreepingVine>();
         CheckRelicPool<StableStone>();
+        CheckRelicPool<TwinSeed>();
 
         CheckRelicPool<MetamorphosisPact>();
         CheckRelicPool<GoldenCrucible>();
@@ -178,7 +179,8 @@ public class StarssAncient : CustomAncientModel
                 MakePool(
                     AncientOption<DivineTouch>(),
                     AncientOption<OriginAltar>(),
-                    AncientOption<FishingNet>()
+                    AncientOption<FishingNet>(),
+                    AncientOption<TwinSeed>()
                     ),
 
                 // ==================================

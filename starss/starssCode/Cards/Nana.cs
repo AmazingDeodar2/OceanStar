@@ -34,7 +34,7 @@ public sealed class Nana : starssCard, IPcCard
     {
         await CreatureCmd.TriggerAnim(
             Owner.Creature,
-            "Cast",
+            "PcPower",
             Owner.Character.CastAnimDelay
         );
 

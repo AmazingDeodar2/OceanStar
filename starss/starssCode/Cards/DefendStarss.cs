@@ -27,6 +27,13 @@ public sealed class DefendStarss : starssCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        // 官方无格挡 trigger（CreatureCmd.GainBlock 只播 vfx），这里触发 mod 自定义的 Defend 动画
+        await CreatureCmd.TriggerAnim(
+            Owner.Creature,
+            "Defend",
+            Owner.Character.CastAnimDelay
+        );
+
         await CreatureCmd.GainBlock(
             Owner.Creature,
             DynamicVars.Block,

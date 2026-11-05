@@ -8,13 +8,8 @@ using starss.starssCode.Powers;
 
 namespace starss.starssCode.Cards;
 
-/// <summary>
-/// 修正命运（稀有能力，3 费 / 升级 2 费）：
-/// 非命运的攻击牌与技能牌费用变为 0，打出后消耗，并获得 2 点永久幸运。
-///
+
 /// 效果全部落在 <see cref="FixFatePower"/> 上
-/// （CorruptionPower 的费用/消耗写法 + LuckyPower 施加）。
-/// </summary>
 public sealed class FixFate : starssCard
 {
     public FixFate()

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -53,6 +52,12 @@ public sealed class Please : starssCard, IDoomCard
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
 
+        CardModel copy = CreateClone();
+        CardCmd.PreviewCardPileAdd(
+            await CardPileCmd.AddGeneratedCardToCombat(copy, PileType.Discard, Owner),
+            2.2f
+        );
+
         var check = await DiceHelper.Check(
             Owner.Creature,
             fate: 101,
@@ -64,21 +69,10 @@ public sealed class Please : starssCard, IDoomCard
         if (!check.DoomSuccess)
             return;
 
-        CardSelectorPrefs prefs = new CardSelectorPrefs(
-            CardSelectorPrefs.ExhaustSelectionPrompt,
-            1
-        );
-
-        CardModel card = (await CardSelectCmd.FromHand(
-            choiceContext,
-            Owner,
-            prefs,
-            null,
-            this
-        )).FirstOrDefault();
-
-        if (card != null)
-            await CardCmd.Exhaust(choiceContext, card);
+        // 厄运成功：消耗这张牌本身。OnPlay 中途对正在打出的牌调 CardCmd.Exhaust 是官方做法
+        // （CardModel.MoveToResultPileWithoutPlaying:2112-2115 同款）；打完牌后的归堆只在牌仍处于
+        // Play 堆时执行（OnPlayWrapper:1989-1990），这里已移入消耗堆 ⇒ 不会二次移动，AfterCardExhausted 钩子齐全。
+        await CardCmd.Exhaust(choiceContext, this);
     }
 
     protected override void OnUpgrade()

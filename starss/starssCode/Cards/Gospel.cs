@@ -12,14 +12,7 @@ using starss.starssCode.Cards.Interfaces;
 
 namespace starss.starssCode.Cards;
 
-/// <summary>
-/// 福音（稀有攻击，2 费，消耗）：造成 13 点伤害，丢弃所有手牌，
-/// 然后将弃牌堆中所有厄运牌放入手牌。升级后移除消耗。
-///
-/// 参考官方：
-/// * 丢弃全部手牌 —— <c>ShadowStep.cs:22</c> 一行丢光；
-/// * 从弃牌堆批量回手 —— <c>AllForOne.cs:29-33</c> 先 ToList 再逐个 Add，避免边遍历边改集合。
-/// </summary>
+
 public sealed class Gospel : starssCard
 {
     public Gospel()

@@ -101,7 +101,6 @@ public sealed class FixFatePower : starssPower
         if (played.Owner.Creature != Owner || !IsAffected(played))
             return;
 
-        // 能力给能力：没有卡牌来源，第五参按项目惯例传 null
         await PowerCmd.Apply<LuckyPower>(
             choiceContext,
             Owner,

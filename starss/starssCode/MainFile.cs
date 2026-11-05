@@ -176,6 +176,7 @@ public partial class MainFile : Node
         ModHelper.AddModelToPool<EventRelicPool, MarkedCard>();
         ModHelper.AddModelToPool<EventRelicPool, CreepingVine>();
         ModHelper.AddModelToPool<EventRelicPool, StableStone>();
+        ModHelper.AddModelToPool<EventRelicPool, TwinSeed>();
 
         // 第三组
 

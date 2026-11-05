@@ -27,7 +27,7 @@ public sealed class TwinSeed : RelicModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(
-            1M,
+            3M,
             ValueProp.Unblockable | ValueProp.Unpowered
         ),
         new HealVar(60M)

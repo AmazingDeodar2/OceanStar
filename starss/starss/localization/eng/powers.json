@@ -94,5 +94,8 @@
   "STARSS-SMOOTH_PATH_POWER.smartDescription": "困难成功时，[orange]命运[/orange]效果额外触发1次。",
   "STARSS-FIX_FATE_POWER.title": "修正命运",
   "STARSS-FIX_FATE_POWER.description": "所有非[orange]命运[/orange]的[orange]攻击[/orange]牌和[orange]技能[/orange]牌费用变为0，打出后消耗，并获得{Luck}点[green]幸运[/green]。",
-  "STARSS-FIX_FATE_POWER.smartDescription": "所有非[orange]命运[/orange]的[orange]攻击[/orange]牌和[orange]技能[/orange]牌费用变为0，打出后消耗，并获得{Luck}点[green]幸运[/green]。"
+  "STARSS-FIX_FATE_POWER.smartDescription": "所有非[orange]命运[/orange]的[orange]攻击[/orange]牌和[orange]技能[/orange]牌费用变为0，打出后消耗，并获得{Luck}点[green]幸运[/green]。",
+  "STARSS-ESTIMATE_POWER.description": "获得额外回合。",
+  "STARSS-ESTIMATE_POWER.smartDescription": "获得额外回合。",
+  "STARSS-ESTIMATE_POWER.title": "估价"
 }

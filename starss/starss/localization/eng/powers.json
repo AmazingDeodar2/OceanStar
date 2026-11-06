@@ -79,9 +79,7 @@
   "STARSS-TIME_REVERSAL_POWER.description": "每回合开始时失去[green]幸运[/green]。",
   "STARSS-TIME_REVERSAL_POWER.smartDescription": "每回合开始时，每层失去[blue]{TimeReversalLuckLoss}[/blue]点[green]幸运[/green]。",
 
-  "STARSS-PSYCHOLOGY_POWER.title": "心理学",
-  "STARSS-PSYCHOLOGY_POWER.description": "受到负面状态翻倍。",
-  "STARSS-PSYCHOLOGY_POWER.smartDescription": "受到负面状态翻倍。",
+
   "STARSS-NATURAL_HISTORY_POWER.title": "博物学",
   "STARSS-NATURAL_HISTORY_POWER.description": "对有两种及以上负面效果的敌人造成额外伤害。",
   "STARSS-NATURAL_HISTORY_POWER.smartDescription": "对有两种及以上负面效果的敌人造成额外伤害。",

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bapmuqswfntyc"
-path="res://.godot/imported/gardon_keeper.png-21719e0f678eeab35ca0f589c307884e.ctex"
+uid="uid://veud5spq3pq1"
+path="res://.godot/imported/garden_keeper.png-0df38039f526628260fc214f81e481aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starss/images/card_portraits/gardon_keeper.png"
-dest_files=["res://.godot/imported/gardon_keeper.png-21719e0f678eeab35ca0f589c307884e.ctex"]
+source_file="res://starss/images/card_portraits/garden_keeper.png"
+dest_files=["res://.godot/imported/garden_keeper.png-0df38039f526628260fc214f81e481aa.ctex"]
 
 [params]
 

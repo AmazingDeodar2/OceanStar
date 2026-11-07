@@ -98,7 +98,7 @@
   "STARSS-BURN_LUCK.title": "燃运",
   "STARSS-BURN_LUCK.description": "减少{Luck:diff()}点[green]幸运[/green]。抽{Cards:diff()}张牌。",
   "STARSS-MISFORTUNE_BLESSING.title": "祸福相依",
-  "STARSS-MISFORTUNE_BLESSING.description": "获得{Block:diff()}点[gold]格挡[/gold]，下一次[red]厄运[/red]触发时候获得{Energy:energyIcons()}，抽1张牌。",
+  "STARSS-MISFORTUNE_BLESSING.description": "造成{Damage:diff()}点伤害，下一次[red]厄运[/red]触发时候获得{Energy:energyIcons()}，抽1张牌。",
   "STARSS-THREE_W.title": "3w",
   "STARSS-THREE_W.description": "进入【橘狗空间】，存在时[green]幸运[/green]可用于抵消伤害，[green]幸运[/green]小于0时退出。",
   "STARSS-NANA.title": "娜娜",

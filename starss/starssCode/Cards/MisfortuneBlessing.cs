@@ -15,7 +15,7 @@ namespace starss.starssCode.Cards;
 public sealed class MisfortuneBlessing : starssCard
 {
     public MisfortuneBlessing()
-        : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+        : base(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
     }
 
@@ -29,23 +29,24 @@ public sealed class MisfortuneBlessing : starssCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(9M, ValueProp.Move),
+        new DamageVar(8M, ValueProp.Move),
         new EnergyVar(1)
     ];
-
+    
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CreatureCmd.TriggerAnim(
             Owner.Creature,
             "Cast",
             Owner.Character.CastAnimDelay
         );
-
-        await CreatureCmd.GainBlock(
-            Owner.Creature,
-            DynamicVars.Block,
-            cardPlay
-        );
+        
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .FromCard(this,cardPlay)
+            .Targeting(cardPlay.Target)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
 
         await PowerCmd.Apply<MisfortuneBlessingPower>(
             choiceContext,
@@ -58,6 +59,6 @@ public sealed class MisfortuneBlessing : starssCard
     
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(3M);
+        DynamicVars.Damage.UpgradeValueBy(2M);
     }
 }

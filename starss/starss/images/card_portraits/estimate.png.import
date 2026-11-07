@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://f83mxxbojtik"
-path="res://.godot/imported/gardon_keeper.png-8cd9d7a8b648096a84c88150396f7ebe.ctex"
+uid="uid://b15cg6tipinb5"
+path="res://.godot/imported/estimate.png-3ea741de5a85ef9b7b3c6d0b1a87174d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://starss/images/card_portraits/big/gardon_keeper.png"
-dest_files=["res://.godot/imported/gardon_keeper.png-8cd9d7a8b648096a84c88150396f7ebe.ctex"]
+source_file="res://starss/images/card_portraits/estimate.png"
+dest_files=["res://.godot/imported/estimate.png-3ea741de5a85ef9b7b3c6d0b1a87174d.ctex"]
 
 [params]
 

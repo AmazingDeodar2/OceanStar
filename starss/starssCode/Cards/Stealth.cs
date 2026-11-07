@@ -21,7 +21,7 @@ public sealed class Stealth : starssCard, IFateCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new FateVar(20M),
+        new FateVar(30M),
         new PowerVar<BufferPower>(1M)
     ];
 

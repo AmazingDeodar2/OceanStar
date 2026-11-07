@@ -18,13 +18,13 @@ namespace starss.starssCode.Cards;
 public sealed class DesertEagle : starssCard, IDoomCard, IFateCard
 {
     public DesertEagle()
-        : base(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+        : base(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
     {
     }
     // private bool exhaustThisPlay;
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8M, ValueProp.Move),
+        new DamageVar(6M, ValueProp.Move),
         new DynamicVar("Repeat", 3M),
         new FateVar(80M),
         new DoomVar(81M)

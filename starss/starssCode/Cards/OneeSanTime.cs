@@ -16,7 +16,7 @@ namespace starss.starssCode.Cards;
 public sealed class OneeSanTime : starssCard, IFateCard
 {
     public OneeSanTime()
-        : base(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+        : base(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
     {
     }
 

@@ -30,7 +30,7 @@ public sealed class Listen : starssCard, IFateCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(12M, ValueProp.Unpowered),
+        new BlockVar(7M, ValueProp.Unpowered),
         new FateVar(60M),
         new PowerVar<WeakPower>(2M)
     ];

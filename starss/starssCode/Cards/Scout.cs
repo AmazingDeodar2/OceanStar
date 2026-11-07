@@ -23,7 +23,7 @@ public sealed class Scout : starssCard, IFateCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(10M, ValueProp.Move),
+        new DamageVar(8M, ValueProp.Move),
         new FateVar(60M),
         new PowerVar<VigorPower>("power",2M)
         

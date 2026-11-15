@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Rewards;
@@ -63,8 +64,8 @@ public sealed class GreenGodHeart : RelicModel
                 && relic.IsAllowed(player.RunState))
             .ToList();
 
-        // 4. 使用游戏奖励随机数洗牌
-        player.PlayerRng.Rewards.Shuffle(candidates);
+        // 4. 使用游戏奖励随机数洗牌（v0.113.0 移除 Rng.Shuffle，改为扩展方法；官方遗物同款写法见 Whetstone.cs:22）
+        candidates.StableShuffle(player.PlayerRng.Rewards);
 
         // 5. 随机抽取最多三件不同的遗物
         List<RelicModel> selected = candidates

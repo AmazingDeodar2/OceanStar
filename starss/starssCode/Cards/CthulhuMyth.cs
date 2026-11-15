@@ -37,12 +37,13 @@ public sealed class CthulhuMyth : starssCard
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 原版标准扣生命上限指令，第三个参数为扣除数值，第四个skipVisuals
+        // 原版标准扣生命上限指令。v0.113.0 起第 4 参从 skipVisuals(bool) 改为来源卡牌 CardModel?
+        //（CreatureCmd.cs:942，来源非空时 HP 流失会带 Move 属性、可触发破裂类效果）——卡牌来源传 this
         await CreatureCmd.LoseMaxHp(
             choiceContext,
             Owner.Creature,
             DynamicVars.MaxHp.BaseValue,
-            false
+            this
         );
         ICombatState? combatState = Owner.Creature.CombatState;
         if (combatState == null)

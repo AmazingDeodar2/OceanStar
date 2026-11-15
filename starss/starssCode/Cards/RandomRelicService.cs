@@ -44,7 +44,7 @@ public sealed class RandomRelicService :
             Owner
         );
 
-        var relic = RelicFactory.PullNextRelicFromFront(Owner);
+        var relic = RelicFactory.PullNextRelicForRewardFromFront(Owner);
 
         await RelicCmd.Obtain(
             relic.ToMutable(),

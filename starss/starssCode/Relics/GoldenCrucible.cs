@@ -21,8 +21,11 @@ public sealed class GoldenCrucible : RelicModel
     // 先古遗物
     public override RelicRarity Rarity => RelicRarity.Ancient;
 
-    // 仅允许在单人模式中出现
-    public override bool IsAllowed(IRunState runState)
+    // 仅允许在单人模式下进入官方遗物池。
+    // v0.113.0 起 RelicModel.IsAllowed(IRunState) 不再是 virtual（内部先过 Blitz/第三幕后期全局黑名单再调
+    // IsAllowedInternal），mod 的生成条件重写点改为 IsAllowedInternal —— 官方同款见 SilverCrucible.cs:81-84 / WingedBoots.cs:47-50。
+    // 多人模式不经过官方池获取（BaseLib 先古选项池不查 IsAllowed），拿到后宝箱逻辑按玩家生效，不受影响。
+    protected override bool IsAllowedInternal(IRunState runState)
     {
         return runState.Players.Count == 1;
     }

@@ -26,14 +26,15 @@ public sealed class MetamorphosisPact : RelicModel
             new MaxHpVar(16m)
         };
 
-    // 获得时失去16点最大生命值
+    // 获得时失去16点最大生命值。
+    // v0.113.0 起第 4 参从 skipVisuals(bool) 改为来源卡牌 CardModel?（CreatureCmd.cs:942）——遗物来源传 null
     public override async Task AfterObtained()
     {
         await CreatureCmd.LoseMaxHp(
             new ThrowingPlayerChoiceContext(),
             Owner.Creature,
             DynamicVars.MaxHp.BaseValue,
-            false
+            null
         );
     }
 

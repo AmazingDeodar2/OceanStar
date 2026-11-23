@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BaseLib.Utils;
@@ -8,7 +9,6 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using starss.starssCode.Mechanics;
-
 using starss.starssCode.Cards.Interfaces;
 
 namespace starss.starssCode.Cards;
@@ -26,6 +26,10 @@ public sealed class GodDice : starssCard, IDoomCard, IFateCard
         100
     ];
 
+    // 六张卡面的存放目录
+    private const string PortraitDirectory =
+        "res://starss/images/card_portraits/big/";
+
     public GodDice()
         : base(
             0,
@@ -34,20 +38,64 @@ public sealed class GodDice : starssCard, IDoomCard, IFateCard
             TargetType.AnyEnemy)
     {
     }
-    public override CardMultiplayerConstraint MultiplayerConstraint
+
+    public override CardMultiplayerConstraint MultiplayerConstraint =>
+        CardMultiplayerConstraint.MultiplayerOnly;
+
+    // =========================================================
+    // 六档卡面
+    // =========================================================
+
+    // 注册全部六张卡面，供资源系统预加载
+    public override string[] AllPortraitPaths =>
+    [
+        GetDicePortraitPath(6),
+        GetDicePortraitPath(12),
+        GetDicePortraitPath(20),
+        GetDicePortraitPath(30),
+        GetDicePortraitPath(50),
+        GetDicePortraitPath(100)
+    ];
+
+    // 根据当前骰子面数选择卡面
+    public override string PortraitPath =>
+        GetDicePortraitPath(DynamicVars["Sides"].IntValue);
+
+    // 对应的大卡面 PNG 路径
+    protected override string PortraitPngPath =>
+        GetDicePortraitPath(DynamicVars["Sides"].IntValue);
+
+    private static string GetDicePortraitPath(int sides)
     {
-        get => CardMultiplayerConstraint.MultiplayerOnly;
+        return sides switch
+        {
+            6 => PortraitDirectory + "god_dice_6.png",
+            12 => PortraitDirectory + "god_dice_12.png",
+            20 => PortraitDirectory + "god_dice_20.png",
+            30 => PortraitDirectory + "god_dice_30.png",
+            50 => PortraitDirectory + "god_dice_50.png",
+            100 => PortraitDirectory + "god_dice_100.png",
+            _ => PortraitDirectory + "god_dice_6.png"
+        };
     }
-    
+
+    // =========================================================
+    // 动态变量
+    // =========================================================
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        // 当前伤害骰的面数。
+        // 当前伤害骰的面数
         new DynamicVar("Sides", 6M),
 
-        // 命运与厄运检定值。
+        // 命运与厄运检定值
         new FateVar(50M),
         new DoomVar(51M)
     ];
+
+    // =========================================================
+    // 卡牌效果
+    // =========================================================
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -75,7 +123,7 @@ public sealed class GodDice : starssCard, IDoomCard, IFateCard
         /*
          * 第二次掷骰：
          * 独立进行命运与厄运检定。
-         * DiceHelper.Check会处理幸运值等修正。
+         * DiceHelper.Check 会处理幸运值等修正。
          */
         DiceCheckResult check = await DiceHelper.Check(
             Owner.Creature,
@@ -91,9 +139,12 @@ public sealed class GodDice : starssCard, IDoomCard, IFateCard
          *
          * D6 → D12 → D20 → D30 → D50 → D100
          */
-        for (int i = 0; i < FateEffect.GetRepeatCount(check, Owner.Creature); i++)
+        for (int i = 0;
+             i < FateEffect.GetRepeatCount(check, Owner.Creature);
+             i++)
+        {
             AdvanceDiceStage();
-        
+        }
 
         /*
          * 厄运成功：
@@ -121,6 +172,10 @@ public sealed class GodDice : starssCard, IDoomCard, IFateCard
         }
     }
 
+    // =========================================================
+    // 骰子升级
+    // =========================================================
+
     private void AdvanceDiceStage()
     {
         int currentSides =
@@ -137,8 +192,12 @@ public sealed class GodDice : starssCard, IDoomCard, IFateCard
             return;
         }
 
-        // 已经是D100时不再变化。
+        // 已经是 D100 时不再变化
     }
+
+    // =========================================================
+    // 掷骰
+    // =========================================================
 
     private DiceRollResult RollDamageDie(int sides)
     {
@@ -180,6 +239,10 @@ public sealed class GodDice : starssCard, IDoomCard, IFateCard
             )
         };
     }
+
+    // =========================================================
+    // 常规升级
+    // =========================================================
 
     protected override void OnUpgrade()
     {

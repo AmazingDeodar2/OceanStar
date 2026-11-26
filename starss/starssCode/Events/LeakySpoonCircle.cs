@@ -7,7 +7,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MegaCrit.Sts2.Core.CardSelection;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Gold;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Potions;
+using MegaCrit.Sts2.Core.Rewards;
+using MegaCrit.Sts2.Core.Runs;
+using starss.starssCode.Cards;
 
 namespace starss.starssCode.Events;
 
@@ -65,14 +73,41 @@ public sealed class LeakySpoonCircle : EventModel
 
     protected override IReadOnlyList<EventOption> GenerateInitialOptions()
     {
-        var options = new List<EventOption>(3);
+        MainFile.Logger.Info(
+            "[starss][event] 开始生成漏勺事件选项"
+        );
 
-        foreach (CharacterOption character in SelectedOptions)
+        try
         {
-            options.Add(CreateOption(character));
-        }
+            var options = new List<EventOption>(3);
 
-        return options;
+            foreach (CharacterOption character in SelectedOptions)
+            {
+                MainFile.Logger.Info(
+                    $"[starss][event] 正在创建选项：{character}"
+                );
+
+                options.Add(CreateOption(character));
+
+                MainFile.Logger.Info(
+                    $"[starss][event] 选项创建成功：{character}"
+                );
+            }
+
+            MainFile.Logger.Info(
+                $"[starss][event] 选项生成完成，共 {options.Count} 个"
+            );
+
+            return options;
+        }
+        catch (Exception ex)
+        {
+            MainFile.Logger.Error(
+                $"[starss][event] 选项生成失败：{ex}"
+            );
+
+            throw;
+        }
     }
 
     private EventOption CreateOption(CharacterOption character)
@@ -162,9 +197,23 @@ public sealed class LeakySpoonCircle : EventModel
     // =========================================================
 
     // 木马：支付100金币，获得300金币
-    private Task WoodenHorse()
+    private async Task WoodenHorse()
     {
-        return FinishOption("WOODEN_HORSE");
+        if (Owner.Gold < 100)
+            return;
+
+        await PlayerCmd.LoseGold(
+            100,
+            Owner,
+            GoldLossType.Spent
+        );
+
+        await PlayerCmd.GainGold(
+            300,
+            Owner
+        );
+
+        await FinishOption("WOODEN_HORSE");
     }
 
     // 3w：进入精英战斗，额外获得一个遗物
@@ -180,15 +229,86 @@ public sealed class LeakySpoonCircle : EventModel
     }
 
     // TT：获得三组其他角色卡牌奖励
-    private Task TT()
+    // TT：获得三组其他角色的卡牌奖励。
+    private async Task TT()
     {
-        return FinishOption("TT");
+        // 获取所有角色专属卡池，排除当前角色的卡池。
+        var otherCardPools = ModelDb.AllCharacterCardPools
+            .Where(pool => pool.Id != Owner.Character.CardPool.Id)
+            .Distinct()
+            .ToList();
+
+        // 防止候选卡池为空。
+        if (otherCardPools.Count == 0)
+        {
+            await FinishOption("TT");
+            return;
+        }
+
+        // 创建三组卡牌奖励。
+        var rewards = new List<Reward>(3);
+
+        for (int i = 0; i < 3; i++)
+        {
+            // 使用普通战斗的卡牌稀有度概率。
+            var options = CardCreationOptions
+                .ForNonCombatWithDefaultOdds(otherCardPools)
+                .WithRngOverride(Rng);
+
+            // 每组奖励包含三张候选卡牌。
+            rewards.Add(
+                new CardReward(
+                    options,
+                    3,
+                    Owner
+                )
+            );
+        }
+
+        // 显示原版自定义奖励界面。
+        await RewardsCmd.OfferCustom(
+            Owner,
+            rewards
+        );
+
+        // 奖励处理完成后，显示事件结局。
+        await FinishOption("TT");
     }
 
     // 雪松：七张PC牌中选择两张
-    private Task Xuesong()
+    // 雪松：七张PC牌中选择两张加入牌组。
+    private async Task Xuesong()
     {
-        return FinishOption("XUESONG");
+        var cards = new List<CardCreationResult>
+        {
+            CreatePCCard<TT>(),
+            CreatePCCard<Nana>(),
+            CreatePCCard<TrojanHorse>(),
+            CreatePCCard<SnowCedar>(),
+            CreatePCCard<Gratitude>(),
+            CreatePCCard<ThreeW>(),
+            CreatePCCard<Qiqi>()
+        };
+
+        var prefs = new CardSelectorPrefs(
+            L10NLookup(
+                "LEAKY_SPOON_CIRCLE.pages.XUESONG.selectionScreenPrompt"
+            ),
+            2
+        );
+
+        await SelectCardsToAddToDeckFromGrid(cards, prefs);
+
+        await FinishOption("XUESONG");
+    }
+
+// 创建指定PC牌的可变实例，并包装为卡牌选择结果。
+    private CardCreationResult CreatePCCard<T>()
+        where T : CardModel
+    {
+        return new CardCreationResult(
+            Owner.RunState.CreateCard<T>(Owner)
+        );
     }
 
     // 娜娜：获得5点最大生命值
@@ -198,9 +318,19 @@ public sealed class LeakySpoonCircle : EventModel
     }
 
     // 鹅鹅：增加药水栏位并获得混沌药水
-    private Task Goose()
+    private async Task Goose()
     {
-        return FinishOption("GOOSE");
+        // 增加一个永久药水栏位。
+        await PlayerCmd.GainMaxPotionCount(1, Owner);
+
+        // 创建混沌药水。
+        var potion = ModelDb.Potion<DistilledChaos>()
+            .ToMutable();
+
+        // 将药水放入玩家的药水栏。
+        await PotionCmd.TryToProcure(potion, Owner);
+
+        await FinishOption("GOOSE");
     }
 
     // =========================================================

@@ -109,7 +109,51 @@ public partial class MainFile : Node
         {
             Harmony harmony = new(ModId);
 
-            harmony.PatchAll();
+            Assembly assembly = typeof(MainFile).Assembly;
+
+            Logger.Info(
+                $"[Harmony] 当前程序集：{assembly.FullName}"
+            );
+
+            Logger.Info(
+                $"[Harmony] 程序集路径：{assembly.Location}"
+            );
+
+            int successCount = 0;
+            int failedCount = 0;
+
+            foreach (Type type in assembly.GetTypes())
+            {
+                if (!type.IsDefined(typeof(HarmonyPatch), false))
+                    continue;
+
+                try
+                {
+                    Logger.Info(
+                        $"[Harmony] 正在注册：{type.FullName}"
+                    );
+
+                    harmony.CreateClassProcessor(type).Patch();
+
+                    successCount++;
+
+                    Logger.Info(
+                        $"[Harmony] 注册成功：{type.FullName}"
+                    );
+                }
+                catch (Exception ex)
+                {
+                    failedCount++;
+
+                    Logger.Error(
+                        $"[Harmony] 注册失败：{type.FullName}\n{ex}"
+                    );
+                }
+            }
+
+            Logger.Info(
+                $"[Harmony] 注册结束：成功={successCount}，失败={failedCount}"
+            );
 
             int patchedCount =
                 harmony.GetPatchedMethods().Count();

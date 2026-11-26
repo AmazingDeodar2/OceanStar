@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using starss.starssCode.Mechanics;
 using starss.starssCode.Cards.Interfaces;
+using starss.starssCode.Extensions;
 
 namespace starss.starssCode.Cards;
 
@@ -25,10 +26,6 @@ public sealed class GodDice : starssCard, IDoomCard, IFateCard
         50,
         100
     ];
-
-    // 六张卡面的存放目录
-    private const string PortraitDirectory =
-        "res://starss/images/card_portraits/big/";
 
     public GodDice()
         : base(
@@ -46,36 +43,52 @@ public sealed class GodDice : starssCard, IDoomCard, IFateCard
     // 六档卡面
     // =========================================================
 
-    // 注册全部六张卡面，供资源系统预加载
+    // 当前神之骰的面数。
+    private int CurrentDiceSides =>
+        DynamicVars["Sides"].IntValue;
+
+    // 大卡面：沿用 starssCard 的 BigCardImagePath。
+    public override string CustomPortraitPath =>
+        GetPortraitFilename(CurrentDiceSides)
+            .BigCardImagePath();
+
+    // 小卡面：沿用 starssCard 的 CardImagePath。
+    public override string PortraitPath =>
+        GetPortraitFilename(CurrentDiceSides)
+            .CardImagePath();
+
+    // 预加载全部六档大小卡面。
     public override string[] AllPortraitPaths =>
     [
-        GetDicePortraitPath(6),
-        GetDicePortraitPath(12),
-        GetDicePortraitPath(20),
-        GetDicePortraitPath(30),
-        GetDicePortraitPath(50),
-        GetDicePortraitPath(100)
+        // 小卡面
+        GetPortraitFilename(6).CardImagePath(),
+        GetPortraitFilename(12).CardImagePath(),
+        GetPortraitFilename(20).CardImagePath(),
+        GetPortraitFilename(30).CardImagePath(),
+        GetPortraitFilename(50).CardImagePath(),
+        GetPortraitFilename(100).CardImagePath(),
+
+        // 大卡面
+        GetPortraitFilename(6).BigCardImagePath(),
+        GetPortraitFilename(12).BigCardImagePath(),
+        GetPortraitFilename(20).BigCardImagePath(),
+        GetPortraitFilename(30).BigCardImagePath(),
+        GetPortraitFilename(50).BigCardImagePath(),
+        GetPortraitFilename(100).BigCardImagePath()
     ];
 
-    // 根据当前骰子面数选择卡面
-    public override string PortraitPath =>
-        GetDicePortraitPath(DynamicVars["Sides"].IntValue);
-
-    // 对应的大卡面 PNG 路径
-    protected override string PortraitPngPath =>
-        GetDicePortraitPath(DynamicVars["Sides"].IntValue);
-
-    private static string GetDicePortraitPath(int sides)
+    // 根据当前骰子面数获取图片文件名。
+    private static string GetPortraitFilename(int sides)
     {
         return sides switch
         {
-            6 => PortraitDirectory + "god_dice_6.png",
-            12 => PortraitDirectory + "god_dice_12.png",
-            20 => PortraitDirectory + "god_dice_20.png",
-            30 => PortraitDirectory + "god_dice_30.png",
-            50 => PortraitDirectory + "god_dice_50.png",
-            100 => PortraitDirectory + "god_dice_100.png",
-            _ => PortraitDirectory + "god_dice_6.png"
+            6 => "god_dice_6.png",
+            12 => "god_dice_12.png",
+            20 => "god_dice_20.png",
+            30 => "god_dice_30.png",
+            50 => "god_dice_50.png",
+            100 => "god_dice_100.png",
+            _ => "god_dice_6.png"
         };
     }
 
@@ -85,10 +98,10 @@ public sealed class GodDice : starssCard, IDoomCard, IFateCard
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        // 当前伤害骰的面数
+        // 当前伤害骰的面数。
         new DynamicVar("Sides", 6M),
 
-        // 命运与厄运检定值
+        // 命运与厄运检定值。
         new FateVar(50M),
         new DoomVar(51M)
     ];
@@ -123,7 +136,6 @@ public sealed class GodDice : starssCard, IDoomCard, IFateCard
         /*
          * 第二次掷骰：
          * 独立进行命运与厄运检定。
-         * DiceHelper.Check 会处理幸运值等修正。
          */
         DiceCheckResult check = await DiceHelper.Check(
             Owner.Creature,
@@ -155,12 +167,7 @@ public sealed class GodDice : starssCard, IDoomCard, IFateCard
             GodDice copy =
                 CombatState.CreateCard<GodDice>(Owner);
 
-            /*
-             * 复制当前面数。
-             *
-             * 因为命运效果先结算，所以若本次命运与厄运
-             * 同时成功，复制品会继承提升后的面数。
-             */
+            // 复制当前面数，同时继承对应阶段的卡面。
             copy.DynamicVars["Sides"].BaseValue =
                 DynamicVars["Sides"].BaseValue;
 
@@ -192,7 +199,7 @@ public sealed class GodDice : starssCard, IDoomCard, IFateCard
             return;
         }
 
-        // 已经是 D100 时不再变化
+        // 已经是 D100 时不再变化。
     }
 
     // =========================================================

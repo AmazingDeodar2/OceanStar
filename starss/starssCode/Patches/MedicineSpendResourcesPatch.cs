@@ -4,7 +4,6 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.ValueProps;
 using starss.starssCode.Powers;
 using System;
 using System.Collections.Generic;
@@ -27,21 +26,26 @@ public static class MedicineSpendResourcesPatch
         CardModel __instance,
         ref Task<(int, int)> __result)
     {
+        // 没有 MedicinePower 时，使用原版资源支付逻辑。
         if (__instance.Owner.Creature.GetPower<MedicinePower>() == null)
             return true;
 
+        // 存在 MedicinePower 时，使用生命代替能量支付。
         __result = SpendWithHealth(__instance);
+
         return false;
     }
 
     private static async Task<(int, int)> SpendWithHealth(
         CardModel card)
     {
+        // 获取实际需要支付的能量。
         int energyToSpend = Math.Max(
             0,
             card.EnergyCost.GetAmountToSpend()
         );
 
+        // 获取实际需要支付的星星。
         int starsToSpend = Math.Max(
             0,
             card.GetStarCostWithModifiers()
@@ -84,27 +88,38 @@ public static class MedicineSpendResourcesPatch
     {
         Creature creature = card.Owner.Creature;
 
+        // 无需支付或角色已经死亡时，不进行处理。
         if (amount <= 0 || creature.IsDead)
             return;
 
+        // 记录支付前的生命值。
+        var hpBefore = creature.CurrentHp;
+
         // 直接失去生命，不经过格挡。
-        var result = creature.LoseHpInternal(
+        // 新版接口的第二个参数为 bool dryRun。
+        // false 表示实际执行扣血。
+        creature.LoseHpInternal(
             amount,
-            ValueProp.Unblockable | ValueProp.Unpowered
+            dryRun: false
         );
 
-        if (result.UnblockedDamage > 0)
+        // 根据扣血前后的生命值计算实际生命损失。
+        // 不再依赖旧版 LoseHpInternal 的返回值。
+        var hpLost = hpBefore - creature.CurrentHp;
+
+        // 触发生命值变化事件。
+        if (hpLost > 0)
         {
             await Hook.AfterCurrentHpChanged(
                 card.RunState,
                 creature.CombatState,
                 creature,
-                -result.UnblockedDamage
+                -hpLost
             );
         }
 
         // 按原版死亡流程处理。
-        if (result.WasTargetKilled && creature.IsDead)
+        if (creature.IsDead)
         {
             await CreatureCmd.Kill(
                 (IReadOnlyCollection<Creature>)

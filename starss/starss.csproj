@@ -66,8 +66,6 @@
         <None Include="starss.json"/>
         <None Include="project.godot"/>
         <None Include="starss/**"/>
-        <None Include="starssCode\Patches\StarssAnimationPatch.cs" />
-        <None Include="starssCode\Patches\StarssAnimationPatch.cs.uid" />
         <None Include="starssCode\Vfx\States\Pony\NFlatDomainVfx.cs.uid" />
         <None Include="starssCode\Vfx\States\Pony\NGooseEggVfx.cs.uid" />
         <None Include="starssCode\Vfx\States\Pony\NJellyfishVfx.cs.uid" />

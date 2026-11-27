@@ -92,20 +92,15 @@ public static class MedicineSpendResourcesPatch
         if (amount <= 0 || creature.IsDead)
             return;
 
-        // 记录支付前的生命值。
-        var hpBefore = creature.CurrentHp;
-
         // 直接失去生命，不经过格挡。
-        // 新版接口的第二个参数为 bool dryRun。
-        // false 表示实际执行扣血。
-        creature.LoseHpInternal(
+        // v0.114.0：LoseHpInternal(decimal amount, bool dryRun = false): HpLossResult（Creature.cs:458），
+        // 返回值的 hpLost 字段就是实际扣血量（HpLossResult.cs:5）。官方 Kill 内同款写法 CreatureCmd.cs:730-731。
+        var result = creature.LoseHpInternal(
             amount,
             dryRun: false
         );
 
-        // 根据扣血前后的生命值计算实际生命损失。
-        // 不再依赖旧版 LoseHpInternal 的返回值。
-        var hpLost = hpBefore - creature.CurrentHp;
+        var hpLost = result.hpLost;
 
         // 触发生命值变化事件。
         if (hpLost > 0)
